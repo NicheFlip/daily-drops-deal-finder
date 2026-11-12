@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827"><meta name="color-scheme" content="light"><meta name="description" content="Daily Drops Amazon deal research dashboard. Research leads only; verify at checkout.">
+<meta name="theme-color" content="#111827"><meta name="color-scheme" content="light"><meta name="description" content="Daily Drops Amazon and Walmart deal research dashboard. Research leads only; verify at checkout.">
 <title>Daily Drops | Amazon Deal Finder</title>
 <style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#1d2939;background:#f6f7fa;font-synthesis:none}
@@ -29,10 +29,11 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 [hidden]{display:none!important}footer{font-size:.8rem;color:#6b778b;margin-top:32px}
 @media(max-width:700px){.filters{grid-template-columns:1fr 1fr}.filters input{grid-column:1/-1}.grid{grid-template-columns:1fr}.brand{font-size:1.3rem}.stat strong{font-size:1.15rem}.stat{padding:12px 8px}.stats{gap:6px}.stat span{font-size:.7rem}.search-links{grid-template-columns:1fr 1fr}.search-links a{font-size:.85rem;padding:11px 8px}.brand{font-size:1.17rem}.sub{font-size:.8rem}}
 </style></head>
-<body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Your Amazon deal research workspace</p></div></header>
+<body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Amazon + Walmart deal research workspace</p></div></header>
 <main>
 <nav role="tablist" aria-label="Sections">
 <button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">Deals</button>
+<button type="button" role="tab" id="tab-walmart" aria-controls="panel-walmart" aria-selected="false">Walmart</button>
 <button type="button" role="tab" id="tab-search" aria-controls="panel-search" aria-selected="false">Search Amazon</button>
 <button type="button" role="tab" id="tab-used" aria-controls="panel-used" aria-selected="false">Used & Resale</button>
 <button type="button" role="tab" id="tab-leads" aria-controls="panel-leads" aria-selected="false">Community leads</button>
@@ -47,6 +48,17 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div class="actions"><label><input type="checkbox" id="deep" style="width:auto;vertical-align:middle"> Show only 70%+ leads</label><button type="button" class="btn secondary" id="reload">↻ Refresh results</button></div>
 <p class="muted small" id="status" role="status">Loading latest scan…</p>
 <div id="products" class="grid"></div>
+</section>
+<section id="panel-walmart" role="tabpanel" aria-labelledby="tab-walmart" hidden>
+<h1>Walmart deal research</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
+<div class="stats"><div class="stat"><strong>Walmart</strong><span>Retailer</span></div><div class="stat"><strong>Live</strong><span>Search links</span></div><div class="stat"><strong>Not linked</strong><span>Product API</span></div></div>
+<div class="notice"><strong>Research mode:</strong> Walmart Creator product data is not connected to this site. These are Walmart search pages, not automatically verified deal listings. Local clearance, prices and availability can vary by store.</div>
+<div class="card"><label for="walmartTerm"><strong>Search Walmart</strong></label><input id="walmartTerm" type="search" value="clearance" placeholder="Search clearance, toys, kitchen…" style="margin:10px 0"><div id="walmartLinks" class="search-links"></div></div>
+<p class="section-label">Quick shopping categories</p><div id="walmartChips" class="chips"></div>
+<div class="filters"><input id="walmartFilter" type="search" placeholder="Filter categories…" aria-label="Filter Walmart categories"><select id="walmartSort" aria-label="Sort Walmart category list"><option value="default">Popular categories</option><option value="az">A to Z</option></select></div>
+<div id="walmartCategories" class="search-links"></div>
+<h2>Walmart deals & clearance</h2><div class="search-links"><a href="https://www.walmart.com/shop/deals" target="_blank" rel="noopener noreferrer">Walmart Deals ↗</a><a href="https://www.walmart.com/shop/deals/clearance" target="_blank" rel="noopener noreferrer">Walmart Clearance ↗</a></div>
+<p class="muted small">Walmart controls search ordering. Links request low-to-high price sorting where supported, but this is not a guaranteed price order or verified discount filter.</p>
 </section>
 <section id="panel-search" role="tabpanel" aria-labelledby="tab-search" hidden>
 <h1>Search Amazon directly</h1><p class="muted">Open Amazon's current search results when you want to explore beyond the automated feed.</p>
@@ -78,9 +90,9 @@ const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocal
 const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
 let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;
-function selectTab(name){for(const n of ['deals','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
-for(const n of ['deals','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
-const tabNames=['deals','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
+function selectTab(name){for(const n of ['deals','walmart','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
+for(const n of ['deals','walmart','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
+const tabNames=['deals','walmart','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 function render(){
  if(!data)return;
  const now=Date.now(),all=(Array.isArray(data.deals)?data.deals:[]).filter(d=>d&&Number.isFinite(Date.parse(d.checkedAt))&&now-Date.parse(d.checkedAt)>=0&&now-Date.parse(d.checkedAt)<3600000&&Number.isFinite(Number(d.price))&&Number.isFinite(Number(d.referencePrice))&&Number(d.referencePrice)>Number(d.price)&&validUrl(d.url));
@@ -97,6 +109,15 @@ function updateChips(){$('categoryChips').innerHTML=chipItems.map(([value,label]
 $('categoryChips').addEventListener('click',e=>{const btn=e.target.closest('button[data-cat]');if(!btn)return;$('category').value=btn.dataset.cat;updateChips();render()});
 for(const id of ['find','category','sort','deep'])$(id).addEventListener(id==='find'?'input':'change',()=>{if(id==='category')updateChips();render()});updateChips();
 $('reload').addEventListener('click',loadAmazon);
+const walmartCategories=['Clearance','Toys','Home & Kitchen','Electronics','Clothing','Beauty','Baby','Gifts','Furniture','Bedding','Storage & Organization','Appliances','School Supplies','Pet Supplies','Holiday Decorations'];
+function walmartUrl(q,low=false){const url=new URL('https://www.walmart.com/search');url.searchParams.set('q',q);if(low)url.searchParams.set('sort','price_low');return url.href}
+function walmartLinks(){const q=$('walmartTerm').value.trim()||'clearance';$('walmartLinks').innerHTML=link('Search Walmart',walmartUrl(q))+link('Lowest price first',walmartUrl(q,true))}
+$('walmartTerm').addEventListener('input',walmartLinks);walmartLinks();
+function renderWalmartCategories(){const q=$('walmartFilter').value.trim().toLowerCase();const categories=walmartCategories.filter(x=>x.toLowerCase().includes(q));if($('walmartSort').value==='az')categories.sort((a,b)=>a.localeCompare(b));$('walmartCategories').innerHTML=categories.map(x=>link(x+' · low to high',walmartUrl(x,true))).join('')||'<div class="empty">No matching categories</div>'}
+$('walmartFilter').addEventListener('input',renderWalmartCategories);$('walmartSort').addEventListener('change',renderWalmartCategories);
+$('walmartChips').innerHTML=['Clearance','Toys','Kitchen','Fashion','Electronics','Beauty'].map(x=>'<button type="button" data-walmart="'+esc(x)+'">'+esc(x)+'</button>').join('');
+$('walmartChips').addEventListener('click',e=>{const b=e.target.closest('button[data-walmart]');if(!b)return;$('walmartTerm').value=b.dataset.walmart;walmartLinks()});
+renderWalmartCategories();
 function searchUrl(q,low=false,used=false){return 'https://www.amazon.com/s?k='+encodeURIComponent(q)+(used?'&rh=p_n_condition-type%3A6461718011':'')+(low?'&s=price-asc-rank':'')}
 function link(text,url){return '<a target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">'+esc(text)+' ↗</a>'}
 function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-links').innerHTML=link('Search '+q,searchUrl(q))+link('Lowest price first',searchUrl(q,true))+link('Amazon Today’s Deals','https://www.amazon.com/deals')}
