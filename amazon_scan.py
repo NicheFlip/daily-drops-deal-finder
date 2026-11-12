@@ -15,7 +15,7 @@ QUERIES=[
 ('Electronics','wireless headphones'),('Electronics','computer accessories'),('Electronics','smart home'),('Electronics','chargers'),('Electronics','tablets'),
 ('Beauty','skin care'),('Beauty','hair care'),('Beauty','makeup organizers'),('Beauty','beauty tools'),
 ('Fashion','women clothing'),('Fashion','handbags'),('Fashion','sneakers'),('Fashion','winter coats'),
-('OfficeProducts','school supplies'),('PetSupplies','dog beds'),('LawnAndGarden','outdoor decor'),('Baby','baby blankets'),
+('OfficeProducts','school supplies'),('PetSupplies','dog beds'),('HomeAndKitchen','outdoor decor'),('Baby','baby blankets'),
 ('ToysAndGames','holiday gifts'),('HomeAndKitchen','home decor'),('Electronics','portable speakers')
 ]
 # API returns at most 10 items per request; distribute calls instead of bursts.
