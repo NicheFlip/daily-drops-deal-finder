@@ -86,13 +86,18 @@ def enrich(observed, stamp, baseline=None):
             summary = db.execute('SELECT MIN(price_cents), COUNT(*) FROM observations WHERE asin=?', (asin,)).fetchone()
             if asin not in observed:
                 continue
+            confidence = ('observed_reduction' if previous is not None and price_cents < previous else
+                          'repeat_observation' if prior else 'first_observation')
             deal.update({
+                'priceEvidence': confidence,
+                'priorObservedPrice': round(previous / 100, 2) if previous is not None else None,
                 'observedLow90d': round(summary[0] / 100, 2),
                 'observationCount': summary[1],
                 'observedPriceDropPercent': drop,
                 'newObservedLow': new_low,
-                'dealScore': min(90, min(25, max(0, deal['discountPercent'] - 40)) +
-                                 min(35, round(drop * 1.5)) + 20 +
+                'dealScore': min(90, min(20, max(0, deal['discountPercent'] - 40)) +
+                                 min(40, round(drop * 1.5)) +
+                                 (20 if previous is not None and price_cents < previous else 0) +
                                  (10 if len(prior) >= 2 else 0))
             })
             if previous is not None and price_cents < previous:
