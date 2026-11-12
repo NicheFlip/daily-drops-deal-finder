@@ -127,6 +127,15 @@ def scan():
     # Track valid everyday essentials even without a qualifying discount.
     # Only qualifying leads enter the public deal and candidate feeds.
     observed_drops=enrich(observed,STAMP,baseline=baseline)
+    # Retained still-fresh leads may predate the evidence schema. Never
+    # preserve a legacy score or imply a witnessed reduction for those leads.
+    for asin, deal in fresh.items():
+        if asin not in observed:
+            deal['priceEvidence']='first_observation'
+            deal['priorObservedPrice']=None
+            deal['newObservedLow']=False
+            deal['observedPriceDropPercent']=0
+            deal['dealScore']=min(20,max(0,deal.get('discountPercent',0)-40))
     candidate_count=build_queue(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
     deals=sorted(fresh.values(),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
