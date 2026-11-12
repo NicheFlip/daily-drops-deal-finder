@@ -29,6 +29,9 @@ jobs:
           cp index.html _site/index.html
           cp data/amazon-deals.json _site/data/amazon-deals.json
           cp data/deals.json _site/data/deals.json
+          for file in amazon-price-history.json amazon-deal-changes.json; do
+            if [ -f "data/$file" ]; then cp "data/$file" "_site/data/$file"; fi
+          done
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
