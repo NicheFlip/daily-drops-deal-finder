@@ -54,7 +54,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 </section>
 <section id="panel-inbox" role="tabpanel" aria-labelledby="tab-inbox" hidden>
 <h1>Missed Deals Inbox</h1><p class="muted small">Browse discoveries from the past 45 days, even if you missed the hourly scan. Historical observations are not live prices. Recheck on Amazon before sharing.</p>
-<div class="actions"><select id="inboxFilter" aria-label="Inbox filter"><option value="all">All discoveries</option><option value="drop">Observed price drops only</option><option value="new">First observations</option></select><button class="btn secondary" id="inboxRefresh" type="button">↻ Refresh inbox</button></div>
+<div class="actions"><input id="inboxSearch" type="search" placeholder="Search saved deals…" aria-label="Search saved deals" style="flex:1;min-width:160px"><select id="inboxFilter" aria-label="Inbox filter"><option value="all">All discoveries</option><option value="drop">Observed price drops only</option><option value="new">First observations</option></select><button class="btn secondary" id="inboxRefresh" type="button">↻ Refresh inbox</button></div>
 <p id="inboxStatus" class="muted small" role="status">Open this tab to load saved discoveries.</p><div id="inboxResults" class="grid"></div>
 </section>
 <section id="panel-candidates" role="tabpanel" aria-labelledby="tab-candidates" hidden>
@@ -131,7 +131,8 @@ $('openInbox').addEventListener('click',()=>selectTab('inbox'));
 
 function renderInbox(){
  const filter=$('inboxFilter').value;
- const rows=inboxEvents.filter(d=>filter==='all'||(filter==='drop'&&d.reason==='Observed price drop')||(filter==='new'&&d.reason==='First observation'));
+ const q=$('inboxSearch').value.trim().toLowerCase();
+ const rows=inboxEvents.filter(d=>(!q||String(d.title||'').toLowerCase().includes(q))&&(filter==='all'||(filter==='drop'&&d.reason==='Observed price drop')||(filter==='new'&&d.reason==='First observation')));
  $('inboxStatus').textContent=rows.length+' saved discoveries · newest first · historical research, not current offers';
  $('inboxResults').innerHTML=rows.slice(0,500).map(d=>'<article class="card product"><div><span class="pill">'+esc(d.reason||'Discovery')+'</span> <span class="pill">'+esc(date(d.checkedAt))+'</span></div><h3>'+esc(d.title)+'</h3><div class="small muted">Observed price at discovery: '+cash(d.price)+(d.previousObservedPrice!=null?' · Earlier observed: '+cash(d.previousObservedPrice):'')+'</div><div class="notice"><strong>Historical observation.</strong> Price may have changed. Not checkout-verified; reference discounts are not proof of prior selling price.</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current price on Amazon ↗</a></article>').join('')||'<div class="empty">No saved discoveries for this filter yet. The inbox fills after successful scans.</div>';
 }
@@ -142,6 +143,7 @@ async function loadInbox(){
 }
 $('inboxRefresh').addEventListener('click',loadInbox);
 $('inboxFilter').addEventListener('change',renderInbox);
+$('inboxSearch').addEventListener('input',renderInbox);
 
 async function loadCandidates(){
 $('candidateStatus').textContent='Loading latest new or improved offers…';
