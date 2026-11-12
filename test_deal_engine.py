@@ -49,6 +49,7 @@ class EngineTests(unittest.TestCase):
         same=self.deal(60)
         price_history.enrich({'B012345678':same},self.stamp)
         self.assertEqual(same['observationCount'],1)
+        self.assertEqual(same['priceEvidence'],'repeat_observation')
         self.assertFalse(same['newObservedLow'])
         next_day='2026-11-13T12:00:00+00:00'
         later=self.deal(60)
@@ -68,6 +69,8 @@ class EngineTests(unittest.TestCase):
         price_history.enrich({'B012345678':later},later['checkedAt'],baseline={'B012345678':later})
         self.assertEqual(later['observedPriceDropPercent'],42.1)
         self.assertTrue(later['newObservedLow'])
+        self.assertEqual(later['priceEvidence'],'observed_reduction')
+        self.assertEqual(later['priorObservedPrice'],95)
 
 if __name__=='__main__':
     unittest.main()
