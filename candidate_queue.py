@@ -6,6 +6,7 @@ import pathlib
 ROOT=pathlib.Path(__file__).parent
 STATE=ROOT/'data'/'amazon-candidate-state.json'
 QUEUE=ROOT/'data'/'amazon-candidates.json'
+ARCHIVE=ROOT/'data'/'amazon-discovery-archive.json'
 RETENTION_DAYS=45
 ESSENTIAL_TERMS=('laundry','detergent','paper towel','toilet paper','dish soap','trash bag','coffee','diaper','baby wipe','cleaning wipe','hand soap','toothpaste','shampoo','pet food','storage bag','batteries','dryer sheet','facial tissue','body wash','cereal','snack','water filter')
 def is_essential(deal):
@@ -61,4 +62,27 @@ def build_queue(observed, stamp):
     QUEUE.write_text(json.dumps({'updated':stamp,'candidates':candidates[:100],
         'count':len(candidates),
         'note':'Research queue only; not verified at checkout. Unchanged offers suppressed.'},indent=2))
+    # Historical research inbox, separate from the one-hour live price feed.
+    try:
+        archive=json.loads(ARCHIVE.read_text()).get('events',[])
+        if not isinstance(archive,list):archive=[]
+    except (OSError,ValueError,AttributeError):
+        archive=[]
+    event_cutoff=now-datetime.timedelta(days=RETENTION_DAYS)
+    saved={}
+    for event in archive:
+        try:
+            seen=datetime.datetime.fromisoformat(event['checkedAt'])
+            if seen>=event_cutoff:
+                saved[str(event['asin'])+'|'+event['checkedAt']+'|'+event.get('reason','')]=event
+        except (KeyError,ValueError,TypeError,AttributeError):
+            continue
+    for candidate in candidates:
+        key=candidate['asin']+'|'+candidate['checkedAt']+'|'+candidate['reason']
+        saved[key]=candidate
+    events=sorted(saved.values(),key=lambda d:d.get('checkedAt',''),reverse=True)[:1500]
+    ARCHIVE.write_text(json.dumps({
+        'updated':stamp,'retentionDays':RETENTION_DAYS,'events':events,
+        'note':'Historical research observations, NOT live prices or verified checkout offers. Recheck the exact product before sharing.'
+    },indent=2))
     return len(candidates)
