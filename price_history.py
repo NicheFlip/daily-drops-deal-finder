@@ -15,7 +15,7 @@ MAX_ITEMS = 1200
 MAX_POINTS = 90
 
 
-def enrich(observed, stamp):
+def enrich(observed, stamp, baseline=None):
     now = datetime.datetime.fromisoformat(stamp)
     cutoff = (now - datetime.timedelta(days=90)).isoformat()
     try:
@@ -63,7 +63,11 @@ def enrich(observed, stamp):
             db.executemany('INSERT OR REPLACE INTO observations VALUES (?,?,?)', points[-MAX_POINTS:])
 
         changes = []
-        for asin, deal in observed.items():
+        # All valid essentials establish price baselines; only qualifying deals
+        # receive scoring and enter the public change feed.
+        tracked = dict(baseline or {})
+        tracked.update(observed)
+        for asin, deal in tracked.items():
             price_cents = round(float(deal['price']) * 100)
             if price_cents <= 0:
                 continue
@@ -80,6 +84,8 @@ def enrich(observed, stamp):
             db.execute('INSERT OR REPLACE INTO products VALUES (?,?,?,?)',
                        (asin, deal['title'][:180], deal['category'][:60], stamp))
             summary = db.execute('SELECT MIN(price_cents), COUNT(*) FROM observations WHERE asin=?', (asin,)).fetchone()
+            if asin not in observed:
+                continue
             deal.update({
                 'observedLow90d': round(summary[0] / 100, 2),
                 'observationCount': summary[1],
@@ -114,7 +120,7 @@ def enrich(observed, stamp):
     PATH.parent.mkdir(parents=True, exist_ok=True)
     PATH.write_text(json.dumps({
         'updated': stamp,
-        'scope': 'Observed qualifying Amazon API offers only; not market-wide price history',
+        'scope': 'API-observed qualifying deals plus sampled everyday essentials; not market-wide price history',
         'storage': 'SQLite processed, JSON checkpoint',
         'items': exported
     }, separators=(',', ':')))
