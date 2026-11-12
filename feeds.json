@@ -1,0 +1,12 @@
+{
+  "feeds": [
+    {
+      "name": "Slickdeals Frontpage",
+      "url": "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"
+    },
+    {
+      "name": "Slickdeals Popular",
+      "url": "https://slickdeals.net/newsearch.php?mode=popular&searcharea=deals&rss=1"
+    }
+  ]
+}
