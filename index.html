@@ -34,6 +34,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <nav role="tablist" aria-label="Sections">
 <button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">🔥 Amazon finds</button>
 <button type="button" role="tab" id="tab-search" aria-controls="panel-search" aria-selected="false">🔎 Shop Amazon</button>
+<button type="button" role="tab" id="tab-used" aria-controls="panel-used" aria-selected="false">♻️ Used & Resale</button>
 <button type="button" role="tab" id="tab-leads" aria-controls="panel-leads" aria-selected="false">Community leads</button>
 </nav>
 <section id="panel-deals" role="tabpanel" aria-labelledby="tab-deals">
@@ -50,8 +51,9 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <section id="panel-search" role="tabpanel" aria-labelledby="tab-search" hidden>
 <h1>Search Amazon directly</h1><p class="muted">Open Amazon's current search results when you want to explore beyond the automated feed.</p>
 <div class="card"><label for="term"><strong>What are you looking for?</strong></label><input id="term" value="clearance" placeholder="Toys, kitchen, headphones…" style="margin:10px 0"><div id="search-links" class="search-links"></div></div>
-<h2>Quick searches</h2><div id="quick" class="search-links"></div>
+<h2>Quick category searches</h2><p class="muted small">Choose a category and open Amazon results sorted lowest price first. Amazon may adjust its own sorting.</p><div id="quick" class="search-links"></div>
 </section>
+<section id="panel-used" role="tabpanel" aria-labelledby="tab-used" hidden><h1>Used & Amazon Resale</h1><p class="muted">Amazon Warehouse is now called Amazon Resale. Explore pre-owned, open-box, and returned items directly on Amazon.</p><div class="notice"><strong>Important:</strong> These are live Amazon search links, not verified used-item offers. Availability, condition, and price vary by seller and listing. Lowest-price sorting is requested but Amazon controls the results.</div><div class="card"><label for="usedterm"><strong>Search used products</strong></label><input id="usedterm" value="kitchen appliances" placeholder="Search used items…" style="margin:10px 0"><div id="usedlinks" class="search-links"></div></div><h2>Used categories · lowest price first</h2><div id="usedquick" class="search-links"></div><h2>Browse Amazon Resale</h2><div class="search-links"><a href="https://www.amazon.com/amazonwarehouse" target="_blank" rel="noopener noreferrer">Open Amazon Resale ↗</a></div></section>
 <section id="panel-leads" role="tabpanel" aria-labelledby="tab-leads" hidden>
 <h1>Community deal leads</h1><p class="notice">These are third-party community posts, not verified Amazon prices. They may be expired or inaccurate.</p>
 <div class="actions"><input id="leadfind" type="search" placeholder="Filter community leads" style="max-width:350px"><button type="button" class="btn secondary" id="leadreload">Refresh leads</button></div><p id="leadstatus" class="muted small"></p><div id="leaditems" class="grid"></div>
@@ -66,7 +68,7 @@ const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocal
 const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
 let data=null,leads=[];
-function selectTab(name){for(const n of ['deals','search','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name))}if(name==='leads'&&!leads.length)loadLeads()}
+function selectTab(name){for(const n of ['deals','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name))}if(name==='leads'&&!leads.length)loadLeads()}
 for(const n of ['deals','search','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
 function render(){
  if(!data)return;
@@ -81,11 +83,14 @@ function render(){
 async function loadAmazon(){ $('status').textContent='Checking latest Amazon results…';try{const res=await fetch('data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Scan data not available');data=await res.json();render()}catch(e){$('status').textContent='Could not load Amazon scan: '+e.message;$('products').innerHTML='<div class="empty">Try refreshing in a moment.</div>'}}
 for(const id of ['find','category','sort','deep'])$(id).addEventListener(id==='find'?'input':'change',render);
 $('reload').addEventListener('click',loadAmazon);
-function searchUrl(q){return 'https://www.amazon.com/s?k='+encodeURIComponent(q)}
+function searchUrl(q,low=false,used=false){return 'https://www.amazon.com/s?k='+encodeURIComponent(q)+(used?'&rh=p_n_condition-type%3A6461718011':'')+(low?'&s=price-asc-rank':'')}
 function link(text,url){return '<a target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">'+esc(text)+' ↗</a>'}
-function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-links').innerHTML=link('Search '+q,searchUrl(q))+link('Amazon Today’s Deals','https://www.amazon.com/deals')}
+function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-links').innerHTML=link('Search '+q,searchUrl(q))+link('Lowest price first',searchUrl(q,true))+link('Amazon Today’s Deals','https://www.amazon.com/deals')}
 $('term').addEventListener('input',searchLinks);searchLinks();
-$('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','Headphones','Beauty deals','Holiday gifts','Clothing','Amazon Outlet'].map(q=>link(q,q==='Amazon Outlet'?'https://www.amazon.com/outlet':searchUrl(q))).join('');
+$('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','Headphones','Beauty deals','Holiday gifts','Clothing','Amazon Outlet'].map(q=>link(q+' · low to high',q==='Amazon Outlet'?'https://www.amazon.com/outlet':searchUrl(q,true))).join('');
+function usedLinks(){const q=$('usedterm').value.trim()||'used';$('usedlinks').innerHTML=link('Used '+q+' · lowest first',searchUrl(q,true,true))+link('All used '+q,searchUrl(q,false,true))}
+$('usedterm').addEventListener('input',usedLinks);usedLinks();
+$('usedquick').innerHTML=['Toys & games','Kitchen appliances','Home & kitchen','Electronics','Headphones','Fashion','Beauty tools','Books','Video games','Furniture'].map(q=>link(q+' · used low to high',searchUrl(q,true,true))).join('');
 async function loadLeads(){ $('leadstatus').textContent='Loading community leads…';try{const res=await fetch('data/deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Community feed unavailable');leads=(await res.json()).deals||[];renderLeads()}catch(e){$('leadstatus').textContent=e.message}}
 function renderLeads(){const q=$('leadfind').value.toLowerCase();const filtered=leads.filter(d=>d.title&&d.title.toLowerCase().includes(q)).slice(0,80);$('leadstatus').textContent=filtered.length+' unverified leads shown';$('leaditems').innerHTML=filtered.map(d=>'<article class="card product"><span class="pill">'+esc(d.retailer||'Unknown')+'</span><h3>'+esc(d.title)+'</h3><p class="small muted">Community source: '+esc(d.source||'unknown')+' · Not price-verified</p>'+(String(d.url||'').startsWith('https://')?'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">View original post ↗</a>':'')+'</article>').join('')||'<div class="empty">No matching community leads.</div>'}
 $('leadfind').addEventListener('input',renderLeads);$('leadreload').addEventListener('click',loadLeads);
