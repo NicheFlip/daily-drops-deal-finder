@@ -189,18 +189,36 @@ $('categoryChips').addEventListener('click',e=>{const btn=e.target.closest('butt
 for(const id of ['find','category','sort','deep','essentials'])$(id).addEventListener(id==='find'?'input':'change',()=>{if(id==='category')updateChips();render()});updateChips();
 $('reload').addEventListener('click',loadAmazon);
 const walmartCategories=['Clearance','Toys','Home & Kitchen','Electronics','Clothing','Beauty','Baby','Gifts','Furniture','Bedding','Storage & Organization','Appliances','School Supplies','Pet Supplies','Holiday Decorations'];
+const walmartDealPhrases=[
+['Women’s pants deals','women pants deals'],['Women’s pants clearance','women pants clearance'],['Shoe deals','shoe deals'],['Women’s shoe clearance','women shoes clearance'],
+['Boys clothing clearance','boys clothes clearance'],['Girls clothing clearance','girls clothes clearance'],['Kids shoes deals','kids shoes deals'],
+['Jeans deals','jeans deals'],['Leggings deals','leggings deals'],['Pajama deals','pajamas clearance'],
+['Toys clearance','toys clearance'],['LEGO deals','lego deals'],['Baby clothes clearance','baby clothes clearance'],
+['Kitchen clearance','kitchen clearance'],['Bedding clearance','bedding clearance'],['Home clearance','home clearance'],
+['Laundry detergent deals','laundry detergent deals'],['Coffee deals','coffee deals'],['Electronics clearance','electronics clearance'],
+['Holiday clearance','holiday clearance'],['Rollback household','household rollback']
+];
+const walmartOfficialDeals=[
+['Just dropped deals','https://www.walmart.com/shop/deals/new-deals'],
+['Women’s clothing deals','https://www.walmart.com/shop/deals/clothing-and-accessories/womens/womens-clothing'],
+['Women’s pants clearance best sellers','https://www.walmart.com/c/best-sellers/women-s-pants-on-clearance'],
+['Fashion clearance','https://www.walmart.com/shop/deals/clearance/clothing-and-accessories'],
+['All clearance','https://www.walmart.com/shop/deals/clearance']
+];
+function dealQuery(q){const v=q.trim();return /\\b(deal|deals|clearance|rollback|sale|markdown|discount)\\b/i.test(v)?v:v+' deals'}
 function walmartUrl(q,low=false){const url=new URL('https://www.walmart.com/search');url.searchParams.set('q',q);if(low)url.searchParams.set('sort','price_low');return url.href}
-function walmartLinks(){const q=$('walmartTerm').value.trim()||'clearance';$('walmartLinks').innerHTML=link('Search Walmart',walmartUrl(q))+link('Lowest price first',walmartUrl(q,true))}
+function walmartLinks(){const q=dealQuery($('walmartTerm').value.trim()||'clearance');$('walmartLinks').innerHTML=link('Find '+q,walmartUrl(q))+link('Compare lowest prices',walmartUrl(q,true))}
 $('walmartTerm').addEventListener('input',walmartLinks);walmartLinks();
-function renderWalmartCategories(){const q=$('walmartFilter').value.trim().toLowerCase();const categories=walmartCategories.filter(x=>x.toLowerCase().includes(q));if($('walmartSort').value==='az')categories.sort((a,b)=>a.localeCompare(b));$('walmartCategories').innerHTML=categories.map(x=>link(x+' · low to high',walmartUrl(x,true))).join('')||'<div class="empty">No matching categories</div>'}
+function renderWalmartCategories(){const q=$('walmartFilter').value.trim().toLowerCase();const categories=walmartCategories.filter(x=>x.toLowerCase().includes(q));if($('walmartSort').value==='az')categories.sort((a,b)=>a.localeCompare(b));$('walmartCategories').innerHTML=categories.map(x=>link(x+' · deals',walmartUrl(dealQuery(x)))).join('')||'<div class="empty">No matching categories</div>'}
 $('walmartFilter').addEventListener('input',renderWalmartCategories);$('walmartSort').addEventListener('change',renderWalmartCategories);
-$('walmartChips').innerHTML=['Clearance','Toys','Kitchen','Fashion','Electronics','Beauty'].map(x=>'<button type="button" data-walmart="'+esc(x)+'">'+esc(x)+'</button>').join('');
+$('walmartChips').innerHTML=walmartDealPhrases.map(([label,q])=>'<button type="button" data-walmart="'+esc(q)+'">'+esc(label)+'</button>').join('');
 $('walmartChips').addEventListener('click',e=>{const b=e.target.closest('button[data-walmart]');if(!b)return;$('walmartTerm').value=b.dataset.walmart;walmartLinks()});
 renderWalmartCategories();
+$('walmartLinks').insertAdjacentHTML('afterend','<div class="card" style="margin-top:12px"><strong>Official Walmart deal departments</strong><div class="search-links">'+walmartOfficialDeals.map(([label,url])=>link(label,url)).join('')+'</div><p class="small muted">Retailer deal pages are stronger starting points than generic search. Search results may include sponsored or full-price products; verify each listing.</p></div>');
 function labRender(){
 const q=$('labTerm').value.trim()||'clearance',retailer=$('labRetailer').value,low=$('labMode').value==='low';
 const a=link('Amazon search'+(low?' · low to high':''),searchUrl(q,low));
-const w=link('Walmart search'+(low?' · low to high':''),walmartUrl(q,low));
+const w=link('Walmart deals search'+(low?' · low to high':''),walmartUrl(dealQuery(q),low));
 $('labLinks').innerHTML=(retailer==='both'||retailer==='amazon'?a:'')+(retailer==='both'||retailer==='walmart'?w:'');
 }
 for(const id of ['labTerm','labRetailer','labMode'])$(id).addEventListener(id==='labTerm'?'input':'change',labRender);
@@ -209,16 +227,16 @@ $('labResale').innerHTML=link('Amazon Resale','https://www.amazon.com/amazonware
 $('labWalmart').innerHTML=link('Clearance','https://www.walmart.com/shop/deals/clearance')+link('Deals','https://www.walmart.com/shop/deals')+link('Under $10 search',walmartUrl('clearance under $10',true));
 $('labLocal').innerHTML=link('Official barcode scanner guide','https://www.walmart.com/cp/check-a-price/8525999')+link('Walmart clearance','https://www.walmart.com/shop/deals/clearance');
 const labCats=['Toys & games','Kids clothing','Bedding','Kitchen appliances','Home organization','Beauty','Electronics','Holiday decorations','School supplies','Baby gear','Pet supplies','Small furniture'];
-$('labCategories').innerHTML=labCats.map(q=>'<div class="card"><strong>'+esc(q)+'</strong><div class="search-links" style="margin-top:9px">'+link('Amazon · low first',searchUrl(q+' clearance',true))+link('Walmart · low first',walmartUrl(q+' clearance',true))+'</div></div>').join('');
+$('labCategories').innerHTML=labCats.map(q=>'<div class="card"><strong>'+esc(q)+'</strong><div class="search-links" style="margin-top:9px">'+link('Amazon · low first',searchUrl(q+' clearance',true))+link('Walmart · low first',walmartUrl(dealQuery(q+' clearance'),true))+'</div></div>').join('');
 function labCalc(){const p=Number($('labPrice').value),r=Number($('labReference').value);$('labDiscount').textContent=$('labPrice').value&&$('labReference').value&&p>=0&&r>p?'Calculated: '+((r-p)/r*100).toFixed(1)+'% below reference · Not yet verified':'Enter a current price and a higher comparable reference price.'}
 $('labPrice').addEventListener('input',labCalc);$('labReference').addEventListener('input',labCalc);
 $('labCopy').addEventListener('click',()=>{const p=$('labPrice').value,r=$('labReference').value;const msg='DEAL VERIFICATION CHECKLIST\nProduct / exact variant:\nRetailer and direct non-affiliate URL:\nCurrent price: '+(p?'$'+p:'not checked')+'\nComparable reference: '+(r?'$'+r:'not checked')+'\nCondition / seller:\nCoupon visible and checkout-tested?\nShipping, pickup, and store location:\nTime checked:\nPrice history / reference caveat:\nStatus: UNVERIFIED until checked';navigator.clipboard?.writeText(msg).then(()=>{$('labDiscount').textContent='Checklist copied. Verify all fields before sharing.'}).catch(()=>{$('labDiscount').textContent='Clipboard unavailable in this browser.'})});
 labRender();labCalc();
-function searchUrl(q,low=false,used=false){return 'https://www.amazon.com/s?k='+encodeURIComponent(q)+(used?'&rh=p_n_condition-type%3A6461718011':'')+(low?'&s=price-asc-rank':'')}
+function searchUrl(q,low=false,used=false){const u=new URL('https://www.amazon.com/s');u.searchParams.set('k',q);if(used)u.searchParams.set('rh','p_n_condition-type:6461718011');if(low)u.searchParams.set('s','price-asc-rank');return u.href}
 function link(text,url){return '<a target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">'+esc(text)+' ↗</a>'}
-function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-links').innerHTML=link('Search '+q,searchUrl(q))+link('Lowest price first',searchUrl(q,true))+link('Amazon Today’s Deals','https://www.amazon.com/deals')}
+function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-links').innerHTML=link('Amazon product results',searchUrl(q))+link('Price comparison · low first',searchUrl(q,true))+link('Amazon Outlet','https://www.amazon.com/outlet')+link('Amazon Deals','https://www.amazon.com/deals')+link('Amazon Coupons','https://www.amazon.com/coupons')}
 $('term').addEventListener('input',searchLinks);searchLinks();
-$('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','Headphones','Beauty deals','Holiday gifts','Clothing','Amazon Outlet'].map(q=>link(q+' · low to high',q==='Amazon Outlet'?'https://www.amazon.com/outlet':searchUrl(q,true))).join('');
+$('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','Headphones','Beauty tools','Holiday gifts','Women pants','Shoes','Amazon Outlet'].map(q=>link(q+' · low to high',q==='Amazon Outlet'?'https://www.amazon.com/outlet':searchUrl(q,true))).join('');
 async function loadUsed(){
   usedLoaded=true;
   try{
