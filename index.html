@@ -33,6 +33,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <main>
 <nav role="tablist" aria-label="Sections">
 <button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">Deals</button>
+<button type="button" role="tab" id="tab-inbox" aria-controls="panel-inbox" aria-selected="false">📥 Missed Deals</button>
 <button type="button" role="tab" id="tab-candidates" aria-controls="panel-candidates" aria-selected="false">New Finds</button>
 <button type="button" role="tab" id="tab-walmart" aria-controls="panel-walmart" aria-selected="false">Walmart</button>
 <button type="button" role="tab" id="tab-clearance" aria-controls="panel-clearance" aria-selected="false">Clearance Lab</button>
@@ -50,6 +51,11 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div class="actions"><label><input type="checkbox" id="essentials" style="width:auto;vertical-align:middle"> Household essentials only</label><label><input type="checkbox" id="deep" style="width:auto;vertical-align:middle"> Show only 70%+ leads</label><button type="button" class="btn secondary" id="reload">↻ Refresh results</button></div>
 <p class="muted small" id="status" role="status">Loading latest scan…</p>
 <div id="products" class="grid"></div>
+</section>
+<section id="panel-inbox" role="tabpanel" aria-labelledby="tab-inbox" hidden>
+<h1>Missed Deals Inbox</h1><p class="muted small">Browse discoveries from the past 45 days, even if you missed the hourly scan. Historical observations are not live prices. Recheck on Amazon before sharing.</p>
+<div class="actions"><select id="inboxFilter" aria-label="Inbox filter"><option value="all">All discoveries</option><option value="drop">Observed price drops only</option><option value="new">First observations</option></select><button class="btn secondary" id="inboxRefresh" type="button">↻ Refresh inbox</button></div>
+<p id="inboxStatus" class="muted small" role="status">Open this tab to load saved discoveries.</p><div id="inboxResults" class="grid"></div>
 </section>
 <section id="panel-candidates" role="tabpanel" aria-labelledby="tab-candidates" hidden>
 <h1>New & improved deal candidates</h1><p class="muted small">First-time API discoveries and observed price drops from the latest scan. Unchanged offers are excluded. Research only—not checkout-verified.</p>
@@ -117,9 +123,24 @@ const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocal
 const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
 let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;let detailIndex=[];let candidatesLoaded=false;let historyData=null;
-function selectTab(name){for(const n of ['deals','candidates','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
+function selectTab(name){for(const n of ['deals','inbox','candidates','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
 for(const n of ['deals','candidates','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
-const tabNames=['deals','candidates','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
+const tabNames=['deals','inbox','candidates','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
+let inboxEvents=[];
+function renderInbox(){
+ const filter=$('inboxFilter').value;
+ const rows=inboxEvents.filter(d=>filter==='all'||(filter==='drop'&&d.reason==='Observed price drop')||(filter==='new'&&d.reason==='First observation'));
+ $('inboxStatus').textContent=rows.length+' saved discoveries · newest first · historical research, not current offers';
+ $('inboxResults').innerHTML=rows.slice(0,500).map(d=>'<article class="card product"><div><span class="pill">'+esc(d.reason||'Discovery')+'</span> <span class="pill">'+esc(date(d.checkedAt))+'</span></div><h3>'+esc(d.title)+'</h3><div class="small muted">Observed price at discovery: '+cash(d.price)+(d.previousObservedPrice!=null?' · Earlier observed: '+cash(d.previousObservedPrice):'')+'</div><div class="notice"><strong>Historical observation.</strong> Price may have changed. Not checkout-verified; reference discounts are not proof of prior selling price.</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current price on Amazon ↗</a></article>').join('')||'<div class="empty">No saved discoveries for this filter yet. The inbox fills after successful scans.</div>';
+}
+async function loadInbox(){
+ $('inboxStatus').textContent='Loading saved discoveries…';
+ try{const res=await fetch('data/amazon-discovery-archive.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Inbox will appear after the next successful scan');const payload=await res.json();inboxEvents=(Array.isArray(payload.events)?payload.events:[]).filter(d=>validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);renderInbox()}
+ catch(e){$('inboxStatus').textContent=e.message;$('inboxResults').innerHTML='<div class="empty">Saved history is not published yet. It will start filling after the next successful scanner run.</div>'}
+}
+$('inboxRefresh').addEventListener('click',loadInbox);
+$('inboxFilter').addEventListener('change',renderInbox);
+
 async function loadCandidates(){
 $('candidateStatus').textContent='Loading latest new or improved offers…';
 try{
@@ -226,7 +247,7 @@ $('leadfind').addEventListener('input',renderLeads);$('leadreload').addEventList
 // Refresh the remote feed automatically; re-rendering alone cannot fetch new scans.
 loadAmazon();
 lastRenderTimer=setInterval(()=>{if(data)render()},60000);
-setInterval(()=>{if(!document.hidden)loadAmazon()},5*60*1000);
+setInterval(()=>{if(!document.hidden){loadAmazon();if(!$('panel-inbox').hidden)loadInbox()}},5*60*1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadAmazon()});
 window.addEventListener('focus',()=>{loadAmazon()});
 
