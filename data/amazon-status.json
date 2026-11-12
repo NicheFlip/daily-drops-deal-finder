@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-12T04:03:11.280043+00:00",
-  "state": "auth_failed",
-  "message": "Amazon authentication returned HTTP 401"
+  "checkedAt": "2026-11-12T04:14:06.896575+00:00",
+  "state": "authenticated",
+  "message": "Amazon OAuth authentication succeeded; catalog access not yet tested"
 }
