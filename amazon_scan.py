@@ -1,62 +1,115 @@
-"""Amazon Creators API research scanner. Never publishes secrets or unverifiable discounts."""
-import os,json,urllib.request,urllib.error,datetime,pathlib,time,re
-from urllib.parse import urlparse
+"""Daily Drops Amazon research scanner: rotating searches, accurate offer parsing, and safe output.
+Official Creators API only. No scraping. API offer snapshots expire after 1 hour.
+"""
+import datetime,json,os,pathlib,re,time,urllib.error,urllib.request
+from collections import defaultdict
 ROOT=pathlib.Path(__file__).parent
 OUT=ROOT/'data'/'amazon-deals.json'
-NOW=datetime.datetime.now(datetime.timezone.utc).isoformat()
-CATEGORIES=[('ToysAndGames','toys gifts'),('HomeAndKitchen','kitchen organizers'),('HomeAndKitchen','small kitchen appliances'),('Electronics','headphones'),('Beauty','skin care'),('Fashion','women clothing'),('ToysAndGames','building sets')]
-def request(url,payload,headers=None):
+STATE=ROOT/'data'/'amazon-scan-state.json'
+NOW=datetime.datetime.now(datetime.timezone.utc)
+STAMP=NOW.isoformat()
+# Broad, deliberately safe categories. Keyword rotation widens coverage across runs.
+QUERIES=[
+('ToysAndGames','building blocks'),('ToysAndGames','board games'),('ToysAndGames','dolls'),('ToysAndGames','preschool toys'),('ToysAndGames','puzzles'),('ToysAndGames','remote control cars'),
+('HomeAndKitchen','kitchen organizers'),('HomeAndKitchen','small kitchen appliances'),('HomeAndKitchen','cookware'),('HomeAndKitchen','bedding'),('HomeAndKitchen','storage baskets'),('HomeAndKitchen','coffee makers'),('HomeAndKitchen','vacuum cleaners'),
+('Electronics','wireless headphones'),('Electronics','computer accessories'),('Electronics','smart home'),('Electronics','chargers'),('Electronics','tablets'),
+('Beauty','skin care'),('Beauty','hair care'),('Beauty','makeup organizers'),('Beauty','beauty tools'),
+('Fashion','women clothing'),('Fashion','handbags'),('Fashion','sneakers'),('Fashion','winter coats'),
+('OfficeProducts','school supplies'),('PetSupplies','dog beds'),('LawnAndGarden','outdoor decor'),('Baby','baby blankets'),
+('ToysAndGames','holiday gifts'),('HomeAndKitchen','home decor'),('Electronics','portable speakers')
+]
+# API returns at most 10 items per request; distribute calls instead of bursts.
+PER_RUN=24
+MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
+RESOURCES=['itemInfo.title','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
+def api(url,payload,headers=None):
     req=urllib.request.Request(url,json.dumps(payload).encode(),{'Content-Type':'application/json',**(headers or {})},method='POST')
-    with urllib.request.urlopen(req,timeout=30) as resp:return json.load(resp)
-def money(obj):
-    if not isinstance(obj,dict):return None
-    v=obj.get('amount') or obj.get('value')
-    try:return round(float(v),2) if v is not None else None
-    except (ValueError,TypeError):return None
+    with urllib.request.urlopen(req,timeout=30) as response:return json.load(response)
+def amount(v):
+    if not isinstance(v,dict):return None
+    if 'money' in v:return amount(v['money'])
+    x=v.get('amount')
+    try:return round(float(x),2) if x is not None else None
+    except (TypeError,ValueError):return None
+def parse(item,category,keyword):
+    asin=item.get('asin','')
+    if not re.fullmatch('[A-Z0-9]{10}',asin):return None
+    title=item.get('itemInfo',{}).get('title',{}).get('displayValue','')
+    if not title:return None
+    for offer in item.get('offersV2',{}).get('listings',[]) or []:
+        if offer.get('condition',{}).get('value','New') not in ('New',None):continue
+        if offer.get('availability',{}).get('type') in ('OUT_OF_STOCK','UNAVAILABLE'):continue
+        price_data=offer.get('price') or {}
+        price=amount(price_data)
+        basis=price_data.get('savingBasis',{}) if isinstance(price_data,dict) else {}
+        reference=amount(basis)
+        savings=price_data.get('savings',{}) if isinstance(price_data,dict) else {}
+        if not price or price<=0 or not reference or reference<=price:continue
+        percent=round(100*(reference-price)/reference)
+        if percent<40:continue
+        # Prefer the API-provided percent when present and consistent.
+        declared=savings.get('percentage') if isinstance(savings,dict) else None
+        if isinstance(declared,(int,float)) and abs(declared-percent)>2:continue
+        return {'asin':asin,'title':title[:180],'retailer':'Amazon',
+          'url':'https://www.amazon.com/dp/'+asin,'price':price,
+          'referencePrice':reference,'referenceType':basis.get('savingBasisTypeLabel') or basis.get('savingBasisType') or 'API savings basis',
+          'discountPercent':percent,'category':category,'keyword':keyword,
+          'checkedAt':STAMP,'couponVerified':False,'possibleGlitch':False,
+          'verification':'Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified'}
+    return None
 def scan():
     cid=os.environ['AMAZON_CREATORS_CREDENTIAL_ID'];secret=os.environ['AMAZON_CREATORS_SECRET'];tag=os.environ['AMAZON_PARTNER_TAG']
-    token=request('https://api.amazon.com/auth/o2/token',{'grant_type':'client_credentials','client_id':cid,'client_secret':secret,'scope':'creatorsapi::default'})['access_token']
-    prior={}
+    token=api('https://api.amazon.com/auth/o2/token',{'grant_type':'client_credentials','client_id':cid,'client_secret':secret,'scope':'creatorsapi::default'})['access_token']
+    state={}
+    if STATE.exists():
+        try:state=json.loads(STATE.read_text())
+        except ValueError:pass
+    day=NOW.strftime('%Y-%m-%d')
+    calls=state.get('callsToday',0) if state.get('day')==day else 0
+    offset=int(state.get('nextOffset',0))%len(QUERIES)
+    budget=max(0,min(PER_RUN,MAX_DAILY_CALLS-calls))
+    previous={}
     if OUT.exists():
-        try:prior={x['asin']:x for x in json.loads(OUT.read_text()).get('deals',[])}
+        try:previous={d['asin']:d for d in json.loads(OUT.read_text()).get('deals',[]) if d.get('asin')}
         except (ValueError,KeyError):pass
-    deals=[]; errors=[];count=0
-    for index,(category,keywords) in enumerate(CATEGORIES):
-        if index:time.sleep(1.5)
-        payload={'partnerTag':tag,'marketplace':'www.amazon.com','keywords':keywords,'searchIndex':category,'itemCount':10,'resources':['itemInfo.title','offersV2.listings.price']}
+    # Drop old prices rather than show them as current.
+    fresh={}
+    for asin,d in previous.items():
         try:
-            data=request('https://creatorsapi.amazon/catalog/v1/searchItems',payload,{'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'})
-            items=data.get('searchResult',{}).get('items',[])
-            count+=len(items)
+            checked=datetime.datetime.fromisoformat(d['checkedAt'])
+            if (NOW-checked).total_seconds()<3600:fresh[asin]=d
+        except (KeyError,ValueError,TypeError):pass
+    errors=[]; scanned=0; completed=0; newly=0
+    for i in range(budget):
+        category,keyword=QUERIES[(offset+i)%len(QUERIES)]
+        # Spread requests, respect throttling, and continue after transient failures.
+        if i:time.sleep(1.25)
+        payload={'partnerTag':tag,'marketplace':'www.amazon.com','keywords':keyword,
+                 'searchIndex':category,'itemCount':10,'itemPage':1+(int(state.get('cycle',0))%3),
+                 'resources':RESOURCES}
+        try:
+            result=api('https://creatorsapi.amazon/catalog/v1/searchItems',payload,
+                       {'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'})
+            items=result.get('searchResult',{}).get('items',[]) or []
+            scanned+=len(items)
             for item in items:
-                asin=item.get('asin','')
-                if not re.fullmatch(r'[A-Z0-9]{10}',asin):continue
-                title=item.get('itemInfo',{}).get('title',{}).get('displayValue','')
-                listings=item.get('offersV2',{}).get('listings',[])
-                if not isinstance(listings,list):listings=[]
-                price=None;reference=None
-                for listing in listings:
-                    p=listing.get('price',{})
-                    price=money(p.get('money',p)) if isinstance(p,dict) else None
-                    if price is not None:
-                        for field in ('savingBasis','savingBasisPrice','listPrice'):
-                            obj=listing.get(field,{})
-                            reference=money(obj.get('money',obj)) if isinstance(obj,dict) else None
-                            if reference:break
-                        break
-                if not title or price is None or price<=0:continue
-                discount=round((reference-price)/reference*100) if reference and reference>price else None
-                if discount is None or discount<40:continue
-                old=prior.get(asin,{})
-                deals.append({'asin':asin,'title':title[:180],'retailer':'Amazon','url':'https://www.amazon.com/dp/'+asin,'price':price,'referencePrice':reference,'discountPercent':discount,'category':category,'firstSeen':old.get('firstSeen',NOW),'checkedAt':NOW,'priceSource':'Amazon Creators API offer listing','referenceCaveat':'API savings basis or list price; not independently verified as historical selling price','couponVerified':False,'possibleGlitch':False})
-        except urllib.error.HTTPError as e:errors.append(category+': HTTP '+str(e.code))
-        except Exception as e:errors.append(category+': '+type(e).__name__)
-    deals=sorted({d['asin']:d for d in deals}.values(),key=lambda d:d['discountPercent'],reverse=True)[:80]
+                d=parse(item,category,keyword)
+                if d:
+                    if d['asin'] not in previous or previous[d['asin']].get('price')!=d['price']:newly+=1
+                    fresh[d['asin']]=d
+            completed+=1
+        except urllib.error.HTTPError as e:
+            errors.append(category+' / '+keyword+': HTTP '+str(e.code))
+            if e.code in (401,403,429):break
+        except Exception as e:errors.append(category+' / '+keyword+': '+type(e).__name__)
+    # Don't discard existing still-fresh results when an API call fails.
+    deals=sorted(fresh.values(),key=lambda d:(d['discountPercent'],d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps({'updated':NOW,'status':'partial' if errors else 'ok','scannedProducts':count,'errors':errors,'deals':deals},indent=2))
-    print('Scanned',count,'products;',len(deals),'discount leads;',len(errors),'category errors')
-if __name__=='__main__':
-    try:scan()
-    except Exception as e:
-        print('Amazon scan failed:',type(e).__name__)
-        raise SystemExit(1)
+    OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
+      'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,
+      'note':'Only Amazon API snapshots under 1 hour old are displayed. Not verified checkout prices.'},indent=2))
+    STATE.write_text(json.dumps({'day':day,'callsToday':calls+completed+len(errors),
+      'nextOffset':(offset+completed+len(errors))%len(QUERIES),
+      'cycle':int(state.get('cycle',0))+(1 if offset+completed+len(errors)>=len(QUERIES) else 0)},indent=2))
+    print('API products:',scanned,'requests:',completed,'current leads:',len(deals),'errors:',len(errors))
+if __name__=='__main__':scan()
