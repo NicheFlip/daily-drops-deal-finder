@@ -20,6 +20,8 @@ QUERIES=[
 ('OfficeProducts','school supplies'),('PetSupplies','dog beds'),('HomeAndKitchen','outdoor decor'),('Baby','baby blankets'),
 ('ToysAndGames','holiday gifts'),('HomeAndKitchen','home decor'),('Electronics','portable speakers')
 ]
+# Household search priorities reflect practical repeat purchases, not verified sales rank.
+ESSENTIAL_QUERIES=[("All","laundry detergent"),("All","paper towels"),("All","toilet paper"),("All","dish soap"),("All","trash bags"),("All","coffee pods"),("All","ground coffee"),("All","diapers"),("All","baby wipes"),("All","dishwasher pods"),("All","cleaning wipes"),("All","hand soap"),("All","toothpaste"),("All","shampoo"),("All","pet food"),("All","food storage bags"),("All","batteries AA"),("All","dryer sheets"),("All","facial tissues"),("All","body wash"),("All","breakfast cereal"),("All","snack variety pack"),("All","water filters"),("All","laundry scent boosters")]
 # API returns at most 10 items per request; distribute calls instead of bursts.
 PER_RUN=24
 MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
@@ -69,6 +71,7 @@ def scan():
     day=NOW.strftime('%Y-%m-%d')
     calls=state.get('callsToday',0) if state.get('day')==day else 0
     offset=int(state.get('nextOffset',0))%len(QUERIES)
+    essential_offset=int(state.get('essentialOffset',0))%len(ESSENTIAL_QUERIES)
     budget=max(0,min(PER_RUN,MAX_DAILY_CALLS-calls))
     previous={}
     if OUT.exists():
@@ -83,8 +86,9 @@ def scan():
         except (KeyError,ValueError,TypeError):pass
     errors=[]; scanned=0; completed=0; newly=0
     observed={}
+    essential_budget=min(8,budget)
     for i in range(budget):
-        category,keyword=QUERIES[(offset+i)%len(QUERIES)]
+        category,keyword=(ESSENTIAL_QUERIES[(essential_offset+i)%len(ESSENTIAL_QUERIES)] if i<essential_budget else QUERIES[(offset+i-essential_budget)%len(QUERIES)])
         # Spread requests, respect throttling, and continue after transient failures.
         if i:time.sleep(1.25)
         payload={'partnerTag':tag,'marketplace':'www.amazon.com','keywords':keyword,
@@ -114,8 +118,8 @@ def scan():
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
       'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Only Amazon API snapshots under 1 hour old are displayed. Not verified checkout prices.'},indent=2))
-    STATE.write_text(json.dumps({'day':day,'callsToday':calls+completed+len(errors),
-      'nextOffset':(offset+completed+len(errors))%len(QUERIES),
-      'cycle':int(state.get('cycle',0))+(1 if offset+completed+len(errors)>=len(QUERIES) else 0)},indent=2))
+    STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
+      'nextOffset':(offset+max(0,budget-essential_budget))%len(QUERIES),
+      'cycle':int(state.get('cycle',0))+(1 if offset+max(0,budget-essential_budget)>=len(QUERIES) else 0)},indent=2))
     print('API products:',scanned,'requests:',completed,'current leads:',len(deals),'errors:',len(errors))
 if __name__=='__main__':scan()
