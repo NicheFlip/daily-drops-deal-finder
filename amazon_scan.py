@@ -3,6 +3,7 @@ Official Creators API only. No scraping. API offer snapshots expire after 1 hour
 """
 import datetime,json,os,pathlib,re,time,urllib.error,urllib.request
 from collections import defaultdict
+from price_history import enrich
 ROOT=pathlib.Path(__file__).parent
 OUT=ROOT/'data'/'amazon-deals.json'
 STATE=ROOT/'data'/'amazon-scan-state.json'
@@ -80,6 +81,7 @@ def scan():
             if (NOW-checked).total_seconds()<3600:fresh[asin]=d
         except (KeyError,ValueError,TypeError):pass
     errors=[]; scanned=0; completed=0; newly=0
+    observed={}
     for i in range(budget):
         category,keyword=QUERIES[(offset+i)%len(QUERIES)]
         # Spread requests, respect throttling, and continue after transient failures.
@@ -95,6 +97,7 @@ def scan():
             for item in items:
                 d=parse(item,category,keyword)
                 if d:
+                    observed[d['asin']]=d
                     if d['asin'] not in previous or previous[d['asin']].get('price')!=d['price']:newly+=1
                     fresh[d['asin']]=d
             completed+=1
@@ -102,11 +105,12 @@ def scan():
             errors.append(category+' / '+keyword+': HTTP '+str(e.code))
             if e.code in (401,403,429):break
         except Exception as e:errors.append(category+' / '+keyword+': '+type(e).__name__)
+    observed_drops=enrich(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
-    deals=sorted(fresh.values(),key=lambda d:(d['discountPercent'],d['checkedAt']),reverse=True)[:150]
+    deals=sorted(fresh.values(),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,
+      'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,
       'note':'Only Amazon API snapshots under 1 hour old are displayed. Not verified checkout prices.'},indent=2))
     STATE.write_text(json.dumps({'day':day,'callsToday':calls+completed+len(errors),
       'nextOffset':(offset+completed+len(errors))%len(QUERIES),
