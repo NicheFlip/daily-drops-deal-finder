@@ -29,5 +29,5 @@ jobs:
         run: |
           git config user.name "deal-scanner[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json
+          git add data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json
           git diff --cached --quiet || (git commit -m "Refresh Amazon deal research" && git pull --rebase && git push)
