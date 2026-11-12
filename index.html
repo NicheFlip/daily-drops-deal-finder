@@ -53,7 +53,17 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div class="card"><label for="term"><strong>What are you looking for?</strong></label><input id="term" value="clearance" placeholder="Toys, kitchen, headphones…" style="margin:10px 0"><div id="search-links" class="search-links"></div></div>
 <h2>Shop by category</h2><p class="muted small">Choose a category and open Amazon results sorted lowest price first. Amazon may adjust its own sorting.</p><div id="quick" class="search-links"></div>
 </section>
-<section id="panel-used" role="tabpanel" aria-labelledby="tab-used" hidden><h1>Used & Amazon Resale</h1><p class="muted">Amazon Warehouse is now called Amazon Resale. Explore pre-owned, open-box, and returned items directly on Amazon.</p><div class="notice"><strong>Important:</strong> These are live Amazon search links, not verified used-item offers. Availability, condition, and price vary by seller and listing. Lowest-price sorting is requested but Amazon controls the results.</div><div class="card"><label for="usedterm"><strong>Search used products</strong></label><input id="usedterm" value="kitchen appliances" placeholder="Search used items…" style="margin:10px 0"><div id="usedlinks" class="search-links"></div></div><h2>Used categories · low to high</h2><div id="usedquick" class="search-links"></div><h2>Browse Amazon Resale</h2><div class="search-links"><a href="https://www.amazon.com/amazonwarehouse" target="_blank" rel="noopener noreferrer">Open Amazon Resale ↗</a></div></section>
+<section id="panel-used" role="tabpanel" aria-labelledby="tab-used" hidden>
+<h1>Used & Amazon Resale</h1>
+<p class="muted small">Only used-condition offers discounted at least 50% against a documented reference belong in the qualifying feed. Sorted by lowest price first.</p>
+<div class="stats"><div class="stat"><strong id="usedcount">0</strong><span>Qualifying offers</span></div><div class="stat"><strong>50%+</strong><span>Minimum discount</span></div><div class="stat"><strong>Low → high</strong><span>Price order</span></div></div>
+<div class="notice"><strong>Verification matters:</strong> A regular Amazon search cannot enforce a 50% used-item discount. This feed excludes offers without a confirmed used condition, a used price, and a comparable reference price. Search links below are for discovery only.</div>
+<p id="usedstatus" class="muted small" role="status">Checking available used-offer data…</p><div id="usedresults" class="grid"></div>
+<h2>Find more used inventory</h2><p class="muted small">These searches request used condition and lowest-price sorting on Amazon. Results are <strong>not</strong> verified 50%+ discounts.</p>
+<div class="card"><label for="usedterm"><strong>Search Amazon used listings</strong></label><input id="usedterm" value="kitchen appliances" placeholder="Search used items…" style="margin:10px 0"><div id="usedlinks" class="search-links"></div></div>
+<h2>Browse used categories</h2><div id="usedquick" class="search-links"></div>
+<div class="search-links" style="margin-top:16px"><a href="https://www.amazon.com/amazonwarehouse" target="_blank" rel="noopener noreferrer">Amazon Resale homepage ↗</a></div>
+</section>
 <section id="panel-leads" role="tabpanel" aria-labelledby="tab-leads" hidden>
 <h1>Community deal leads</h1><p class="notice">These are third-party community posts, not verified Amazon prices. They may be expired or inaccurate.</p>
 <div class="actions"><input id="leadfind" type="search" placeholder="Filter community leads" style="max-width:350px"><button type="button" class="btn secondary" id="leadreload">Refresh leads</button></div><p id="leadstatus" class="muted small"></p><div id="leaditems" class="grid"></div>
@@ -67,8 +77,8 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Unknown'};
 const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
-let data=null,leads=[];let lastRenderTimer=null;
-function selectTab(name){for(const n of ['deals','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();window.scrollTo({top:0,behavior:'instant'})}
+let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;
+function selectTab(name){for(const n of ['deals','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
 for(const n of ['deals','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
 const tabNames=['deals','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 function render(){
@@ -92,9 +102,32 @@ function link(text,url){return '<a target="_blank" rel="noopener noreferrer" hre
 function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-links').innerHTML=link('Search '+q,searchUrl(q))+link('Lowest price first',searchUrl(q,true))+link('Amazon Today’s Deals','https://www.amazon.com/deals')}
 $('term').addEventListener('input',searchLinks);searchLinks();
 $('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','Headphones','Beauty deals','Holiday gifts','Clothing','Amazon Outlet'].map(q=>link(q+' · low to high',q==='Amazon Outlet'?'https://www.amazon.com/outlet':searchUrl(q,true))).join('');
-function usedLinks(){const q=$('usedterm').value.trim()||'used';$('usedlinks').innerHTML=link('Used '+q+' · lowest first',searchUrl(q,true,true))+link('All used '+q,searchUrl(q,false,true))}
+async function loadUsed(){
+  usedLoaded=true;
+  try{
+    const response=await fetch('data/amazon-used-deals.json?ts='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw Error('No verified used-offer feed is connected yet');
+    const payload=await response.json();
+    const now=Date.now();
+    const items=(Array.isArray(payload.deals)?payload.deals:[]).filter(d=>
+      d.conditionVerified===true && ['used','amazon resale','renewed','open box'].includes(String(d.condition||'').toLowerCase()) &&
+      Number.isFinite(Number(d.price)) && Number(d.price)>0 &&
+      Number.isFinite(Number(d.referencePrice)) && Number(d.referencePrice)>Number(d.price) &&
+      Math.round(100*(Number(d.referencePrice)-Number(d.price))/Number(d.referencePrice))>=50 &&
+      validUrl(d.url) && d.checkedAt && Date.parse(d.checkedAt)<=now && now-Date.parse(d.checkedAt)<3600000
+    ).sort((a,b)=>Number(a.price)-Number(b.price));
+    $('usedcount').textContent=items.length;
+    $('usedstatus').textContent=items.length+' verified-condition offers at 50%+ off reference, sorted lowest price first.';
+    $('usedresults').innerHTML=items.map(d=>'<article class="card product"><span class="pill">'+esc(d.condition)+'</span><h3>'+esc(d.title)+'</h3><strong class="price">'+cash(d.price)+'</strong><p class="small muted">Reference '+cash(d.referencePrice)+' · '+Math.round(100*(d.referencePrice-d.price)/d.referencePrice)+'% off · Checked '+esc(date(d.checkedAt))+'</p><a target="_blank" rel="noopener noreferrer" href="'+esc(d.url)+'">Check used offer on Amazon ↗</a></article>').join('')||'<div class="empty" style="grid-column:1/-1">No qualifying used offers are available right now.</div>';
+  }catch(e){
+    $('usedcount').textContent='0';
+    $('usedstatus').textContent='Automatic used-offer verification is not connected yet.';
+    $('usedresults').innerHTML='<div class="empty" style="grid-column:1/-1"><strong>No verified 50%+ used deals yet</strong><p>The current Amazon scanner checks new-condition offers only. Browse used inventory below, but verify the condition and savings on Amazon before posting.</p></div>';
+  }
+}
+function usedLinks(){const q=$('usedterm').value.trim()||'used';$('usedlinks').innerHTML=link('Used listings · lowest first',searchUrl(q,true,true))+link('Used listings · all prices',searchUrl(q,false,true))}
 $('usedterm').addEventListener('input',usedLinks);usedLinks();
-$('usedquick').innerHTML=['Toys & games','Kitchen appliances','Home & kitchen','Electronics','Headphones','Fashion','Beauty tools','Books','Video games','Furniture'].map(q=>link(q+' · used low to high',searchUrl(q,true,true))).join('');
+$('usedquick').innerHTML=['Toys & games','Kitchen appliances','Home & kitchen','Electronics','Headphones','Fashion','Beauty tools','Books','Video games','Furniture'].map(q=>link(q+' · used, low to high',searchUrl(q,true,true))).join('');
 async function loadLeads(){ $('leadstatus').textContent='Loading community leads…';try{const res=await fetch('data/deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Community feed unavailable');{const payload=await res.json();leads=Array.isArray(payload)?payload:(Array.isArray(payload.deals)?payload.deals:[])}renderLeads()}catch(e){$('leadstatus').textContent=e.message}}
 function renderLeads(){const q=$('leadfind').value.toLowerCase();const filtered=leads.filter(d=>d.title&&d.title.toLowerCase().includes(q)).slice(0,80);$('leadstatus').textContent=filtered.length+' unverified leads shown';$('leaditems').innerHTML=filtered.map(d=>'<article class="card product"><span class="pill">'+esc(d.retailer||'Unknown')+'</span><h3>'+esc(d.title)+'</h3><p class="small muted">Community source: '+esc(d.source||'unknown')+' · Not price-verified</p>'+(String(d.url||'').startsWith('https://')?'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">View original post ↗</a>':'')+'</article>').join('')||'<div class="empty">No matching community leads.</div>'}
 $('leadfind').addEventListener('input',renderLeads);$('leadreload').addEventListener('click',loadLeads);
