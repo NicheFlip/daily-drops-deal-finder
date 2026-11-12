@@ -55,5 +55,19 @@ class EngineTests(unittest.TestCase):
         price_history.enrich({'B012345678':later},next_day)
         self.assertEqual(later['observationCount'],2)
 
+    def test_everyday_baseline_without_deal_and_later_reduction(self):
+        baseline=self.deal(95)
+        baseline['title']='Laundry detergent 100 loads'
+        price_history.enrich({},self.stamp,baseline={'B012345678':baseline})
+        stored=json.loads(price_history.PATH.read_text())['items']
+        self.assertEqual(stored['B012345678']['points'][0][1],95)
+        self.assertEqual(json.loads(price_history.CHANGES.read_text())['changes'],[])
+        later=self.deal(55)
+        later['title']='Laundry detergent 100 loads'
+        later['checkedAt']='2026-11-13T12:00:00+00:00'
+        price_history.enrich({'B012345678':later},later['checkedAt'],baseline={'B012345678':later})
+        self.assertEqual(later['observedPriceDropPercent'],42.1)
+        self.assertTrue(later['newObservedLow'])
+
 if __name__=='__main__':
     unittest.main()
