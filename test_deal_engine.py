@@ -16,6 +16,7 @@ class EngineTests(unittest.TestCase):
         self.patches=[
             patch.object(candidate_queue,'STATE',root/'candidate-state.json'),
             patch.object(candidate_queue,'QUEUE',root/'candidates.json'),
+            patch.object(candidate_queue,'ARCHIVE',root/'archive.json'),
             patch.object(price_history,'PATH',root/'history.json'),
             patch.object(price_history,'CHANGES',root/'changes.json'),
         ]
@@ -35,6 +36,7 @@ class EngineTests(unittest.TestCase):
         price_history.enrich({'B012345678':first},self.stamp)
         self.assertEqual(candidate_queue.build_queue({'B012345678':first},self.stamp),1)
         self.assertEqual(candidate_queue.build_queue({'B012345678':first},self.stamp),0)
+        self.assertEqual(len(json.loads(candidate_queue.ARCHIVE.read_text())['events']),1)
         reduced=self.deal(45)
         price_history.enrich({'B012345678':reduced},self.stamp)
         self.assertEqual(candidate_queue.build_queue({'B012345678':reduced},self.stamp),1)
@@ -42,6 +44,9 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(queued[0]['reason'],'Observed price drop')
         self.assertEqual(queued[0]['previousObservedPrice'],60)
         self.assertTrue(reduced['newObservedLow'])
+        archive=json.loads(candidate_queue.ARCHIVE.read_text())['events']
+        self.assertEqual(len(archive),2)
+        self.assertEqual(archive[0]['reason'],'Observed price drop')
 
     def test_history_keeps_observations_and_ignores_unchanged(self):
         first=self.deal(60)
