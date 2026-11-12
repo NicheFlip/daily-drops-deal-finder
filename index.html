@@ -8,8 +8,8 @@
 header{background:#151e30;color:white;padding:20px 18px 23px}header .wrap{max-width:1080px;margin:auto}
 .brand{font-size:1.45rem;font-weight:800;letter-spacing:-.04em}.sub{color:#c6d0e0;font-size:.9rem;margin:5px 0 0}
 main{max-width:1080px;margin:0 auto;padding:18px 16px 70px}
-nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:13px;scrollbar-width:thin}
-nav button{white-space:nowrap;border:1px solid #dce2eb;background:white;color:#27344b;border-radius:11px;padding:12px 15px;font-weight:700}
+nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:13px;scrollbar-width:thin;position:sticky;top:0;z-index:10;background:#f5f7fb;padding-top:10px}
+nav button{flex:0 0 auto;min-height:46px;white-space:nowrap;border:1px solid #dce2eb;background:white;color:#27344b;border-radius:11px;padding:12px 15px;font-weight:700}
 nav button[aria-selected=true]{background:#151e30;color:white;border-color:#151e30}
 h1{font-size:1.55rem;letter-spacing:-.035em;margin:12px 0 5px}h2{font-size:1.18rem;margin:22px 0 10px}p{line-height:1.5}
 .muted{color:#66758b}.small{font-size:.83rem}.notice{background:#fff7e4;border:1px solid #f2dca2;border-radius:12px;padding:12px 14px;font-size:.87rem;line-height:1.5;margin:12px 0}
@@ -40,7 +40,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <section id="panel-deals" role="tabpanel" aria-labelledby="tab-deals">
 <h1>Amazon deal finder</h1><p class="muted small">Discount leads from the official Amazon Creators API. No invented coupon codes or prices.</p>
 <div class="stats" aria-live="polite"><div class="stat"><strong id="count">—</strong><span>Current leads</span></div><div class="stat"><strong id="scanned">—</strong><span>Products scanned</span></div><div class="stat"><strong id="updated">—</strong><span>Last scan</span></div></div>
-<div class="notice"><strong>Research only:</strong> Amazon reference prices are not necessarily previous selling prices. Check the product page and checkout before posting. Coupon stacking and pricing glitches are not verified. Prices disappear from this feed one hour after their API check.</div>
+<div class="notice"><strong>Research only:</strong> Amazon reference prices are not necessarily previous selling prices. Check the product page and checkout before posting. Coupon stacking and pricing glitches are not verified. Prices disappear from this feed one hour after their API check. The scheduled scanner runs approximately hourly, so the feed can temporarily be empty.</div>
 <div class="filters"><input id="find" type="search" placeholder="Search products…" aria-label="Search products">
 <select id="category" aria-label="Category"><option value="">All categories</option><option value="ToysAndGames">Toys & gifts</option><option value="HomeAndKitchen">Home & kitchen</option><option value="Electronics">Electronics</option><option value="Beauty">Beauty</option><option value="Fashion">Fashion</option><option value="OfficeProducts">Office</option><option value="PetSupplies">Pets</option><option value="Baby">Baby</option></select>
 <select id="sort" aria-label="Sort"><option value="discount">Biggest discount</option><option value="newest">Recently checked</option><option value="low">Lowest price</option><option value="high">Highest price</option></select></div>
@@ -67,15 +67,16 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Unknown'};
 const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
-let data=null,leads=[];
-function selectTab(name){for(const n of ['deals','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name))}if(name==='leads'&&!leads.length)loadLeads()}
-for(const n of ['deals','search','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
+let data=null,leads=[];let lastRenderTimer=null;
+function selectTab(name){for(const n of ['deals','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();window.scrollTo({top:0,behavior:'instant'})}
+for(const n of ['deals','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
+const tabNames=['deals','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 function render(){
  if(!data)return;
  const now=Date.now(),all=(data.deals||[]).filter(d=>d&&Number.isFinite(Date.parse(d.checkedAt))&&now-Date.parse(d.checkedAt)>=0&&now-Date.parse(d.checkedAt)<3600000&&Number.isFinite(Number(d.price))&&Number.isFinite(Number(d.referencePrice))&&Number(d.referencePrice)>Number(d.price)&&validUrl(d.url));
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked;
- const filtered=all.filter(d=>(!q||d.title.toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||d.discountPercent>=70));
- const sort=$('sort').value;filtered.sort((a,b)=>sort==='low'?a.price-b.price:sort==='high'?b.price-a.price:sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):b.discountPercent-a.discountPercent);
+ const filtered=all.filter(d=>(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||d.discountPercent>=70));
+ const sort=$('sort').value;filtered.sort((a,b)=>sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):Number(b.discountPercent)-Number(a.discountPercent));
  $('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);
  $('status').textContent=filtered.length+' matching current leads · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated);
  $('products').innerHTML=filtered.map(d=>'<article class="card product"><div><span class="pill">'+esc(d.category)+'</span> <span class="pill">API snapshot</span></div><h3>'+esc(d.title)+'</h3><div><span class="price">'+cash(d.price)+'</span> <span class="deal">'+esc(d.discountPercent)+'% vs reference</span></div><div class="ref">'+esc(d.referenceType||'Reference price')+' '+cash(d.referencePrice)+'</div><div class="small muted">Checked '+esc(date(d.checkedAt))+' · Coupon not verified</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check price on Amazon ↗</a></article>').join('')||'<div class="empty" style="grid-column:1/-1"><strong>No current matching deals</strong><p>Try another filter or check after the next scheduled scan. We hide expired price snapshots instead of presenting them as live.</p></div>';
@@ -94,5 +95,5 @@ $('usedquick').innerHTML=['Toys & games','Kitchen appliances','Home & kitchen','
 async function loadLeads(){ $('leadstatus').textContent='Loading community leads…';try{const res=await fetch('data/deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Community feed unavailable');leads=(await res.json()).deals||[];renderLeads()}catch(e){$('leadstatus').textContent=e.message}}
 function renderLeads(){const q=$('leadfind').value.toLowerCase();const filtered=leads.filter(d=>d.title&&d.title.toLowerCase().includes(q)).slice(0,80);$('leadstatus').textContent=filtered.length+' unverified leads shown';$('leaditems').innerHTML=filtered.map(d=>'<article class="card product"><span class="pill">'+esc(d.retailer||'Unknown')+'</span><h3>'+esc(d.title)+'</h3><p class="small muted">Community source: '+esc(d.source||'unknown')+' · Not price-verified</p>'+(String(d.url||'').startsWith('https://')?'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">View original post ↗</a>':'')+'</article>').join('')||'<div class="empty">No matching community leads.</div>'}
 $('leadfind').addEventListener('input',renderLeads);$('leadreload').addEventListener('click',loadLeads);
-loadAmazon();
+loadAmazon();lastRenderTimer=setInterval(()=>{if(data)render()},60000);
 </script></body></html>
