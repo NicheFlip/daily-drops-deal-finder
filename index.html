@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#151e30"><meta name="description" content="Daily Drops Amazon deal research dashboard. Research leads only; verify at checkout.">
+<meta name="theme-color" content="#111827"><meta name="color-scheme" content="light"><meta name="description" content="Daily Drops Amazon deal research dashboard. Research leads only; verify at checkout.">
 <title>Daily Drops | Amazon Deal Finder</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#1d2939;background:#f5f7fb;font-synthesis:none}
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#1d2939;background:#f6f7fa;font-synthesis:none}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
-header{background:#151e30;color:white;padding:20px 18px 23px}header .wrap{max-width:1080px;margin:auto}
+header{background:#111827;color:white;padding:18px 18px 20px}header .wrap{max-width:1080px;margin:auto}
 .brand{font-size:1.45rem;font-weight:800;letter-spacing:-.04em}.sub{color:#c6d0e0;font-size:.9rem;margin:5px 0 0}
-main{max-width:1080px;margin:0 auto;padding:18px 16px 70px}
-nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:13px;scrollbar-width:thin;position:sticky;top:0;z-index:10;background:#f5f7fb;padding-top:10px}
-nav button{flex:0 0 auto;min-height:46px;white-space:nowrap;border:1px solid #dce2eb;background:white;color:#27344b;border-radius:11px;padding:12px 15px;font-weight:700}
-nav button[aria-selected=true]{background:#151e30;color:white;border-color:#151e30}
-h1{font-size:1.55rem;letter-spacing:-.035em;margin:12px 0 5px}h2{font-size:1.18rem;margin:22px 0 10px}p{line-height:1.5}
-.muted{color:#66758b}.small{font-size:.83rem}.notice{background:#fff7e4;border:1px solid #f2dca2;border-radius:12px;padding:12px 14px;font-size:.87rem;line-height:1.5;margin:12px 0}
+main{max-width:1080px;margin:0 auto;padding:12px 16px 70px}
+nav{display:flex;gap:7px;overflow-x:auto;padding:10px 0 12px;margin-bottom:7px;scrollbar-width:thin;position:sticky;top:0;z-index:10;background:#f6f7fa}
+nav button{flex:0 0 auto;min-height:44px;white-space:nowrap;border:1px solid #dce2eb;background:white;color:#27344b;border-radius:12px;padding:10px 13px;font-weight:700;font-size:.9rem}
+nav button[aria-selected=true]{background:#111827;color:white;border-color:#151e30}
+h1{font-size:1.4rem;letter-spacing:-.035em;margin:12px 0 5px}h2{font-size:1.18rem;margin:22px 0 10px}p{line-height:1.5}
+.muted{color:#66758b}.small{font-size:.83rem}.notice{background:#fff9eb;border:1px solid #f0e1b8;border-radius:12px;padding:10px 12px;font-size:.82rem;line-height:1.45;margin:12px 0}
 .card{background:white;border:1px solid #e0e5ed;border-radius:15px;padding:17px;box-shadow:0 2px 9px #18243808}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:15px 0}.stat{padding:14px 11px;background:white;border:1px solid #e0e5ed;border-radius:13px}.stat strong{display:block;font-size:1.35rem}.stat span{font-size:.76rem;color:#66758b}
 .filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:9px;margin:14px 0}
@@ -25,25 +25,25 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .product{display:flex;flex-direction:column;gap:10px;min-width:0}.product h3{font-size:1rem;line-height:1.4;margin:0;overflow-wrap:anywhere}.product .price{font-size:1.45rem;font-weight:800}.product .ref{color:#6a778a;font-size:.85rem}.product .deal{color:#15624d;font-weight:800}.product a{margin-top:auto}
 .empty{padding:32px 15px;text-align:center;background:white;border:1px dashed #c7d0dd;border-radius:14px;color:#5a687a}
-.search-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.search-links a{background:white;color:#1c365c;border:1px solid #cdd8e8}
+.search-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.search-links a{min-height:48px;display:flex;align-items:center;justify-content:center}.section-label{font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#60708b;margin:18px 0 8px}.chips{display:flex;gap:7px;overflow-x:auto;padding:3px 0 10px}.chips button{flex:0 0 auto;border:1px solid #d7deeb;background:#fff;border-radius:999px;padding:9px 12px;color:#35445b;font-weight:650}.chips button[aria-pressed=true]{background:#172d53;color:#fff;border-color:#172d53}.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.toolbar .btn{font-size:.86rem}.search-links a{background:white;color:#1c365c;border:1px solid #cdd8e8}
 [hidden]{display:none!important}footer{font-size:.8rem;color:#6b778b;margin-top:32px}
-@media(max-width:700px){.filters{grid-template-columns:1fr 1fr}.filters input{grid-column:1/-1}.grid{grid-template-columns:1fr}.brand{font-size:1.3rem}.stat strong{font-size:1.15rem}.stat{padding:12px 8px}.stats{gap:6px}.stat span{font-size:.7rem}}
+@media(max-width:700px){.filters{grid-template-columns:1fr 1fr}.filters input{grid-column:1/-1}.grid{grid-template-columns:1fr}.brand{font-size:1.3rem}.stat strong{font-size:1.15rem}.stat{padding:12px 8px}.stats{gap:6px}.stat span{font-size:.7rem}.search-links{grid-template-columns:1fr 1fr}.search-links a{font-size:.85rem;padding:11px 8px}.brand{font-size:1.17rem}.sub{font-size:.8rem}}
 </style></head>
-<body><header><div class="wrap"><div class="brand">Daily Drops with Heather</div><p class="sub">Amazon deal research · Simple, organized, and ready to check</p></div></header>
+<body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Your Amazon deal research workspace</p></div></header>
 <main>
 <nav role="tablist" aria-label="Sections">
-<button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">🔥 Amazon finds</button>
-<button type="button" role="tab" id="tab-search" aria-controls="panel-search" aria-selected="false">🔎 Shop Amazon</button>
-<button type="button" role="tab" id="tab-used" aria-controls="panel-used" aria-selected="false">♻️ Used & Resale</button>
+<button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">Deals</button>
+<button type="button" role="tab" id="tab-search" aria-controls="panel-search" aria-selected="false">Search Amazon</button>
+<button type="button" role="tab" id="tab-used" aria-controls="panel-used" aria-selected="false">Used & Resale</button>
 <button type="button" role="tab" id="tab-leads" aria-controls="panel-leads" aria-selected="false">Community leads</button>
 </nav>
 <section id="panel-deals" role="tabpanel" aria-labelledby="tab-deals">
-<h1>Amazon deal finder</h1><p class="muted small">Discount leads from the official Amazon Creators API. No invented coupon codes or prices.</p>
+<h1>Amazon deal radar</h1><p class="muted small">Browse fresh API discount leads. Open Amazon to confirm before sharing.</p>
 <div class="stats" aria-live="polite"><div class="stat"><strong id="count">—</strong><span>Current leads</span></div><div class="stat"><strong id="scanned">—</strong><span>Products scanned</span></div><div class="stat"><strong id="updated">—</strong><span>Last scan</span></div></div>
 <div class="notice"><strong>Research only:</strong> Amazon reference prices are not necessarily previous selling prices. Check the product page and checkout before posting. Coupon stacking and pricing glitches are not verified. Prices disappear from this feed one hour after their API check. The scheduled scanner runs approximately hourly, so the feed can temporarily be empty.</div>
-<div class="filters"><input id="find" type="search" placeholder="Search products…" aria-label="Search products">
+<p class="section-label">Browse categories</p><div id="categoryChips" class="chips" aria-label="Quick category filters"></div><div class="filters"><input id="find" type="search" placeholder="Search products…" aria-label="Search products">
 <select id="category" aria-label="Category"><option value="">All categories</option><option value="ToysAndGames">Toys & gifts</option><option value="HomeAndKitchen">Home & kitchen</option><option value="Electronics">Electronics</option><option value="Beauty">Beauty</option><option value="Fashion">Fashion</option><option value="OfficeProducts">Office</option><option value="PetSupplies">Pets</option><option value="Baby">Baby</option></select>
-<select id="sort" aria-label="Sort"><option value="discount">Biggest discount</option><option value="newest">Recently checked</option><option value="low">Lowest price</option><option value="high">Highest price</option></select></div>
+<select id="sort" aria-label="Sort"><option value="discount">Biggest discount</option><option value="low">Lowest price first</option><option value="newest">Recently checked</option><option value="high">Highest price</option></select></div>
 <div class="actions"><label><input type="checkbox" id="deep" style="width:auto;vertical-align:middle"> Show only 70%+ leads</label><button type="button" class="btn secondary" id="reload">↻ Refresh results</button></div>
 <p class="muted small" id="status" role="status">Loading latest scan…</p>
 <div id="products" class="grid"></div>
@@ -51,9 +51,9 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <section id="panel-search" role="tabpanel" aria-labelledby="tab-search" hidden>
 <h1>Search Amazon directly</h1><p class="muted">Open Amazon's current search results when you want to explore beyond the automated feed.</p>
 <div class="card"><label for="term"><strong>What are you looking for?</strong></label><input id="term" value="clearance" placeholder="Toys, kitchen, headphones…" style="margin:10px 0"><div id="search-links" class="search-links"></div></div>
-<h2>Quick category searches</h2><p class="muted small">Choose a category and open Amazon results sorted lowest price first. Amazon may adjust its own sorting.</p><div id="quick" class="search-links"></div>
+<h2>Shop by category</h2><p class="muted small">Choose a category and open Amazon results sorted lowest price first. Amazon may adjust its own sorting.</p><div id="quick" class="search-links"></div>
 </section>
-<section id="panel-used" role="tabpanel" aria-labelledby="tab-used" hidden><h1>Used & Amazon Resale</h1><p class="muted">Amazon Warehouse is now called Amazon Resale. Explore pre-owned, open-box, and returned items directly on Amazon.</p><div class="notice"><strong>Important:</strong> These are live Amazon search links, not verified used-item offers. Availability, condition, and price vary by seller and listing. Lowest-price sorting is requested but Amazon controls the results.</div><div class="card"><label for="usedterm"><strong>Search used products</strong></label><input id="usedterm" value="kitchen appliances" placeholder="Search used items…" style="margin:10px 0"><div id="usedlinks" class="search-links"></div></div><h2>Used categories · lowest price first</h2><div id="usedquick" class="search-links"></div><h2>Browse Amazon Resale</h2><div class="search-links"><a href="https://www.amazon.com/amazonwarehouse" target="_blank" rel="noopener noreferrer">Open Amazon Resale ↗</a></div></section>
+<section id="panel-used" role="tabpanel" aria-labelledby="tab-used" hidden><h1>Used & Amazon Resale</h1><p class="muted">Amazon Warehouse is now called Amazon Resale. Explore pre-owned, open-box, and returned items directly on Amazon.</p><div class="notice"><strong>Important:</strong> These are live Amazon search links, not verified used-item offers. Availability, condition, and price vary by seller and listing. Lowest-price sorting is requested but Amazon controls the results.</div><div class="card"><label for="usedterm"><strong>Search used products</strong></label><input id="usedterm" value="kitchen appliances" placeholder="Search used items…" style="margin:10px 0"><div id="usedlinks" class="search-links"></div></div><h2>Used categories · low to high</h2><div id="usedquick" class="search-links"></div><h2>Browse Amazon Resale</h2><div class="search-links"><a href="https://www.amazon.com/amazonwarehouse" target="_blank" rel="noopener noreferrer">Open Amazon Resale ↗</a></div></section>
 <section id="panel-leads" role="tabpanel" aria-labelledby="tab-leads" hidden>
 <h1>Community deal leads</h1><p class="notice">These are third-party community posts, not verified Amazon prices. They may be expired or inaccurate.</p>
 <div class="actions"><input id="leadfind" type="search" placeholder="Filter community leads" style="max-width:350px"><button type="button" class="btn secondary" id="leadreload">Refresh leads</button></div><p id="leadstatus" class="muted small"></p><div id="leaditems" class="grid"></div>
@@ -73,7 +73,7 @@ for(const n of ['deals','search','used','leads'])$('tab-'+n).addEventListener('c
 const tabNames=['deals','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 function render(){
  if(!data)return;
- const now=Date.now(),all=(data.deals||[]).filter(d=>d&&Number.isFinite(Date.parse(d.checkedAt))&&now-Date.parse(d.checkedAt)>=0&&now-Date.parse(d.checkedAt)<3600000&&Number.isFinite(Number(d.price))&&Number.isFinite(Number(d.referencePrice))&&Number(d.referencePrice)>Number(d.price)&&validUrl(d.url));
+ const now=Date.now(),all=(Array.isArray(data.deals)?data.deals:[]).filter(d=>d&&Number.isFinite(Date.parse(d.checkedAt))&&now-Date.parse(d.checkedAt)>=0&&now-Date.parse(d.checkedAt)<3600000&&Number.isFinite(Number(d.price))&&Number.isFinite(Number(d.referencePrice))&&Number(d.referencePrice)>Number(d.price)&&validUrl(d.url));
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked;
  const filtered=all.filter(d=>(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||d.discountPercent>=70));
  const sort=$('sort').value;filtered.sort((a,b)=>sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):Number(b.discountPercent)-Number(a.discountPercent));
@@ -82,7 +82,10 @@ function render(){
  $('products').innerHTML=filtered.map(d=>'<article class="card product"><div><span class="pill">'+esc(d.category)+'</span> <span class="pill">API snapshot</span></div><h3>'+esc(d.title)+'</h3><div><span class="price">'+cash(d.price)+'</span> <span class="deal">'+esc(d.discountPercent)+'% vs reference</span></div><div class="ref">'+esc(d.referenceType||'Reference price')+' '+cash(d.referencePrice)+'</div><div class="small muted">Checked '+esc(date(d.checkedAt))+' · Coupon not verified</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check price on Amazon ↗</a></article>').join('')||'<div class="empty" style="grid-column:1/-1"><strong>No current matching deals</strong><p>Try another filter or check after the next scheduled scan. We hide expired price snapshots instead of presenting them as live.</p></div>';
 }
 async function loadAmazon(){ $('status').textContent='Checking latest Amazon results…';try{const res=await fetch('data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Scan data not available');data=await res.json();render()}catch(e){$('status').textContent='Could not load Amazon scan: '+e.message;$('products').innerHTML='<div class="empty">Try refreshing in a moment.</div>'}}
-for(const id of ['find','category','sort','deep'])$(id).addEventListener(id==='find'?'input':'change',render);
+const chipItems=[['','All'],['ToysAndGames','Toys'],['HomeAndKitchen','Home'],['Electronics','Tech'],['Beauty','Beauty'],['Fashion','Fashion'],['OfficeProducts','Office'],['PetSupplies','Pets']];
+function updateChips(){$('categoryChips').innerHTML=chipItems.map(([value,label])=>'<button type="button" data-cat="'+esc(value)+'" aria-pressed="'+String($('category').value===value)+'">'+esc(label)+'</button>').join('')}
+$('categoryChips').addEventListener('click',e=>{const btn=e.target.closest('button[data-cat]');if(!btn)return;$('category').value=btn.dataset.cat;updateChips();render()});
+for(const id of ['find','category','sort','deep'])$(id).addEventListener(id==='find'?'input':'change',()=>{if(id==='category')updateChips();render()});updateChips();
 $('reload').addEventListener('click',loadAmazon);
 function searchUrl(q,low=false,used=false){return 'https://www.amazon.com/s?k='+encodeURIComponent(q)+(used?'&rh=p_n_condition-type%3A6461718011':'')+(low?'&s=price-asc-rank':'')}
 function link(text,url){return '<a target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">'+esc(text)+' ↗</a>'}
@@ -92,7 +95,7 @@ $('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','H
 function usedLinks(){const q=$('usedterm').value.trim()||'used';$('usedlinks').innerHTML=link('Used '+q+' · lowest first',searchUrl(q,true,true))+link('All used '+q,searchUrl(q,false,true))}
 $('usedterm').addEventListener('input',usedLinks);usedLinks();
 $('usedquick').innerHTML=['Toys & games','Kitchen appliances','Home & kitchen','Electronics','Headphones','Fashion','Beauty tools','Books','Video games','Furniture'].map(q=>link(q+' · used low to high',searchUrl(q,true,true))).join('');
-async function loadLeads(){ $('leadstatus').textContent='Loading community leads…';try{const res=await fetch('data/deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Community feed unavailable');leads=(await res.json()).deals||[];renderLeads()}catch(e){$('leadstatus').textContent=e.message}}
+async function loadLeads(){ $('leadstatus').textContent='Loading community leads…';try{const res=await fetch('data/deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Community feed unavailable');{const payload=await res.json();leads=Array.isArray(payload)?payload:(Array.isArray(payload.deals)?payload.deals:[])}renderLeads()}catch(e){$('leadstatus').textContent=e.message}}
 function renderLeads(){const q=$('leadfind').value.toLowerCase();const filtered=leads.filter(d=>d.title&&d.title.toLowerCase().includes(q)).slice(0,80);$('leadstatus').textContent=filtered.length+' unverified leads shown';$('leaditems').innerHTML=filtered.map(d=>'<article class="card product"><span class="pill">'+esc(d.retailer||'Unknown')+'</span><h3>'+esc(d.title)+'</h3><p class="small muted">Community source: '+esc(d.source||'unknown')+' · Not price-verified</p>'+(String(d.url||'').startsWith('https://')?'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">View original post ↗</a>':'')+'</article>').join('')||'<div class="empty">No matching community leads.</div>'}
 $('leadfind').addEventListener('input',renderLeads);$('leadreload').addEventListener('click',loadLeads);
 loadAmazon();lastRenderTimer=setInterval(()=>{if(data)render()},60000);
