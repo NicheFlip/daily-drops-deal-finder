@@ -7,6 +7,11 @@ ROOT=pathlib.Path(__file__).parent
 STATE=ROOT/'data'/'amazon-candidate-state.json'
 QUEUE=ROOT/'data'/'amazon-candidates.json'
 RETENTION_DAYS=45
+ESSENTIAL_TERMS=('laundry','detergent','paper towel','toilet paper','dish soap','trash bag','coffee','diaper','baby wipe','cleaning wipe','hand soap','toothpaste','shampoo','pet food','storage bag','batteries','dryer sheet','facial tissue','body wash','cereal','snack','water filter')
+def is_essential(deal):
+    name=(str(deal.get('title',''))+' '+str(deal.get('keyword',''))).lower()
+    return any(term in name for term in ESSENTIAL_TERMS)
+
 
 def build_queue(observed, stamp):
     now=datetime.datetime.fromisoformat(stamp)
@@ -42,6 +47,7 @@ def build_queue(observed, stamp):
                 'referencePrice':deal['referencePrice'],
                 'discountPercent':deal['discountPercent'],
                 'dealScore':deal.get('dealScore',0),
+                'everydayEssential':is_essential(deal),
                 'reason':reason,
                 'previousObservedPrice':old_price,
                 'newObservedLow':bool(deal.get('newObservedLow')),
@@ -50,7 +56,7 @@ def build_queue(observed, stamp):
             })
         retained[asin]={'lastPrice':price,'lastSeen':stamp}
     retained=dict(sorted(retained.items(),key=lambda pair:pair[1]['lastSeen'],reverse=True)[:3000])
-    candidates.sort(key=lambda d:(d['reason']=='Observed price drop',d['dealScore'],d['discountPercent']),reverse=True)
+    candidates.sort(key=lambda d:(d['reason']=='Observed price drop',d['everydayEssential'],d['dealScore'],d['discountPercent']),reverse=True)
     STATE.write_text(json.dumps({'updated':stamp,'items':retained},separators=(',',':')))
     QUEUE.write_text(json.dumps({'updated':stamp,'candidates':candidates[:100],
         'count':len(candidates),
