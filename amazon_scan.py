@@ -35,7 +35,7 @@ def amount(v):
     x=v.get('amount')
     try:return round(float(x),2) if x is not None else None
     except (TypeError,ValueError):return None
-def parse(item,category,keyword):
+def parse(item,category,keyword,minimum_discount=40):
     asin=item.get('asin','')
     if not re.fullmatch('[A-Z0-9]{10}',asin):return None
     title=item.get('itemInfo',{}).get('title',{}).get('displayValue','')
@@ -48,9 +48,9 @@ def parse(item,category,keyword):
         basis=price_data.get('savingBasis',{}) if isinstance(price_data,dict) else {}
         reference=amount(basis)
         savings=price_data.get('savings',{}) if isinstance(price_data,dict) else {}
-        if not price or price<=0 or not reference or reference<=price:continue
-        percent=round(100*(reference-price)/reference)
-        if percent<40:continue
+        if not price or price<=0:continue
+        percent=round(100*(reference-price)/reference) if reference and reference>price else 0
+        if percent<minimum_discount:continue
         # Prefer the API-provided percent when present and consistent.
         declared=savings.get('percentage') if isinstance(savings,dict) else None
         if isinstance(declared,(int,float)) and abs(declared-percent)>2:continue
@@ -86,6 +86,7 @@ def scan():
         except (KeyError,ValueError,TypeError):pass
     errors=[]; scanned=0; completed=0; newly=0
     observed={}
+    baseline={}
     essential_budget=min(8,budget)
     for i in range(budget):
         category,keyword=(ESSENTIAL_QUERIES[(essential_offset+i)%len(ESSENTIAL_QUERIES)] if i<essential_budget else QUERIES[(offset+i-essential_budget)%len(QUERIES)])
@@ -100,6 +101,9 @@ def scan():
             items=result.get('searchResult',{}).get('items',[]) or []
             scanned+=len(items)
             for item in items:
+                baseline_item=parse(item,category,keyword,minimum_discount=0)
+                if baseline_item and i<essential_budget:
+                    baseline[baseline_item['asin']]=baseline_item
                 d=parse(item,category,keyword)
                 if d:
                     observed[d['asin']]=d
@@ -110,7 +114,9 @@ def scan():
             errors.append(category+' / '+keyword+': HTTP '+str(e.code))
             if e.code in (401,403,429):break
         except Exception as e:errors.append(category+' / '+keyword+': '+type(e).__name__)
-    observed_drops=enrich(observed,STAMP)
+    # Track valid everyday essentials even without a qualifying discount.
+    # Only qualifying leads enter the public deal and candidate feeds.
+    observed_drops=enrich(observed,STAMP,baseline=baseline)
     candidate_count=build_queue(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
     deals=sorted(fresh.values(),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
