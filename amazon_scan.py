@@ -4,6 +4,7 @@ Official Creators API only. No scraping. API offer snapshots expire after 1 hour
 import datetime,json,os,pathlib,re,time,urllib.error,urllib.request
 from collections import defaultdict
 from price_history import enrich
+from candidate_queue import build_queue
 ROOT=pathlib.Path(__file__).parent
 OUT=ROOT/'data'/'amazon-deals.json'
 STATE=ROOT/'data'/'amazon-scan-state.json'
@@ -106,11 +107,12 @@ def scan():
             if e.code in (401,403,429):break
         except Exception as e:errors.append(category+' / '+keyword+': '+type(e).__name__)
     observed_drops=enrich(observed,STAMP)
+    candidate_count=build_queue(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
     deals=sorted(fresh.values(),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,
+      'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Only Amazon API snapshots under 1 hour old are displayed. Not verified checkout prices.'},indent=2))
     STATE.write_text(json.dumps({'day':day,'callsToday':calls+completed+len(errors),
       'nextOffset':(offset+completed+len(errors))%len(QUERIES),
