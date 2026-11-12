@@ -34,6 +34,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <nav role="tablist" aria-label="Sections">
 <button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">Deals</button>
 <button type="button" role="tab" id="tab-walmart" aria-controls="panel-walmart" aria-selected="false">Walmart</button>
+<button type="button" role="tab" id="tab-clearance" aria-controls="panel-clearance" aria-selected="false">Clearance Lab</button>
 <button type="button" role="tab" id="tab-search" aria-controls="panel-search" aria-selected="false">Search Amazon</button>
 <button type="button" role="tab" id="tab-used" aria-controls="panel-used" aria-selected="false">Used & Resale</button>
 <button type="button" role="tab" id="tab-leads" aria-controls="panel-leads" aria-selected="false">Community leads</button>
@@ -59,6 +60,26 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div id="walmartCategories" class="search-links"></div>
 <h2>Walmart deals & clearance</h2><div class="search-links"><a href="https://www.walmart.com/shop/deals" target="_blank" rel="noopener noreferrer">Walmart Deals ↗</a><a href="https://www.walmart.com/shop/deals/clearance" target="_blank" rel="noopener noreferrer">Walmart Clearance ↗</a></div>
 <p class="muted small">Walmart controls search ordering. Links request low-to-high price sorting where supported, but this is not a guaranteed price order or verified discount filter.</p>
+</section>
+<section id="panel-clearance" role="tabpanel" aria-labelledby="tab-clearance" hidden>
+<h1>Clearance Research Lab</h1><p class="muted small">Research real closeouts, overstock, returns and local markdowns. Search results are leads—not verified discounts.</p>
+<div class="notice"><strong>Deal verification:</strong> Compare the exact product, condition, seller and price history. Walmart in-store markdowns can differ by store. A coupon or extra discount counts only after it appears on the product page and applies at checkout. Never call an unverified price a glitch.</div>
+<div class="card"><label for="labTerm"><strong>Search a product or category</strong></label><input id="labTerm" type="search" value="toys" placeholder="e.g. building sets, bedding, coffee maker" style="margin:10px 0">
+<div class="filters" style="grid-template-columns:1fr 1fr"><select id="labRetailer" aria-label="Retailer"><option value="both">Amazon + Walmart</option><option value="amazon">Amazon</option><option value="walmart">Walmart</option></select><select id="labMode" aria-label="Search method"><option value="low">Lowest price first</option><option value="regular">Standard search</option></select></div><div id="labLinks" class="search-links"></div></div>
+<h2>High-value search routes</h2>
+<div class="grid">
+<div class="card"><strong>Amazon: new-condition markdowns</strong><p class="small muted">Outlet, Today's Deals, coupons and category searches.</p><div id="labAmazon" class="search-links"></div></div>
+<div class="card"><strong>Amazon: open-box & returns</strong><p class="small muted">Resale is separate from new Outlet inventory. Check the individual item's condition and price against new.</p><div id="labResale" class="search-links"></div></div>
+<div class="card"><strong>Walmart: online clearance</strong><p class="small muted">Browse clearance, then compare availability for shipping and pickup.</p><div id="labWalmart" class="search-links"></div></div>
+<div class="card"><strong>Walmart: hidden in-store markdowns</strong><p class="small muted">Choose your store in Walmart's app, scan a shelf item's barcode, and compare its displayed price with the shelf tag. In-store findings are local, not nationwide offers.</p><div id="labLocal" class="search-links"></div></div>
+</div>
+<h2>Research categories</h2><p class="muted small">Open targeted searches for end-of-season and discontinued inventory; price sorting is a request to each retailer, not a guaranteed result.</p>
+<div id="labCategories" class="search-links"></div>
+<h2>Check a candidate before posting</h2>
+<div class="card"><div class="filters" style="grid-template-columns:1fr 1fr"><input id="labPrice" type="number" min="0" step=".01" placeholder="Current price ($)" aria-label="Current price"><input id="labReference" type="number" min="0" step=".01" placeholder="Comparable price ($)" aria-label="Comparable reference price"></div>
+<p id="labDiscount" class="muted small" role="status">Enter both prices to calculate the claimed discount.</p>
+<p class="small muted">Only use a genuinely comparable reference for the exact variant and condition. A calculated percentage alone is not proof of a real deal.</p>
+<div class="toolbar"><button type="button" class="btn secondary" id="labCopy">Copy verification checklist</button></div></div>
 </section>
 <section id="panel-search" role="tabpanel" aria-labelledby="tab-search" hidden>
 <h1>Search Amazon directly</h1><p class="muted">Open Amazon's current search results when you want to explore beyond the automated feed.</p>
@@ -90,9 +111,9 @@ const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocal
 const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
 let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;
-function selectTab(name){for(const n of ['deals','walmart','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
-for(const n of ['deals','walmart','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
-const tabNames=['deals','walmart','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
+function selectTab(name){for(const n of ['deals','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='leads'&&!leads.length)loadLeads();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
+for(const n of ['deals','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
+const tabNames=['deals','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 function render(){
  if(!data)return;
  const now=Date.now(),all=(Array.isArray(data.deals)?data.deals:[]).filter(d=>d&&Number.isFinite(Date.parse(d.checkedAt))&&now-Date.parse(d.checkedAt)>=0&&now-Date.parse(d.checkedAt)<3600000&&Number.isFinite(Number(d.price))&&Number.isFinite(Number(d.referencePrice))&&Number(d.referencePrice)>Number(d.price)&&validUrl(d.url));
@@ -118,6 +139,23 @@ $('walmartFilter').addEventListener('input',renderWalmartCategories);$('walmartS
 $('walmartChips').innerHTML=['Clearance','Toys','Kitchen','Fashion','Electronics','Beauty'].map(x=>'<button type="button" data-walmart="'+esc(x)+'">'+esc(x)+'</button>').join('');
 $('walmartChips').addEventListener('click',e=>{const b=e.target.closest('button[data-walmart]');if(!b)return;$('walmartTerm').value=b.dataset.walmart;walmartLinks()});
 renderWalmartCategories();
+function labRender(){
+const q=$('labTerm').value.trim()||'clearance',retailer=$('labRetailer').value,low=$('labMode').value==='low';
+const a=link('Amazon search'+(low?' · low to high':''),searchUrl(q,low));
+const w=link('Walmart search'+(low?' · low to high':''),walmartUrl(q,low));
+$('labLinks').innerHTML=(retailer==='both'||retailer==='amazon'?a:'')+(retailer==='both'||retailer==='walmart'?w:'');
+}
+for(const id of ['labTerm','labRetailer','labMode'])$(id).addEventListener(id==='labTerm'?'input':'change',labRender);
+$('labAmazon').innerHTML=link('Amazon Outlet','https://www.amazon.com/outlet')+link('Today’s Deals','https://www.amazon.com/deals')+link('Amazon Coupons','https://www.amazon.com/coupons');
+$('labResale').innerHTML=link('Amazon Resale','https://www.amazon.com/amazonwarehouse')+link('Search used, low to high',searchUrl('home kitchen',true,true));
+$('labWalmart').innerHTML=link('Clearance','https://www.walmart.com/shop/deals/clearance')+link('Deals','https://www.walmart.com/shop/deals')+link('Under $10 search',walmartUrl('clearance under $10',true));
+$('labLocal').innerHTML=link('Official barcode scanner guide','https://www.walmart.com/cp/check-a-price/8525999')+link('Walmart clearance','https://www.walmart.com/shop/deals/clearance');
+const labCats=['Toys & games','Kids clothing','Bedding','Kitchen appliances','Home organization','Beauty','Electronics','Holiday decorations','School supplies','Baby gear','Pet supplies','Small furniture'];
+$('labCategories').innerHTML=labCats.map(q=>'<div class="card"><strong>'+esc(q)+'</strong><div class="search-links" style="margin-top:9px">'+link('Amazon · low first',searchUrl(q+' clearance',true))+link('Walmart · low first',walmartUrl(q+' clearance',true))+'</div></div>').join('');
+function labCalc(){const p=Number($('labPrice').value),r=Number($('labReference').value);$('labDiscount').textContent=$('labPrice').value&&$('labReference').value&&p>=0&&r>p?'Calculated: '+((r-p)/r*100).toFixed(1)+'% below reference · Not yet verified':'Enter a current price and a higher comparable reference price.'}
+$('labPrice').addEventListener('input',labCalc);$('labReference').addEventListener('input',labCalc);
+$('labCopy').addEventListener('click',()=>{const p=$('labPrice').value,r=$('labReference').value;const msg='DEAL VERIFICATION CHECKLIST\nProduct / exact variant:\nRetailer and direct non-affiliate URL:\nCurrent price: '+(p?'$'+p:'not checked')+'\nComparable reference: '+(r?'$'+r:'not checked')+'\nCondition / seller:\nCoupon visible and checkout-tested?\nShipping, pickup, and store location:\nTime checked:\nPrice history / reference caveat:\nStatus: UNVERIFIED until checked';navigator.clipboard?.writeText(msg).then(()=>{$('labDiscount').textContent='Checklist copied. Verify all fields before sharing.'}).catch(()=>{$('labDiscount').textContent='Clipboard unavailable in this browser.'})});
+labRender();labCalc();
 function searchUrl(q,low=false,used=false){return 'https://www.amazon.com/s?k='+encodeURIComponent(q)+(used?'&rh=p_n_condition-type%3A6461718011':'')+(low?'&s=price-asc-rank':'')}
 function link(text,url){return '<a target="_blank" rel="noopener noreferrer" href="'+esc(url)+'">'+esc(text)+' ↗</a>'}
 function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-links').innerHTML=link('Search '+q,searchUrl(q))+link('Lowest price first',searchUrl(q,true))+link('Amazon Today’s Deals','https://www.amazon.com/deals')}
