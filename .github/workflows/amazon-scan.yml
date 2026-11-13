@@ -34,6 +34,7 @@ jobs:
           if [ -n "$DATABASE_URL" ]; then
             python -m pip install 'psycopg[binary]>=3.2,<4'
             python database.py
+            python export_history.py
           else
             echo 'DATABASE_URL not configured; PostgreSQL archive skipped.'
           fi
@@ -44,5 +45,5 @@ jobs:
         run: |
           git config user.name "deal-scanner[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json
+          git add data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json
           git diff --cached --quiet || (git commit -m "Refresh Amazon deal research" && git pull --rebase && git push)
