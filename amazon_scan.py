@@ -25,9 +25,9 @@ QUERIES=[
 ESSENTIAL_QUERIES=[("All","laundry detergent"),("All","paper towels"),("All","toilet paper"),("All","dish soap"),("All","trash bags"),("All","coffee pods"),("All","ground coffee"),("All","diapers"),("All","baby wipes"),("All","dishwasher pods"),("All","cleaning wipes"),("All","hand soap"),("All","toothpaste"),("All","shampoo"),("All","pet food"),("All","food storage bags"),("All","batteries AA"),("All","dryer sheets"),("All","facial tissues"),("All","body wash"),("All","breakfast cereal"),("All","snack variety pack"),("All","water filters"),("All","laundry scent boosters")]
 HIGH_DEMAND_QUERIES=[('All','best selling household essentials'),('ToysAndGames','ride on toys for kids'),('ToysAndGames','electric ride on cars for kids'),('All','electric scooters'),('All','electric bikes'),('ToysAndGames','outdoor toys'),('ToysAndGames','educational toys'),('ToysAndGames','LEGO building sets'),('Beauty','skin care gift sets'),('Beauty','hair styling tools'),('Beauty','makeup gift sets'),('HomeAndKitchen','robot vacuums'),('HomeAndKitchen','air fryers'),('HomeAndKitchen','blenders'),('HomeAndKitchen','bedding sets'),('HomeAndKitchen','storage organizers'),('Electronics','wireless earbuds'),('Electronics','portable chargers'),('All','cleaning supplies'),('All','coffee'),('All','paper products'),('All','pet supplies')]
 BLACK_FRIDAY_QUERIES=[('All','early black friday deals'),('HomeAndKitchen','black friday kitchen deals'),('Electronics','black friday headphones'),('ToysAndGames','black friday toys'),('HomeAndKitchen','black friday vacuum'),('All','black friday household essentials'),('All','black friday coffee makers'),('All','black friday gifts')]
-# Up to 40 requests x 10 items = 400 product results per run (not 400 unique offers).
+# Up to 24 requests x 10 items = 240 product results per half-hour run (not all unique).
 # Respect the daily cap and API throttling; requests may return fewer items.
-PER_RUN=40
+PER_RUN=24
 MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
 RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
 def api(url,payload,headers=None):
@@ -108,7 +108,7 @@ def scan():
     essential_budget=min(8,budget)
     seasonal_active=NOW.month==11 and NOW.day<=30
     seasonal_budget=min(6,max(0,budget-essential_budget)) if seasonal_active else 0
-    demand_budget=min(10,max(0,budget-essential_budget-seasonal_budget))
+    demand_budget=min(5,max(0,budget-essential_budget-seasonal_budget))
     broad_budget=budget-essential_budget-seasonal_budget-demand_budget
     searched=[]
     unique_seen=set()
