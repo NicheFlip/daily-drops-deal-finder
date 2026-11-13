@@ -1,0 +1,25 @@
+name: Impact catalog connection check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-impact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test impact.com marketplace product access
+        env:
+          IMPACT_ACCOUNT_SID: ${{ secrets.IMPACT_ACCOUNT_SID }}
+          IMPACT_API_TOKEN: ${{ secrets.IMPACT_API_TOKEN }}
+        run: python impact_scan.py
+      - name: Show non-sensitive connection summary
+        if: always()
+        run: |
+          if [ -f data/impact-status.json ]; then
+            python -c 'import json; x=json.load(open("data/impact-status.json")); print("Connection:",x["connection"],"HTTP:",x.get("httpStatus","OK"),"Products:",x["productsReturned"])'
+          fi
