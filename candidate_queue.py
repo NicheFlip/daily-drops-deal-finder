@@ -78,7 +78,8 @@ def build_queue(observed, stamp):
     for candidate in candidates:
         key=candidate['asin']+'|'+candidate['checkedAt']+'|'+candidate['reason']
         saved[key]=candidate
-    events=sorted(saved.values(),key=lambda d:d.get('checkedAt',''),reverse=True)\n    ARCHIVE.write_text(json.dumps({
+    events=sorted(saved.values(),key=lambda d:d.get('checkedAt',''),reverse=True)
+    ARCHIVE.write_text(json.dumps({
         'updated':stamp,'retentionDays':None,'events':events,
         'note':'Historical research observations, NOT live prices or verified checkout offers. Recheck the exact product before sharing.'
     },indent=2))
