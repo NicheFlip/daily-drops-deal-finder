@@ -1,7 +1,7 @@
 name: Amazon scan watchdog
 on:
   schedule:
-    - cron: '7,47 * * * *'
+    - cron: '7,27,47 * * * *'
   workflow_dispatch:
 permissions:
   actions: write
@@ -29,7 +29,7 @@ jobs:
               last=datetime.datetime.fromisoformat(updated.replace('Z','+00:00'))
               age=(datetime.datetime.now(datetime.timezone.utc)-last).total_seconds()/60
               print(f'Feed age: {age:.1f} minutes')
-              print('STALE' if age>100 else 'FRESH')
+              print('STALE' if age>85 else 'FRESH')
           except (OSError,ValueError,KeyError,TypeError) as exc:
               print('Feed timestamp unavailable: '+type(exc).__name__)
               print('STALE')
