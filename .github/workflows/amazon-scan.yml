@@ -1,5 +1,11 @@
 name: Amazon automated deal research
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/amazon-scan.yml'
+      - 'amazon_scan.py'
+      - 'scan_health.py'
   schedule:
     - cron: '37 * * * *'
   workflow_dispatch:
