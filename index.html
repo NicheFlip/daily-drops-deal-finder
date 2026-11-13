@@ -35,7 +35,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <nav role="tablist" aria-label="Sections">
 <button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">Deals</button>
 <button type="button" role="tab" id="tab-inbox" aria-controls="panel-inbox" aria-selected="false">📥 Missed Deals</button>
-<button type="button" role="tab" id="tab-candidates" aria-controls="panel-candidates" aria-selected="false">New Finds</button>
+<button type="button" role="tab" id="tab-candidates" hidden aria-controls="panel-candidates" aria-selected="false">New Finds</button>
 <button type="button" role="tab" id="tab-posting" aria-controls="panel-posting" aria-selected="false">✓ Posting Queue <span id="postingCount">0</span></button>
 <button type="button" role="tab" id="tab-history" aria-controls="panel-history" aria-selected="false">Price History</button>
 <button type="button" role="tab" id="tab-walmart" aria-controls="panel-walmart" aria-selected="false">Walmart Radar</button>
@@ -47,7 +47,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div class="card" style="margin:12px 0;border:2px solid #225bc4;background:#eef4ff"><strong style="font-size:1.12rem">🛒 Amazon + Walmart Research</strong><p class="small muted" style="margin:7px 0">Choose a retailer. Walmart currently shows research searches, not verified individual product deals.</p><div class="actions"><button type="button" class="btn" id="homeWalmartRadar" style="background:#175e3b;color:white">🛒 Open Walmart Radar</button><button type="button" class="btn secondary" id="homeAmazonRadar">📦 Amazon Deals</button><button type="button" class="btn" id="homeDealJudge" style="background:#183a70;color:white">✓ Deal or No Deal</button></div></div>
 <section id="panel-deals" role="tabpanel" aria-labelledby="tab-deals"><div class="quicknav"><button type="button" data-jump="deals" data-sort="newest">✦ Today’s new lows<span>Recent API leads</span></button><button type="button" data-jump="deals" data-sort="discount">↗ Biggest markdowns<span>Reference-price leads</span></button><button type="button" data-jump="used">▣ Open box<span>Verified-condition feed</span></button><button type="button" data-jump="history">◷ Price History<span>Database observations</span></button><button type="button" data-jump="walmart">⌖ Walmart Radar<span>Research searches</span></button></div>
 <div class="card" style="border-color:#bfd5ff;background:#edf4ff;margin:12px 0"><strong>📥 Missed a scan? Your deals are saved.</strong><p class="small muted">You do not need to check every hour. Browse the saved discovery inbox, including older observations that are no longer live.</p><button class="btn" type="button" id="openInbox">View Missed Deals →</button></div><div class="notice"><strong>Early Black Friday watch:</strong> Some products may already be discounted before our first observation. “First observation” does not mean a newly reduced price. Compare longer history using the external research links before sharing.</div><h1>Amazon deal radar</h1><p class="muted small">Quick-scan prices. Mark Deal, No Deal, or Pass.</p>
-<p id="scanHealth" class="small muted" role="status">Checking scanner health…</p><div class="stats" aria-live="polite"><div class="stat"><strong id="count">—</strong><span>Current leads</span></div><div class="stat"><strong id="scanned">—</strong><span>Products scanned</span></div><div class="stat"><strong id="updated">—</strong><span>Last scan</span></div></div>
+<label class="small" style="display:inline-flex;align-items:center;gap:8px;padding:9px 12px;background:#fff;border:1px solid #dce2eb;border-radius:10px;margin:8px 0"><input id="newOnly" type="checkbox" style="width:auto"> Show only new finds from latest scan</label><p id="scanHealth" class="small muted" role="status">Checking scanner health…</p><div class="stats" aria-live="polite"><div class="stat"><strong id="count">—</strong><span>Current leads</span></div><div class="stat"><strong id="scanned">—</strong><span>Products scanned</span></div><div class="stat"><strong id="updated">—</strong><span>Last scan</span></div></div>
 <div class="notice"><strong>Research only:</strong> Amazon reference prices are not necessarily previous selling prices. Browse prices captured by the scanner.</div>
 <p class="section-label">Browse categories</p><div id="categoryChips" class="chips" aria-label="Quick category filters"></div><div class="filters"><input id="find" type="search" placeholder="Search products…" aria-label="Search products">
 <select id="category" aria-label="Category"><option value="">All categories</option><option value="ToysAndGames">Toys & gifts</option><option value="HomeAndKitchen">Home & kitchen</option><option value="Electronics">Electronics</option><option value="Beauty">Beauty</option><option value="Fashion">Fashion</option><option value="OfficeProducts">Office</option><option value="PetSupplies">Pets</option><option value="Baby">Baby</option></select>
@@ -61,7 +61,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div class="actions"><input id="inboxSearch" type="search" placeholder="Search saved deals…" aria-label="Search saved deals" style="flex:1;min-width:160px"><select id="inboxFilter" aria-label="Inbox filter"><option value="all">All discoveries</option><option value="drop">Observed price drops only</option><option value="new">First observations</option></select><button class="btn secondary" id="inboxRefresh" type="button">↻ Refresh inbox</button></div>
 <p id="inboxStatus" class="muted small" role="status">Open this tab to load saved discoveries.</p><div id="inboxResults" class="grid"></div>
 </section>
-<section id="panel-candidates" role="tabpanel" aria-labelledby="tab-candidates" hidden>
+<section id="panel-candidates" hidden role="tabpanel" aria-labelledby="tab-candidates" hidden>
 <h1>New & improved deal candidates</h1><p class="muted small">First-time API discoveries and observed price drops from the latest scan. Unchanged offers are excluded. Research only—not checkout-verified.</p>
 <div class="actions"><p id="candidateStatus" class="muted small" role="status">Open this tab to load new finds.</p><button type="button" class="btn secondary" id="candidateRefresh">Refresh candidates</button></div>
 <div id="candidateResults" class="grid"></div></section>
@@ -129,8 +129,8 @@ const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocal
 const cash=n=>'$'+Number(n).toFixed(2);
 const imageMarkup=d=>{try{const u=new URL(d.imageUrl);if(u.protocol!=='https:'||!/(^|\\.)images-amazon\\.com$|(^|\\.)media-amazon\\.com$|(^|\\.)ssl-images-amazon\\.com$/.test(u.hostname))return '';return '<img src="'+esc(u.href)+'" alt="'+esc(d.title||'Product image')+'" loading="lazy" style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0" referrerpolicy="no-referrer">'}catch{return ''}};
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
-let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;let detailIndex=[];let candidatesLoaded=false;let historyData=null;
-function selectTab(name){for(const n of ['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='walmart')loadWalmartRadar();if(name==='history')loadHistory();if(name==='posting')renderPostingQueue();if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();if(location.hash!=='#'+name)history.replaceState(null,'','#'+name);window.scrollTo({top:0,behavior:'instant'})}
+let candidateAsins=new Set();let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;let detailIndex=[];let candidatesLoaded=false;let historyData=null;
+function selectTab(name){if(name==='candidates'){name='deals';$('newOnly').checked=true;loadCandidates()}for(const n of ['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='walmart')loadWalmartRadar();if(name==='history')loadHistory();if(name==='posting')renderPostingQueue();if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();if(location.hash!=='#'+name)history.replaceState(null,'','#'+name);window.scrollTo({top:0,behavior:'instant'})}
 for(const n of ['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
 const tabNames=['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 $('copyShopLink').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(new URL('./shop.html',location.href).href);$('copyShopStatus').textContent=' Link copied!'}catch{$('copyShopStatus').textContent=' Copy the URL from the follower shop page.'}});
@@ -290,7 +290,7 @@ function renderInbox(){
 async function loadInbox(){
  $('inboxStatus').textContent='Loading saved discoveries…';
  try{const res=await fetch('data/amazon-discovery-archive.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Inbox will appear after the next successful scan');const payload=await res.json();inboxEvents=(Array.isArray(payload.events)?payload.events:[]).filter(d=>validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);renderInbox();if(data)render()}
- catch(e){$('inboxStatus').textContent=e.message;$('inboxResults').innerHTML='<div class="empty">Saved history is not published yet. It will start filling after the next successful scanner run.</div>'}
+ catch(e){$('inboxStatus').textContent='Could not load saved discoveries: '+e.message;$('inboxResults').innerHTML='<div class="empty">Could not load the archive. Try Refresh inbox.</div>'}
 }
 $('inboxRefresh').addEventListener('click',loadInbox);
 $('inboxFilter').addEventListener('change',renderInbox);
@@ -303,7 +303,7 @@ const response=await fetch('data/amazon-candidates.json?ts='+Date.now(),{cache:'
 if(!response.ok)throw Error('Candidate feed not published yet');
 const payload=await response.json();candidatesLoaded=true;
 const now=Date.now(),all=Array.isArray(payload.candidates)?payload.candidates:[];
-const items=all.filter(d=>validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);
+const items=all.filter(d=>validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);candidateAsins=new Set(items.map(d=>String(d.asin)));if(data)render();
 $('candidateStatus').textContent=items.length+' saved candidates from latest scan · last scan '+date(payload.updated)+' · unchanged offers suppressed';
 $('candidateResults').innerHTML=items.map(d=>compactCard(d,'candidate')).join('')||'<div class="empty">No new candidates in the latest scan.</div>';
 }catch(e){$('candidateStatus').textContent=e.message;$('candidateResults').innerHTML='<div class="empty">The next successful scanner and website publish will generate this feed.</div>'}
@@ -327,10 +327,10 @@ function render(){
  if(!data)return;
  const now=Date.now(),latest=Array.isArray(data.deals)?data.deals:[];const combined=[...latest,...inboxEvents];const seen=new Set();const all=combined.filter(d=>{if(!d||!validUrl(d.url)||!Number.isFinite(Number(d.price))||Number(d.price)<=0)return false;const key=String(d.asin||d.url)+'|'+Number(d.price);if(seen.has(key))return false;seen.add(key);return true});
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked,essentialOnly=$('essentials').checked;
- const filtered=all.filter(d=>(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||Number(d.discountPercent)>=70)&&(!essentialOnly||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))));
+ const filtered=all.filter(d=>(!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||Number(d.discountPercent)>=70)&&(!essentialOnly||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))));
  const sort=$('sort').value;filtered.sort((a,b)=>sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0));
  $('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);
- $('status').textContent=filtered.length+' saved and recent discoveries · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated);
+ $('status').textContent=filtered.length+($('newOnly').checked?' new finds from latest scan':' saved and recent discoveries')+' · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated);
  detailIndex=filtered;$('products').innerHTML=filtered.map((d,i)=>compactCard(d,'deal',i)).join('')||'<div class="empty">No matching finds. Try clearing your filters.</div>';
 }
 async function loadAmazon(){ $('status').textContent='Checking latest Amazon results…';try{const res=await fetch('data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Scan data not available');data=await res.json();render();loadInbox()}catch(e){$('status').textContent='Could not load Amazon scan: '+e.message;$('products').innerHTML='<div class="empty">Try refreshing in a moment.</div>'}}
@@ -440,6 +440,8 @@ function renderLeads(){const q=$('leadfind').value.toLowerCase();const filtered=
 $('leadfind').addEventListener('input',renderLeads);$('leadreload').addEventListener('click',loadLeads);
 // Refresh the remote feed automatically; re-rendering alone cannot fetch new scans.
 loadAmazon();
+loadCandidates();
+$('newOnly').addEventListener('change',render);
 if(['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'].includes(requestedTab))selectTab(requestedTab);
 lastRenderTimer=setInterval(()=>{if(data)render()},60000);
 setInterval(()=>{if(!document.hidden){loadAmazon();if(!$('panel-inbox').hidden)loadInbox()}},5*60*1000);
