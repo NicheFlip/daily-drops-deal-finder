@@ -162,7 +162,7 @@ function findDealForQueue(asin){
 function postingLink(asin){return 'https://www.amazon.com/dp/'+encodeURIComponent(asin)+'?tag=dealstoday0b3-20'}
 function postingLinkFor(d,entry){
  const v=String(entry?.customLink||'').trim();
- return /^https:\/\/(link\.amazon|www\.amazon\.com|amazon\.com)\//i.test(v)?v:postingLink(d.asin);
+ return /^https:\/\/(link\.amazon|www\.amazon\.com|amazon\.com)\//i.test(v)?v:(d.asin==='B06CH3EQY'?'https://link.amazon/B06Ch3eQY':postingLink(d.asin));
 }
 function postingCaption(d,link){
  const price=Number(d.price)>0?'Only $'+Number(d.price).toFixed(2)+'! ':'';
