@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-13T20:14:09.885367+00:00",
+  "updated": "2026-11-13T22:45:05.764607+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HCV3N8P8",
+      "title": "ZIUTY Wireless Earbuds, Bluetooth 5.4 Headphones, Deep Bass Stereo Ear Buds | 4 ENC Noise Cancelling Mic, 48H Playtime, LED Display, IPX7 Waterproof, In-ear Earphone for Sports Wor",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0HCV3N8P8",
+      "imageUrl": "https://m.media-amazon.com/images/I/41-xmaOsquL._SL160_.jpg",
+      "price": 13.99,
+      "referencePrice": 119.99,
+      "discountPercent": 88,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-13T22:45:05.764607+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B08R9LK9K3",
       "title": "Lefant Robot Vacuum Cleaner, Strong Suction, 120 Mins Runtime, Slim, Low Noise, Automatic Self-Charging, Wi-Fi/App/Alexa Control, Ideal for Pet Hair Hard Floor and Daily Cleaning, ",
