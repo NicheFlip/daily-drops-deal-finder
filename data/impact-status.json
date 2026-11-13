@@ -1,0 +1,129 @@
+{
+  "checkedAt": "2026-11-13T22:35:00.581496+00:00",
+  "connection": "connected",
+  "productsReturned": 306,
+  "searchesAttempted": 12,
+  "diagnostics": [
+    {
+      "search": "all",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "all",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "household",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "household",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "cleaning",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "cleaning",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "laundry",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "laundry",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "kitchen",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "kitchen",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "bedding",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "bedding",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "toys",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "toys",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "kids clothing",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "kids clothing",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "coffee",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "coffee",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "storage",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "storage",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "beauty",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "beauty",
+      "page": 2,
+      "returned": 100
+    },
+    {
+      "search": "pet supplies",
+      "page": 1,
+      "returned": 100
+    },
+    {
+      "search": "pet supplies",
+      "page": 2,
+      "returned": 100
+    }
+  ],
+  "note": "Product leads saved; not verified checkout prices or retailer-specific clearance."
+}
