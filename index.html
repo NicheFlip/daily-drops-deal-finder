@@ -63,7 +63,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <h1>New & improved deal candidates</h1><p class="muted small">First-time API discoveries and observed price drops from the latest scan. Unchanged offers are excluded. Research only—not checkout-verified.</p>
 <div class="actions"><p id="candidateStatus" class="muted small" role="status">Open this tab to load new finds.</p><button type="button" class="btn secondary" id="candidateRefresh">Refresh candidates</button></div>
 <div id="candidateResults" class="grid"></div></section>
-<section id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden><h1>Observed Price History</h1><p class="muted small">Historical Amazon API snapshots from PostgreSQL. Not live checkout prices; a low is only the lowest our scanner has observed.</p><div class="actions"><input id="historyFind" type="search" placeholder="Search tracked products…" aria-label="Search tracked products"><button type="button" class="btn secondary" id="historyRefresh">Refresh history</button></div><p id="historyStatus" role="status" class="muted small">Open this tab to load history.</p><div id="historyResults" class="grid"></div></section>
+<section id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden><h1>Observed Price History</h1><p class="muted small">Historical Amazon API snapshots from PostgreSQL. Not live checkout prices; a low is only the lowest our scanner has observed.</p><div class="actions"><input id="historyFind" type="search" placeholder="Search tracked products…" aria-label="Search tracked products"><button type="button" class="btn secondary" id="historyRefresh">Refresh history</button></div><p id="historyStatus" role="status" class="muted small">Open this tab to load history.</p><div class="actions"><button type="button" class="btn secondary" id="exportJudgments">Export my Deal / No Deal decisions</button><span class="small muted">Saved on this browser only. Export a backup before clearing browser data.</span></div><div id="historyResults" class="grid"></div></section>
 <section id="panel-walmart" role="tabpanel" aria-labelledby="tab-walmart" hidden>
 <h1>Walmart Radar</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
 <div class="stats"><div class="stat"><strong id="walmartRadarCount">—</strong><span>Research searches</span></div><div class="stat"><strong id="walmartRadarUpdated">—</strong><span>Last refresh</span></div><div class="stat"><strong>Not linked</strong><span>Product API</span></div></div><div class="actions"><input id="walmartRadarFind" type="search" placeholder="Search saved Walmart research…" aria-label="Search Walmart radar"><button type="button" class="btn secondary" id="walmartRadarRefresh">↻ Refresh radar</button></div><p id="walmartRadarStatus" class="muted small" role="status">Open this tab to load Walmart research.</p><div id="walmartRadarResults" class="grid"></div>
@@ -130,6 +130,28 @@ let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;let detailI
 function selectTab(name){for(const n of ['deals','inbox','candidates','history','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='walmart')loadWalmartRadar();if(name==='history')loadHistory();if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();if(location.hash!=='#'+name)history.replaceState(null,'','#'+name);window.scrollTo({top:0,behavior:'instant'})}
 for(const n of ['deals','inbox','candidates','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
 const tabNames=['deals','inbox','candidates','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
+const JUDGMENT_KEY='dailyDropsDealJudgmentsV1';
+function readJudgments(){try{const obj=JSON.parse(localStorage.getItem(JUDGMENT_KEY)||'{}');return obj&&typeof obj==='object'&&!Array.isArray(obj)?obj:{}}catch{return {}}}
+function saveJudgment(asin,choice){
+ if(!/^[A-Z0-9]{10}$/.test(asin)||!['deal','no-deal','clear'].includes(choice))return;
+ const all=readJudgments();
+ if(choice==='clear')delete all[asin];
+ else all[asin]={choice,reason:choice==='no-deal'?'Price does not reflect realistic value':'Worth checking',updatedAt:new Date().toISOString()};
+ try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all));renderHistory()}catch{$('historyStatus').textContent='Could not save decision. Check browser storage settings.'}
+}
+$('historyResults').addEventListener('click',e=>{
+ const btn=e.target.closest('button[data-judgment]');if(!btn)return;
+ saveJudgment(btn.dataset.asin,btn.dataset.judgment);
+});
+$('exportJudgments').addEventListener('click',()=>{
+ const data=JSON.stringify({format:'daily-drops-judgments-v1',exportedAt:new Date().toISOString(),judgments:readJudgments()},null,2);
+ const blob=new Blob([data],{type:'application/json'});
+ const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='daily-drops-deal-decisions.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+function judgmentButtons(d){
+ const choice=readJudgments()[d.asin]?.choice||'';
+ return '<div class="actions" role="group" aria-label="Judge deal for '+esc(d.title)+'"><button type="button" class="btn secondary" data-asin="'+esc(d.asin)+'" data-judgment="deal" aria-pressed="'+(choice==='deal')+'">✓ Deal</button><button type="button" class="btn secondary" data-asin="'+esc(d.asin)+'" data-judgment="no-deal" aria-pressed="'+(choice==='no-deal')+'">✕ No Deal</button>'+(choice?'<button type="button" class="btn secondary" data-asin="'+esc(d.asin)+'" data-judgment="clear">Clear</button>':'')+'</div>'+(choice?'<p class="small muted">Your decision: '+(choice==='deal'?'Deal':'No Deal')+' · Saved on this device</p>':'');
+}
 let historyRows=[];
 async function loadHistory(){
  $('historyStatus').textContent='Loading database history…';
@@ -145,7 +167,7 @@ function renderHistory(){
  const q=$('historyFind').value.toLowerCase().trim();
  const rows=historyRows.filter(d=>!q||String(d.title||'').toLowerCase().includes(q)||String(d.asin).toLowerCase().includes(q));
  $('historyStatus').textContent=rows.length+' tracked products · historical observations only';
- $('historyResults').innerHTML=rows.map(d=>'<article class="card product">'+imageMarkup(d)+'<h3>'+esc(d.title)+'</h3><p class="small muted">Lowest observed: <strong>'+cash(d.observedLow)+'</strong> · Latest observed: '+cash(d.latestObserved)+'</p><p class="small muted">'+esc(d.observations)+' observations · Last seen '+esc(date(d.checkedAt))+'</p><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current Amazon price ↗</a></article>').join('')||'<div class="empty">No tracked products match your search.</div>';
+ $('historyResults').innerHTML=rows.map(d=>'<article class="card product">'+imageMarkup(d)+'<h3>'+esc(d.title)+'</h3><p class="small muted">Lowest observed: <strong>'+cash(d.observedLow)+'</strong> · Latest observed: '+cash(d.latestObserved)+'</p><p class="small muted">'+esc(d.observations)+' observations · Last seen '+esc(date(d.checkedAt))+'</p>'+judgmentButtons(d)+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current Amazon price ↗</a></article>').join('')||'<div class="empty">No tracked products match your search.</div>';
 }
 $('historyFind').addEventListener('input',renderHistory);
 $('historyRefresh').addEventListener('click',loadHistory);
