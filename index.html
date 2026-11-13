@@ -139,7 +139,7 @@ function saveJudgment(asin,choice,reason){
  const all=readJudgments();
  if(choice==='clear')delete all[asin];
  else all[asin]={...all[asin],choice,reason:reason||({deal:'Worth sharing', 'no-deal':'Inflated reference price',pass:'Not a fit for my page'}[choice]),updatedAt:new Date().toISOString(),product:choice==='deal'?(findDealForQueue(asin)||all[asin]?.product||null):all[asin]?.product};
- try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all));if(data)render();renderPostingQueue();if(historyRows.length)renderHistory();if(inboxEvents.length)renderInbox();if(!$('detailOverlay').hidden){const index=detailIndex.findIndex(d=>d.asin===asin);if(index>=0)showDetail(index)}}
+ try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all));if(data)render();renderPostingQueue();if(historyRows.length)renderHistory();if(inboxEvents.length)renderInbox();if(!$('detailOverlay').hidden){const index=detailIndex.findIndex(d=>d.asin===asin);if(index>=0)showDetail(index)}if(choice==='deal'){if(!$('detailOverlay').hidden)closeDetail();selectTab('posting')}}
  catch{alert('Could not save decision. Check browser storage settings.')}
 }
 function handleJudgmentClick(e){
