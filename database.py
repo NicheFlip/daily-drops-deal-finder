@@ -69,6 +69,6 @@ def persist(deals,discoveries=()):
  print('PostgreSQL observation archive updated.')
  return True
 if __name__=='__main__':
- deals=json.loads((ROOT/'data'/'amazon-deals.json').read_text()).get('deals',[])
+ deals=json.loads((ROOT/'data'/'amazon-all-products.json').read_text()).get('products',[]) if (ROOT/'data'/'amazon-all-products.json').exists() else json.loads((ROOT/'data'/'amazon-deals.json').read_text()).get('deals',[])
  archive=json.loads((ROOT/'data'/'amazon-discovery-archive.json').read_text()).get('events',[])
  persist(deals,archive)
