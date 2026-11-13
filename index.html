@@ -362,7 +362,7 @@ async function loadWalmartRadar(){loadWalmartProducts();
   walmartRadarRows=(Array.isArray(payload.searches)?payload.searches:[]).filter(d=>{try{const u=new URL(d.url);return u.protocol==='https:'&&(u.hostname==='www.walmart.com'||u.hostname==='walmart.com')}catch{return false}});
   $('walmartRadarUpdated').textContent=date(payload.updated);
   renderWalmartRadar();
- }catch(e){$('walmartRadarStatus').textContent=e.message;$('walmartRadarResults').innerHTML='<div class="empty">Run the Walmart research workflow, then refresh this radar.</div>'}
+ }catch(e){$('walmartRadarStatus').textContent='Walmart catalog could not load on this page ('+e.message+'). The research links below are still available.';$('walmartRadarResults').innerHTML='<div class="empty">The saved catalog could not be loaded. Try refreshing this page; you can still use the Walmart search tools below.</div>'}
 }
 $('walmartRadarRefresh').addEventListener('click',loadWalmartRadar);
 $('walmartRadarFind').addEventListener('input',()=>{renderWalmartRadar();renderWalmartProducts()});
@@ -460,14 +460,14 @@ let impactLeads=[];
 function impactRender(){
  const q=document.getElementById('impactFilter').value.toLowerCase().trim();
  const rows=impactLeads.filter(d=>String(d.title||'').toLowerCase().includes(q)||String(d.category||'').toLowerCase().includes(q)).sort((a,b)=>Number(b.score||0)-Number(a.score||0));
- document.getElementById('impactStatus').textContent=rows.length+' Impact research leads · Ranked by deal signal. Prices and discounts are provider-reported, not checkout verified.';
+ document.getElementById('impactStatus').textContent=rows.length+' of '+impactLeads.length+' Impact research leads · Ranked by deal signal. Prices and discounts are provider-reported, not checkout verified.';
  document.getElementById('impactResults').innerHTML=rows.slice(0,60).map(d=>{
   const price=Number(d.price);
   const discount=Number(d.discountReported||0);
   const image=String(d.image||'');
   const photo=image.startsWith('https://')?'<img src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:150px;object-fit:contain;background:white;border-radius:8px">':'';
   return '<article class="card" style="padding:12px">'+photo+'<p class="small muted">Impact marketplace · Research only</p><strong>'+esc(d.title)+'</strong><p><strong style="font-size:1.3rem">'+(Number.isFinite(price)?'$'+price.toFixed(2):'Price unavailable')+'</strong> · '+(Number.isFinite(discount)?discount.toFixed(0):'0')+'% reported discount</p><p class="small muted">Score '+Number(d.score||0)+'/100 · '+(d.inStockSignal?'Stock signal':'Stock unconfirmed')+'</p><p class="small muted">Verify exact item, retailer, current price and affiliate link before posting.</p></article>';
- }).join('')||'<p>No matching research leads.</p>';
+ }).join('')||(impactLeads.length?'<p>No products match this search. Clear the Impact search box to show all '+impactLeads.length+' leads.</p>':'<p>The Impact feed loaded but contains no products. Run the Impact research workflow to refresh it.</p>');
 }
 async function impactLoad(){
  const status=document.getElementById('impactStatus');status.textContent='Loading Impact leads…';
