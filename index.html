@@ -124,7 +124,7 @@ const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
 let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;let detailIndex=[];let candidatesLoaded=false;let historyData=null;
 function selectTab(name){for(const n of ['deals','inbox','candidates','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
-for(const n of ['deals','candidates','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
+for(const n of ['deals','inbox','candidates','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
 const tabNames=['deals','inbox','candidates','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 let inboxEvents=[];
 $('openInbox').addEventListener('click',()=>selectTab('inbox'));
@@ -205,7 +205,7 @@ const walmartOfficialDeals=[
 ['Fashion clearance','https://www.walmart.com/shop/deals/clearance/clothing-and-accessories'],
 ['All clearance','https://www.walmart.com/shop/deals/clearance']
 ];
-function dealQuery(q){const v=q.trim();return /\\b(deal|deals|clearance|rollback|sale|markdown|discount)\\b/i.test(v)?v:v+' deals'}
+function dealQuery(q){const v=q.trim();return /\b(deal|deals|clearance|rollback|sale|markdown|discount)\b/i.test(v)?v:v+' deals'}
 function walmartUrl(q,low=false){const url=new URL('https://www.walmart.com/search');url.searchParams.set('q',q);if(low)url.searchParams.set('sort','price_low');return url.href}
 function walmartLinks(){const q=dealQuery($('walmartTerm').value.trim()||'clearance');$('walmartLinks').innerHTML=link('Find '+q,walmartUrl(q))+link('Compare lowest prices',walmartUrl(q,true))}
 $('walmartTerm').addEventListener('input',walmartLinks);walmartLinks();
