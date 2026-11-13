@@ -7,7 +7,7 @@ on:
       - 'amazon_scan.py'
       - 'scan_health.py'
   schedule:
-    - cron: '37 * * * *'
+    - cron: '11,41 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -57,7 +57,7 @@ jobs:
           set -euo pipefail
           git config user.name "deal-scanner[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/amazon-scan-health.json data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json
+          git add data/amazon-all-products.json data/amazon-scan-health.json data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json
           if git diff --cached --quiet; then
             echo "::error::No scan files changed. Refusing to report a successful refresh."
             exit 1
