@@ -36,6 +36,7 @@ async function load(){
   const cats=[...new Set(rows.map(d=>d.category).filter(Boolean))].sort();
   const old=$('category').value;$('category').innerHTML='<option value="">All categories</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');if(cats.includes(old))$('category').value=old;
   $('preferences').innerHTML=cats.map(c=>'<label class="small" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" data-pref="'+esc(c)+'" '+(selectedCategories.includes(c)?'checked':'')+'>'+esc(c)+'</label>').join('');
+  try{const featureRes=await fetch('./data/featured-finds.json?ts='+Date.now(),{cache:'no-store'});if(featureRes.ok){const featureData=await featureRes.json();const ids=new Set((Array.isArray(featureData.asins)?featureData.asins:[]).filter(validAsin));featured=rows.filter(d=>ids.has(d.asin));$('featuredSection').hidden=featured.length===0;$('featuredResults').innerHTML=featured.map(card).join('')}}catch{}
   draw();
  }catch(e){$('status').textContent='Unable to load the latest finds right now.';$('results').innerHTML='<p class="empty">Please try refreshing later.</p>'}
 }
