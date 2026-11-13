@@ -143,7 +143,7 @@ function saveJudgment(asin,choice,reason){
 function handleJudgmentClick(e){
  const btn=e.target.closest('button[data-judgment]');if(!btn)return;
  const card=btn.closest('[data-review-card]');const reason=card?.querySelector('[data-review-reason]')?.value;
- saveJudgment(btn.dataset.asin,btn.dataset.judgment,reason);
+ saveJudgment(btn.dataset.asin,btn.dataset.judgment,btn.dataset.judgment==='clear'?null:(reason==='Inflated reference price'&&btn.dataset.judgment!=='no-deal'?null:reason));
 }
 for(const id of ['historyResults','products','inboxResults','candidateResults','detailBody'])$(id).addEventListener('click',handleJudgmentClick);
 $('exportJudgments').addEventListener('click',()=>{
