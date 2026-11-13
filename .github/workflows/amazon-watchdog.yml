@@ -1,0 +1,49 @@
+name: Amazon scan watchdog
+on:
+  schedule:
+    - cron: '7,47 * * * *'
+  workflow_dispatch:
+permissions:
+  actions: write
+  contents: read
+concurrency:
+  group: amazon-scan-watchdog
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check feed freshness and recover a missed scan
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          python - <<'PY' > /tmp/scan-watchdog.txt
+          import datetime,json,pathlib
+          path=pathlib.Path('data/amazon-deals.json')
+          try:
+              updated=json.loads(path.read_text())['updated']
+              last=datetime.datetime.fromisoformat(updated.replace('Z','+00:00'))
+              age=(datetime.datetime.now(datetime.timezone.utc)-last).total_seconds()/60
+              print(f'Feed age: {age:.1f} minutes')
+              print('STALE' if age>100 else 'FRESH')
+          except (OSError,ValueError,KeyError,TypeError) as exc:
+              print('Feed timestamp unavailable: '+type(exc).__name__)
+              print('STALE')
+          PY
+          cat /tmp/scan-watchdog.txt
+          if grep -q '^STALE$' /tmp/scan-watchdog.txt; then
+            echo 'Checking for an active scan before dispatching.'
+            running="$(gh run list --workflow amazon-scan.yml --limit 10 --json status --jq '[.[] | select(.status=="in_progress" or .status=="queued" or .status=="waiting" or .status=="pending")] | length')"
+            if [ "$running" = "0" ]; then
+              gh workflow run amazon-scan.yml --ref main
+              echo 'Dispatched recovery scan.'
+            else
+              echo 'Scanner already queued or running.'
+            fi
+          else
+            echo 'Feed is fresh; no recovery needed.'
+          fi
