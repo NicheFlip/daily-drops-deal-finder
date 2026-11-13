@@ -46,7 +46,8 @@ class EngineTests(unittest.TestCase):
         self.assertTrue(reduced['newObservedLow'])
         archive=json.loads(candidate_queue.ARCHIVE.read_text())['events']
         self.assertEqual(len(archive),2)
-        self.assertEqual(archive[0]['reason'],'Observed price drop')
+        self.assertCountEqual([entry['reason'] for entry in archive],['First observation','Observed price drop'])
+        self.assertEqual(next(entry for entry in archive if entry['reason']=='Observed price drop')['previousObservedPrice'],60)
 
     def test_history_keeps_observations_and_ignores_unchanged(self):
         first=self.deal(60)
