@@ -157,7 +157,7 @@ $('exportJudgments').addEventListener('click',()=>{
 });
 
 function findDealForQueue(asin){
- const rows=[...(data?.deals||[]),...inboxEvents,...historyRows,...detailIndex];
+ const rows=[...detailIndex,...(data?.deals||[]),...inboxEvents,...historyRows];
  const d=rows.find(x=>x.asin===asin);if(!d)return null;
  return {asin,title:String(d.title||'Amazon find').slice(0,240),price:Number(d.price??d.latestObserved)||null,imageUrl:d.imageUrl||d.image||null,checkedAt:d.checkedAt||null};
 }
