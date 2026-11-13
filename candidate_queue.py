@@ -44,7 +44,7 @@ def build_queue(observed, stamp):
         if reason:
             candidates.append({
                 'asin':asin,'title':deal['title'],'category':deal['category'],
-                'url':deal['url'],'price':price,
+                'url':deal['url'],'imageUrl':deal.get('imageUrl'),'price':price,
                 'referencePrice':deal['referencePrice'],
                 'discountPercent':deal['discountPercent'],
                 'dealScore':deal.get('dealScore',0),
