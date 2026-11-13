@@ -24,13 +24,32 @@ jobs:
           IMPACT_ACCOUNT_SID: ${{ secrets.IMPACT_ACCOUNT_SID }}
           IMPACT_API_TOKEN: ${{ secrets.IMPACT_API_TOKEN }}
         run: python impact_discover.py
-      - name: Publish safe research feed
+      - name: Publish safe research feed without merge conflicts
         run: |
+          set -euo pipefail
+          cp data/impact-deals.json /tmp/impact-deals.json
+          cp data/impact-status.json /tmp/impact-status.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/impact-deals.json data/impact-status.json
-          if ! git diff --cached --quiet; then
+          # Refresh the base BEFORE copying generated files; never rebase generated JSON.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "${GITHUB_REF_NAME}"
+            git reset --hard "origin/${GITHUB_REF_NAME}"
+            mkdir -p data
+            cp /tmp/impact-deals.json data/impact-deals.json
+            cp /tmp/impact-status.json data/impact-status.json
+            git add data/impact-deals.json data/impact-status.json
+            if git diff --cached --quiet; then
+              echo "Impact research feed already current."
+              exit 0
+            fi
             git commit -m "Update Impact research leads"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          fi
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "Impact research feed published."
+              exit 0
+            fi
+            echo "Concurrent repository update; retrying against latest main..."
+            sleep 2
+          done
+          echo "Could not publish after retries."
+          exit 1
