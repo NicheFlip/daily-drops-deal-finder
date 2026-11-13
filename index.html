@@ -160,11 +160,15 @@ function findDealForQueue(asin){
  return {asin,title:String(d.title||'Amazon find').slice(0,240),price:Number(d.price??d.latestObserved)||null,imageUrl:d.imageUrl||d.image||null,checkedAt:d.checkedAt||null};
 }
 function postingLink(asin){return 'https://www.amazon.com/dp/'+encodeURIComponent(asin)+'?tag=dealstoday0b3-20'}
-function postingCaption(d){
- const price=Number(d.price)>0?'Observed at $'+Number(d.price).toFixed(2)+' when scanned. ':'';
- return ['Found one worth a closer look!','',d.title,'',price+'Prices and availability can change. Please verify the current offer.','','Link in comments!','','Follow @Daily Drops with Heather for more finds.','','#DailyDropsWithHeather #AmazonFinds #SmartShopping #DealFinds','','As an Amazon Associate, I earn from qualifying purchases.'].join(String.fromCharCode(10));
+function postingLinkFor(d,entry){
+ const v=String(entry?.customLink||'').trim();
+ return /^https:\/\/(link\.amazon|www\.amazon\.com|amazon\.com)\//i.test(v)?v:postingLink(d.asin);
 }
-function postingComment(d){return 'Amazon affiliate link: '+postingLink(d.asin)+String.fromCharCode(10)+'As an Amazon Associate, I earn from qualifying purchases.'}
+function postingCaption(d,link){
+ const price=Number(d.price)>0?'Only $'+Number(d.price).toFixed(2)+'! ':'';
+ return [price+'Found one worth a closer look!','',d.title,'','👉 '+link,'','Follow Daily Drops with Heather for more finds.','','#DailyDropsWithHeather #AmazonFinds #SmartShopping #DealFinds','','As an Amazon Associate, I earn from qualifying purchases.'].join(String.fromCharCode(10));
+}
+function postingComment(d,link){return '👉 '+(link||postingLink(d.asin))}
 function updatePostingCount(){const n=Object.values(readJudgments()).filter(x=>x?.choice==='deal').length;const node=$('postingCount');if(node)node.textContent=n}
 function renderPostingQueue(){
  updatePostingCount();
@@ -172,31 +176,53 @@ function renderPostingQueue(){
  $('postingStatus').textContent=entries.length+' selected products · saved on this browser only';
  $('postingResults').innerHTML=entries.map(([asin,x])=>{
   const d=x.product||findDealForQueue(asin)||{asin,title:'Amazon product '+asin,price:null};
-  return '<article class="card product" data-post-asin="'+esc(asin)+'"><h3>'+esc(d.title||'Amazon product')+'</h3><p class="small muted">Last captured price: '+(d.price?cash(d.price):'Unknown')+' · Historical snapshot; recheck before posting.</p>'+
+  const link=postingLinkFor(d,x);
+  return '<article class="card product" data-post-asin="'+esc(asin)+'"><h3>'+esc(d.title||'Amazon product')+'</h3><p class="small muted">Last scanned: '+(d.price?cash(d.price):'Unknown')+' · Confirm current offer before copying.</p>'+
   (d.imageUrl&&/^https:/.test(d.imageUrl)?'<img loading="lazy" referrerpolicy="no-referrer" src="'+esc(d.imageUrl)+'" alt="Original product image" style="max-height:240px;max-width:100%;object-fit:contain">':'<p class="small muted">No original product image available.</p>')+
-  '<label class="small muted">Editable Facebook caption<textarea data-post-caption rows="9">'+esc(postingCaption(d))+'</textarea></label>'+
-  '<button class="btn" type="button" data-post-action="caption">Copy caption</button> <button class="btn secondary" type="button" data-post-action="comment">Copy affiliate comment</button> <a href="'+esc(postingLink(asin))+'" target="_blank" rel="noopener noreferrer">Verify on Amazon</a>'+
-  '<p class="small muted">Graphic uses the original product photo only if export is permitted. Otherwise it is text-only.</p><button class="btn secondary" type="button" data-post-action="graphic">Download 1080x1350 graphic</button> <button class="btn secondary" type="button" data-post-action="remove">Remove from queue</button><p data-post-feedback class="small muted" role="status"></p></article>';
+  '<label class="small muted">Product affiliate link (optional: paste verified Amazon short link)<input data-post-link type="url" value="'+esc(link)+'" aria-label="Product affiliate link"></label>'+
+  '<label class="small muted">Editable caption — link included<textarea data-post-caption rows="9">'+esc(x.customCaption||postingCaption(d,link))+'</textarea></label>'+
+  '<button class="btn" type="button" data-post-action="caption">Copy complete post (1 click)</button> <button class="btn secondary" type="button" data-post-action="comment">Copy link only</button> <a href="'+esc(postingLink(asin))+'" target="_blank" rel="noopener noreferrer">Verify on Amazon</a>'+
+  '<p class="small muted">Download a clean 1080 × 1350 graphic. Original product photo is preserved; if export is blocked, the graphic is text-only.</p><button class="btn secondary" type="button" data-post-action="graphic">Download sale graphic</button> <button class="btn secondary" type="button" data-post-action="remove">Remove from queue</button><p data-post-feedback class="small muted" role="status"></p></article>';
  }).join('')||'<div class="empty">No selected deals yet. Open Deals and choose Deal to add a product here.</div>';
 }
+$('postingResults').addEventListener('change',e=>{
+ const card=e.target.closest('[data-post-asin]');if(!card)return;
+ const asin=card.dataset.postAsin,all=readJudgments(),entry=all[asin];if(!entry)return;
+ if(e.target.matches('[data-post-link]')){
+  const link=e.target.value.trim();
+  if(!/^https:\/\/(link\.amazon|www\.amazon\.com|amazon\.com)\//i.test(link)){card.querySelector('[data-post-feedback]').textContent='Use a valid Amazon product or affiliate link.';return}
+  entry.customLink=link;
+  const d=entry.product||findDealForQueue(asin)||{asin,title:'Amazon product '+asin};
+  const textarea=card.querySelector('[data-post-caption]');textarea.value=textarea.value.replace(/https:\/\/(?:link\.amazon|(?:www\.)?amazon\.com)\/[^\s]+/i,link);
+  entry.customCaption=textarea.value;
+ }else if(e.target.matches('[data-post-caption]'))entry.customCaption=e.target.value;
+ try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all))}catch{}
+});
 async function postingGraphic(d){
  const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
- const c=canvas.getContext('2d');c.fillStyle='#faf7f1';c.fillRect(0,0,1080,1350);
- c.fillStyle='#20242a';c.font='bold 42px Arial';c.fillText('DAILY DROPS WITH HEATHER',64,94);
- c.fillStyle='#6f243c';c.fillRect(64,125,952,6);
+ const c=canvas.getContext('2d');c.fillStyle='#f8f5ef';c.fillRect(0,0,1080,1350);
+ c.fillStyle='#27242a';c.font='bold 27px Arial';c.fillText('DAILY DROPS WITH HEATHER',62,77);
+ c.fillStyle='#6b203d';c.fillRect(62,99,956,3);
+ const name=String(d.title||'Amazon find');
+ const headline=name.split(/[,|]/)[0].trim().slice(0,76);
+ c.fillStyle='#262329';c.font='bold 44px Arial';
+ let words=headline.split(/\s+/),line='',y=180;
+ for(const word of words){if(c.measureText(line+' '+word).width>900){c.fillText(line,62,y);y+=54;line=word}else line+=(line?' ':'')+word}
+ if(line)c.fillText(line,62,y);
+ const top=Math.max(300,y+42),height=920-top;
+ c.fillStyle='#ffffff';c.fillRect(62,top,956,height);
  let hasImage=false;
  if(d.imageUrl&&/^https:/.test(d.imageUrl)){
   try{const im=new Image();im.crossOrigin='anonymous';im.referrerPolicy='no-referrer';await new Promise((resolve,reject)=>{im.onload=resolve;im.onerror=reject;im.src=d.imageUrl});
-   const scale=Math.min(900/im.naturalWidth,720/im.naturalHeight);const w=im.naturalWidth*scale,h=im.naturalHeight*scale;
-   c.fillStyle='#fff';c.fillRect(64,160,952,770);c.drawImage(im,(1080-w)/2,160+(770-h)/2,w,h);hasImage=true;
-  }catch{hasImage=false}
+   const scale=Math.min(916/im.naturalWidth,(height-40)/im.naturalHeight);const w=im.naturalWidth*scale,h=im.naturalHeight*scale;
+   c.drawImage(im,(1080-w)/2,top+(height-h)/2,w,h);hasImage=true;
+  }catch{}
  }
- if(!hasImage){c.fillStyle='#fff';c.fillRect(64,160,952,770);c.fillStyle='#5b6470';c.font='30px Arial';c.fillText('Product photo unavailable for export',135,540)}
- c.fillStyle='#20242a';c.font='bold 40px Arial';const words=String(d.title||'Amazon find').split(' ');let line='',y=1000;
- for(const word of words){if(c.measureText(line+' '+word).width>940){c.fillText(line,64,y);y+=50;line=word;if(y>1140)break}else line+=(line?' ':'')+word}
- if(y<=1140)c.fillText(line,64,y);
- c.fillStyle='#6f243c';c.font='bold 60px Arial';if(Number(d.price)>0)c.fillText('$'+Number(d.price).toFixed(2)+'*',64,1220);
- c.fillStyle='#555';c.font='24px Arial';c.fillText('*Observed snapshot; verify current offer before posting',64,1295);
+ if(!hasImage){c.fillStyle='#777';c.font='28px Arial';c.fillText('Product photo unavailable for export',135,top+height/2)}
+ c.fillStyle='#6b203d';c.fillRect(62,966,956,235);
+ c.fillStyle='#fff';c.font='bold 30px Arial';c.fillText('A FIND WORTH A LOOK',96,1020);
+ c.font='bold 108px Arial';c.fillText(Number(d.price)>0?'$'+Number(d.price).toFixed(2):'CHECK PRICE',92,1138);
+ c.fillStyle='#625d63';c.font='23px Arial';c.fillText('Price observed during scan · Confirm current offer',62,1258);
  const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw Error('Graphic export failed');
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='daily-drops-'+d.asin+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
  return hasImage;
@@ -209,7 +235,7 @@ $('postingResults').addEventListener('click',async e=>{
  try{
   if(btn.dataset.postAction==='remove'){saveJudgment(asin,'clear');return}
   if(btn.dataset.postAction==='caption'){await navigator.clipboard.writeText(card.querySelector('[data-post-caption]').value);feedback.textContent='Caption copied. Review offer before posting.'}
-  if(btn.dataset.postAction==='comment'){await navigator.clipboard.writeText(postingComment(d));feedback.textContent='Affiliate comment copied.'}
+  if(btn.dataset.postAction==='comment'){await navigator.clipboard.writeText(postingComment(d,card.querySelector('[data-post-link]').value));feedback.textContent='Affiliate comment copied.'}
   if(btn.dataset.postAction==='graphic'){btn.disabled=true;const imageUsed=await postingGraphic(d);feedback.textContent=imageUsed?'Graphic downloaded with original product image.':'Text-only graphic downloaded; original image export was blocked.'}
  }catch(err){feedback.textContent='Action failed: '+err.message}finally{btn.disabled=false}
 });
