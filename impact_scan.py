@@ -26,15 +26,18 @@ def main():
             # Report schema keys only, never product content, links, or credentials.
             status["responseFields"]=sorted(str(k) for k in payload.keys())[:40]
             # Impact API collections can be nested; count only actual returned records.
-            for key in ("Products","products","Items","items"):
+            for key in ("Results","results","Products","products","Items","items"):
                 items=payload.get(key)
                 if isinstance(items,list):
                     status["productsReturned"]=len(items)
                     if items and isinstance(items[0],dict):
                         status["productFields"]=sorted(str(k) for k in items[0].keys())[:60]
                     break
+            status["reportedTotal"]=payload.get("Total") if isinstance(payload.get("Total"),int) else None
+            status["page"]=payload.get("Page") if isinstance(payload.get("Page"),int) else None
+            status["pageSize"]=payload.get("PageSize") if isinstance(payload.get("PageSize"),int) else None
             status["connection"]="connected"
-            status["note"]="API accepted request; product counts may be page-limited. Catalog access and price freshness require further validation."
+            status["note"]="API accepted request; Results collection counted. Catalog access and price freshness require further validation."
         else:
             status["connection"]="connected"
             status["note"]="API returned an unexpected shape; inspect privately before product import."
