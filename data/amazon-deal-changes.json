@@ -1,5 +1,16 @@
 {
-  "updated": "2026-11-13T18:00:31.428057+00:00",
-  "changes": [],
+  "updated": "2026-11-13T19:52:34.339710+00:00",
+  "changes": [
+    {
+      "asin": "B0HGNPTSMT",
+      "title": "Dyson V9 Motorbar\u2122 Cordless Vacuum",
+      "previousObservedPrice": 269.98,
+      "currentObservedPrice": 269.95,
+      "dropPercent": 0.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-13T19:52:34.339710+00:00",
+      "url": "https://www.amazon.com/dp/B0HGNPTSMT"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
