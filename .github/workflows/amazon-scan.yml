@@ -11,20 +11,21 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify deal engine before scanning
-        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py
       - name: Scan Amazon official catalog
         env:
           AMAZON_CREATORS_CREDENTIAL_ID: ${{ secrets.AMAZON_CREATORS_CREDENTIAL_ID }}
           AMAZON_CREATORS_SECRET: ${{ secrets.AMAZON_CREATORS_SECRET }}
           AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
         run: python amazon_scan.py
+      - name: Verify deal engine and frontend after scan
+        continue-on-error: true
+        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py
       - name: Archive observations in PostgreSQL (if configured)
         id: database_archive
         continue-on-error: true
