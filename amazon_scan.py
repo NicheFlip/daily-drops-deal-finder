@@ -78,25 +78,31 @@ def scan():
     seasonal_offset=int(state.get('seasonalOffset',0))%len(BLACK_FRIDAY_QUERIES)
     demand_offset=int(state.get('demandOffset',0))%len(HIGH_DEMAND_QUERIES)
     budget=max(0,min(PER_RUN,MAX_DAILY_CALLS-calls))
+    run_number=int(state.get('runNumber',0))
     previous={}
     if OUT.exists():
         try:previous={d['asin']:d for d in json.loads(OUT.read_text()).get('deals',[]) if d.get('asin')}
         except (ValueError,KeyError):pass
-    # Drop old prices rather than show them as current.
+    # Keep a rolling discovery window; each product retains its original checkedAt.
+    # Older observations are not represented as fresh prices.
     fresh={}
     for asin,d in previous.items():
         try:
             checked=datetime.datetime.fromisoformat(d['checkedAt'])
-            if (NOW-checked).total_seconds()<3600:fresh[asin]=d
+            if (NOW-checked).total_seconds()<6*3600:fresh[asin]=d
         except (KeyError,ValueError,TypeError):pass
     errors=[]; scanned=0; completed=0; newly=0
     observed={}
     baseline={}
-    essential_budget=min(12,budget)
+    # Core repeat-purchase searches recur every run; remaining calls rotate across
+    # seasonal, popular and broad categories so the feed discovers different items.
+    essential_budget=min(8,budget)
     seasonal_active=NOW.month==11 and NOW.day<=30
-    seasonal_budget=min(4,max(0,budget-essential_budget)) if seasonal_active else 0
-    demand_budget=min(16,max(0,budget-essential_budget-seasonal_budget))
+    seasonal_budget=min(6,max(0,budget-essential_budget)) if seasonal_active else 0
+    demand_budget=min(10,max(0,budget-essential_budget-seasonal_budget))
     broad_budget=budget-essential_budget-seasonal_budget-demand_budget
+    searched=[]
+    unique_seen=set()
     for i in range(budget):
         if i<essential_budget:
             category,keyword=ESSENTIAL_QUERIES[(essential_offset+i)%len(ESSENTIAL_QUERIES)]
@@ -106,16 +112,21 @@ def scan():
             category,keyword=HIGH_DEMAND_QUERIES[(demand_offset+i-essential_budget-seasonal_budget)%len(HIGH_DEMAND_QUERIES)]
         else:
             category,keyword=QUERIES[(offset+i-essential_budget-seasonal_budget-demand_budget)%len(QUERIES)]
+        # Rotate results pages on every run, not only when a keyword list wraps.
+        # Changing both the keyword and page makes each scan explore a wider catalog.
+        page=1+((run_number+i//8)%3)
+        searched.append({'category':category,'keyword':keyword,'page':page})
         # Spread requests, respect throttling, and continue after transient failures.
         if i:time.sleep(1.25)
         payload={'partnerTag':tag,'marketplace':'www.amazon.com','keywords':keyword,
-                 'searchIndex':category,'itemCount':10,'itemPage':1+(int(state.get('cycle',0))%3),
+                 'searchIndex':category,'itemCount':10,'itemPage':page,
                  'resources':RESOURCES}
         try:
             result=api('https://creatorsapi.amazon/catalog/v1/searchItems',payload,
                        {'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'})
             items=result.get('searchResult',{}).get('items',[]) or []
             scanned+=len(items)
+            unique_seen.update(item.get('asin') for item in items if item.get('asin'))
             for item in items:
                 baseline_item=parse(item,category,keyword,minimum_discount=0)
                 if baseline_item and i<essential_budget:
@@ -147,10 +158,10 @@ def scan():
     deals=sorted(fresh.values(),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
+      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Only Amazon API snapshots under 1 hour old are displayed. Not verified checkout prices.'},indent=2))
     STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
-      'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
-    print('API products:',scanned,'requests:',completed,'current leads:',len(deals),'errors:',len(errors))
+      'runNumber':run_number+1,'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
+    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors))
 if __name__=='__main__':scan()
