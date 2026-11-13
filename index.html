@@ -35,7 +35,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">Deals</button>
 <button type="button" role="tab" id="tab-inbox" aria-controls="panel-inbox" aria-selected="false">📥 Missed Deals</button>
 <button type="button" role="tab" id="tab-candidates" aria-controls="panel-candidates" aria-selected="false">New Finds</button>
-<button type="button" role="tab" id="tab-walmart" aria-controls="panel-walmart" aria-selected="false">Walmart</button>
+<button type="button" role="tab" id="tab-walmart" aria-controls="panel-walmart" aria-selected="false">Walmart Radar</button>
 <button type="button" role="tab" id="tab-clearance" aria-controls="panel-clearance" aria-selected="false">Clearance Lab</button>
 <button type="button" role="tab" id="tab-search" aria-controls="panel-search" aria-selected="false">Search Amazon</button>
 <button type="button" role="tab" id="tab-used" aria-controls="panel-used" aria-selected="false">Used & Resale</button>
@@ -62,8 +62,8 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div class="actions"><p id="candidateStatus" class="muted small" role="status">Open this tab to load new finds.</p><button type="button" class="btn secondary" id="candidateRefresh">Refresh candidates</button></div>
 <div id="candidateResults" class="grid"></div></section>
 <section id="panel-walmart" role="tabpanel" aria-labelledby="tab-walmart" hidden>
-<h1>Walmart deal research</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
-<div class="stats"><div class="stat"><strong>Walmart</strong><span>Retailer</span></div><div class="stat"><strong>Live</strong><span>Search links</span></div><div class="stat"><strong>Not linked</strong><span>Product API</span></div></div>
+<h1>Walmart Radar</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
+<div class="stats"><div class="stat"><strong id="walmartRadarCount">—</strong><span>Research searches</span></div><div class="stat"><strong id="walmartRadarUpdated">—</strong><span>Last refresh</span></div><div class="stat"><strong>Not linked</strong><span>Product API</span></div></div><div class="actions"><input id="walmartRadarFind" type="search" placeholder="Search saved Walmart research…" aria-label="Search Walmart radar"><button type="button" class="btn secondary" id="walmartRadarRefresh">↻ Refresh radar</button></div><p id="walmartRadarStatus" class="muted small" role="status">Open this tab to load Walmart research.</p><div id="walmartRadarResults" class="grid"></div>
 <div class="notice"><strong>Research mode:</strong> Walmart Creator product data is not connected to this site. These are Walmart search pages, not automatically verified deal listings. Local clearance, prices and availability can vary by store.</div>
 <div class="card"><label for="walmartTerm"><strong>Search Walmart</strong></label><input id="walmartTerm" type="search" value="clearance" placeholder="Search clearance, toys, kitchen…" style="margin:10px 0"><div id="walmartLinks" class="search-links"></div></div>
 <p class="section-label">Quick shopping categories</p><div id="walmartChips" class="chips"></div>
@@ -123,7 +123,7 @@ const date=s=>{const d=new Date(s);return Number.isFinite(d.getTime())?d.toLocal
 const cash=n=>'$'+Number(n).toFixed(2);
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
 let data=null,leads=[];let lastRenderTimer=null;let usedLoaded=false;let detailIndex=[];let candidatesLoaded=false;let historyData=null;
-function selectTab(name){for(const n of ['deals','inbox','candidates','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
+function selectTab(name){for(const n of ['deals','inbox','candidates','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='walmart')loadWalmartRadar();if(name==='leads'&&!leads.length)loadLeads();if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();window.scrollTo({top:0,behavior:'instant'})}
 for(const n of ['deals','inbox','candidates','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
 const tabNames=['deals','inbox','candidates','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 let inboxEvents=[];
@@ -188,6 +188,27 @@ function updateChips(){$('categoryChips').innerHTML=chipItems.map(([value,label]
 $('categoryChips').addEventListener('click',e=>{const btn=e.target.closest('button[data-cat]');if(!btn)return;$('category').value=btn.dataset.cat;updateChips();render()});
 for(const id of ['find','category','sort','deep','essentials'])$(id).addEventListener(id==='find'?'input':'change',()=>{if(id==='category')updateChips();render()});updateChips();
 $('reload').addEventListener('click',loadAmazon);
+let walmartRadarRows=[];
+function renderWalmartRadar(){
+ const q=$('walmartRadarFind').value.trim().toLowerCase();
+ const rows=walmartRadarRows.filter(d=>(d.query+' '+d.category).toLowerCase().includes(q));
+ $('walmartRadarCount').textContent=walmartRadarRows.length;
+ $('walmartRadarStatus').textContent=rows.length+' research searches · No individual product prices verified';
+ $('walmartRadarResults').innerHTML=rows.map(d=>'<article class="card product"><span class="pill">'+esc(d.category)+'</span><h3>'+esc(d.query)+'</h3><div class="small muted">Research lead only · Product, price and discount not verified</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Search Walmart ↗</a></article>').join('')||'<div class="empty">No Walmart research searches match. Clear the search to show all categories.</div>';
+}
+async function loadWalmartRadar(){
+ $('walmartRadarStatus').textContent='Loading Walmart research catalog…';
+ try{
+  const response=await fetch('data/walmart-research.json?ts='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw Error('Walmart workflow has not published its research catalog yet');
+  const payload=await response.json();
+  walmartRadarRows=(Array.isArray(payload.searches)?payload.searches:[]).filter(d=>{try{const u=new URL(d.url);return u.protocol==='https:'&&(u.hostname==='www.walmart.com'||u.hostname==='walmart.com')}catch{return false}});
+  $('walmartRadarUpdated').textContent=date(payload.updated);
+  renderWalmartRadar();
+ }catch(e){$('walmartRadarStatus').textContent=e.message;$('walmartRadarResults').innerHTML='<div class="empty">Run the Walmart research workflow, then refresh this radar.</div>'}
+}
+$('walmartRadarRefresh').addEventListener('click',loadWalmartRadar);
+$('walmartRadarFind').addEventListener('input',renderWalmartRadar);
 const walmartCategories=['Clearance','Toys','Home & Kitchen','Electronics','Clothing','Beauty','Baby','Gifts','Furniture','Bedding','Storage & Organization','Appliances','School Supplies','Pet Supplies','Holiday Decorations'];
 const walmartDealPhrases=[
 ['Women’s pants deals','women pants deals'],['Women’s pants clearance','women pants clearance'],['Shoe deals','shoe deals'],['Women’s shoe clearance','women shoes clearance'],
