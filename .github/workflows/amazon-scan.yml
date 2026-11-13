@@ -46,12 +46,42 @@ jobs:
       - name: Report PostgreSQL archive failure
         if: steps.database_archive.outcome == 'failure'
         run: echo 'WARNING - PostgreSQL archive failed. Amazon research JSON will still publish. Review archive step logs and DATABASE_URL secret.'
-      - name: Publish research data
+      - name: Publish research data with retry
         run: |
+          set -euo pipefail
           git config user.name "deal-scanner[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/amazon-scan-health.json data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json
-          git diff --cached --quiet || (git commit -m "Refresh Amazon deal research" && git pull --rebase && git push)
+          if git diff --cached --quiet; then
+            echo "::error::No scan files changed. Refusing to report a successful refresh."
+            exit 1
+          fi
+          git commit -m "Refresh Amazon deal research"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              git rebase --abort || true
+              echo "::error::Could not reconcile scanner changes with main"
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "Scanner feed pushed successfully on attempt $attempt"
+              break
+            fi
+            if [ "$attempt" -eq 4 ]; then
+              echo "::error::Scanner could not publish after 4 attempts"
+              exit 1
+            fi
+            sleep $((attempt * 3))
+          done
+          git fetch origin main
+          published="$(git show origin/main:data/amazon-deals.json | python -c 'import json,sys; print(json.load(sys.stdin)["updated"])')"
+          local="$(python -c 'import json; print(json.load(open("data/amazon-deals.json"))["updated"])')"
+          echo "Published scan: $published"
+          if [ "$published" != "$local" ]; then
+            echo "::error::Published feed timestamp differs from generated scan"
+            exit 1
+          fi
 
       - name: Fail workflow if scan produced no valid data
         if: steps.scan_health.outcome == 'failure'
