@@ -1,8 +1,8 @@
 {
-  "essentialOffset": 16,
-  "day": "2026-11-12",
-  "callsToday": 192,
-  "seasonalOffset": 4,
-  "nextOffset": 7,
+  "essentialOffset": 0,
+  "day": "2026-11-13",
+  "callsToday": 24,
+  "seasonalOffset": 0,
+  "nextOffset": 19,
   "cycle": 5
 }
