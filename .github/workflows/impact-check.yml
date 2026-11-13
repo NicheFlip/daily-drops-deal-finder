@@ -23,3 +23,11 @@ jobs:
           if [ -f data/impact-status.json ]; then
             python -c 'import json; x=json.load(open("data/impact-status.json")); print("Connection:",x["connection"],"HTTP:",x.get("httpStatus","OK"),"Products:",x["productsReturned"])'
           fi
+      - name: Save safe API schema diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: impact-api-diagnostics
+          path: data/impact-status.json
+          if-no-files-found: ignore
+          retention-days: 7
