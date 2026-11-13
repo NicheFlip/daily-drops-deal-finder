@@ -26,6 +26,8 @@ jobs:
           AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
         run: python amazon_scan.py
       - name: Archive observations in PostgreSQL (if configured)
+        id: database_archive
+        continue-on-error: true
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
@@ -35,6 +37,9 @@ jobs:
           else
             echo 'DATABASE_URL not configured; PostgreSQL archive skipped.'
           fi
+      - name: Report PostgreSQL archive failure
+        if: steps.database_archive.outcome == 'failure'
+        run: echo 'WARNING - PostgreSQL archive failed. Amazon research JSON will still publish. Review archive step logs and DATABASE_URL secret.'
       - name: Publish research data
         run: |
           git config user.name "deal-scanner[bot]"
