@@ -7,6 +7,7 @@ from price_history import enrich
 from candidate_queue import build_queue
 ROOT=pathlib.Path(__file__).parent
 OUT=ROOT/'data'/'amazon-deals.json'
+ALL_OUT=ROOT/'data'/'amazon-all-products.json'
 STATE=ROOT/'data'/'amazon-scan-state.json'
 NOW=datetime.datetime.now(datetime.timezone.utc)
 STAMP=NOW.isoformat()
@@ -91,6 +92,14 @@ def scan():
             checked=datetime.datetime.fromisoformat(d['checkedAt'])
             if (NOW-checked).total_seconds()<6*3600:fresh[asin]=d
         except (KeyError,ValueError,TypeError):pass
+    all_products={}
+    if ALL_OUT.exists():
+        try:
+            prior=json.loads(ALL_OUT.read_text())
+            for d in prior.get('products',[]):
+                checked=datetime.datetime.fromisoformat(d['checkedAt'])
+                if (NOW-checked).total_seconds()<24*3600:all_products[d['asin']]=d
+        except (ValueError,KeyError,TypeError):pass
     errors=[]; scanned=0; completed=0; newly=0
     observed={}
     baseline={}
@@ -129,8 +138,9 @@ def scan():
             unique_seen.update(item.get('asin') for item in items if item.get('asin'))
             for item in items:
                 baseline_item=parse(item,category,keyword,minimum_discount=0)
-                if baseline_item and i<essential_budget:
-                    baseline[baseline_item['asin']]=baseline_item
+                if baseline_item:
+                    all_products[baseline_item['asin']]=baseline_item
+                    if i<essential_budget:baseline[baseline_item['asin']]=baseline_item
                 d=parse(item,category,keyword)
                 if d:
                     observed[d['asin']]=d
@@ -157,9 +167,10 @@ def scan():
     # Don't discard existing still-fresh results when an API call fails.
     deals=sorted(fresh.values(),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
+    ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
       'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
-      'note':'Only Amazon API snapshots under 1 hour old are displayed. Not verified checkout prices.'},indent=2))
+      'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
     STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
       'runNumber':run_number+1,'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
