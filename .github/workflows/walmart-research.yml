@@ -1,7 +1,7 @@
 name: Walmart research discovery
 on:
   schedule:
-    - cron: '12 */4 * * *'
+    - cron: '12 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,9 +19,14 @@ jobs:
           python-version: '3.12'
       - name: Refresh Walmart research search catalog
         run: python walmart_research.py
+      - name: Import approved Walmart product feed (when configured)
+        env:
+          WALMART_PRODUCT_FEED_URL: ${{ secrets.WALMART_PRODUCT_FEED_URL }}
+        run: python walmart_products.py
       - name: Publish Walmart research catalog
         run: |
           git config user.name "deal-scanner[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/walmart-research.json
+          if [ -f data/walmart-products.json ]; then git add data/walmart-products.json data/walmart-price-history.json; fi
           git diff --cached --quiet || (git commit -m "Refresh Walmart research catalog" && git pull --rebase && git push)
