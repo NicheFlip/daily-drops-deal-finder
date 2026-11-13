@@ -17,17 +17,21 @@ def main():
         "Accept":"application/json",
         "User-Agent":"DailyDropsDealFinder/1.0"})
     status={"checkedAt":now,"source":"impact.com marketplace products API",
-            "connection":"not_verified","productsReturned":0,
+            "connection":"not_verified","productsReturned":0,"responseFields":[],"productFields":[],
             "note":"Connectivity check only; no prices or affiliate links published."}
     try:
         with urllib.request.urlopen(request,timeout=25) as response:
             payload=json.load(response)
         if isinstance(payload,dict):
+            # Report schema keys only, never product content, links, or credentials.
+            status["responseFields"]=sorted(str(k) for k in payload.keys())[:40]
             # Impact API collections can be nested; count only actual returned records.
             for key in ("Products","products","Items","items"):
                 items=payload.get(key)
                 if isinstance(items,list):
                     status["productsReturned"]=len(items)
+                    if items and isinstance(items[0],dict):
+                        status["productFields"]=sorted(str(k) for k in items[0].keys())[:60]
                     break
             status["connection"]="connected"
             status["note"]="API accepted request; product counts may be page-limited. Catalog access and price freshness require further validation."
