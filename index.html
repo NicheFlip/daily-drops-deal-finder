@@ -457,7 +457,24 @@ window.addEventListener('focus',()=>{loadAmazon()});
 
 
 let impactLeads=[];
-function impactRender(){const q=document.getElementById('impactFilter').value.toLowerCase();const rows=impactLeads.filter(d=>String(d.title||'').toLowerCase().includes(q));document.getElementById('impactStatus').textContent=rows.length+' Impact research leads · Not checkout verified';document.getElementById('impactResults').innerHTML=rows.slice(0,60).map(d=>'<article class="card"><strong>'+esc(d.title)+'</strong><p>+Number(d.price).toFixed(2)+' · '+Number(d.discountReported||0).toFixed(0)+'% provider-reported discount</p><p class="small muted">Score '+d.score+' · Verify retailer, price and affiliate link</p></article>').join('');}
-async function impactLoad(){try{const r=await fetch('data/impact-deals.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Run first Impact scan in GitHub Actions');const d=await r.json();impactLeads=Array.isArray(d.deals)?d.deals:[];impactRender();}catch(e){document.getElementById('impactStatus').textContent=e.message;}}
-document.getElementById('impactRefresh').addEventListener('click',impactLoad);document.getElementById('impactFilter').addEventListener('input',impactRender);impactLoad();
+function impactRender(){
+ const q=document.getElementById('impactFilter').value.toLowerCase().trim();
+ const rows=impactLeads.filter(d=>String(d.title||'').toLowerCase().includes(q)||String(d.category||'').toLowerCase().includes(q)).sort((a,b)=>Number(b.score||0)-Number(a.score||0));
+ document.getElementById('impactStatus').textContent=rows.length+' Impact research leads · Ranked by deal signal. Prices and discounts are provider-reported, not checkout verified.';
+ document.getElementById('impactResults').innerHTML=rows.slice(0,60).map(d=>{
+  const price=Number(d.price);
+  const discount=Number(d.discountReported||0);
+  const image=String(d.image||'');
+  const photo=image.startsWith('https://')?'<img src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:150px;object-fit:contain;background:white;border-radius:8px">':'';
+  return '<article class="card" style="padding:12px">'+photo+'<p class="small muted">Impact marketplace · Research only</p><strong>'+esc(d.title)+'</strong><p><strong style="font-size:1.3rem">'+(Number.isFinite(price)?'$'+price.toFixed(2):'Price unavailable')+'</strong> · '+(Number.isFinite(discount)?discount.toFixed(0):'0')+'% reported discount</p><p class="small muted">Score '+Number(d.score||0)+'/100 · '+(d.inStockSignal?'Stock signal':'Stock unconfirmed')+'</p><p class="small muted">Verify exact item, retailer, current price and affiliate link before posting.</p></article>';
+ }).join('')||'<p>No matching research leads.</p>';
+}
+async function impactLoad(){
+ const status=document.getElementById('impactStatus');status.textContent='Loading Impact leads…';
+ try{const r=await fetch('data/impact-deals.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Impact feed not published yet');const d=await r.json();impactLeads=Array.isArray(d.deals)?d.deals:[];impactRender();}
+ catch(e){status.textContent='Impact feed unavailable: '+e.message;}
+}
+document.getElementById('impactRefresh').addEventListener('click',impactLoad);
+document.getElementById('impactFilter').addEventListener('input',impactRender);
+impactLoad();
 </script></body></html>
