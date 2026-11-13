@@ -68,21 +68,18 @@ def build_queue(observed, stamp):
         if not isinstance(archive,list):archive=[]
     except (OSError,ValueError,AttributeError):
         archive=[]
-    event_cutoff=now-datetime.timedelta(days=RETENTION_DAYS)
     saved={}
     for event in archive:
         try:
             seen=datetime.datetime.fromisoformat(event['checkedAt'])
-            if seen>=event_cutoff:
-                saved[str(event['asin'])+'|'+event['checkedAt']+'|'+event.get('reason','')]=event
+            saved[str(event['asin'])+'|'+event['checkedAt']+'|'+event.get('reason','')]=event
         except (KeyError,ValueError,TypeError,AttributeError):
             continue
     for candidate in candidates:
         key=candidate['asin']+'|'+candidate['checkedAt']+'|'+candidate['reason']
         saved[key]=candidate
-    events=sorted(saved.values(),key=lambda d:d.get('checkedAt',''),reverse=True)[:1500]
-    ARCHIVE.write_text(json.dumps({
-        'updated':stamp,'retentionDays':RETENTION_DAYS,'events':events,
+    events=sorted(saved.values(),key=lambda d:d.get('checkedAt',''),reverse=True)\n    ARCHIVE.write_text(json.dumps({
+        'updated':stamp,'retentionDays':None,'events':events,
         'note':'Historical research observations, NOT live prices or verified checkout offers. Recheck the exact product before sharing.'
     },indent=2))
     return len(candidates)
