@@ -32,7 +32,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Amazon + Walmart deal research workspace</p></div></header>
 <main>
 <div style="background:#fff5f6;border:1px solid #e8d4da;border-radius:14px;padding:14px 16px;margin:8px 0"><strong>Share your public deal feed</strong><p style="margin:7px 0;font-size:.9rem">Followers can browse Amazon finds with photos and your tracked product links. Your review and posting controls are not shown in the follower shop.</p><a href="./shop.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#70233e;color:white;padding:11px 16px;border-radius:9px;text-decoration:none;font-weight:700">Open follower shop ↗</a> <button type="button" id="copyShopLink" style="margin:4px">Copy shop link</button><span id="copyShopStatus" role="status" style="font-size:.85rem"></span></div>
-<nav role="tablist" aria-label="Sections">
+<section class="card" style="margin:12px 0;background:#fffaf9"><strong>✦ Impact Deal Intelligence</strong><p class="small muted">Impact marketplace research leads · verify retailer and checkout price before posting</p><button type="button" id="impactRefresh">Refresh</button> <input id="impactFilter" placeholder="Search Impact products"><p id="impactStatus" class="small muted">Awaiting first scan</p><div id="impactResults" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px"></div></section><nav role="tablist" aria-label="Sections">
 <button type="button" role="tab" id="tab-deals" aria-controls="panel-deals" aria-selected="true">Deals</button>
 <button type="button" role="tab" id="tab-inbox" aria-controls="panel-inbox" aria-selected="false">📥 Missed Deals</button>
 <button type="button" role="tab" id="tab-candidates" hidden aria-controls="panel-candidates" aria-selected="false">New Finds</button>
@@ -455,4 +455,9 @@ setInterval(()=>{if(!document.hidden){loadAmazon();if(!$('panel-inbox').hidden)l
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadAmazon()});
 window.addEventListener('focus',()=>{loadAmazon()});
 
+
+let impactLeads=[];
+function impactRender(){const q=document.getElementById('impactFilter').value.toLowerCase();const rows=impactLeads.filter(d=>String(d.title||'').toLowerCase().includes(q));document.getElementById('impactStatus').textContent=rows.length+' Impact research leads · Not checkout verified';document.getElementById('impactResults').innerHTML=rows.slice(0,60).map(d=>'<article class="card"><strong>'+esc(d.title)+'</strong><p>+Number(d.price).toFixed(2)+' · '+Number(d.discountReported||0).toFixed(0)+'% provider-reported discount</p><p class="small muted">Score '+d.score+' · Verify retailer, price and affiliate link</p></article>').join('');}
+async function impactLoad(){try{const r=await fetch('data/impact-deals.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Run first Impact scan in GitHub Actions');const d=await r.json();impactLeads=Array.isArray(d.deals)?d.deals:[];impactRender();}catch(e){document.getElementById('impactStatus').textContent=e.message;}}
+document.getElementById('impactRefresh').addEventListener('click',impactLoad);document.getElementById('impactFilter').addEventListener('input',impactRender);impactLoad();
 </script></body></html>
