@@ -267,7 +267,7 @@ async function loadHistory(){
 function renderHistory(){
  const q=$('historyFind').value.toLowerCase().trim();
  const rows=historyRows.filter(d=>!q||String(d.title||'').toLowerCase().includes(q)||String(d.asin).toLowerCase().includes(q));
- $('historyStatus').textContent=rows.length+' tracked products · historical observations only';
+ $('historyStatus').textContent=rows.length+' tracked products';
  $('historyResults').innerHTML=rows.map(d=>'<article class="card product">'+imageMarkup(d)+'<h3>'+esc(d.title)+'</h3><p class="small muted">Lowest observed: <strong>'+cash(d.observedLow)+'</strong> · Latest observed: '+cash(d.latestObserved)+'</p><p class="small muted">'+esc(d.observations)+' observations · Last seen '+esc(date(d.checkedAt))+'</p>'+judgmentButtons(d)+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current Amazon price ↗</a></article>').join('')||'<div class="empty">No tracked products match your search.</div>';
 }
 $('historyFind').addEventListener('input',renderHistory);
@@ -284,8 +284,8 @@ function renderInbox(){
  const filter=$('inboxFilter').value;
  const q=$('inboxSearch').value.trim().toLowerCase();
  const rows=inboxEvents.filter(d=>(!q||String(d.title||'').toLowerCase().includes(q))&&(filter==='all'||(filter==='drop'&&d.reason==='Observed price drop')||(filter==='new'&&d.reason==='First observation')));
- $('inboxStatus').textContent=rows.length+' saved discoveries · newest first · historical research, not current offers';
- $('inboxResults').innerHTML=rows.map(d=>'<article class="card product"><div><span class="pill">'+esc(d.reason||'Discovery')+'</span> <span class="pill">'+esc(date(d.checkedAt))+'</span></div><h3>'+esc(d.title)+'</h3><div class="small muted">Observed price at discovery: '+cash(d.price)+(d.previousObservedPrice!=null?' · Earlier observed: '+cash(d.previousObservedPrice):'')+'</div>'+judgmentButtons(d)+'<div class="notice"><strong>Historical observation.</strong> Price may have changed. Scanned price; reference discounts are not proof of prior selling price.</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current price on Amazon ↗</a></article>').join('')||'<div class="empty">No saved discoveries for this filter yet. The inbox fills after successful scans.</div>';
+ $('inboxStatus').textContent=rows.length+' saved finds · newest first';
+ $('inboxResults').innerHTML=rows.map(d=>compactCard(d,'inbox')).join('')||'<div class="empty">No saved discoveries match this filter.</div>';
 }
 async function loadInbox(){
  $('inboxStatus').textContent='Loading saved discoveries…';
