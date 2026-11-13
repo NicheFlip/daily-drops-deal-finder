@@ -27,12 +27,26 @@ jobs:
         run: |
           mkdir -p _site/data
           cp index.html _site/index.html
-          cp data/amazon-deals.json _site/data/amazon-deals.json
-          cp data/deals.json _site/data/deals.json
-          for file in amazon-price-history.json amazon-deal-changes.json amazon-candidates.json; do
-            if [ -f "data/$file" ]; then cp "data/$file" "_site/data/$file"; fi
+          # Publish only explicitly approved public feeds; never copy the whole data directory.
+          for file in \
+            amazon-deals.json deals.json amazon-scan-health.json \
+            amazon-all-products.json amazon-candidates.json \
+            amazon-discovery-archive.json amazon-price-history.json \
+            amazon-deal-changes.json price-history-public.json \
+            impact-deals.json impact-status.json \
+            walmart-research.json walmart-products.json walmart-price-history.json \
+            amazon-used-deals.json featured-finds.json
+          do
+            if [ -f "data/$file" ]; then
+              cp "data/$file" "_site/data/$file"
+            fi
+          done
+          for file in shop.html shop-sw.js manifest.webmanifest app-icon.svg; do
+            if [ -f "$file" ]; then cp "$file" "_site/$file"; fi
           done
           touch _site/.nojekyll
+          echo "Public feed files included:"
+          find _site/data -maxdepth 1 -type f -printf '%f\\n' | sort
       - uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
