@@ -1,5 +1,5 @@
 """Read-only impact.com catalog discovery. Credentials never enter public output."""
-import datetime,json,os,pathlib,urllib.request,urllib.error
+import base64,datetime,json,os,pathlib,urllib.request,urllib.error
 ROOT=pathlib.Path(__file__).parent
 OUT=ROOT/"data"/"impact-status.json"
 BASE="https://api.impact.com"
@@ -10,8 +10,10 @@ def main():
     if not sid.isalnum(): raise RuntimeError("Account SID must be alphanumeric")
     now=datetime.datetime.now(datetime.timezone.utc).isoformat()
     endpoint=f"{BASE}/Mediapartners/{sid}/Marketplace/Products?PageSize=5"
+    # impact.com API v16 uses HTTP Basic auth: Account SID as username, API token as password.
+    auth=base64.b64encode((sid+":"+token).encode("utf-8")).decode("ascii")
     request=urllib.request.Request(endpoint,headers={
-        "Authorization":"Bearer "+token,
+        "Authorization":"Basic "+auth,
         "Accept":"application/json",
         "User-Agent":"DailyDropsDealFinder/1.0"})
     status={"checkedAt":now,"source":"impact.com marketplace products API",
