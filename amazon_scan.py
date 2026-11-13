@@ -28,7 +28,7 @@ BLACK_FRIDAY_QUERIES=[('All','early black friday deals'),('HomeAndKitchen','blac
 # Respect the daily cap and API throttling; requests may return fewer items.
 PER_RUN=40
 MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
-RESOURCES=['itemInfo.title','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
+RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
 def api(url,payload,headers=None):
     req=urllib.request.Request(url,json.dumps(payload).encode(),{'Content-Type':'application/json',**(headers or {})},method='POST')
     with urllib.request.urlopen(req,timeout=30) as response:return json.load(response)
@@ -58,7 +58,7 @@ def parse(item,category,keyword,minimum_discount=40):
         declared=savings.get('percentage') if isinstance(savings,dict) else None
         if isinstance(declared,(int,float)) and abs(declared-percent)>2:continue
         return {'asin':asin,'title':title[:180],'retailer':'Amazon',
-          'url':'https://www.amazon.com/dp/'+asin,'price':price,
+          'url':'https://www.amazon.com/dp/'+asin,'imageUrl':((item.get('images') or {}).get('primary') or {}).get('medium',{}).get('url'),'price':price,
           'referencePrice':reference,'referenceType':basis.get('savingBasisTypeLabel') or basis.get('savingBasisType') or 'API savings basis',
           'discountPercent':percent,'category':category,'keyword':keyword,
           'checkedAt':STAMP,'couponVerified':False,'possibleGlitch':False,
