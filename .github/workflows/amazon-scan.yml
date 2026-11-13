@@ -25,6 +25,16 @@ jobs:
           AMAZON_CREATORS_SECRET: ${{ secrets.AMAZON_CREATORS_SECRET }}
           AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
         run: python amazon_scan.py
+      - name: Archive observations in PostgreSQL (if configured)
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -n "$DATABASE_URL" ]; then
+            python -m pip install 'psycopg[binary]>=3.2,<4'
+            python database.py
+          else
+            echo 'DATABASE_URL not configured; PostgreSQL archive skipped.'
+          fi
       - name: Publish research data
         run: |
           git config user.name "deal-scanner[bot]"
