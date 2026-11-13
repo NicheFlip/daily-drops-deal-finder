@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Verify deal engine before scanning
-        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py
+        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py
       - name: Scan Amazon official catalog
         env:
           AMAZON_CREATORS_CREDENTIAL_ID: ${{ secrets.AMAZON_CREATORS_CREDENTIAL_ID }}
