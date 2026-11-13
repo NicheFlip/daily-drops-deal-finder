@@ -137,7 +137,7 @@ async function loadHistory(){
   const response=await fetch('data/price-history-public.json?ts='+Date.now(),{cache:'no-store'});
   if(!response.ok)throw Error('Database history has not been published yet');
   const payload=await response.json();
-  historyRows=Array.isArray(payload.products)?payload.products.filter(d=>/^[A-Z0-9]{10}$/.test(d.asin||'')&&Number.isFinite(Number(d.observedLow))):[];
+  historyRows=Array.isArray(payload.products)?payload.products.filter(d=>/^[A-Z0-9]{10}$/.test(d.asin||'')&&Number.isFinite(Number(d.observedLow))&&Number(d.observedLow)>0):[];
   renderHistory();
  }catch(e){$('historyStatus').textContent=e.message;$('historyResults').innerHTML='<div class="empty">History will appear after the next successful database export.</div>'}
 }
@@ -151,7 +151,7 @@ $('historyFind').addEventListener('input',renderHistory);
 $('historyRefresh').addEventListener('click',loadHistory);
 let inboxEvents=[];
 const requestedTab=location.hash.slice(1);
-window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(['deals','inbox','candidates','walmart','clearance','search','used','leads'].includes(tab))selectTab(tab)});
+window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(['deals','inbox','candidates','history','walmart','clearance','search','used','leads'].includes(tab))selectTab(tab)});
 $('openInbox').addEventListener('click',()=>selectTab('inbox'));
 $('homeWalmartRadar').addEventListener('click',()=>selectTab('walmart'));
 $('homeAmazonRadar').addEventListener('click',()=>selectTab('deals'));
