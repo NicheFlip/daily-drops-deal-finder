@@ -22,9 +22,11 @@ QUERIES=[
 ]
 # Household search priorities reflect practical repeat purchases, not verified sales rank.
 ESSENTIAL_QUERIES=[("All","laundry detergent"),("All","paper towels"),("All","toilet paper"),("All","dish soap"),("All","trash bags"),("All","coffee pods"),("All","ground coffee"),("All","diapers"),("All","baby wipes"),("All","dishwasher pods"),("All","cleaning wipes"),("All","hand soap"),("All","toothpaste"),("All","shampoo"),("All","pet food"),("All","food storage bags"),("All","batteries AA"),("All","dryer sheets"),("All","facial tissues"),("All","body wash"),("All","breakfast cereal"),("All","snack variety pack"),("All","water filters"),("All","laundry scent boosters")]
+HIGH_DEMAND_QUERIES=[('All','best selling household essentials'),('ToysAndGames','ride on toys for kids'),('ToysAndGames','electric ride on cars for kids'),('All','electric scooters'),('All','electric bikes'),('ToysAndGames','outdoor toys'),('ToysAndGames','educational toys'),('ToysAndGames','LEGO building sets'),('Beauty','skin care gift sets'),('Beauty','hair styling tools'),('Beauty','makeup gift sets'),('HomeAndKitchen','robot vacuums'),('HomeAndKitchen','air fryers'),('HomeAndKitchen','blenders'),('HomeAndKitchen','bedding sets'),('HomeAndKitchen','storage organizers'),('Electronics','wireless earbuds'),('Electronics','portable chargers'),('All','cleaning supplies'),('All','coffee'),('All','paper products'),('All','pet supplies')]
 BLACK_FRIDAY_QUERIES=[('All','early black friday deals'),('HomeAndKitchen','black friday kitchen deals'),('Electronics','black friday headphones'),('ToysAndGames','black friday toys'),('HomeAndKitchen','black friday vacuum'),('All','black friday household essentials'),('All','black friday coffee makers'),('All','black friday gifts')]
-# API returns at most 10 items per request; distribute calls instead of bursts.
-PER_RUN=24
+# Up to 40 requests x 10 items = 400 product results per run (not 400 unique offers).
+# Respect the daily cap and API throttling; requests may return fewer items.
+PER_RUN=40
 MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
 RESOURCES=['itemInfo.title','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
 def api(url,payload,headers=None):
@@ -74,6 +76,7 @@ def scan():
     offset=int(state.get('nextOffset',0))%len(QUERIES)
     essential_offset=int(state.get('essentialOffset',0))%len(ESSENTIAL_QUERIES)
     seasonal_offset=int(state.get('seasonalOffset',0))%len(BLACK_FRIDAY_QUERIES)
+    demand_offset=int(state.get('demandOffset',0))%len(HIGH_DEMAND_QUERIES)
     budget=max(0,min(PER_RUN,MAX_DAILY_CALLS-calls))
     previous={}
     if OUT.exists():
@@ -89,17 +92,20 @@ def scan():
     errors=[]; scanned=0; completed=0; newly=0
     observed={}
     baseline={}
-    essential_budget=min(8,budget)
+    essential_budget=min(12,budget)
     seasonal_active=NOW.month==11 and NOW.day<=30
     seasonal_budget=min(4,max(0,budget-essential_budget)) if seasonal_active else 0
-    broad_budget=budget-essential_budget-seasonal_budget
+    demand_budget=min(16,max(0,budget-essential_budget-seasonal_budget))
+    broad_budget=budget-essential_budget-seasonal_budget-demand_budget
     for i in range(budget):
         if i<essential_budget:
             category,keyword=ESSENTIAL_QUERIES[(essential_offset+i)%len(ESSENTIAL_QUERIES)]
         elif i<essential_budget+seasonal_budget:
             category,keyword=BLACK_FRIDAY_QUERIES[(seasonal_offset+i-essential_budget)%len(BLACK_FRIDAY_QUERIES)]
+        elif i<essential_budget+seasonal_budget+demand_budget:
+            category,keyword=HIGH_DEMAND_QUERIES[(demand_offset+i-essential_budget-seasonal_budget)%len(HIGH_DEMAND_QUERIES)]
         else:
-            category,keyword=QUERIES[(offset+i-essential_budget-seasonal_budget)%len(QUERIES)]
+            category,keyword=QUERIES[(offset+i-essential_budget-seasonal_budget-demand_budget)%len(QUERIES)]
         # Spread requests, respect throttling, and continue after transient failures.
         if i:time.sleep(1.25)
         payload={'partnerTag':tag,'marketplace':'www.amazon.com','keywords':keyword,
@@ -144,7 +150,7 @@ def scan():
       'requestsCompleted':completed,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Only Amazon API snapshots under 1 hour old are displayed. Not verified checkout prices.'},indent=2))
     STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
-      'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
+      'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
       'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
     print('API products:',scanned,'requests:',completed,'current leads:',len(deals),'errors:',len(errors))
 if __name__=='__main__':scan()
