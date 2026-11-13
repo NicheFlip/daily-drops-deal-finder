@@ -1,5 +1,16 @@
 {
-  "updated": "2026-11-13T14:39:09.115993+00:00",
-  "changes": [],
+  "updated": "2026-11-13T17:09:55.625787+00:00",
+  "changes": [
+    {
+      "asin": "B0FK2HPNCB",
+      "title": "eufy E25 Robot Vacuum and Mop for Pet Hair, 20,000 Pa, HydroJet Roller Mop | Extendable Side Brush, Zero-Tangle Design, All-in-One Station, AI Obstacle Avoidance, Edge-to-Corner Cl",
+      "previousObservedPrice": 599.99,
+      "currentObservedPrice": 569.96,
+      "dropPercent": 5.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-13T17:09:55.625787+00:00",
+      "url": "https://www.amazon.com/dp/B0FK2HPNCB"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
