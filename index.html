@@ -69,7 +69,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <section id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden><h1>Observed Price History</h1><p class="muted small">Amazon prices recorded by the scanner.</p><div class="actions"><input id="historyFind" type="search" placeholder="Search tracked products…" aria-label="Search tracked products"><button type="button" class="btn secondary" id="historyRefresh">Refresh history</button></div><p id="historyStatus" role="status" class="muted small">Open this tab to load history.</p><div class="actions"><button type="button" class="btn secondary" id="exportJudgments">Export my Deal / No Deal decisions</button><span class="small muted">Saved on this browser only. Export a backup before clearing browser data.</span></div><div id="historyResults" class="grid"></div></section>
 <section id="panel-walmart" role="tabpanel" aria-labelledby="tab-walmart" hidden>
 <h1>Walmart Radar</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
-<div class="stats"><div class="stat"><strong id="walmartRadarCount">—</strong><span>Research searches</span></div><div class="stat"><strong id="walmartRadarUpdated">—</strong><span>Last refresh</span></div><div class="stat"><strong>Not linked</strong><span>Product API</span></div></div><div class="actions"><input id="walmartRadarFind" type="search" placeholder="Search saved Walmart research…" aria-label="Search Walmart radar"><button type="button" class="btn secondary" id="walmartRadarRefresh">↻ Refresh radar</button></div><p id="walmartRadarStatus" class="muted small" role="status">Open this tab to load Walmart research.</p><div id="walmartRadarResults" class="grid"></div>
+<div class="stats"><div class="stat"><strong id="walmartRadarCount">—</strong><span>Research searches</span></div><div class="stat"><strong id="walmartRadarUpdated">—</strong><span>Last refresh</span></div><div class="stat"><strong>Not linked</strong><span>Product API</span></div></div><div class="actions"><input id="walmartRadarFind" type="search" placeholder="Search saved Walmart research…" aria-label="Search Walmart radar"><button type="button" class="btn secondary" id="walmartRadarRefresh">↻ Refresh radar</button></div><p id="walmartRadarStatus" class="muted small" role="status">Open this tab to load Walmart research.</p><div id="walmartProductsStatus" class="small muted" role="status">Checking Walmart product feed…</div><div id="walmartProductResults" class="grid"></div><div id="walmartRadarResults" class="grid"></div>
 <div class="notice"><strong>Research mode:</strong> Walmart Creator product data is not connected to this site. These are Walmart search pages, not automatically verified deal listings. Local clearance, prices and availability can vary by store.</div>
 <div class="card"><label for="walmartTerm"><strong>Search Walmart</strong></label><input id="walmartTerm" type="search" value="clearance" placeholder="Search clearance, toys, kitchen…" style="margin:10px 0"><div id="walmartLinks" class="search-links"></div></div>
 <p class="section-label">Quick shopping categories</p><div id="walmartChips" class="chips"></div>
@@ -340,6 +340,10 @@ $('categoryChips').addEventListener('click',e=>{const btn=e.target.closest('butt
 for(const id of ['find','category','sort','deep','essentials'])$(id).addEventListener(id==='find'?'input':'change',()=>{if(id==='category')updateChips();render()});updateChips();
 $('reload').addEventListener('click',loadAmazon);
 let walmartRadarRows=[];
+let walmartProductRows=[];
+function renderWalmartProducts(){const q=$('walmartRadarFind').value.trim().toLowerCase();const rows=walmartProductRows.filter(d=>(d.title+' '+d.category).toLowerCase().includes(q));$('walmartProductResults').innerHTML=rows.map(d=>'<article class="card product scan-card"><div class="scan-top">'+(d.imageUrl?'<img class="scan-photo" src="'+esc(d.imageUrl)+'" alt="'+esc(d.title)+'" loading="lazy">':'')+'<div class="scan-heading"><span class="pill">'+esc(d.category)+'</span><h3>'+esc(d.title)+'</h3></div></div><div class="scan-price">'+cash(d.price)+'</div><div class="scan-meta">'+(d.priceChanged?'Price changed since last observation · ':'')+'Scanned '+esc(date(d.checkedAt))+'</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">View on Walmart ↗</a></article>').join('');}
+async function loadWalmartProducts(){try{const res=await fetch('data/walmart-products.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('not connected');const payload=await res.json();walmartProductRows=(Array.isArray(payload.products)?payload.products:[]).filter(d=>validUrlWalmart(d.url)&&Number(d.price)>0);$('walmartProductsStatus').textContent=walmartProductRows.length+' products from authorized Walmart feed · '+date(payload.updated);renderWalmartProducts()}catch{$('walmartProductsStatus').textContent='Walmart product-level feed not connected yet. Category research links below are available.';walmartProductRows=[];$('walmartProductResults').innerHTML=''}}
+function validUrlWalmart(u){try{const x=new URL(u);return x.protocol==='https:'&&['www.walmart.com','walmart.com'].includes(x.hostname)}catch{return false}}
 function renderWalmartRadar(){
  const q=$('walmartRadarFind').value.trim().toLowerCase();
  const rows=walmartRadarRows.filter(d=>(d.query+' '+d.category).toLowerCase().includes(q));
@@ -347,7 +351,7 @@ function renderWalmartRadar(){
  $('walmartRadarStatus').textContent=rows.length+' research searches · No individual product prices verified';
  $('walmartRadarResults').innerHTML=rows.map(d=>'<article class="card product"><span class="pill">'+esc(d.category)+'</span><h3>'+esc(d.query)+'</h3><div class="small muted">Research lead only · Product, price and discount not verified</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Search Walmart ↗</a></article>').join('')||'<div class="empty">No Walmart research searches match. Clear the search to show all categories.</div>';
 }
-async function loadWalmartRadar(){
+async function loadWalmartRadar(){loadWalmartProducts();
  $('walmartRadarStatus').textContent='Loading Walmart research catalog…';
  try{
   const response=await fetch('data/walmart-research.json?ts='+Date.now(),{cache:'no-store'});
@@ -359,7 +363,7 @@ async function loadWalmartRadar(){
  }catch(e){$('walmartRadarStatus').textContent=e.message;$('walmartRadarResults').innerHTML='<div class="empty">Run the Walmart research workflow, then refresh this radar.</div>'}
 }
 $('walmartRadarRefresh').addEventListener('click',loadWalmartRadar);
-$('walmartRadarFind').addEventListener('input',renderWalmartRadar);
+$('walmartRadarFind').addEventListener('input',()=>{renderWalmartRadar();renderWalmartProducts()});
 const walmartCategories=['Clearance','Toys','Home & Kitchen','Electronics','Clothing','Beauty','Baby','Gifts','Furniture','Bedding','Storage & Organization','Appliances','School Supplies','Pet Supplies','Holiday Decorations'];
 const walmartDealPhrases=[
 ['Women’s pants deals','women pants deals'],['Women’s pants clearance','women pants clearance'],['Shoe deals','shoe deals'],['Women’s shoe clearance','women shoes clearance'],
