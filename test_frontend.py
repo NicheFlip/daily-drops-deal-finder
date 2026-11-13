@@ -62,6 +62,10 @@ class FrontendSmoke(unittest.TestCase):
         self.assertIn('data-price-history',html)
         self.assertIn('function compactCard(',html)
         self.assertIn('function compactReview(',html)
+        self.assertIn('id="newOnly"',html)
+        self.assertIn("candidateAsins.has(String(d.asin))",html)
+        self.assertIn("name='deals';$('newOnly').checked=true",html)
+        self.assertIn('amazon-discovery-archive.json',html)
     def test_public_shop_excludes_admin_controls(self):
         html,_=parse('shop.html')
         self.assertNotIn('DATABASE_URL',html)
