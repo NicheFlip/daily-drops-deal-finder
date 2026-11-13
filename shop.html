@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#70233e"><meta name="description" content="Browse Amazon finds from Daily Drops with Heather."><title>Shop the Finds | Daily Drops with Heather</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#24242b;background:#fbf9f5}*{box-sizing:border-box}body{margin:0}header{background:#fff;border-bottom:1px solid #e9e3dd;padding:22px 18px}header .wrap,main,footer{max-width:1100px;margin:auto}.brand{font-weight:800;letter-spacing:.04em;font-size:1.1rem}.sub{font-size:.88rem;color:#716c71;margin:6px 0 0}main{padding:24px 16px 50px}.hero{background:#f4e9e9;border-radius:18px;padding:24px;margin-bottom:22px}h1{font-size:clamp(1.8rem,5vw,2.7rem);line-height:1.13;margin:0 0 10px}.hero p{color:#62565e;line-height:1.5}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 22px}input,select,button{font:inherit;border-radius:11px;padding:12px;border:1px solid #ddd5d4;background:#fff}input{flex:2;min-width:220px}select{flex:1;min-width:160px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px}.card{background:white;border:1px solid #e8e3df;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}.photo{height:240px;display:grid;place-items:center;padding:20px;background:#fff}.photo img{max-width:100%;max-height:100%;object-fit:contain}.body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}.name{font-weight:700;line-height:1.4;margin:0;font-size:1rem}.price{font-size:1.7rem;font-weight:850;color:#70233e}.meta{font-size:.79rem;color:#726c70}.cta{display:block;text-align:center;text-decoration:none;background:#70233e;color:white;border-radius:11px;padding:13px;font-weight:750;margin-top:auto}.empty{padding:32px 16px;text-align:center;color:#676067}.disclosure{font-size:.8rem;color:#665e65;line-height:1.6}footer{padding:20px 16px 60px;border-top:1px solid #e9e3dd}.badge{font-size:.72rem;font-weight:700;color:#70233e;background:#f8e9ef;padding:5px 9px;border-radius:100px;align-self:start}.small{font-size:.85rem;color:#676067}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #b77a95;outline-offset:3px}
+</style></head><body>
+<header><div class="wrap"><div class="brand">DAILY DROPS WITH HEATHER</div><p class="sub">Thoughtfully found. Easy to shop.</p></div></header>
+<main><section class="hero"><h1>Find something worth a look.</h1><p>Shop recent Amazon finds, browse everyday essentials, and discover new favorites.</p><p class="small">Prices shown are the latest captured by our scanner, with the scan time on each item.</p></section>
+<div class="tools"><input id="search" type="search" placeholder="Search finds..." aria-label="Search products"><select id="category" aria-label="Filter category"><option value="">All categories</option></select><select id="sort" aria-label="Sort"><option value="newest">Recently scanned</option><option value="price">Price: low to high</option><option value="discount">Reference discount: high to low</option></select><button id="refresh" type="button">Refresh</button></div>
+<p id="status" class="small" role="status">Loading recent finds...</p><div id="results" class="grid"></div>
+</main><footer><p class="disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate, I earn from qualifying purchases. Product links may earn a commission at no additional cost to you.</p><p class="small">Product prices are scanner observations, not guaranteed checkout prices. A discount against a reference price is not necessarily a historical price drop. Amazon products only; Walmart product-level feeds are not yet connected.</p></footer>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'$'+Number(n).toFixed(2);
+const validAsin=a=>/^[A-Z0-9]{10}$/.test(String(a||''));
+const link=asin=>'https://www.amazon.com/dp/'+encodeURIComponent(asin)+'?tag=dealstoday0b3-20';
+let rows=[];
+function draw(){
+ const q=$('search').value.trim().toLowerCase(),cat=$('category').value,sort=$('sort').value;
+ const filtered=rows.filter(d=>(!q||(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat));
+ if(sort==='price')filtered.sort((a,b)=>a.price-b.price);
+ if(sort==='discount')filtered.sort((a,b)=>(b.discountPercent||0)-(a.discountPercent||0));
+ if(sort==='newest')filtered.sort((a,b)=>Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0));
+ $('status').textContent=filtered.length+' finds · Prices captured by scanner';
+ $('results').innerHTML=filtered.slice(0,150).map(d=>'<article class="card"><div class="photo">'+(d.imageUrl&&/^https:\/\/m\.media-amazon\.com\//.test(d.imageUrl)?'<img loading="lazy" src="'+esc(d.imageUrl)+'" alt="'+esc(d.title)+'">':'<span class="small">Product image unavailable</span>')+'</div><div class="body"><span class="badge">'+esc(d.category||'Amazon find')+'</span><h2 class="name">'+esc(d.title)+'</h2><div class="price">'+money(d.price)+'</div><div class="meta">Scanned '+esc(d.checkedAt?new Date(d.checkedAt).toLocaleString():'recently')+'</div><a class="cta" href="'+esc(link(d.asin))+'" target="_blank" rel="sponsored noopener noreferrer" aria-label="Shop '+esc(d.title)+' on Amazon">Shop on Amazon</a></div></article>').join('')||'<div class="empty">No finds match your search. Try another category.</div>';
+}
+async function load(){
+ $('status').textContent='Loading recent finds...';
+ try{
+  const res=await fetch('./data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Feed unavailable');
+  const payload=await res.json();
+  const list=Array.isArray(payload.deals)?payload.deals:[];
+  rows=list.filter(d=>d&&validAsin(d.asin)&&d.retailer==='Amazon'&&typeof d.title==='string'&&Number.isFinite(Number(d.price))&&Number(d.price)>0);
+  const cats=[...new Set(rows.map(d=>d.category).filter(Boolean))].sort();
+  const old=$('category').value;$('category').innerHTML='<option value="">All categories</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');if(cats.includes(old))$('category').value=old;
+  draw();
+ }catch(e){$('status').textContent='Unable to load the latest finds right now.';$('results').innerHTML='<p class="empty">Please try refreshing later.</p>'}
+}
+for(const id of ['search','category','sort'])$(id).addEventListener(id==='search'?'input':'change',draw);
+$('refresh').addEventListener('click',load);
+load();
+</script></body></html>
