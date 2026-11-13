@@ -132,25 +132,31 @@ for(const n of ['deals','inbox','candidates','walmart','clearance','search','use
 const tabNames=['deals','inbox','candidates','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 const JUDGMENT_KEY='dailyDropsDealJudgmentsV1';
 function readJudgments(){try{const obj=JSON.parse(localStorage.getItem(JUDGMENT_KEY)||'{}');return obj&&typeof obj==='object'&&!Array.isArray(obj)?obj:{}}catch{return {}}}
-function saveJudgment(asin,choice){
- if(!/^[A-Z0-9]{10}$/.test(asin)||!['deal','no-deal','clear'].includes(choice))return;
+function saveJudgment(asin,choice,reason){
+ if(!/^[A-Z0-9]{10}$/.test(asin)||!['deal','no-deal','pass','clear'].includes(choice))return;
  const all=readJudgments();
  if(choice==='clear')delete all[asin];
- else all[asin]={choice,reason:choice==='no-deal'?'Price does not reflect realistic value':'Worth checking',updatedAt:new Date().toISOString()};
- try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all));renderHistory()}catch{$('historyStatus').textContent='Could not save decision. Check browser storage settings.'}
+ else all[asin]={choice,reason:reason||({deal:'Worth sharing', 'no-deal':'Inflated reference price',pass:'Not a fit for my page'}[choice]),updatedAt:new Date().toISOString()};
+ try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all));if(data)render();if(historyRows.length)renderHistory();if(inboxEvents.length)renderInbox();if(!$('detailOverlay').hidden){const index=detailIndex.findIndex(d=>d.asin===asin);if(index>=0)showDetail(index)}}
+ catch{alert('Could not save decision. Check browser storage settings.')}
 }
-$('historyResults').addEventListener('click',e=>{
+function handleJudgmentClick(e){
  const btn=e.target.closest('button[data-judgment]');if(!btn)return;
- saveJudgment(btn.dataset.asin,btn.dataset.judgment);
-});
+ const card=btn.closest('[data-review-card]');const reason=card?.querySelector('[data-review-reason]')?.value;
+ saveJudgment(btn.dataset.asin,btn.dataset.judgment,reason);
+}
+for(const id of ['historyResults','products','inboxResults','candidateResults','detailBody'])$(id).addEventListener('click',handleJudgmentClick);
 $('exportJudgments').addEventListener('click',()=>{
  const data=JSON.stringify({format:'daily-drops-judgments-v1',exportedAt:new Date().toISOString(),judgments:readJudgments()},null,2);
  const blob=new Blob([data],{type:'application/json'});
  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='daily-drops-deal-decisions.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 function judgmentButtons(d){
- const choice=readJudgments()[d.asin]?.choice||'';
- return '<div class="actions" role="group" aria-label="Judge deal for '+esc(d.title)+'"><button type="button" class="btn secondary" data-asin="'+esc(d.asin)+'" data-judgment="deal" aria-pressed="'+(choice==='deal')+'">✓ Deal</button><button type="button" class="btn secondary" data-asin="'+esc(d.asin)+'" data-judgment="no-deal" aria-pressed="'+(choice==='no-deal')+'">✕ No Deal</button>'+(choice?'<button type="button" class="btn secondary" data-asin="'+esc(d.asin)+'" data-judgment="clear">Clear</button>':'')+'</div>'+(choice?'<p class="small muted">Your decision: '+(choice==='deal'?'Deal':'No Deal')+' · Saved on this device</p>':'');
+ const asin=String(d.asin||'');
+ if(!/^[A-Z0-9]{10}$/.test(asin))return '';
+ const entry=readJudgments()[asin]||{},choice=entry.choice||'';
+ const opts=[['Inflated reference price','Inflated reference price'],['Cheaper elsewhere','Cheaper elsewhere'],['Poor quality or reviews','Poor quality or reviews'],['Not worth the sale price','Not worth the sale price'],['Not a fit for my page','Not a fit for my page'],['Already posted','Already posted'],['Other reason','Other reason']];
+ return '<div data-review-card class="card" style="padding:12px;margin:12px 0;background:#f7f9fc"><strong class="small">Your deal verdict</strong><p class="small muted">No selection means Not reviewed — not No Deal.</p><div class="actions" role="group" aria-label="Review '+esc(d.title||'product')+'"><button type="button" class="btn secondary" data-asin="'+esc(asin)+'" data-judgment="deal" aria-pressed="'+(choice==='deal')+'">✓ Deal</button><button type="button" class="btn secondary" data-asin="'+esc(asin)+'" data-judgment="no-deal" aria-pressed="'+(choice==='no-deal')+'">✕ No Deal</button><button type="button" class="btn secondary" data-asin="'+esc(asin)+'" data-judgment="pass" aria-pressed="'+(choice==='pass')+'">↷ Pass for posting</button>'+(choice?'<button type="button" class="btn secondary" data-asin="'+esc(asin)+'" data-judgment="clear">Clear</button>':'')+'</div><label class="small muted">Optional reason <select data-review-reason aria-label="Reason for review">'+opts.map(([value,label])=>'<option value="'+esc(value)+'"'+(entry.reason===value?' selected':'')+'>'+esc(label)+'</option>').join('')+'</select></label><p class="small muted">Status: '+(choice==='deal'?'Deal':choice==='no-deal'?'No Deal':choice==='pass'?'Passed for posting':'Not reviewed')+(entry.updatedAt?' · Saved on this device':'')+'</p></div>';
 }
 let historyRows=[];
 async function loadHistory(){
@@ -184,7 +190,7 @@ function renderInbox(){
  const q=$('inboxSearch').value.trim().toLowerCase();
  const rows=inboxEvents.filter(d=>(!q||String(d.title||'').toLowerCase().includes(q))&&(filter==='all'||(filter==='drop'&&d.reason==='Observed price drop')||(filter==='new'&&d.reason==='First observation')));
  $('inboxStatus').textContent=rows.length+' saved discoveries · newest first · historical research, not current offers';
- $('inboxResults').innerHTML=rows.map(d=>'<article class="card product"><div><span class="pill">'+esc(d.reason||'Discovery')+'</span> <span class="pill">'+esc(date(d.checkedAt))+'</span></div><h3>'+esc(d.title)+'</h3><div class="small muted">Observed price at discovery: '+cash(d.price)+(d.previousObservedPrice!=null?' · Earlier observed: '+cash(d.previousObservedPrice):'')+'</div><div class="notice"><strong>Historical observation.</strong> Price may have changed. Not checkout-verified; reference discounts are not proof of prior selling price.</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current price on Amazon ↗</a></article>').join('')||'<div class="empty">No saved discoveries for this filter yet. The inbox fills after successful scans.</div>';
+ $('inboxResults').innerHTML=rows.map(d=>'<article class="card product"><div><span class="pill">'+esc(d.reason||'Discovery')+'</span> <span class="pill">'+esc(date(d.checkedAt))+'</span></div><h3>'+esc(d.title)+'</h3><div class="small muted">Observed price at discovery: '+cash(d.price)+(d.previousObservedPrice!=null?' · Earlier observed: '+cash(d.previousObservedPrice):'')+'</div>'+judgmentButtons(d)+'<div class="notice"><strong>Historical observation.</strong> Price may have changed. Not checkout-verified; reference discounts are not proof of prior selling price.</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current price on Amazon ↗</a></article>').join('')||'<div class="empty">No saved discoveries for this filter yet. The inbox fills after successful scans.</div>';
 }
 async function loadInbox(){
  $('inboxStatus').textContent='Loading saved discoveries…';
@@ -230,7 +236,7 @@ function render(){
  const sort=$('sort').value;filtered.sort((a,b)=>sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0));
  $('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);
  const scanAge=Date.now()-Date.parse(data.updated);const stale=!Number.isFinite(scanAge)||scanAge>90*60000; $('status').textContent=(stale?'⚠ Scanner data is overdue; GitHub Actions may be delayed or failing. ':'')+filtered.length+' saved and recent discoveries · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated);
- detailIndex=filtered;$('products').innerHTML=filtered.map((d,i)=>'<article class="card product"><div><span class="pill">'+esc(d.category)+'</span> <span class="pill">API snapshot</span>'+(d.dealScore!=null?' <span class="pill">Research score '+esc(d.dealScore)+'/100</span>':'')+(d.newObservedLow?' <span class="deal-badge">New observed low</span>':'')+'</div>'+imageMarkup(d)+'<h3>'+esc(d.title)+'</h3><div><span class="price">'+cash(d.price)+'</span> <span class="deal">'+esc(d.discountPercent)+'% vs reference</span></div><div class="ref">'+esc(d.referenceType||'Reference price')+' '+cash(d.referencePrice)+'</div><div class="small muted">Checked '+esc(date(d.checkedAt))+' · '+esc(evidenceLabel(d))+' · Coupon not verified'+(d.observationCount?' · '+esc(d.observationCount)+' recorded observations':'')+'</div><button type="button" class="details" data-detail="'+i+'">View price insights & details</button><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check price on Amazon ↗</a></article>').join('')||'<div class="empty" style="grid-column:1/-1"><strong>No matching saved deals</strong><p>Try clearing the search and category filters. Older discoveries remain in Missed Deals.</p></div>';
+ detailIndex=filtered;$('products').innerHTML=filtered.map((d,i)=>'<article class="card product"><div><span class="pill">'+esc(d.category)+'</span> <span class="pill">API snapshot</span>'+(d.dealScore!=null?' <span class="pill">Research score '+esc(d.dealScore)+'/100</span>':'')+(d.newObservedLow?' <span class="deal-badge">New observed low</span>':'')+'</div>'+imageMarkup(d)+'<h3>'+esc(d.title)+'</h3><div><span class="price">'+cash(d.price)+'</span> <span class="deal">'+esc(d.discountPercent)+'% vs reference</span></div><div class="ref">'+esc(d.referenceType||'Reference price')+' '+cash(d.referencePrice)+'</div><div class="small muted">Checked '+esc(date(d.checkedAt))+' · '+esc(evidenceLabel(d))+' · Coupon not verified'+(d.observationCount?' · '+esc(d.observationCount)+' recorded observations':'')+'</div>'+judgmentButtons(d)+'<button type="button" class="details" data-detail="'+i+'">View price insights & details</button><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check price on Amazon ↗</a></article>').join('')||'<div class="empty" style="grid-column:1/-1"><strong>No matching saved deals</strong><p>Try clearing the search and category filters. Older discoveries remain in Missed Deals.</p></div>';
 }
 async function loadAmazon(){ $('status').textContent='Checking latest Amazon results…';try{const res=await fetch('data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Scan data not available');data=await res.json();render();loadInbox()}catch(e){$('status').textContent='Could not load Amazon scan: '+e.message;$('products').innerHTML='<div class="empty">Try refreshing in a moment.</div>'}}
 const chipItems=[['','All'],['ToysAndGames','Toys'],['HomeAndKitchen','Home'],['Electronics','Tech'],['Beauty','Beauty'],['Fashion','Fashion'],['OfficeProducts','Office'],['PetSupplies','Pets']];
