@@ -41,6 +41,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <button type="button" role="tab" id="tab-used" aria-controls="panel-used" aria-selected="false">Used & Resale</button>
 <button type="button" role="tab" id="tab-leads" aria-controls="panel-leads" aria-selected="false">Community leads</button>
 </nav>
+<div class="card" style="margin:12px 0;border:2px solid #225bc4;background:#eef4ff"><strong style="font-size:1.12rem">🛒 Amazon + Walmart Research</strong><p class="small muted" style="margin:7px 0">Choose a retailer. Walmart currently shows research searches, not verified individual product deals.</p><div class="actions"><button type="button" class="btn" id="homeWalmartRadar" style="background:#175e3b;color:white">🛒 Open Walmart Radar</button><button type="button" class="btn secondary" id="homeAmazonRadar">📦 Amazon Deals</button></div></div>
 <section id="panel-deals" role="tabpanel" aria-labelledby="tab-deals"><div class="quicknav"><button type="button" data-jump="deals" data-sort="newest">✦ Today’s new lows<span>Recent API leads</span></button><button type="button" data-jump="deals" data-sort="discount">↗ Biggest markdowns<span>Reference-price leads</span></button><button type="button" data-jump="used">▣ Open box<span>Verified-condition feed</span></button><button type="button" data-jump="walmart">⌖ Walmart Radar<span>Research searches</span></button></div>
 <div class="card" style="border-color:#bfd5ff;background:#edf4ff;margin:12px 0"><strong>📥 Missed a scan? Your deals are saved.</strong><p class="small muted">You do not need to check every hour. Browse the saved discovery inbox, including older observations that are no longer live.</p><button class="btn" type="button" id="openInbox">View Missed Deals →</button></div><div class="notice"><strong>Early Black Friday watch:</strong> Some products may already be discounted before our first observation. “First observation” does not mean a newly reduced price. Compare longer history using the external research links before sharing.</div><h1>Amazon deal radar</h1><p class="muted small">Browse fresh API discount leads. Open Amazon to confirm before sharing.</p>
 <div class="stats" aria-live="polite"><div class="stat"><strong id="count">—</strong><span>Current leads</span></div><div class="stat"><strong id="scanned">—</strong><span>Products scanned</span></div><div class="stat"><strong id="updated">—</strong><span>Last scan</span></div></div>
@@ -131,6 +132,8 @@ let inboxEvents=[];
 const requestedTab=location.hash.slice(1);
 window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(['deals','inbox','candidates','walmart','clearance','search','used','leads'].includes(tab))selectTab(tab)});
 $('openInbox').addEventListener('click',()=>selectTab('inbox'));
+$('homeWalmartRadar').addEventListener('click',()=>selectTab('walmart'));
+$('homeAmazonRadar').addEventListener('click',()=>selectTab('deals'));
 
 function renderInbox(){
  const filter=$('inboxFilter').value;
