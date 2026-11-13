@@ -1,0 +1,25 @@
+name: Frontend smoke checks
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'shop.html'
+      - 'shop-sw.js'
+      - 'manifest.webmanifest'
+      - 'app-icon.svg'
+      - 'test_frontend.py'
+      - 'data/featured-finds.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify website controls, links, and app assets
+        run: python -m unittest -v test_frontend.py
