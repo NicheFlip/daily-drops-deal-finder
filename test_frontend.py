@@ -63,6 +63,8 @@ class FrontendSmoke(unittest.TestCase):
         self.assertIn('function compactCard(',html)
         self.assertIn('function compactReview(',html)
         self.assertIn('id="newOnly"',html)
+        self.assertIn('id="showAllScanned"',html)
+        self.assertIn('amazon-all-products.json',html)
         self.assertIn("candidateAsins.has(String(d.asin))",html)
         self.assertIn("name='deals';$('newOnly').checked=true",html)
         self.assertIn('amazon-discovery-archive.json',html)
