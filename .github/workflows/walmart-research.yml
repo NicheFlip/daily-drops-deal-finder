@@ -1,0 +1,27 @@
+name: Walmart research discovery
+on:
+  schedule:
+    - cron: '12 */4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: walmart-research
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Refresh Walmart research search catalog
+        run: python walmart_research.py
+      - name: Publish Walmart research catalog
+        run: |
+          git config user.name "deal-scanner[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/walmart-research.json
+          git diff --cached --quiet || (git commit -m "Refresh Walmart research catalog" && git pull --rebase && git push)
