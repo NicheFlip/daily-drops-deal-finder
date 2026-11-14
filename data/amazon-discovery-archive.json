@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-14T19:28:17.897281+00:00",
+  "updated": "2026-11-14T21:08:10.074018+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HMQLM3H2",
+      "title": "Wireless Earbuds, Sports Bluetooth Headphones, Running Headphones | 75Hrs Playtime Ear Buds with LED Power Display, Noise Canceling Headset, IPX7 Waterproof Earphones for Gym/Runni",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0HMQLM3H2",
+      "imageUrl": "https://m.media-amazon.com/images/I/51ZCs+DUcEL._SL160_.jpg",
+      "price": 20.98,
+      "referencePrice": 249.99,
+      "discountPercent": 92,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T21:08:10.074018+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0G2WR2937",
+      "title": "Dokotoo Women's Barrel Striped Casual Pants Curved Seam Comfy High Waist 2026 Spring Trendy Drawstring Trousers Tapered Slouchy Cute Wide Leg Lounge Pants for Women Trendy,Brown St",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0G2WR2937",
+      "imageUrl": "https://m.media-amazon.com/images/I/41Qm0EuX27L._SL160_.jpg",
+      "price": 23.99,
+      "referencePrice": 49.99,
+      "discountPercent": 52,
+      "dealScore": 12,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T21:08:10.074018+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0G5XVMVJN",
       "title": "DREAME D20 Air Plus Robot Vacuum and Mop, 20,000Pa Powerful Suction | 120-Day Self-Emptying with 4L Dust Bag, Anti-Tangling Tech, Edge-to-Corner Cleaning, Deep Carpet Cleaning, 360",
