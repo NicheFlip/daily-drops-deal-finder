@@ -1,6 +1,24 @@
 {
-  "updated": "2026-11-14T05:22:20.976176+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-14T06:41:45.206953+00:00",
+  "candidates": [
+    {
+      "asin": "B08X9SFGVW",
+      "title": "3 Pack Women's Joggers Sweatpants Lounge Pants Yoga Workout Pajama Pockets | 5% Spandex Stretch, Plus Size, Drawstring Elastic Waist, Loose Relaxed Tapered Cut, Fall Gym Hiking Run",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B08X9SFGVW",
+      "imageUrl": "https://m.media-amazon.com/images/I/41a-a2LHYFL._SL160_.jpg",
+      "price": 21.37,
+      "referencePrice": 35.99,
+      "discountPercent": 41,
+      "dealScore": 1,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T06:41:45.206953+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
