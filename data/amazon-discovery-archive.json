@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-14T02:13:10.504008+00:00",
+  "updated": "2026-11-14T02:52:03.565866+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DY8TS92J",
+      "title": "Sony WH-CH720N Wireless Noise Cancelling Over-Ear Headphones, Pink | Comfortable Lightweight Design, Dual Noise Sensor technology, Up to 35 Hrs Battery with Quick Charging, Multipo",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0DY8TS92J",
+      "imageUrl": "https://m.media-amazon.com/images/I/31wZqFBwjZL._SL160_.jpg",
+      "price": 88.0,
+      "referencePrice": 179.99,
+      "discountPercent": 51,
+      "dealScore": 11,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T02:52:03.565866+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0DSCGXCT4",
       "title": "Bitzee Hamster Ball Interactive Toy & Digital Pet, Ages 5+ | Collect 20 Virtual Friends, Rolls & Reacts to Touch, Play 5 Mini Games, Screen-Free Responsive Play, Birthday Gift for ",
