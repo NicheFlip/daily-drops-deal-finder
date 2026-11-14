@@ -1,5 +1,26 @@
 {
-  "updated": "2026-11-14T21:08:10.074018+00:00",
-  "changes": [],
+  "updated": "2026-11-14T22:53:42.707387+00:00",
+  "changes": [
+    {
+      "asin": "B0014C0LSY",
+      "title": "Crocs Unisex-Adult Classic Clog, Black, 9 Women/7 Men | Clogs for Women and Men",
+      "previousObservedPrice": 29.9,
+      "currentObservedPrice": 29.33,
+      "dropPercent": 1.9,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-14T22:53:42.707387+00:00",
+      "url": "https://www.amazon.com/dp/B0014C0LSY"
+    },
+    {
+      "asin": "B0F2937DQQ",
+      "title": "Astercook 21 Pcs Pots and Pans Set Non Stick, Ceramic Cookware Set Detachable Handle, RV Kitchen Cooking Set Removable Handles, Oven Safe, Induction Ready, Stackable, Black, Father",
+      "previousObservedPrice": 59.99,
+      "currentObservedPrice": 59.98,
+      "dropPercent": 0.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-14T22:53:42.707387+00:00",
+      "url": "https://www.amazon.com/dp/B0F2937DQQ"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
