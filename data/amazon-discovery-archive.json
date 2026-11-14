@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-14T18:53:15.507722+00:00",
+  "updated": "2026-11-14T19:28:17.897281+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0G5XVMVJN",
+      "title": "DREAME D20 Air Plus Robot Vacuum and Mop, 20,000Pa Powerful Suction | 120-Day Self-Emptying with 4L Dust Bag, Anti-Tangling Tech, Edge-to-Corner Cleaning, Deep Carpet Cleaning, 360",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0G5XVMVJN",
+      "imageUrl": "https://m.media-amazon.com/images/I/31ekl0ma42L._SL160_.jpg",
+      "price": 199.99,
+      "referencePrice": 349.99,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T19:28:17.897281+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0D87PKYYK",
       "title": "Official Hasbro Games Jenga Game | Digital Die for 6 More Ways to Play | Original Wood Block Game | Stacking Tower | Ages 6+ | 1+ Players | Party Games",
