@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-14T06:41:45.206953+00:00",
+  "updated": "2026-11-14T07:34:49.249327+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DM3FLDV1",
+      "title": "Brooks Men\u2019s Ghost Max 3 Neutral Running & Walking Shoe - Bright White/Tea/Black - 12.5 Medium",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0DM3FLDV1",
+      "imageUrl": "https://m.media-amazon.com/images/I/31J7cl7fTNL._SL160_.jpg",
+      "price": 90.0,
+      "referencePrice": 159.95,
+      "discountPercent": 44,
+      "dealScore": 4,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T07:34:49.249327+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B08X9SFGVW",
       "title": "3 Pack Women's Joggers Sweatpants Lounge Pants Yoga Workout Pajama Pockets | 5% Spandex Stretch, Plus Size, Drawstring Elastic Waist, Loose Relaxed Tapered Cut, Fall Gym Hiking Run",
