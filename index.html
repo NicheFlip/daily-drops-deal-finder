@@ -113,6 +113,7 @@ nav button[aria-selected=true]{background:var(--dd-brand);border-color:var(--dd-
 <section id="panel-walmart" role="tabpanel" aria-labelledby="tab-walmart" hidden>
 <h1>Walmart Radar</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
 <div class="stats"><div class="stat"><strong id="walmartRadarCount">—</strong><span>Research searches</span></div><div class="stat"><strong id="walmartRadarUpdated">—</strong><span>Last refresh</span></div><div class="stat"><strong>Not linked</strong><span>Product API</span></div></div><div class="actions"><input id="walmartRadarFind" type="search" placeholder="Search saved Walmart research…" aria-label="Search Walmart radar"><button type="button" class="btn secondary" id="walmartRadarRefresh">↻ Refresh radar</button></div><p id="walmartRadarStatus" class="muted small" role="status">Open this tab to load Walmart research.</p><div id="walmartProductsStatus" class="small muted" role="status">Checking Walmart product feed…</div><div id="walmartProductResults" class="grid"></div><div id="walmartRadarResults" class="grid"></div>
+<div class="card" id="walmartWatchPanel"><h2 style="margin:0 0 7px">Walmart product watchlist</h2><p class="small muted">Save products you find on Walmart. Enter only prices you personally checked; these are manual observations, not live Walmart API quotes. Saved on this device only.</p><div class="filters"><input id="wmWatchTitle" placeholder="Product name" aria-label="Walmart product name"><input id="wmWatchUrl" type="url" placeholder="https://www.walmart.com/ip/…" aria-label="Walmart product URL"><input id="wmWatchPrice" type="number" min="0.01" step="0.01" placeholder="Price checked ($)" aria-label="Observed Walmart price"><button type="button" class="btn" id="wmWatchSave">Save observation</button></div><p id="wmWatchMessage" class="small muted" role="status"></p><div id="wmWatchResults" class="grid"></div></div>
 <div class="notice"><strong>Research mode:</strong> Walmart Creator product data is not connected to this site. These are Walmart search pages, not automatically verified deal listings. Local clearance, prices and availability can vary by store.</div>
 <div class="card"><label for="walmartTerm"><strong>Search Walmart</strong></label><input id="walmartTerm" type="search" value="clearance" placeholder="Search clearance, toys, kitchen…" style="margin:10px 0"><div id="walmartLinks" class="search-links"></div></div>
 <p class="section-label">Quick shopping categories</p><div id="walmartChips" class="chips"></div>
@@ -527,4 +528,25 @@ async function impactLoad(){
 document.getElementById('impactRefresh').addEventListener('click',impactLoad);
 document.getElementById('impactFilter').addEventListener('input',impactRender);
 impactLoad();
+
+/* Local Walmart research watchlist: user-verified observations only, no scraping or fake live prices. */
+const WM_WATCH_KEY='dailyDropsWalmartWatchV1';
+function wmWatchRead(){try{const x=JSON.parse(localStorage.getItem(WM_WATCH_KEY)||'[]');return Array.isArray(x)?x:[]}catch{return []}}
+function wmWatchWrite(rows){try{localStorage.setItem(WM_WATCH_KEY,JSON.stringify(rows));return true}catch{return false}}
+function wmWatchRender(){
+ const rows=wmWatchRead();
+ $('wmWatchResults').innerHTML=rows.map((d,i)=>'<article class="card product"><span class="pill">Manually checked</span><h3>'+esc(d.title)+'</h3><div class="scan-price">'+cash(d.price)+'</div><p class="small muted">Checked '+esc(date(d.checkedAt))+' · '+d.history.length+' saved observation(s)</p><div class="actions"><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check on Walmart ↗</a><button type="button" class="btn secondary" data-wm-watch-remove="'+i+'">Remove</button></div></article>').join('')||'<p class="small muted">No saved products yet. Find an item on Walmart, check its price, and add it here.</p>';
+}
+$('wmWatchSave').addEventListener('click',()=>{
+ const title=$('wmWatchTitle').value.trim(),url=$('wmWatchUrl').value.trim(),price=Number($('wmWatchPrice').value);
+ if(!title||!validUrlWalmart(url)||!Number.isFinite(price)||price<=0){$('wmWatchMessage').textContent='Enter a product name, a Walmart product URL, and a price you verified.';return}
+ const rows=wmWatchRead(),found=rows.find(d=>d.url===url),at=new Date().toISOString(),entry={price:Math.round(price*100)/100,checkedAt:at};
+ if(found){found.title=title;found.price=entry.price;found.checkedAt=at;found.history.push(entry);found.history=found.history.slice(-60)}
+ else rows.unshift({title,url,price:entry.price,checkedAt:at,history:[entry]});
+ if(!wmWatchWrite(rows)){$('wmWatchMessage').textContent='Could not save locally. Check browser storage settings.';return}
+ $('wmWatchMessage').textContent='Saved on this device. Recheck the Walmart price before posting.';
+ $('wmWatchTitle').value='';$('wmWatchUrl').value='';$('wmWatchPrice').value='';wmWatchRender();
+});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-wm-watch-remove]');if(!b)return;const rows=wmWatchRead();rows.splice(Number(b.dataset.wmWatchRemove),1);if(wmWatchWrite(rows))wmWatchRender()});
+wmWatchRender();
 </script></body></html>
