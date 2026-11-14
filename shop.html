@@ -32,11 +32,44 @@ button{border-color:var(--line)}
 #savePreferences{background:var(--wine);color:#fff}
 @media(max-width:600px){main{padding:16px 12px 50px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:165px;padding:10px}.body{padding:11px;gap:7px}.price{font-size:1.5rem}.name{font-size:.85rem}.meta{font-size:.69rem}.cta{padding:11px 7px;font-size:.81rem}.hero{padding:20px 14px}.tools{gap:8px}.tools input[type=search]{min-width:100%;flex:1 1 100%}.tools select{min-width:0;flex:1 1 44%}}
 @media(max-width:360px){.grid{grid-template-columns:1fr}.photo{height:220px}}
+
+/* Storefront layout repair and mobile-first editorial hierarchy */
+header{padding:20px 16px 18px}
+.brand{font-size:clamp(1.65rem,4.5vw,2.65rem);line-height:1.1;text-transform:none}
+.sub{font-size:.68rem;letter-spacing:.16em}
+main{padding-top:14px}
+.hero{padding:18px 18px 16px;margin-bottom:14px;border-radius:18px}
+.hero h1{font-size:clamp(1.55rem,4.5vw,2.35rem);margin-bottom:5px}
+.hero p{margin:6px auto;font-size:.9rem;max-width:520px}
+.preferences-panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:12px 0 16px}
+.preferences-panel summary{cursor:pointer;font-size:.83rem;font-weight:650;color:var(--wine-dark);min-height:32px;align-content:center}
+#preferences{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+#preferences label{display:flex!important;justify-content:flex-start;gap:8px!important;min-width:0;overflow-wrap:anywhere;font-size:.8rem}
+#preferences input{flex:0 0 auto;min-width:unset;width:17px;height:17px;accent-color:var(--wine)}
+.preferences-panel .tools{margin:12px 0}
+.preferences-panel button{font-size:.82rem}
+.shop-search{margin:10px 0;gap:8px}
+.shop-search input[type=search]{min-width:100%;padding:12px 15px}
+.shop-search select{min-width:0;flex:1 1 160px;font-size:.83rem}
+.shop-search button{font-size:.82rem}
+.shop-categories{display:flex;overflow-x:auto;gap:8px;padding:4px 0 13px;scrollbar-width:thin}
+.shop-categories button{flex:0 0 auto;border-radius:999px;padding:9px 14px;font-size:.8rem;font-weight:650;color:var(--wine-dark);background:#fff}
+.shop-categories button.active{background:var(--wine);color:#fff;border-color:var(--wine)}
+#featuredSection{margin:12px 0 22px}
+main>h2{font-size:clamp(1.5rem,4vw,2rem);font-style:italic;margin:14px 0 4px}
+main>h2+.small{margin:0 0 10px;font-size:.75rem}
+#status{font-size:.75rem;margin:6px 0 13px}
+.card .photo{background:#fff}
+.card .body{gap:7px}
+.card .badge{font-size:.65rem}
+.card .price{order:-1;font-size:1.65rem}
+.card .cta{min-height:40px;display:grid;place-items:center}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:15px 12px}.hero h1{font-size:1.65rem}.brand{font-size:1.8rem}.sub{font-size:.6rem;letter-spacing:.11em}.shop-search{margin-top:8px}.shop-search select{flex:1 1 42%}.photo{height:155px}.card .body{padding:10px}.card .price{font-size:1.4rem}.card .name{font-size:.79rem}.card .meta{font-size:.65rem}.card .cta{font-size:.76rem}}
 </style></head><body>
 <header><div class="wrap"><div class="brand">DAILY DROPS WITH HEATHER</div><p class="sub">Thoughtfully found. Easy to shop.</p></div></header>
-<main><section class="hero"><h1>Find something worth a look.</h1><p>Shop recent Amazon finds, browse everyday essentials, and discover new favorites.</p><p class="small">Prices shown are the latest captured by our scanner, with the scan time on each item.</p></section>
-<details style="background:white;border:1px solid #e8e3df;border-radius:15px;padding:16px;margin-bottom:18px"><summary style="cursor:pointer;font-weight:700;color:#70233e">Personalize your shopping categories</summary><p class="small">Choose your favorite categories. Your preferences stay on this device.</p><div id="preferences" class="tools"></div><div class="tools"><button id="savePreferences" type="button">Save my categories</button><button id="installApp" type="button" hidden>Install Daily Drops</button><button id="shareShop" type="button">Share shop</button></div><p id="prefsStatus" class="small" role="status"></p></section><div class="tools"><input id="search" type="search" placeholder="Search finds..." aria-label="Search products"><select id="category" aria-label="Filter category"><option value="">All categories</option></select><select id="sort" aria-label="Sort"><option value="quality" selected>Best verified signals</option><option value="newest">Recently scanned</option><option value="price">Price: low to high</option><option value="discount">Reference discount: high to low</option></select><button id="refresh" type="button">Refresh</button></div>
-<section id="featuredSection" hidden><h2>Heather’s featured finds</h2><p class="small">Products selected for sharing.</p><div id="featuredResults" class="grid"></div></section><h2>Today’s Top Finds</h2><p class="small">Observed price changes rank above reference-price claims. Verify the current price on Amazon before sharing.</p><p id="status" class="small" role="status">Loading recent finds...</p><div id="results" class="grid"></div>
+<main><section class="hero"><h1>Thoughtfully found. Easy to shop.</h1><p>Fresh finds, everyday favorites, and prices worth checking.</p></section>
+<details class="preferences-panel"><summary style="cursor:pointer;font-weight:700;color:#70233e">Your shopping preferences</summary><p class="small">Choose your favorite categories. Your preferences stay on this device.</p><div id="preferences" class="tools"></div><div class="tools"><button id="savePreferences" type="button">Save my categories</button><button id="installApp" type="button" hidden>Install Daily Drops</button><button id="shareShop" type="button">Share shop</button></div><p id="prefsStatus" class="small" role="status"></p></details><div class="tools shop-search"><input id="search" type="search" placeholder="Search finds..." aria-label="Search products"><select id="category" aria-label="Filter category"><option value="">All categories</option></select><select id="sort" aria-label="Sort"><option value="quality" selected>Best verified signals</option><option value="newest">Recently scanned</option><option value="price">Price: low to high</option><option value="discount">Reference discount: high to low</option></select><button id="refresh" type="button">Refresh</button></div>
+<div id="shopCategories" class="shop-categories" aria-label="Shop categories"></div><section id="featuredSection" hidden><h2>Heather’s featured finds</h2><p class="small">Products selected for sharing.</p><div id="featuredResults" class="grid"></div></section><h2>Today’s Top Finds</h2><p class="small">Observed price changes rank above reference-price claims. Verify the current price on Amazon before sharing.</p><p id="status" class="small" role="status">Loading recent finds...</p><div id="results" class="grid"></div>
 </main><footer><p class="disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate, I earn from qualifying purchases. Product links may earn a commission at no additional cost to you.</p><p class="small">Product prices are scanner observations, not guaranteed checkout prices. A discount against a reference price is not necessarily a historical price drop. Amazon products only; Walmart product-level feeds are not yet connected.</p></footer>
 <script>
 'use strict';
@@ -68,12 +101,14 @@ async function load(){
   rows=list.filter(d=>d&&validAsin(d.asin)&&d.retailer==='Amazon'&&typeof d.title==='string'&&Number.isFinite(Number(d.price))&&Number(d.price)>0);
   const cats=[...new Set(rows.map(d=>d.category).filter(Boolean))].sort();
   const old=$('category').value;$('category').innerHTML='<option value="">All categories</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');if(cats.includes(old))$('category').value=old;
+  $('shopCategories').innerHTML='<button type="button" data-shop-cat="" class="active">All finds</button>'+cats.map(c=>'<button type="button" data-shop-cat="'+esc(c)+'">'+esc(({HomeAndKitchen:'Home & Kitchen',ToysAndGames:'Toys & Games',OfficeProducts:'Office',PetSupplies:'Pets'})[c]||c)+'</button>').join('');
   $('preferences').innerHTML=cats.map(c=>'<label class="small" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" data-pref="'+esc(c)+'" '+(selectedCategories.includes(c)?'checked':'')+'>'+esc(c)+'</label>').join('');
   try{const featureRes=await fetch('./data/featured-finds.json?ts='+Date.now(),{cache:'no-store'});if(featureRes.ok){const featureData=await featureRes.json();const ids=new Set((Array.isArray(featureData.asins)?featureData.asins:[]).filter(validAsin));featured=rows.filter(d=>ids.has(d.asin));$('featuredSection').hidden=featured.length===0;$('featuredResults').innerHTML=featured.map(card).join('')}}catch{}
   draw();
  }catch(e){$('status').textContent='Unable to load the latest finds right now.';$('results').innerHTML='<p class="empty">Please try refreshing later.</p>'}
 }
-for(const id of ['search','category','sort'])$(id).addEventListener(id==='search'?'input':'change',draw);
+$('shopCategories').addEventListener('click',e=>{const b=e.target.closest('[data-shop-cat]');if(!b)return;$('category').value=b.dataset.shopCat;document.querySelectorAll('[data-shop-cat]').forEach(x=>x.classList.toggle('active',x===b));draw()});
+for(const id of ['search','category','sort'])$(id).addEventListener(id==='search'?'input':'change',()=>{if(id==='category')document.querySelectorAll('[data-shop-cat]').forEach(x=>x.classList.toggle('active',x.dataset.shopCat===$('category').value));draw()});
 $('refresh').addEventListener('click',load);
 $('savePreferences').addEventListener('click',()=>{selectedCategories=[...document.querySelectorAll('[data-pref]:checked')].map(e=>e.dataset.pref);try{localStorage.setItem('dailyDropsShopCategories',JSON.stringify(selectedCategories))}catch{}$('prefsStatus').textContent='Preferences saved on this device.';draw()});
 $('shareShop').addEventListener('click',async()=>{const url=new URL('./shop.html',location.href).href;try{if(navigator.share)await navigator.share({title:'Daily Drops with Heather',url});else{await navigator.clipboard.writeText(url);$('prefsStatus').textContent='Shop link copied.'}}catch{}});
