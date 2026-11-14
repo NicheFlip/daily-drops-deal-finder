@@ -25,6 +25,14 @@ QUERIES=[
 ESSENTIAL_QUERIES=[("All","laundry detergent"),("All","paper towels"),("All","toilet paper"),("All","dish soap"),("All","trash bags"),("All","coffee pods"),("All","ground coffee"),("All","diapers"),("All","baby wipes"),("All","dishwasher pods"),("All","cleaning wipes"),("All","hand soap"),("All","toothpaste"),("All","shampoo"),("All","pet food"),("All","food storage bags"),("All","batteries AA"),("All","dryer sheets"),("All","facial tissues"),("All","body wash"),("All","breakfast cereal"),("All","snack variety pack"),("All","water filters"),("All","laundry scent boosters")]
 HIGH_DEMAND_QUERIES=[('All','best selling household essentials'),('ToysAndGames','ride on toys for kids'),('ToysAndGames','electric ride on cars for kids'),('All','electric scooters'),('All','electric bikes'),('ToysAndGames','outdoor toys'),('ToysAndGames','educational toys'),('ToysAndGames','LEGO building sets'),('Beauty','skin care gift sets'),('Beauty','hair styling tools'),('Beauty','makeup gift sets'),('HomeAndKitchen','robot vacuums'),('HomeAndKitchen','air fryers'),('HomeAndKitchen','blenders'),('HomeAndKitchen','bedding sets'),('HomeAndKitchen','storage organizers'),('Electronics','wireless earbuds'),('Electronics','portable chargers'),('All','cleaning supplies'),('All','coffee'),('All','paper products'),('All','pet supplies')]
 BLACK_FRIDAY_QUERIES=[('All','early black friday deals'),('HomeAndKitchen','black friday kitchen deals'),('Electronics','black friday headphones'),('ToysAndGames','black friday toys'),('HomeAndKitchen','black friday vacuum'),('All','black friday household essentials'),('All','black friday coffee makers'),('All','black friday gifts')]
+# Search Amazon quick-link topics are also scanned automatically, not just opened in a browser.
+# The existing 24-request budget is shared; this does not add API requests.
+QUICK_LINK_QUERIES=[
+ ('ToysAndGames','toys and games'),('HomeAndKitchen','kitchen appliances'),
+ ('HomeAndKitchen','home organization'),('Electronics','headphones'),
+ ('Beauty','beauty tools'),('ToysAndGames','holiday gifts'),
+ ('Fashion','women pants'),('Fashion','shoes')
+]
 # Up to 24 requests x 10 items = 240 product results per half-hour run (not all unique).
 # Respect the daily cap and API throttling; requests may return fewer items.
 PER_RUN=24
@@ -78,6 +86,7 @@ def scan():
     essential_offset=int(state.get('essentialOffset',0))%len(ESSENTIAL_QUERIES)
     seasonal_offset=int(state.get('seasonalOffset',0))%len(BLACK_FRIDAY_QUERIES)
     demand_offset=int(state.get('demandOffset',0))%len(HIGH_DEMAND_QUERIES)
+    quick_offset=int(state.get('quickLinkOffset',0))%len(QUICK_LINK_QUERIES)
     budget=max(0,min(PER_RUN,MAX_DAILY_CALLS-calls))
     run_number=int(state.get('runNumber',0))
     previous={}
@@ -109,7 +118,8 @@ def scan():
     seasonal_active=NOW.month==11 and NOW.day<=30
     seasonal_budget=min(6,max(0,budget-essential_budget)) if seasonal_active else 0
     demand_budget=min(5,max(0,budget-essential_budget-seasonal_budget))
-    broad_budget=budget-essential_budget-seasonal_budget-demand_budget
+    quick_budget=min(3,max(0,budget-essential_budget-seasonal_budget-demand_budget))
+    broad_budget=budget-essential_budget-seasonal_budget-demand_budget-quick_budget
     searched=[]
     unique_seen=set()
     for i in range(budget):
@@ -119,8 +129,10 @@ def scan():
             category,keyword=BLACK_FRIDAY_QUERIES[(seasonal_offset+i-essential_budget)%len(BLACK_FRIDAY_QUERIES)]
         elif i<essential_budget+seasonal_budget+demand_budget:
             category,keyword=HIGH_DEMAND_QUERIES[(demand_offset+i-essential_budget-seasonal_budget)%len(HIGH_DEMAND_QUERIES)]
+        elif i<essential_budget+seasonal_budget+demand_budget+quick_budget:
+            category,keyword=QUICK_LINK_QUERIES[(quick_offset+i-essential_budget-seasonal_budget-demand_budget)%len(QUICK_LINK_QUERIES)]
         else:
-            category,keyword=QUERIES[(offset+i-essential_budget-seasonal_budget-demand_budget)%len(QUERIES)]
+            category,keyword=QUERIES[(offset+i-essential_budget-seasonal_budget-demand_budget-quick_budget)%len(QUERIES)]
         # Rotate results pages on every run, not only when a keyword list wraps.
         # Changing both the keyword and page makes each scan explore a wider catalog.
         page=1+((run_number+i//8)%3)
@@ -172,6 +184,7 @@ def scan():
       'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
     STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
+      'quickLinkOffset':(quick_offset+quick_budget)%len(QUICK_LINK_QUERIES),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
       'runNumber':run_number+1,'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
     print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors))
