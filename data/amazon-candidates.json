@@ -1,24 +1,6 @@
 {
-  "updated": "2026-11-13T22:45:05.764607+00:00",
-  "candidates": [
-    {
-      "asin": "B0HCV3N8P8",
-      "title": "ZIUTY Wireless Earbuds, Bluetooth 5.4 Headphones, Deep Bass Stereo Ear Buds | 4 ENC Noise Cancelling Mic, 48H Playtime, LED Display, IPX7 Waterproof, In-ear Earphone for Sports Wor",
-      "category": "Electronics",
-      "url": "https://www.amazon.com/dp/B0HCV3N8P8",
-      "imageUrl": "https://m.media-amazon.com/images/I/41-xmaOsquL._SL160_.jpg",
-      "price": 13.99,
-      "referencePrice": 119.99,
-      "discountPercent": 88,
-      "dealScore": 20,
-      "everydayEssential": false,
-      "reason": "First observation",
-      "previousObservedPrice": null,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-13T22:45:05.764607+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
-    }
-  ],
-  "count": 1,
+  "updated": "2026-11-14T00:20:17.389461+00:00",
+  "candidates": [],
+  "count": 0,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
