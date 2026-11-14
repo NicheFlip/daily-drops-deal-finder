@@ -2,11 +2,41 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#70233e"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./app-icon.svg" type="image/svg+xml"><meta name="description" content="Browse Amazon finds from Daily Drops with Heather."><title>Shop the Finds | Daily Drops with Heather</title>
 <style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#24242b;background:#fbf9f5}*{box-sizing:border-box}body{margin:0}header{background:#fff;border-bottom:1px solid #e9e3dd;padding:22px 18px}header .wrap,main,footer{max-width:1100px;margin:auto}.brand{font-weight:800;letter-spacing:.04em;font-size:1.1rem}.sub{font-size:.88rem;color:#716c71;margin:6px 0 0}main{padding:24px 16px 50px}.hero{background:#f4e9e9;border-radius:18px;padding:24px;margin-bottom:22px}h1{font-size:clamp(1.8rem,5vw,2.7rem);line-height:1.13;margin:0 0 10px}.hero p{color:#62565e;line-height:1.5}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 22px}input,select,button{font:inherit;border-radius:11px;padding:12px;border:1px solid #ddd5d4;background:#fff}input{flex:2;min-width:220px}select{flex:1;min-width:160px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px}.card{background:white;border:1px solid #e8e3df;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}.photo{height:240px;display:grid;place-items:center;padding:20px;background:#fff}.photo img{max-width:100%;max-height:100%;object-fit:contain}.body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}.name{font-weight:700;line-height:1.4;margin:0;font-size:1rem}.price{font-size:1.7rem;font-weight:850;color:#70233e}.meta{font-size:.79rem;color:#726c70}.cta{display:block;text-align:center;text-decoration:none;background:#70233e;color:white;border-radius:11px;padding:13px;font-weight:750;margin-top:auto}.empty{padding:32px 16px;text-align:center;color:#676067}.disclosure{font-size:.8rem;color:#665e65;line-height:1.6}footer{padding:20px 16px 60px;border-top:1px solid #e9e3dd}.badge{font-size:.72rem;font-weight:700;color:#70233e;background:#f8e9ef;padding:5px 9px;border-radius:100px;align-self:start}.small{font-size:.85rem;color:#676067}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #b77a95;outline-offset:3px}
+
+/* Daily Drops premium editorial storefront — shared brand with operator dashboard */
+:root{--ivory:#fcf9f5;--wine:#820d31;--wine-dark:#620b27;--ink:#25212a;--line:#eadfe0;--soft:#f8ecef}
+body{background:var(--ivory);color:var(--ink)}
+header{background:linear-gradient(110deg,#fffdfb,#faf0ed);border-bottom:1px solid var(--line);padding:24px 18px;text-align:center}
+.brand{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(1.7rem,5vw,2.8rem);font-weight:500;letter-spacing:-.035em;color:var(--wine)}
+.sub{font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wine-dark)}
+.hero{background:linear-gradient(125deg,#fffaf8,#f6e9e7);border:1px solid var(--line);border-radius:22px;text-align:center;padding:26px 20px}
+.hero h1,h2{font-family:Georgia,'Times New Roman',serif;color:var(--wine-dark);letter-spacing:-.025em}
+.hero h1{font-style:italic;font-size:clamp(2rem,5vw,3rem)}
+.tools input[type=search]{flex:3}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #d4a1b1;outline-offset:2px}
+.card{border-color:var(--line);box-shadow:0 7px 22px rgba(78,26,42,.055);border-radius:19px}
+.photo{height:250px;padding:19px;background:#fff;position:relative}
+.photo img{width:100%;height:100%;object-fit:contain}
+.body{gap:9px;padding:15px}
+.name{font-size:.94rem;line-height:1.4;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.price{font-size:1.8rem;color:var(--wine);letter-spacing:-.045em}
+.badge{background:var(--soft);color:var(--wine-dark);font-size:.69rem}
+.cta{background:var(--wine);border-radius:999px;font-weight:750}
+.cta:hover{background:var(--wine-dark)}
+#featuredSection{margin:25px 0 34px}
+#featuredSection h2{font-style:italic}
+#results{margin-top:12px}
+#preferences{gap:7px}
+#preferences label{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 10px}
+button{border-color:var(--line)}
+#savePreferences{background:var(--wine);color:#fff}
+@media(max-width:600px){main{padding:16px 12px 50px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:165px;padding:10px}.body{padding:11px;gap:7px}.price{font-size:1.5rem}.name{font-size:.85rem}.meta{font-size:.69rem}.cta{padding:11px 7px;font-size:.81rem}.hero{padding:20px 14px}.tools{gap:8px}.tools input[type=search]{min-width:100%;flex:1 1 100%}.tools select{min-width:0;flex:1 1 44%}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.photo{height:220px}}
 </style></head><body>
 <header><div class="wrap"><div class="brand">DAILY DROPS WITH HEATHER</div><p class="sub">Thoughtfully found. Easy to shop.</p></div></header>
 <main><section class="hero"><h1>Find something worth a look.</h1><p>Shop recent Amazon finds, browse everyday essentials, and discover new favorites.</p><p class="small">Prices shown are the latest captured by our scanner, with the scan time on each item.</p></section>
-<section style="background:white;border:1px solid #e8e3df;border-radius:15px;padding:16px;margin-bottom:18px"><strong>Make Daily Drops your own</strong><p class="small">Choose your favorite categories. Your preferences stay on this device.</p><div id="preferences" class="tools"></div><div class="tools"><button id="savePreferences" type="button">Save my categories</button><button id="installApp" type="button" hidden>Install Daily Drops</button><button id="shareShop" type="button">Share shop</button></div><p id="prefsStatus" class="small" role="status"></p></section><div class="tools"><input id="search" type="search" placeholder="Search finds..." aria-label="Search products"><select id="category" aria-label="Filter category"><option value="">All categories</option></select><select id="sort" aria-label="Sort"><option value="newest">Recently scanned</option><option value="price">Price: low to high</option><option value="discount">Reference discount: high to low</option></select><button id="refresh" type="button">Refresh</button></div>
-<section id="featuredSection" hidden><h2>Heather’s featured finds</h2><p class="small">Products selected for sharing.</p><div id="featuredResults" class="grid"></div></section><h2>Latest scanner finds</h2><p id="status" class="small" role="status">Loading recent finds...</p><div id="results" class="grid"></div>
+<details style="background:white;border:1px solid #e8e3df;border-radius:15px;padding:16px;margin-bottom:18px"><summary style="cursor:pointer;font-weight:700;color:#70233e">Personalize your shopping categories</summary><p class="small">Choose your favorite categories. Your preferences stay on this device.</p><div id="preferences" class="tools"></div><div class="tools"><button id="savePreferences" type="button">Save my categories</button><button id="installApp" type="button" hidden>Install Daily Drops</button><button id="shareShop" type="button">Share shop</button></div><p id="prefsStatus" class="small" role="status"></p></section><div class="tools"><input id="search" type="search" placeholder="Search finds..." aria-label="Search products"><select id="category" aria-label="Filter category"><option value="">All categories</option></select><select id="sort" aria-label="Sort"><option value="newest">Recently scanned</option><option value="price">Price: low to high</option><option value="discount">Reference discount: high to low</option></select><button id="refresh" type="button">Refresh</button></div>
+<section id="featuredSection" hidden><h2>Heather’s featured finds</h2><p class="small">Products selected for sharing.</p><div id="featuredResults" class="grid"></div></section><h2>Today’s Top Finds</h2><p id="status" class="small" role="status">Loading recent finds...</p><div id="results" class="grid"></div>
 </main><footer><p class="disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate, I earn from qualifying purchases. Product links may earn a commission at no additional cost to you.</p><p class="small">Product prices are scanner observations, not guaranteed checkout prices. A discount against a reference price is not necessarily a historical price drop. Amazon products only; Walmart product-level feeds are not yet connected.</p></footer>
 <script>
 'use strict';
