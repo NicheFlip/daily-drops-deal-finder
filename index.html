@@ -369,7 +369,14 @@ function render(){
  const sort=$('sort').value;filtered.sort((a,b)=>sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):sort==='oldest'?Date.parse(a.checkedAt)-Date.parse(b.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0));
  $('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);
  $('status').textContent=filtered.length+($('showAllScanned').checked?' products shown from '+allScannedProducts.length+' full-feed products':$('newOnly').checked?' new finds from latest scan':' saved and recent discoveries')+' · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated)+($('showAllScanned').checked?(allScannedFeedError?' · '+allScannedFeedError:' · Full feed: '+date(allScannedFeedUpdated)):'');
- detailIndex=filtered;$('products').innerHTML=filtered.map((d,i)=>compactCard(d,'deal',i)).join('')||'<div class="empty">No matching finds. Try clearing your filters.</div>';
+ detailIndex=filtered;
+ const emptyMessage=$('newOnly').checked
+  ? 'No newly discovered candidates in this scan. Your existing deal leads are still available.'
+  : all.length
+    ? 'No products match the current filters. Clear filters to see your available leads.'
+    : 'No qualifying deal leads in this feed yet. You can also browse every scanned product.';
+ $('products').innerHTML=filtered.map((d,i)=>compactCard(d,'deal',i)).join('')||'<div class="empty"><p>'+emptyMessage+'</p><button type="button" class="btn secondary" id="resetDealFilters">Show available deals</button></div>';
+ const reset=$('resetDealFilters');if(reset)reset.addEventListener('click',()=>{$('newOnly').checked=false;$('deep').checked=false;$('essentials').checked=false;$('find').value='';$('category').value='';$('showAllScanned').checked=false;render()});
 }
 async function loadAllScanned(){try{const r=await fetch('data/amazon-all-products.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('not published');const j=await r.json();allScannedProducts=(Array.isArray(j.products)?j.products:[]).filter(d=>validUrl(d.url)&&Number(d.price)>0);allScannedFeedUpdated=j.updated||'';allScannedFeedError='';if(!allScannedProducts.length)allScannedFeedError='The full-product feed is empty.'}catch(e){allScannedProducts=[];allScannedFeedError='Full-product feed unavailable: '+e.message;allScannedFeedUpdated=''}}
 async function loadAmazon(){ $('status').textContent='Checking latest Amazon results…';try{const res=await fetch('data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Scan data not available');data=await res.json();await loadAllScanned();render();loadInbox()}catch(e){$('status').textContent='Could not load Amazon scan: '+e.message;$('products').innerHTML='<div class="empty">Try refreshing in a moment.</div>'}}
