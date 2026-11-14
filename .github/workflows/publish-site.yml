@@ -4,6 +4,10 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'shop.html'
+      - 'shop-sw.js'
+      - 'manifest.webmanifest'
+      - 'app-icon.svg'
       - 'data/**'
       - '.github/workflows/publish-site.yml'
   workflow_dispatch:
