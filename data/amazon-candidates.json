@@ -1,6 +1,58 @@
 {
-  "updated": "2026-11-14T00:20:17.389461+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-14T00:52:55.293274+00:00",
+  "candidates": [
+    {
+      "asin": "B00262227E",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B00262227E",
+      "imageUrl": "https://m.media-amazon.com/images/I/41yl2MsVgpL._SL160_.jpg",
+      "price": 4.09,
+      "referencePrice": 17.84,
+      "discountPercent": 77,
+      "dealScore": 80,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 6.98,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-14T00:52:55.293274+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B07TJG79HP",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Hand Soap, Rain Water, 12.5 fl oz, 3 Pack | Moisturizing Liquid Hand Soap, Softens and Cleans Hands, Cruelty Free, Made with Essential Oils, Olive Oil",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B07TJG79HP",
+      "imageUrl": "https://m.media-amazon.com/images/I/51oF7SuVLbL._SL160_.jpg",
+      "price": 11.63,
+      "referencePrice": 19.47,
+      "discountPercent": 40,
+      "dealScore": 40,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-14T00:52:55.293274+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B08BHHRSPK",
+      "title": "The Game of Life Board Game, Family Games for Kids Ages 8 and Up, Pegs Come in 6 Colors, Family Board Games for 2 to 4 Players",
+      "category": "ToysAndGames",
+      "url": "https://www.amazon.com/dp/B08BHHRSPK",
+      "imageUrl": "https://m.media-amazon.com/images/I/51IaDXxrOpL._SL160_.jpg",
+      "price": 14.99,
+      "referencePrice": 24.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T00:52:55.293274+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    }
+  ],
+  "count": 3,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
