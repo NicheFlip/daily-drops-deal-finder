@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-14T00:52:55.293274+00:00",
+  "updated": "2026-11-14T01:00:47.367128+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0FWBH9ZF9",
+      "title": "Wavytalk Power Wave Hair Crimper, Ionic Hair Waver for Less Heat Damage | Beach Waves Curling Wand, Crimping Iron, Ventilation Design for Less Damage, Ionic Reduces Frizz, Dual Vol",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B0FWBH9ZF9",
+      "imageUrl": "https://m.media-amazon.com/images/I/41p5yvOndaL._SL160_.jpg",
+      "price": 48.3,
+      "referencePrice": 79.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T01:00:47.367128+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B00262227E",
       "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",

@@ -1,26 +1,5 @@
 {
-  "updated": "2026-11-14T00:52:55.293274+00:00",
-  "changes": [
-    {
-      "asin": "B00262227E",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",
-      "previousObservedPrice": 6.98,
-      "currentObservedPrice": 4.09,
-      "dropPercent": 41.4,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-14T00:52:55.293274+00:00",
-      "url": "https://www.amazon.com/dp/B00262227E"
-    },
-    {
-      "asin": "B07TJG79HP",
-      "title": "MRS. MEYER'S CLEAN DAY Liquid Hand Soap, Rain Water, 12.5 fl oz, 3 Pack | Moisturizing Liquid Hand Soap, Softens and Cleans Hands, Cruelty Free, Made with Essential Oils, Olive Oil",
-      "previousObservedPrice": 13.37,
-      "currentObservedPrice": 11.63,
-      "dropPercent": 13.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-14T00:52:55.293274+00:00",
-      "url": "https://www.amazon.com/dp/B07TJG79HP"
-    }
-  ],
+  "updated": "2026-11-14T01:00:47.367128+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
