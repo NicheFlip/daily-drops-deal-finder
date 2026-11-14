@@ -67,6 +67,24 @@ nav button[aria-selected=true]{background:var(--dd-brand);border-color:var(--dd-
 /* Keep daily workflow visible before optional operator utilities */
 .research-drawer>summary{list-style:revert;min-height:44px;display:list-item;align-content:center}
 .research-drawer .card{box-shadow:none}
+
+/* Unified Daily Drops editorial identity — operator tools retain compact utility */
+:root{--dd-bg:#fcf9f5;--dd-surface:#fff;--dd-ink:#25212a;--dd-muted:#756a70;--dd-border:#eadfe0;--dd-brand:#820d31;--dd-brand-deep:#620b27;--dd-positive:#176647;--dd-radius:14px;--dd-shadow:0 4px 16px rgba(78,26,42,.05)}
+body{background:var(--dd-bg);color:var(--dd-ink)}
+header{background:linear-gradient(115deg,#fffdfb,#f8eeec);color:var(--dd-brand-deep);border-bottom:1px solid var(--dd-border)}
+header .brand{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:500;letter-spacing:-.035em}
+header .sub{color:var(--dd-brand);letter-spacing:.09em}
+nav{background:var(--dd-bg)}
+nav button{border-color:var(--dd-border);color:var(--dd-brand-deep)}
+nav button[aria-selected=true]{background:var(--dd-brand);border-color:var(--dd-brand);color:#fff}
+.card,.product,.stat,.research-drawer{border-color:var(--dd-border);box-shadow:var(--dd-shadow)}
+.btn:not(.secondary),.product a{background:var(--dd-brand);color:#fff}
+.btn.secondary{background:#f8edf0;color:var(--dd-brand-deep)}
+section[role=tabpanel] h1,section[role=tabpanel] h2{color:var(--dd-brand-deep)}
+section[role=tabpanel] h1{font-family:Georgia,'Times New Roman',serif;font-style:italic}
+.scan-card .scan-price,.product .price{color:var(--dd-brand-deep)}
+input,select,textarea{border-color:var(--dd-border)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline-color:#d4a1b1}
 </style></head>
 <body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Amazon + Walmart deal research workspace</p></div></header>
 <main>
