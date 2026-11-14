@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-14T14:29:55.552841+00:00",
+  "updated": "2026-11-14T15:31:49.458313+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HJ7MGWSZ",
+      "title": "Fhumsh Wireless Earbuds, Bluetooth 6.0 Headphones HiFi Stereo 50H Playback LED Digital Display Ear Buds with ENC Noise Canceling Headset, IPX7 Waterproof Earphones for Gym/Running/",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0HJ7MGWSZ",
+      "imageUrl": "https://m.media-amazon.com/images/I/41inqRIjXOL._SL160_.jpg",
+      "price": 19.98,
+      "referencePrice": 249.99,
+      "discountPercent": 92,
+      "dealScore": 40,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 19.99,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-14T15:31:49.458313+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0HJYLCMT1",
+      "title": "Christmas Gift Exchange Dice Game, Santa Swap, White Elephant Party | 14-Sided Oversized Dice for Christmas, Birthdays, Parties, Family Game Night & Holidays, Stocking Stuffer Gift",
+      "category": "ToysAndGames",
+      "url": "https://www.amazon.com/dp/B0HJYLCMT1",
+      "imageUrl": "https://m.media-amazon.com/images/I/414QKdaNCrL._SL160_.jpg",
+      "price": 5.99,
+      "referencePrice": 9.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T15:31:49.458313+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0HKVJZ5QJ",
       "title": "LVKANGDA Robot Vacuum and Mop Combo, 12,000 Pa Strong Suction, dToF Laser Navigation with 5 Maps, 90 Days Self-Empty, App Control, Anti-Tangle Brush, for Pet Hair Carpet & Hard Flo",
