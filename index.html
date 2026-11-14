@@ -35,6 +35,34 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .research-drawer>.card{box-shadow:none;border:0;padding:12px 2px}
 .scan-card .scan-photo{object-fit:contain}
 @media(max-width:700px){main{padding-bottom:95px}nav{gap:6px}nav button{padding:10px 12px}.research-drawer{margin:8px 0}.scan-card .scan-price{font-size:1.7rem}}
+
+/* Shared Daily Drops design system across every operator section */
+:root{--dd-bg:#f6f7fa;--dd-surface:#fff;--dd-ink:#1d2939;--dd-muted:#66758b;--dd-border:#dfe5ed;--dd-brand:#1d4d9c;--dd-brand-deep:#163a70;--dd-positive:#176647;--dd-radius:14px;--dd-shadow:0 2px 10px rgba(24,36,56,.045)}
+body{background:var(--dd-bg);color:var(--dd-ink)}
+.card,.product,.stat,.research-drawer,.detail-box,.empty{border-radius:var(--dd-radius);border-color:var(--dd-border);box-shadow:var(--dd-shadow)}
+section[role="tabpanel"]{min-width:0}
+section[role="tabpanel"] .card{margin-bottom:12px}
+section[role="tabpanel"] h2{font-size:1.18rem;letter-spacing:-.025em;color:var(--dd-ink)}
+section[role="tabpanel"] .section-label{color:var(--dd-muted)}
+section[role="tabpanel"] .stats{gap:9px}
+section[role="tabpanel"] .stat{box-shadow:var(--dd-shadow)}
+section[role="tabpanel"] .product{background:var(--dd-surface);border:1px solid var(--dd-border);border-radius:var(--dd-radius);padding:14px;box-shadow:var(--dd-shadow)}
+section[role="tabpanel"] .scan-card{padding:14px!important}
+.scan-card .scan-photo{background:#fafbfc;border:1px solid #e8edf3;border-radius:10px}
+.scan-card .scan-price,.product .price{color:var(--dd-ink);font-weight:850;letter-spacing:-.03em}
+.btn,.product a,.search-links a{border-radius:10px;min-height:42px}
+.btn:not(.secondary),.product a{background:var(--dd-brand-deep)}
+.btn.secondary{background:#edf2f8;color:var(--dd-brand-deep)}
+button,input,select,textarea{font-family:inherit}
+input,select,textarea{border-radius:10px;max-width:100%}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #8cb8fa;outline-offset:2px}
+.notice{background:#fff9ed;border-color:#e9ddc1;color:#514a40}
+nav{background:var(--dd-bg)}
+nav button[aria-selected=true]{background:var(--dd-brand);border-color:var(--dd-brand)}
+.quicknav button,.chips button,.scan-card .scan-review button{border-color:var(--dd-border)}
+.research-drawer{box-shadow:var(--dd-shadow)}
+.deal-badge{color:var(--dd-positive)}
+@media(max-width:700px){section[role="tabpanel"] .product{padding:12px}section[role="tabpanel"] .scan-card{padding:12px!important}.grid{gap:11px}main{padding-left:12px;padding-right:12px}}
 </style></head>
 <body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Amazon + Walmart deal research workspace</p></div></header>
 <main>
