@@ -1,21 +1,21 @@
 {
-  "updated": "2026-11-14T01:00:47.367128+00:00",
+  "updated": "2026-11-14T02:00:51.690388+00:00",
   "candidates": [
     {
-      "asin": "B0FWBH9ZF9",
-      "title": "Wavytalk Power Wave Hair Crimper, Ionic Hair Waver for Less Heat Damage | Beach Waves Curling Wand, Crimping Iron, Ventilation Design for Less Damage, Ionic Reduces Frizz, Dual Vol",
-      "category": "Beauty",
-      "url": "https://www.amazon.com/dp/B0FWBH9ZF9",
-      "imageUrl": "https://m.media-amazon.com/images/I/41p5yvOndaL._SL160_.jpg",
-      "price": 48.3,
-      "referencePrice": 79.99,
+      "asin": "B0HLG4L7ZS",
+      "title": "5 Pack Closet Organizers and Storage, Reinforced Stackable Closet 16.73\" in | Foldable Closet Storage Bins for Clothes, Towels, Stackable Wardrobe Shelf Organizer for Bedroom & Lau",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0HLG4L7ZS",
+      "imageUrl": "https://m.media-amazon.com/images/I/51E4FI31kFL._SL160_.jpg",
+      "price": 35.99,
+      "referencePrice": 59.99,
       "discountPercent": 40,
       "dealScore": 0,
       "everydayEssential": false,
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-14T01:00:47.367128+00:00",
+      "checkedAt": "2026-11-14T02:00:51.690388+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     }
   ],
