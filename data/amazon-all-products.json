@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T02:09:06.318467+00:00",
+  "updated": "2026-11-14T02:13:10.504008+00:00",
   "scannedProducts": 229,
   "requestsCompleted": 24,
   "uniqueProductsSeen": 227,
@@ -16,7 +16,7 @@
       "discountPercent": 11,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -33,7 +33,7 @@
       "discountPercent": 36,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -50,7 +50,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -67,7 +67,24 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
+    },
+    {
+      "asin": "B0721BFMTQ",
+      "title": "Amazon Fresh, Just Bright Ground Coffee, Light Roast, 12 Oz",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0721BFMTQ",
+      "imageUrl": "https://m.media-amazon.com/images/I/41eqdoUnYAL._SL160_.jpg",
+      "price": 6.48,
+      "referencePrice": null,
+      "referenceType": "API savings basis",
+      "discountPercent": 0,
+      "category": "All",
+      "keyword": "coffee",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -84,7 +101,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -101,7 +118,7 @@
       "discountPercent": 47,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -118,7 +135,7 @@
       "discountPercent": 8,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -135,7 +152,7 @@
       "discountPercent": 38,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -152,7 +169,7 @@
       "discountPercent": 23,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -169,7 +186,7 @@
       "discountPercent": 40,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -186,7 +203,7 @@
       "discountPercent": 20,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -203,7 +220,7 @@
       "discountPercent": 20,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -220,7 +237,7 @@
       "discountPercent": 18,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -237,7 +254,7 @@
       "discountPercent": 25,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -254,7 +271,7 @@
       "discountPercent": 13,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -271,7 +288,7 @@
       "discountPercent": 20,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -288,7 +305,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -305,7 +322,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -322,7 +339,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -339,7 +356,7 @@
       "discountPercent": 23,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -356,7 +373,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -373,7 +390,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -390,7 +407,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -407,7 +424,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -424,7 +441,7 @@
       "discountPercent": 11,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -441,7 +458,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -458,7 +475,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -475,7 +492,7 @@
       "discountPercent": 5,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -492,7 +509,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -509,7 +526,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -526,7 +543,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -543,7 +560,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -560,7 +577,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -577,7 +594,7 @@
       "discountPercent": 13,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -594,7 +611,7 @@
       "discountPercent": 9,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -611,7 +628,7 @@
       "discountPercent": 11,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -628,7 +645,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -645,7 +662,7 @@
       "discountPercent": 21,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -662,7 +679,7 @@
       "discountPercent": 12,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -679,7 +696,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -696,7 +713,7 @@
       "discountPercent": 9,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -713,7 +730,7 @@
       "discountPercent": 61,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -730,7 +747,7 @@
       "discountPercent": 37,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -747,7 +764,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -764,7 +781,7 @@
       "discountPercent": 34,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -781,7 +798,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -798,7 +815,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -815,7 +832,7 @@
       "discountPercent": 39,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -832,7 +849,7 @@
       "discountPercent": 43,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -849,7 +866,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -866,7 +883,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "hand soap",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -883,7 +900,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -900,7 +917,7 @@
       "discountPercent": 31,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -917,7 +934,7 @@
       "discountPercent": 22,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -934,7 +951,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -951,7 +968,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -968,7 +985,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -985,7 +1002,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1002,7 +1019,7 @@
       "discountPercent": 13,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1019,7 +1036,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1036,7 +1053,7 @@
       "discountPercent": 25,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1053,7 +1070,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1070,7 +1087,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1087,7 +1104,7 @@
       "discountPercent": 14,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1104,7 +1121,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1121,7 +1138,7 @@
       "discountPercent": 26,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1138,7 +1155,7 @@
       "discountPercent": 20,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1155,7 +1172,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1172,7 +1189,7 @@
       "discountPercent": 9,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1189,7 +1206,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1206,7 +1223,7 @@
       "discountPercent": 9,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1223,7 +1240,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1240,7 +1257,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1257,7 +1274,7 @@
       "discountPercent": 10,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1274,7 +1291,7 @@
       "discountPercent": 19,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1291,7 +1308,7 @@
       "discountPercent": 10,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1308,7 +1325,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1325,7 +1342,7 @@
       "discountPercent": 9,
       "category": "All",
       "keyword": "pet food",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1342,7 +1359,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1359,7 +1376,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1376,7 +1393,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1393,7 +1410,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1410,7 +1427,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1427,7 +1444,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1444,7 +1461,7 @@
       "discountPercent": 23,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1461,7 +1478,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1478,7 +1495,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1495,7 +1512,7 @@
       "discountPercent": 89,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1512,7 +1529,7 @@
       "discountPercent": 17,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1529,7 +1546,7 @@
       "discountPercent": 36,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1546,7 +1563,7 @@
       "discountPercent": 28,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1563,7 +1580,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1580,7 +1597,7 @@
       "discountPercent": 39,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1597,7 +1614,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1614,7 +1631,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1631,7 +1648,7 @@
       "discountPercent": 16,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1648,7 +1665,7 @@
       "discountPercent": 20,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1665,7 +1682,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "dishwasher pods",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1682,7 +1699,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "cleaning wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1699,7 +1716,7 @@
       "discountPercent": 18,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1716,7 +1733,7 @@
       "discountPercent": 5,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1733,7 +1750,7 @@
       "discountPercent": 9,
       "category": "All",
       "keyword": "food storage bags",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1750,7 +1767,7 @@
       "discountPercent": 22,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1767,7 +1784,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "black friday toys",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1784,7 +1801,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1801,7 +1818,7 @@
       "discountPercent": 30,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1818,7 +1835,7 @@
       "discountPercent": 40,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1835,7 +1852,7 @@
       "discountPercent": 10,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1852,7 +1869,7 @@
       "discountPercent": 14,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1869,7 +1886,7 @@
       "discountPercent": 12,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1886,7 +1903,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1903,7 +1920,7 @@
       "discountPercent": 33,
       "category": "Electronics",
       "keyword": "black friday headphones",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1920,7 +1937,7 @@
       "discountPercent": 12,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1937,7 +1954,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1954,7 +1971,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1971,7 +1988,7 @@
       "discountPercent": 30,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -1988,7 +2005,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2005,7 +2022,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2022,7 +2039,7 @@
       "discountPercent": 27,
       "category": "All",
       "keyword": "shampoo",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2039,7 +2056,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2056,7 +2073,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2073,7 +2090,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2090,7 +2107,7 @@
       "discountPercent": 25,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2107,7 +2124,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2124,7 +2141,7 @@
       "discountPercent": 20,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2141,7 +2158,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2158,7 +2175,7 @@
       "discountPercent": 25,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2175,7 +2192,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2192,7 +2209,7 @@
       "discountPercent": 33,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2209,7 +2226,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2226,7 +2243,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2243,7 +2260,7 @@
       "discountPercent": 17,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2260,7 +2277,7 @@
       "discountPercent": 23,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2277,7 +2294,7 @@
       "discountPercent": 12,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2294,7 +2311,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2311,7 +2328,7 @@
       "discountPercent": 60,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2328,7 +2345,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "baby wipes",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2345,7 +2362,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "toothpaste",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2362,7 +2379,7 @@
       "discountPercent": 10,
       "category": "HomeAndKitchen",
       "keyword": "black friday vacuum",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2379,7 +2396,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2396,7 +2413,7 @@
       "discountPercent": 10,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2413,7 +2430,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "black friday gifts",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2430,7 +2447,7 @@
       "discountPercent": 20,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2447,24 +2464,7 @@
       "discountPercent": 46,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
-    },
-    {
-      "asin": "B00NCQPK7M",
-      "title": "Starbucks Medium Roast Iced Coffee, Black Unsweetened, 48 Fl Oz Bottle | Made with Real Starbucks Coffee,100% Arabica Beans, Chilled Coffee Drink, Enjoy On the Go",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B00NCQPK7M",
-      "imageUrl": "https://m.media-amazon.com/images/I/41TTiSdG1UL._SL160_.jpg",
-      "price": 5.38,
-      "referencePrice": null,
-      "referenceType": "API savings basis",
-      "discountPercent": 0,
-      "category": "All",
-      "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2481,7 +2481,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2498,24 +2498,24 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
     },
     {
-      "asin": "B01LB1J9BW",
-      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
+      "asin": "B00NCQPK7M",
+      "title": "Starbucks Medium Roast Iced Coffee, Black Unsweetened, 48 Fl Oz Bottle | Made with Real Starbucks Coffee,100% Arabica Beans, Chilled Coffee Drink, Enjoy On the Go",
       "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B01LB1J9BW",
-      "imageUrl": "https://m.media-amazon.com/images/I/413jOimkYGL._SL160_.jpg",
-      "price": 7.99,
-      "referencePrice": 9.49,
-      "referenceType": "List Price:",
-      "discountPercent": 16,
+      "url": "https://www.amazon.com/dp/B00NCQPK7M",
+      "imageUrl": "https://m.media-amazon.com/images/I/41TTiSdG1UL._SL160_.jpg",
+      "price": 5.38,
+      "referencePrice": null,
+      "referenceType": "API savings basis",
+      "discountPercent": 0,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2532,7 +2532,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2549,24 +2549,24 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
     },
     {
-      "asin": "B09Z74JDSQ",
-      "title": "Chock Full o' Nuts Ground Coffee - New York Roast, 30.5 oz Can | Dark Roast, Premium Beans in Recyclable Steel Can, Rich Flavor and Aroma, Perfect for Drip, Pour-Over, Percolator",
+      "asin": "B0CXYYTW8W",
+      "title": "Maxwell House Ground Coffee, Original Roast, 10.3 oz Canister | Smooth & Rich Medium Roast Coffee, Full-Bodied Flavor, Rich Aroma, Roasted in the USA Since 1892, Certified Kosher",
       "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B09Z74JDSQ",
-      "imageUrl": "https://m.media-amazon.com/images/I/515yMJFAzAL._SL160_.jpg",
-      "price": 19.88,
+      "url": "https://www.amazon.com/dp/B0CXYYTW8W",
+      "imageUrl": "https://m.media-amazon.com/images/I/51KYXRGeKoL._SL160_.jpg",
+      "price": 6.97,
       "referencePrice": null,
       "referenceType": "API savings basis",
       "discountPercent": 0,
       "category": "All",
       "keyword": "coffee",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2583,7 +2583,7 @@
       "discountPercent": 12,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2600,7 +2600,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2617,7 +2617,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2634,7 +2634,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2651,7 +2651,7 @@
       "discountPercent": 28,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2668,7 +2668,7 @@
       "discountPercent": 19,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2685,7 +2685,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2702,7 +2702,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2719,7 +2719,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "paper products",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2736,7 +2736,7 @@
       "discountPercent": 20,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2753,7 +2753,7 @@
       "discountPercent": 13,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2770,7 +2770,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2787,7 +2787,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2804,7 +2804,7 @@
       "discountPercent": 7,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2821,7 +2821,7 @@
       "discountPercent": 17,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2838,7 +2838,7 @@
       "discountPercent": 13,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2855,7 +2855,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2872,7 +2872,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "pet supplies",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2889,7 +2889,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2906,7 +2906,7 @@
       "discountPercent": 94,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2923,7 +2923,7 @@
       "discountPercent": 42,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2940,7 +2940,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2957,7 +2957,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2974,7 +2974,7 @@
       "discountPercent": 19,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -2991,7 +2991,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3008,7 +3008,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3025,7 +3025,7 @@
       "discountPercent": 0,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3042,7 +3042,7 @@
       "discountPercent": 35,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3059,7 +3059,7 @@
       "discountPercent": 16,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3076,7 +3076,7 @@
       "discountPercent": 16,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3093,7 +3093,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3110,7 +3110,7 @@
       "discountPercent": 16,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3127,7 +3127,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3144,24 +3144,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "ride on toys for kids",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
-    },
-    {
-      "asin": "B0CT7ZV7HX",
-      "title": "BBWOO Search and Find Activity Book, Reusable Travel Game Toys for Kids 3-8 | Car Airplane Road Trip Activities for Kids Games, Preschool Learning Activities, Educational Seek Game",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0CT7ZV7HX",
-      "imageUrl": "https://m.media-amazon.com/images/I/61Qzm1T4eiL._SL160_.jpg",
-      "price": 14.99,
-      "referencePrice": 18.99,
-      "referenceType": "List Price:",
-      "discountPercent": 21,
-      "category": "ToysAndGames",
-      "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3178,7 +3161,24 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
+    },
+    {
+      "asin": "B0CT7ZV7HX",
+      "title": "BBWOO Search and Find Activity Book, Reusable Travel Game Toys for Kids 3-8 | Car Airplane Road Trip Activities for Kids Games, Preschool Learning Activities, Educational Seek Game",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0CT7ZV7HX",
+      "imageUrl": "https://m.media-amazon.com/images/I/61Qzm1T4eiL._SL160_.jpg",
+      "price": 14.99,
+      "referencePrice": 18.99,
+      "referenceType": "List Price:",
+      "discountPercent": 21,
+      "category": "ToysAndGames",
+      "keyword": "toys and games",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3195,7 +3195,7 @@
       "discountPercent": 69,
       "category": "ToysAndGames",
       "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3212,7 +3212,7 @@
       "discountPercent": 20,
       "category": "ToysAndGames",
       "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3229,7 +3229,7 @@
       "discountPercent": 11,
       "category": "ToysAndGames",
       "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3246,41 +3246,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
-    },
-    {
-      "asin": "B0GFFXCK6J",
-      "title": "Mini Color Stack Challenge Solo Travel Game by Relatable | Shake It, Sort It, Solve It! Solo Travel Version of the Viral Color Stack Game, Stocking Stuffers for Kids, 40 Rings",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0GFFXCK6J",
-      "imageUrl": "https://m.media-amazon.com/images/I/31yj0Lc5emL._SL160_.jpg",
-      "price": 9.99,
-      "referencePrice": null,
-      "referenceType": "API savings basis",
-      "discountPercent": 0,
-      "category": "ToysAndGames",
-      "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
-    },
-    {
-      "asin": "B0GD9N7J9F",
-      "title": "STARBOX Nook Nooks Series 1 Blind Box Collectible LED Animal Home Scenes",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0GD9N7J9F",
-      "imageUrl": "https://m.media-amazon.com/images/I/41SFXyW5OnL._SL160_.jpg",
-      "price": 12.97,
-      "referencePrice": null,
-      "referenceType": "API savings basis",
-      "discountPercent": 0,
-      "category": "ToysAndGames",
-      "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3297,7 +3263,41 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
+    },
+    {
+      "asin": "B0GD9N7J9F",
+      "title": "STARBOX Nook Nooks Series 1 Blind Box Collectible LED Animal Home Scenes",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0GD9N7J9F",
+      "imageUrl": "https://m.media-amazon.com/images/I/41SFXyW5OnL._SL160_.jpg",
+      "price": 12.97,
+      "referencePrice": null,
+      "referenceType": "API savings basis",
+      "discountPercent": 0,
+      "category": "ToysAndGames",
+      "keyword": "toys and games",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
+    },
+    {
+      "asin": "B0DN331V74",
+      "title": "Rebounce Game | Indoor and Outdoor Electronic Action Game for Kids, Teens, and Adults | Ages 8+ | 2 to 6 Players | 10 Mins. | Family Travel Games",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0DN331V74",
+      "imageUrl": "https://m.media-amazon.com/images/I/51AZyPlmo5L._SL160_.jpg",
+      "price": 10.86,
+      "referencePrice": 19.99,
+      "referenceType": "List Price:",
+      "discountPercent": 46,
+      "category": "ToysAndGames",
+      "keyword": "toys and games",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3314,7 +3314,7 @@
       "discountPercent": 0,
       "category": "ToysAndGames",
       "keyword": "toys and games",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3331,7 +3331,7 @@
       "discountPercent": 22,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3348,7 +3348,7 @@
       "discountPercent": 11,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3365,7 +3365,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3382,7 +3382,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3399,7 +3399,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3416,7 +3416,7 @@
       "discountPercent": 23,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3433,7 +3433,7 @@
       "discountPercent": 67,
       "category": "HomeAndKitchen",
       "keyword": "kitchen appliances",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3450,7 +3450,7 @@
       "discountPercent": 47,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3467,7 +3467,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3484,7 +3484,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3501,7 +3501,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3518,7 +3518,7 @@
       "discountPercent": 49,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3535,7 +3535,7 @@
       "discountPercent": 0,
       "category": "HomeAndKitchen",
       "keyword": "home organization",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3552,7 +3552,7 @@
       "discountPercent": 15,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3569,7 +3569,7 @@
       "discountPercent": 46,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3586,7 +3586,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3603,7 +3603,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3620,7 +3620,7 @@
       "discountPercent": 24,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3637,7 +3637,7 @@
       "discountPercent": 15,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3654,7 +3654,7 @@
       "discountPercent": 23,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3671,7 +3671,7 @@
       "discountPercent": 13,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3688,7 +3688,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3705,7 +3705,7 @@
       "discountPercent": 31,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3722,7 +3722,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3739,7 +3739,7 @@
       "discountPercent": 50,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3756,7 +3756,7 @@
       "discountPercent": 60,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3773,7 +3773,7 @@
       "discountPercent": 0,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3790,7 +3790,7 @@
       "discountPercent": 40,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3807,7 +3807,7 @@
       "discountPercent": 65,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -3824,7 +3824,7 @@
       "discountPercent": 30,
       "category": "Electronics",
       "keyword": "smart home",
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
@@ -5111,23 +5111,6 @@
       "url": "https://www.amazon.com/dp/B072K54HR8",
       "imageUrl": "https://m.media-amazon.com/images/I/41ctP2+BfPL._SL160_.jpg",
       "price": 8.57,
-      "referencePrice": null,
-      "referenceType": "API savings basis",
-      "discountPercent": 0,
-      "category": "All",
-      "keyword": "ground coffee",
-      "checkedAt": "2026-11-14T02:00:51.690388+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified"
-    },
-    {
-      "asin": "B0721BFMTQ",
-      "title": "Amazon Fresh, Just Bright Ground Coffee, Light Roast, 12 Oz",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0721BFMTQ",
-      "imageUrl": "https://m.media-amazon.com/images/I/41eqdoUnYAL._SL160_.jpg",
-      "price": 6.48,
       "referencePrice": null,
       "referenceType": "API savings basis",
       "discountPercent": 0,

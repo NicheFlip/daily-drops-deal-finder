@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T02:09:06.318467+00:00",
+  "updated": "2026-11-14T02:13:10.504008+00:00",
   "candidates": [
     {
       "asin": "B0DSCGXCT4",
@@ -15,7 +15,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -32,7 +32,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -49,7 +49,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -66,7 +66,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -83,7 +83,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -100,10 +100,27 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-14T02:09:06.318467+00:00",
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0DN331V74",
+      "title": "Rebounce Game | Indoor and Outdoor Electronic Action Game for Kids, Teens, and Adults | Ages 8+ | 2 to 6 Players | 10 Mins. | Family Travel Games",
+      "category": "ToysAndGames",
+      "url": "https://www.amazon.com/dp/B0DN331V74",
+      "imageUrl": "https://m.media-amazon.com/images/I/51AZyPlmo5L._SL160_.jpg",
+      "price": 10.86,
+      "referencePrice": 19.99,
+      "discountPercent": 46,
+      "dealScore": 6,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-14T02:13:10.504008+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     }
   ],
-  "count": 6,
+  "count": 7,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
