@@ -178,7 +178,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <div class="search-links" style="margin-top:16px"><a href="https://www.amazon.com/amazonwarehouse" target="_blank" rel="noopener noreferrer">Amazon Resale homepage ↗</a></div>
 </section>
 <section id="panel-leads" role="tabpanel" aria-labelledby="tab-leads" hidden>
-<h1>Community deal leads</h1><p class="notice">These are third-party community posts, not verified Amazon prices. They may be expired or inaccurate.</p>
+<h1>Community deal leads</h1><div class="search-links" style="margin:12px 0 16px"><a href="https://sales-aholic.com/deals" target="_blank" rel="noopener noreferrer">Sales-Aholic ↗</a><a href="https://www.heavenlysteals.com/" target="_blank" rel="noopener noreferrer">Heavenly Steals ↗</a></div><p class="notice">These are third-party community posts, not verified Amazon prices. They may be expired or inaccurate.</p>
 <div class="actions"><input id="leadfind" type="search" placeholder="Filter community leads" style="max-width:350px"><button type="button" class="btn secondary" id="leadreload">Refresh leads</button></div><p id="leadstatus" class="muted small"></p><div id="leaditems" class="grid"></div>
 </section>
 <footer>Independent affiliate research tool. Not affiliated with or endorsed by Amazon. Availability, eligibility, and prices may change. Use approved affiliate links when publishing posts.</footer>
@@ -567,7 +567,7 @@ function renderLeads(){
  const asin=leadAsin(d)||(match?match.item.asin:'');
  const affiliate=asin?postingLink(asin):'';
  const image=String(d.imageUrl||d.image||d.thumbnail||match?.item?.imageUrl||match?.item?.image||'');
- const safeImage=(image.startsWith('https://m.media-amazon.com/')||image.startsWith('https://images-na.ssl-images-amazon.com/'))?'<img src="'+esc(image)+'" alt="" loading="lazy" style="width:96px;height:96px;object-fit:contain;background:#fff;border-radius:9px;flex-shrink:0">':'<div aria-label="Product photo unavailable" title="No verified product photo available" style="width:96px;height:96px;flex-shrink:0;border-radius:9px;background:#f3f0ed;display:grid;place-items:center;color:#7b6e6c;font-size:11px;text-align:center">Photo<br>unavailable</div>';
+ const safeImage=(image.startsWith('https://')&&!image.includes('\\')&&!image.includes('\\"'))?'<img src="'+esc(image)+'" alt="" loading="lazy" style="width:96px;height:96px;object-fit:contain;background:#fff;border-radius:9px;flex-shrink:0">':'<div aria-label="Product photo unavailable" title="No verified product photo available" style="width:96px;height:96px;flex-shrink:0;border-radius:9px;background:#f3f0ed;display:grid;place-items:center;color:#7b6e6c;font-size:11px;text-align:center">Photo<br>unavailable</div>';
  const original=String(d.url||'');
  const originalLink=original.startsWith('https://')?'<a href="'+esc(original)+'" target="_blank" rel="noopener noreferrer">Source ↗</a>':'';
  const find=d.retailer==='Amazon'?'<a href="'+esc(affiliate||leadSearchUrl(d))+'" target="_blank" rel="sponsored noopener noreferrer">'+(affiliate?'View product ↗':'Find product ↗')+'</a>':'';
