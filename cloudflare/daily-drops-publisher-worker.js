@@ -42,7 +42,38 @@ el('signin').onclick=async()=>{const secret=el('secret').value;el('secret').valu
 el('save').onclick=async()=>{const asin=extractAsin(el('asin').value),title=el('title').value.trim(),price=Number(el('price').value),status=el('status').value;if(!/^[A-Z0-9]{10}$/.test(asin)||!title||!(price>0)){message('Enter a valid ASIN, title, and verified price.');return}const r=await fetch('/api/deals',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({asin,title,price,status,imageUrl:el('imageUrl').value.trim(),imageConfirmed:el('confirmImage').checked})});const j=await r.json();message(r.ok?(j.imageFound?'Saved successfully with product photo.':'Saved. No exact Amazon product photo was found yet; this item will stay off the shop until one is available.'):(j.error||'Unable to save'))};
 el('logout').onclick=async()=>{await fetch('/api/logout',{method:'POST'});await refresh();message('Signed out')};refresh();
 <\/script></html>`;
-export default {async fetch(request,env){
+
+// Community lead photo lookup: read only the og:image/twitter:image of allowed deal pages.
+const OG_ALLOWED_HOSTS=['slickdeals.net'];
+const ogHits=new Map();
+function ogAllowed(value){try{const u=new URL(String(value||''));if(u.protocol!=='https:'||u.username||u.password||u.port||u.href.length>1800)return null;const host=u.hostname.toLowerCase();return OG_ALLOWED_HOSTS.some(h=>host===h||host.endsWith('.'+h))?u:null}catch{return null}}
+function ogLimited(request){const ip=request.headers.get('cf-connecting-ip')||'unknown',now=Date.now(),hit=ogHits.get(ip);if(!hit||now-hit.start>60000){if(ogHits.size>5000)ogHits.clear();ogHits.set(ip,{start:now,count:1});return false}hit.count++;return hit.count>60}
+function ogDecode(v){return String(v).replace(/&amp;/g,'&').replace(/&#x2F;/gi,'/').replace(/&#47;/g,'/').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
+function ogExtract(html,base){for(const tag of html.match(/<meta\b[^>]*>/gi)||[]){const key=(tag.match(/\b(?:property|name)\s*=\s*["']([^"']+)["']/i)||[])[1];if(!key||!['og:image','og:image:secure_url','twitter:image','twitter:image:src'].includes(key.toLowerCase()))continue;const content=(tag.match(/\bcontent\s*=\s*["']([^"']+)["']/i)||[])[1];if(!content)continue;try{const img=communityImage(new URL(ogDecode(content.trim()),base).href);if(img)return img}catch{}}return ''}
+async function ogLookup(request,u,ctx){
+ const ogCors={...cors,'cache-control':'public, max-age=86400'};
+ const target=ogAllowed(u.searchParams.get('url'));
+ if(!target)return json({imageUrl:null,error:'URL not allowed'},400,cors);
+ target.hash='';['utm_source','utm_content','utm_medium','utm_campaign'].forEach(k=>target.searchParams.delete(k));
+ const cacheKey=new Request('https://og-cache.invalid/?u='+encodeURIComponent(target.href));
+ const cache=globalThis.caches?.default;
+ if(cache){const hit=await cache.match(cacheKey).catch(()=>null);if(hit)return hit}
+ if(ogLimited(request))return json({imageUrl:null,error:'Too many requests'},429,{...cors,'retry-after':'60'});
+ let imageUrl='';
+ try{
+  const r=await fetch(target.href,{redirect:'follow',signal:AbortSignal.timeout(5000),headers:{'accept':'text/html','user-agent':'Mozilla/5.0 (compatible; DailyDropsPublisher/1.0)'}});
+  if(r.ok&&ogAllowed(r.url||target.href)&&String(r.headers.get('content-type')||'').includes('text/html')&&r.body){
+   const reader=r.body.getReader(),decoder=new TextDecoder();let html='';
+   while(html.length<400000){const {done,value}=await reader.read();if(done)break;html+=decoder.decode(value,{stream:true});if(/<\/head>/i.test(html))break}
+   reader.cancel().catch(()=>{});
+   imageUrl=ogExtract(html,r.url||target.href);
+  }
+ }catch{}
+ const res=json({imageUrl:imageUrl||null},200,imageUrl?ogCors:{...cors,'cache-control':'public, max-age=3600'});
+ if(cache&&ctx?.waitUntil)ctx.waitUntil(cache.put(cacheKey,res.clone()).catch(()=>{}));
+ return res;
+}
+export default {async fetch(request,env,ctx){
  try{
   const u=new URL(request.url),path=u.pathname;
   if(!env.DB||!env.PUBLISH_SECRET)return json({error:'Worker setup incomplete: DB and PUBLISH_SECRET required'},503);
@@ -55,6 +86,7 @@ export default {async fetch(request,env){
    const {results}=await env.DB.prepare("SELECT asin,title,price,affiliate_url AS url,image_url AS imageUrl,source,status,verified_at AS checkedAt FROM deals ORDER BY updated_at DESC LIMIT 1000").all();
    return json({format:'daily-drops-publisher-v1',deals:results.map(x=>({...x,retailer:'Amazon',category:'Other',keyword:'Owner verified',discountPercent:0}))},200,cors);
   }
+  if(path==='/api/og'&&request.method==='GET')return await ogLookup(request,u,ctx);
   if(path==='/api/health'&&request.method==='GET'){
    try{await env.DB.prepare('SELECT asin FROM deals LIMIT 1').first();return json({ok:true,database:'connected',version:'publisher-v2'},200,cors)}
    catch{return json({ok:false,database:'unavailable'},503,cors)}
