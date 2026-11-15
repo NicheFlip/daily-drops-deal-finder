@@ -1,7 +1,8 @@
 {
-  "checkedAt": "2026-11-15T18:50:24.112374+00:00",
+  "checkedAt": "2026-11-15T21:37:32.716007+00:00",
   "connection": "connected",
-  "productsReturned": 253,
+  "productsReturned": 444,
+  "withAffiliateLinks": 444,
   "searchesAttempted": 12,
   "diagnostics": [
     {
@@ -125,5 +126,5 @@
       "returned": 100
     }
   ],
-  "note": "Product leads saved; not verified checkout prices or retailer-specific clearance."
+  "note": "Product leads saved with affiliate links when available."
 }
