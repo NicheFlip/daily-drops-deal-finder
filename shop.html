@@ -141,6 +141,7 @@ function draw(){
  $('status').textContent=filtered.length+' finds · '+(lastFeedUpdated?'Updated '+new Date(lastFeedUpdated).toLocaleString([],{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Freshly scanned');
  $('results').innerHTML=filtered.slice(0,150).map(card).join('')||'<div class="empty">'+(rows.length===0?'Fresh finds are on the way. Check back soon!':'No finds match your search. Try All finds or another category.')+'</div>';
 }
+let archiveImageCache=new Map(),archiveImageCacheAt=0;
 async function load(options={}){
  if(shopLoadInFlight)return;
  shopLoadInFlight=true;lastShopCheck=Date.now();
@@ -151,11 +152,13 @@ async function load(options={}){
   const list=Array.isArray(payload.deals)?payload.deals:[];
   let community=[];try{const cr=await fetch('./data/community-verified.json?ts='+Date.now(),{cache:'no-store'});if(cr.ok){const cj=await cr.json();community=Array.isArray(cj.deals)?cj.deals:[]}}catch{}
   // Repair missing images from the larger Amazon product archive without changing the product.
-  let archiveImages=new Map();
-  try{
-   const ar=await fetch('./data/amazon-all-products.json?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});
-   if(ar.ok){const aj=await ar.json();const items=[...(Array.isArray(aj.products)?aj.products:[]),...(Array.isArray(aj.deals)?aj.deals:[])];for(const item of items)if(validAsin(item.asin)&&hasProductImage(item))archiveImages.set(item.asin,item.imageUrl)}
-  }catch{}
+  let archiveImages=archiveImageCache;
+  if(!archiveImageCacheAt||Date.now()-archiveImageCacheAt>15*60*1000){
+   try{
+    const ar=await fetch('./data/amazon-all-products.json?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});
+    if(ar.ok){const aj=await ar.json();const items=[...(Array.isArray(aj.products)?aj.products:[]),...(Array.isArray(aj.deals)?aj.deals:[])];const updated=new Map();for(const item of items)if(validAsin(item.asin)&&hasProductImage(item))updated.set(item.asin,item.imageUrl);archiveImageCache=updated;archiveImageCacheAt=Date.now();archiveImages=updated}
+   }catch{}
+  }
   let cloud=[];let cloudFresh=false;
   try{const cached=JSON.parse(localStorage.getItem('dailyDropsCloudCatalogV1')||'null');if(cached&&Array.isArray(cached.deals)&&Date.now()-Number(cached.savedAt)<7*86400000)cloud=cached.deals}catch{}
   try{const wr=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(4500)});if(wr.ok){const wj=await wr.json();if(wj.format==='daily-drops-publisher-v1'&&Array.isArray(wj.deals)){cloud=wj.deals;cloudFresh=true;try{localStorage.setItem('dailyDropsCloudCatalogV1',JSON.stringify({deals:cloud,savedAt:Date.now()}))}catch{}}}}catch{}
