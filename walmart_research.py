@@ -14,7 +14,7 @@ GROUPS={
 }
 def build():
  now=datetime.datetime.now(datetime.timezone.utc).isoformat()
- rows=[{'category':category,'query':q,'url':'https://www.walmart.com/search?'+urllib.parse.urlencode({'q':q}),'verifiedProduct':False,'verifiedPrice':False,'affiliateLink':None} for category,queries in GROUPS.items() for q in queries]
+ rows=[{'category':category,'query':q,'url':'https://www.walmart.com/search?'+urllib.parse.urlencode({'q':q,'sort':'price_low'}),'verifiedProduct':False,'verifiedPrice':False,'affiliateLink':None} for category,queries in GROUPS.items() for q in queries]
  return {'updated':now,'source':'Official Walmart search URLs; no product API or price verification','status':'research_only','count':len(rows),'searches':rows,'note':'Search links only. No prices, discounts, stock levels or affiliate links are claimed.'}
 if __name__=='__main__':
  OUT.parent.mkdir(parents=True,exist_ok=True)
