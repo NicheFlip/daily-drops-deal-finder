@@ -474,7 +474,7 @@ const walmartOfficialDeals=[
 function dealQuery(q){const v=q.trim();return /\b(deal|deals|clearance|rollback|sale|markdown|discount)\b/i.test(v)?v:v+' deals'}
 function walmartUrl(q,low=false){const url=new URL('https://www.walmart.com/search');url.searchParams.set('q',q);if(low)url.searchParams.set('sort','price_low');return url.href}
 const openBoxTerms=['open box electronics','open box TVs','open box laptops','open box kitchen appliances','open box vacuums','open box furniture','open box toys','returned items clearance'];
-$('walmartOpenBox').innerHTML=openBoxTerms.map(q=>link(q,walmartUrl(q))).join('');
+$('walmartOpenBox').innerHTML=openBoxTerms.map(q=>link(q+' · lowest price first',walmartUrl(q,true))).join('');
 function walmartLinks(){const q=dealQuery($('walmartTerm').value.trim()||'clearance');$('walmartLinks').innerHTML=link('Find '+q,walmartUrl(q))+link('Compare lowest prices',walmartUrl(q,true))}
 $('walmartTerm').addEventListener('input',walmartLinks);walmartLinks();
 function renderWalmartCategories(){const q=$('walmartFilter').value.trim().toLowerCase();const categories=walmartCategories.filter(x=>x.toLowerCase().includes(q));if($('walmartSort').value==='az')categories.sort((a,b)=>a.localeCompare(b));$('walmartCategories').innerHTML=categories.map(x=>link(x+' · deals',walmartUrl(dealQuery(x)))).join('')||'<div class="empty">No matching categories</div>'}
