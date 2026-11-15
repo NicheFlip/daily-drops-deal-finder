@@ -36,7 +36,7 @@ QUICK_LINK_QUERIES=[
 # Up to 24 requests x 10 items = 240 product results per half-hour run (not all unique).
 # Respect the daily cap and API throttling; requests may return fewer items.
 PER_RUN=24
-WATCH_CALLS=6
+WATCH_CALLS=2
 WATCH_BATCH=10
 WATCH_POOL_LIMIT=150
 MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
@@ -101,6 +101,7 @@ def scan():
     if OUT.exists():
         try:previous={d['asin']:d for d in json.loads(OUT.read_text()).get('deals',[]) if d.get('asin')}
         except (ValueError,KeyError):pass
+    previous_asins=set(previous)
     # Keep a rolling discovery window; each product retains its original checkedAt.
     # Older observations are not represented as fresh prices.
     fresh={}
@@ -144,11 +145,11 @@ def scan():
     discovery_budget=budget-watch_budget
     # Core repeat-purchase searches recur every run; remaining calls rotate across
     # seasonal, popular and broad categories so the feed discovers different items.
-    essential_budget=min(8,discovery_budget)
+    essential_budget=min(6,discovery_budget)
     seasonal_active=NOW.month==11 and NOW.day<=30
-    seasonal_budget=min(6,max(0,discovery_budget-essential_budget)) if seasonal_active else 0
-    demand_budget=min(5,max(0,discovery_budget-essential_budget-seasonal_budget))
-    quick_budget=min(3,max(0,discovery_budget-essential_budget-seasonal_budget-demand_budget))
+    seasonal_budget=min(4,max(0,discovery_budget-essential_budget)) if seasonal_active else 0
+    demand_budget=min(4,max(0,discovery_budget-essential_budget-seasonal_budget))
+    quick_budget=min(2,max(0,discovery_budget-essential_budget-seasonal_budget-demand_budget))
     broad_budget=discovery_budget-essential_budget-seasonal_budget-demand_budget-quick_budget
     searched=[]
     unique_seen=set()
@@ -165,7 +166,7 @@ def scan():
             category,keyword=QUERIES[(offset+i-essential_budget-seasonal_budget-demand_budget-quick_budget)%len(QUERIES)]
         # Rotate results pages on every run, not only when a keyword list wraps.
         # Changing both the keyword and page makes each scan explore a wider catalog.
-        page=1+((run_number+i//8)%3)
+        page=1+((run_number//2+i//6)%5)
         searched.append({'category':category,'keyword':keyword,'page':page})
         # Spread requests, respect throttling, and continue after transient failures.
         if i:time.sleep(1.25)
@@ -239,11 +240,11 @@ def scan():
             deal['dealScore']=min(20,max(0,deal.get('discountPercent',0)-40))
     candidate_count=build_queue(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
-    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title'))),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
+    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title'))),key=lambda d:(d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':sum(map(len,watch_batches[:watch_budget])),'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
+      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':sum(map(len,watch_batches[:watch_budget])),'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
     STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
       'quickLinkOffset':(quick_offset+quick_budget)%len(QUICK_LINK_QUERIES),
