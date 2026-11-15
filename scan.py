@@ -74,16 +74,33 @@ for feed in config['feeds']+discover_public_feeds():
                 class DescriptionImage(HTMLParser):
                     def __init__(self):super().__init__();self.src=''
                     def handle_starttag(self,tag,attrs):
+                        a=dict(attrs)
                         if tag=='img' and not self.src:
-                            a=dict(attrs);self.src=a.get('src','') or a.get('data-src','')
-                desc=' '.join(''.join(el.itertext()) for el in item.iter() if el.tag.split('}')[-1].lower() in ('description','encoded','summary','content'))
+                            self.src=a.get('data-src','') or a.get('src','') or a.get('data-original','')
+                        if tag=='meta' and a.get('property','').lower() in ('og:image','twitter:image') and not self.src:
+                            self.src=a.get('content','')
+                descriptions=[]
+                for el in item.iter():
+                    if el.tag.split('}')[-1].lower() in ('description','encoded','summary','content'):
+                        descriptions.append(''.join(el.itertext()))
+                desc=html.unescape(' '.join(descriptions))
                 if desc:
-                    parser=DescriptionImage();parser.feed(desc[:100000])
-                    if parser.src.startswith('https://'):image=parser.src
+                    parser=DescriptionImage()
+                    try:parser.feed(desc[:100000])
+                    except Exception:pass
+                    candidate=html.unescape(parser.src).strip()
+                    if candidate.startswith('https://'):image=candidate
+            if not image:
+                # RSS image elements may use a child URL rather than an attribute.
+                for el in item.iter():
+                    if el.tag.split('}')[-1].lower() in ('image','thumbnail','content'):
+                        candidate=(el.attrib.get('url') or (el.text or '')).strip()
+                        if candidate.startswith('https://') and candidate.lower().split('?')[0].endswith(('.jpg','.jpeg','.png','.webp')):
+                            image=candidate;break
             by_url[link]={**prior,'title':title[:200],'url':link,'source':feed['name'],'retailer':retailer,'firstSeen':prior.get('firstSeen',now),'lastSeen':now,'imageUrl':image or prior.get('imageUrl',''),'verified':False,'notes':'Deal lead only. Verify retailer price and coupon terms.'}
     except Exception as exc:
         print('Feed unavailable:',feed['name'],type(exc).__name__,str(exc)[:120])
 result=sorted(by_url.values(),key=lambda d:d['lastSeen'],reverse=True)[:350]
 out.parent.mkdir(exist_ok=True)
 out.write_text(json.dumps({'updated':now,'deals':result},indent=2))
-print('Saved',len(result),'unverified deal leads')
+print('Saved',len(result),'unverified deal leads; with source photos:',sum(bool(d.get('imageUrl')) for d in result),'without photos:',sum(not d.get('imageUrl') for d in result))
