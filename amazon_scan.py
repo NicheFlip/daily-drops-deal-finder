@@ -88,6 +88,8 @@ def scan():
     demand_offset=int(state.get('demandOffset',0))%len(HIGH_DEMAND_QUERIES)
     quick_offset=int(state.get('quickLinkOffset',0))%len(QUICK_LINK_QUERIES)
     budget=max(0,min(PER_RUN,MAX_DAILY_CALLS-calls))
+    if budget==0:
+        raise RuntimeError('Amazon daily request budget exhausted; keeping previous published deals instead of replacing them with an empty scan')
     run_number=int(state.get('runNumber',0))
     previous={}
     if OUT.exists():
@@ -163,6 +165,9 @@ def scan():
             errors.append(category+' / '+keyword+': HTTP '+str(e.code))
             if e.code in (401,403,429):break
         except Exception as e:errors.append(category+' / '+keyword+': '+type(e).__name__)
+    # Never overwrite a working public feed when every API request failed or returned nothing.
+    if completed==0 or scanned==0:
+        raise RuntimeError(f'Amazon scan returned no usable products (requests={completed}, products={scanned}, errors={errors[:4]}). Previous public feed preserved.')
     # Track valid everyday essentials even without a qualifying discount.
     # Only qualifying leads enter the public deal and candidate feeds.
     observed_drops=enrich(observed,STAMP,baseline=baseline)
