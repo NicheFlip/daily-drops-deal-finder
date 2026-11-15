@@ -147,6 +147,6 @@ $('installShopApp').addEventListener('click',installDailyDrops);
 $('installApp').addEventListener('click',installDailyDrops);
 if(installedShop()){$('installShopApp').textContent='App installed';document.querySelector('.install-details').hidden=true}
 
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./shop-sw.js').catch(()=>{}));
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./shop-sw.js',{scope:'./shop.html'}).catch(()=>{}));
 load();
 </script></body></html>
