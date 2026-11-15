@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-15T03:04:08.016475+00:00",
+  "updated": "2026-11-15T03:15:54.207368+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HHFHLW4T",
+      "title": "XIEBro Robot Vacuum and Mop, 6500Pa Suction, 2 in 1 Robotic Vacuum with Gyro Inertial Navigation, 200 Min Runtime, App/Remote/Voice Control, Ideal for Pet Hair, Hard Floor, Carpet",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0HHFHLW4T",
+      "imageUrl": "https://m.media-amazon.com/images/I/51pPfbAhqRL._SL160_.jpg",
+      "price": 119.99,
+      "referencePrice": 558.99,
+      "discountPercent": 79,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-15T03:15:54.207368+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B07HCPWT2D",
       "title": "Hearthsong Inflatable Kids Art Easel, Outdoor & Indoor Paint Station, Creative Coloring, Drawing and Painting Art Easel for Kids and Toddlers, Ideal for Arts & Crafts Fun",
