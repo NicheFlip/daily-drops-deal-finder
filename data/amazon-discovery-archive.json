@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-15T17:01:48.388797+00:00",
+  "updated": "2026-11-15T17:40:58.389097+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0GYX2SZ9T",
+      "title": "WIHOLL Pants Sets Women 2 Piece Outfits Matching Set Lounge Sets Gray XL | Postpartum Pajamas,Fall Outfits For Women,Comfy Sets,Lounge Sets,Fashion Clothing,Cruise Outfit,Teacher O",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0GYX2SZ9T",
+      "imageUrl": "https://m.media-amazon.com/images/I/31FJP8xLphL._SL160_.jpg",
+      "price": 28.49,
+      "referencePrice": 49.99,
+      "discountPercent": 43,
+      "dealScore": 31,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 29.99,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-15T17:40:58.389097+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0CLSG5VP4",
+      "title": "Columbia Men's Powder Lite II Insulated Puffer Jacket | Water-Resistant, Insulated, Zippered Hand Pockets, Extended Fit Available",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0CLSG5VP4",
+      "imageUrl": "https://m.media-amazon.com/images/I/41U08+XgdYL._SL160_.jpg",
+      "price": 93.27,
+      "referencePrice": 165.0,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-15T17:40:58.389097+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B008H4SLV6",
       "title": "Vitamix 5200 Professional-Grade Blender, 64 oz. Container, Black | Kitchen Appliance for Smoothies, Soups and More, Variable Speed, Self-Cleaning, High Speed Switch, Stainless Blad",

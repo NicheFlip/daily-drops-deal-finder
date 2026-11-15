@@ -1,5 +1,16 @@
 {
-  "updated": "2026-11-15T17:01:48.388797+00:00",
-  "changes": [],
+  "updated": "2026-11-15T17:40:58.389097+00:00",
+  "changes": [
+    {
+      "asin": "B0GYX2SZ9T",
+      "title": "WIHOLL Pants Sets Women 2 Piece Outfits Matching Set Lounge Sets Gray XL | Postpartum Pajamas,Fall Outfits For Women,Comfy Sets,Lounge Sets,Fashion Clothing,Cruise Outfit,Teacher O",
+      "previousObservedPrice": 29.99,
+      "currentObservedPrice": 28.49,
+      "dropPercent": 5.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-15T17:40:58.389097+00:00",
+      "url": "https://www.amazon.com/dp/B0GYX2SZ9T"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
