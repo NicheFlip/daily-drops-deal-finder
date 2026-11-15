@@ -90,12 +90,13 @@ function shopCategory(d){const t=((d.title||'')+' '+(d.keyword||'')).toLowerCase
 function updateCategoryUI(){document.querySelectorAll('[data-shop-cat]').forEach(x=>x.classList.toggle('active',x.dataset.shopCat===$('category').value))}
 function evidenceTag(d){return d.newObservedLow?'New observed low':d.priceEvidence==='observed_reduction'?'Observed price drop':d.priceEvidence==='repeat_observation'?'Price observed again':'Reference-price lead'}
 function qualityRank(d){return (d.newObservedLow?150:0)+(d.priceEvidence==='observed_reduction'?100:0)+(d.priceEvidence==='repeat_observation'?25:0)+Math.min(75,Number(d.dealScore)||0)}
+function isExcludedAudio(d){return /\b(?:headphones?|headsets?|earbuds?|earpods?|airpods?|earphones?)\b/i.test(String(d.title||''))}
 function isShopRejected(d){try{const x=JSON.parse(localStorage.getItem('dailyDropsDealJudgmentsV1')||'{}');return ['pass','no-deal'].includes(x[String(d.asin||'')]?.choice)}catch{return false}}
 function referenceMarkup(d){const p=Number(d.price),r=Number(d.referencePrice);if(!Number.isFinite(r)||!Number.isFinite(p)||p<=0||r<=p)return '';return '<div class="reference"><span class="was">Ref. '+money(r)+'</span><span class="saving">'+Math.round((r-p)/r*100)+'% below reference</span></div>'}
 function card(d){return '<article class="card"><div class="photo">'+(d.imageUrl&&/^https:\/\/m\.media-amazon\.com\//.test(d.imageUrl)?'<img loading="lazy" src="'+esc(d.imageUrl)+'" alt="'+esc(d.title)+'">':'<span class="small">Product image unavailable</span>')+'</div><div class="body"><span class="badge">'+esc(CATEGORY_NAMES[shopCategory(d)]||'Other finds')+'</span><h3 class="name">'+esc(d.title)+'</h3><div class="price">'+money(d.price)+'</div>'+referenceMarkup(d)+'<div class="meta">Scanned '+esc(d.checkedAt?new Date(d.checkedAt).toLocaleString():'recently')+'</div><a class="cta" href="'+esc(link(d.asin))+'" target="_blank" rel="sponsored noopener noreferrer">Shop on Amazon</a></div></article>'}
 function draw(){
  const q=$('search').value.trim().toLowerCase(),cat=$('category').value,sort=$('sort').value;
- const filtered=rows.filter(d=>!isShopRejected(d)&&(!q||((d.title||'')+' '+(d.keyword||'')).toLowerCase().includes(q))&&(!cat||shopCategory(d)===cat));
+ const filtered=rows.filter(d=>!isExcludedAudio(d)&&!isShopRejected(d)&&(!q||((d.title||'')+' '+(d.keyword||'')).toLowerCase().includes(q))&&(!cat||shopCategory(d)===cat));
  if(sort==='quality')filtered.sort((a,b)=>qualityRank(b)-qualityRank(a)||Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0));
  if(sort==='price')filtered.sort((a,b)=>a.price-b.price);
  if(sort==='discount')filtered.sort((a,b)=>(b.discountPercent||0)-(a.discountPercent||0));
@@ -119,7 +120,7 @@ async function load(options={}){
   const old=$('category').value;$('category').innerHTML='<option value="">All categories</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(CATEGORY_NAMES[c]||'Other')+'</option>').join('');if(cats.includes(old))$('category').value=old;updateCategoryUI();
   $('shopCategories').innerHTML='<button type="button" data-shop-cat="" class="active">All finds</button>'+cats.map(c=>'<button type="button" data-shop-cat="'+esc(c)+'">'+esc(CATEGORY_NAMES[c]||'Other')+'</button>').join('');
   $('preferences').innerHTML=cats.map(c=>'<label class="small" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" data-pref="'+esc(c)+'" '+(selectedCategories.includes(c)?'checked':'')+'>'+esc(CATEGORY_NAMES[c]||'Other')+'</label>').join('');
-  try{const featureRes=await fetch('./data/featured-finds.json?ts='+Date.now(),{cache:'no-store'});if(featureRes.ok){const featureData=await featureRes.json();const ids=new Set((Array.isArray(featureData.asins)?featureData.asins:[]).filter(validAsin));featured=rows.filter(d=>ids.has(d.asin)&&!isShopRejected(d));$('featuredSection').hidden=featured.length===0;$('featuredResults').innerHTML=featured.map(card).join('')}}catch{}
+  try{const featureRes=await fetch('./data/featured-finds.json?ts='+Date.now(),{cache:'no-store'});if(featureRes.ok){const featureData=await featureRes.json();const ids=new Set((Array.isArray(featureData.asins)?featureData.asins:[]).filter(validAsin));featured=rows.filter(d=>ids.has(d.asin)&&!isExcludedAudio(d)&&!isShopRejected(d));$('featuredSection').hidden=featured.length===0;$('featuredResults').innerHTML=featured.map(card).join('')}}catch{}
   updateCategoryUI();draw();
  }catch(e){if(!options.silent||!rows.length){$('status').textContent='Unable to load the latest finds right now.';$('results').innerHTML='<p class="empty">Please try refreshing later.</p>'}}
  finally{shopLoadInFlight=false}
