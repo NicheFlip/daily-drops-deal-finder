@@ -1,0 +1,76 @@
+name: Deploy Daily Drops Cloudflare Publisher
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cloudflare/daily-drops-publisher-worker.js'
+      - '.github/workflows/deploy-cloudflare-publisher.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: daily-drops-cloudflare-publisher
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      D1_DATABASE_ID: ${{ vars.CLOUDFLARE_D1_DATABASE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Cloudflare deployment configuration
+        id: configured
+        shell: bash
+        run: |
+          if [[ -n "$CLOUDFLARE_API_TOKEN" && -n "$CLOUDFLARE_ACCOUNT_ID" && -n "$D1_DATABASE_ID" ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cloudflare deployment skipped. Set secrets CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID and variable CLOUDFLARE_D1_DATABASE_ID."
+          fi
+      - name: Set up Node
+        if: steps.configured.outputs.ready == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate Worker syntax
+        if: steps.configured.outputs.ready == 'true'
+        run: node --check cloudflare/daily-drops-publisher-worker.js
+      - name: Create deployment config using existing D1 database
+        if: steps.configured.outputs.ready == 'true'
+        shell: bash
+        run: |
+          if [[ ! "$D1_DATABASE_ID" =~ ^[0-9a-fA-F-]{36}$ ]]; then
+            echo "::error::CLOUDFLARE_D1_DATABASE_ID must be the existing D1 database UUID."
+            exit 1
+          fi
+          cat > wrangler.json <<EOF
+          {
+            "name": "daily-drops-publisher",
+            "main": "cloudflare/daily-drops-publisher-worker.js",
+            "compatibility_date": "2026-11-01",
+            "workers_dev": true,
+            "d1_databases": [
+              {"binding": "DB", "database_name": "daily-drops-publisher", "database_id": "$D1_DATABASE_ID"}
+            ]
+          }
+          EOF
+      - name: Deploy existing Worker
+        if: steps.configured.outputs.ready == 'true'
+        run: npx --yes wrangler@4 deploy --config wrangler.json --keep-vars
+      - name: Verify deployed Worker and D1 connection
+        if: steps.configured.outputs.ready == 'true'
+        shell: bash
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if curl --fail --silent --show-error --max-time 10 'https://daily-drops-publisher.alcorn224.workers.dev/api/health' | grep -q '"ok":true'; then
+              echo 'Cloudflare Publisher is healthy.'
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::Worker deployed but its health endpoint did not confirm a working D1 binding."
+          exit 1
