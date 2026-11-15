@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-15T01:38:00.013927+00:00",
+  "updated": "2026-11-15T02:28:08.941433+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B09FLCZG5J",
+      "title": "TECLAST P35 10 Inch Android 16 Tablet, Octa Core, Widevine L1, Face Unlock | 16GB RAM 32GB ROM Supports 2TB TF, 6000mAh, GPS, Dual Camera, HD IPS Tablets for Kids & Adults, Gift",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B09FLCZG5J",
+      "imageUrl": "https://m.media-amazon.com/images/I/51psM6k2xlL._SL160_.jpg",
+      "price": 59.99,
+      "referencePrice": 99.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-15T02:28:08.941433+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0HLG4L7ZS",
       "title": "5 Pack Closet Organizers and Storage, Reinforced Stackable Closet 16.73\" in | Foldable Closet Storage Bins for Clothes, Towels, Stackable Wardrobe Shelf Organizer for Bedroom & Lau",
