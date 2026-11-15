@@ -52,6 +52,12 @@ jobs:
       - name: Report PostgreSQL archive failure
         if: steps.database_archive.outcome == 'failure'
         run: echo 'WARNING - PostgreSQL archive failed. Amazon research JSON will still publish. Review archive step logs and DATABASE_URL secret.'
+      - name: Reject failed scan before publishing public data
+        if: steps.scan_health.outcome == 'failure'
+        run: |
+          echo '::error::Amazon scan validation failed; refusing to publish an unhealthy feed.'
+          cat data/amazon-scan-health.json || true
+          exit 1
       - name: Publish research data with retry
         run: |
           set -euo pipefail
@@ -89,8 +95,3 @@ jobs:
             exit 1
           fi
 
-      - name: Fail workflow if scan produced no valid data
-        if: steps.scan_health.outcome == 'failure'
-        run: |
-          echo 'Amazon scan validation failed: see data/amazon-scan-health.json for reasons.'
-          exit 1
