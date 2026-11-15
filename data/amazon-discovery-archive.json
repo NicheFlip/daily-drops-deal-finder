@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-15T16:03:38.944374+00:00",
+  "updated": "2026-11-15T17:01:48.388797+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B008H4SLV6",
+      "title": "Vitamix 5200 Professional-Grade Blender, 64 oz. Container, Black | Kitchen Appliance for Smoothies, Soups and More, Variable Speed, Self-Cleaning, High Speed Switch, Stainless Blad",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B008H4SLV6",
+      "imageUrl": "https://m.media-amazon.com/images/I/31pCllcsKFL._SL160_.jpg",
+      "price": 299.95,
+      "referencePrice": 499.95,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-15T17:01:48.388797+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B00NHQFA1I",
       "title": "LEGO Classic Medium Creative Brick Box 10696 | Building Toys for Boys & Girls, Ages 4-99, Develops Fine Motor Skills, W/ Storage Bin, 484 Pieces, Gift for Birthdays",
