@@ -15,7 +15,7 @@ STAMP=NOW.isoformat()
 QUERIES=[
 ('ToysAndGames','building blocks'),('ToysAndGames','board games'),('ToysAndGames','dolls'),('ToysAndGames','preschool toys'),('ToysAndGames','puzzles'),('ToysAndGames','remote control cars'),
 ('HomeAndKitchen','kitchen organizers'),('HomeAndKitchen','small kitchen appliances'),('HomeAndKitchen','cookware'),('HomeAndKitchen','bedding'),('HomeAndKitchen','storage baskets'),('HomeAndKitchen','coffee makers'),('HomeAndKitchen','vacuum cleaners'),
-('Electronics','wireless headphones'),('Electronics','computer accessories'),('Electronics','smart home'),('Electronics','chargers'),('Electronics','tablets'),
+('Electronics','computer accessories'),('Electronics','smart home'),('Electronics','chargers'),('Electronics','tablets'),
 ('Beauty','skin care'),('Beauty','hair care'),('Beauty','makeup organizers'),('Beauty','beauty tools'),
 ('Fashion','women clothing'),('Fashion','handbags'),('Fashion','sneakers'),('Fashion','winter coats'),
 ('OfficeProducts','school supplies'),('PetSupplies','dog beds'),('HomeAndKitchen','outdoor decor'),('Baby','baby blankets'),
@@ -23,13 +23,13 @@ QUERIES=[
 ]
 # Household search priorities reflect practical repeat purchases, not verified sales rank.
 ESSENTIAL_QUERIES=[("All","laundry detergent"),("All","paper towels"),("All","toilet paper"),("All","dish soap"),("All","trash bags"),("All","coffee pods"),("All","ground coffee"),("All","diapers"),("All","baby wipes"),("All","dishwasher pods"),("All","cleaning wipes"),("All","hand soap"),("All","toothpaste"),("All","shampoo"),("All","pet food"),("All","food storage bags"),("All","batteries AA"),("All","dryer sheets"),("All","facial tissues"),("All","body wash"),("All","breakfast cereal"),("All","snack variety pack"),("All","water filters"),("All","laundry scent boosters")]
-HIGH_DEMAND_QUERIES=[('All','best selling household essentials'),('ToysAndGames','ride on toys for kids'),('ToysAndGames','electric ride on cars for kids'),('All','electric scooters'),('All','electric bikes'),('ToysAndGames','outdoor toys'),('ToysAndGames','educational toys'),('ToysAndGames','LEGO building sets'),('Beauty','skin care gift sets'),('Beauty','hair styling tools'),('Beauty','makeup gift sets'),('HomeAndKitchen','robot vacuums'),('HomeAndKitchen','air fryers'),('HomeAndKitchen','blenders'),('HomeAndKitchen','bedding sets'),('HomeAndKitchen','storage organizers'),('Electronics','wireless earbuds'),('Electronics','portable chargers'),('All','cleaning supplies'),('All','coffee'),('All','paper products'),('All','pet supplies')]
-BLACK_FRIDAY_QUERIES=[('All','early black friday deals'),('HomeAndKitchen','black friday kitchen deals'),('Electronics','black friday headphones'),('ToysAndGames','black friday toys'),('HomeAndKitchen','black friday vacuum'),('All','black friday household essentials'),('All','black friday coffee makers'),('All','black friday gifts')]
+HIGH_DEMAND_QUERIES=[('All','best selling household essentials'),('ToysAndGames','ride on toys for kids'),('ToysAndGames','electric ride on cars for kids'),('All','electric scooters'),('All','electric bikes'),('ToysAndGames','outdoor toys'),('ToysAndGames','educational toys'),('ToysAndGames','LEGO building sets'),('Beauty','skin care gift sets'),('Beauty','hair styling tools'),('Beauty','makeup gift sets'),('HomeAndKitchen','robot vacuums'),('HomeAndKitchen','air fryers'),('HomeAndKitchen','blenders'),('HomeAndKitchen','bedding sets'),('HomeAndKitchen','storage organizers'),('Electronics','portable chargers'),('All','cleaning supplies'),('All','coffee'),('All','paper products'),('All','pet supplies')]
+BLACK_FRIDAY_QUERIES=[('All','early black friday deals'),('HomeAndKitchen','black friday kitchen deals'),('ToysAndGames','black friday toys'),('HomeAndKitchen','black friday vacuum'),('All','black friday household essentials'),('All','black friday coffee makers'),('All','black friday gifts')]
 # Search Amazon quick-link topics are also scanned automatically, not just opened in a browser.
 # The existing 24-request budget is shared; this does not add API requests.
 QUICK_LINK_QUERIES=[
  ('ToysAndGames','toys and games'),('HomeAndKitchen','kitchen appliances'),
- ('HomeAndKitchen','home organization'),('Electronics','headphones'),
+ ('HomeAndKitchen','home organization'),
  ('Beauty','beauty tools'),('ToysAndGames','holiday gifts'),
  ('Fashion','women pants'),('Fashion','shoes')
 ]
@@ -47,11 +47,14 @@ def amount(v):
     x=v.get('amount')
     try:return round(float(x),2) if x is not None else None
     except (TypeError,ValueError):return None
+EXCLUDED_AUDIO=re.compile(r'\b(?:headphones?|headsets?|earbuds?|earpods?|airpods?|earphones?|in[ -]?ear headphones?|over[ -]?ear headphones?)\b',re.I)
+def excluded_audio(title):
+    return bool(EXCLUDED_AUDIO.search(str(title or '')))
 def parse(item,category,keyword,minimum_discount=40):
     asin=item.get('asin','')
     if not re.fullmatch('[A-Z0-9]{10}',asin):return None
     title=item.get('itemInfo',{}).get('title',{}).get('displayValue','')
-    if not title:return None
+    if not title or excluded_audio(title):return None
     for offer in item.get('offersV2',{}).get('listings',[]) or []:
         if offer.get('condition',{}).get('value','New') not in ('New',None):continue
         if offer.get('availability',{}).get('type') in ('OUT_OF_STOCK','UNAVAILABLE'):continue
@@ -182,7 +185,7 @@ def scan():
             deal['dealScore']=min(20,max(0,deal.get('discountPercent',0)-40))
     candidate_count=build_queue(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
-    deals=sorted(fresh.values(),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
+    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title'))),key=lambda d:(d.get('dealScore',0),d['discountPercent'],d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
