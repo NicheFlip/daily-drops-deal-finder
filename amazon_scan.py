@@ -3,7 +3,7 @@ Official Creators API only. No scraping. API offer snapshots expire after 1 hour
 """
 import datetime,json,os,pathlib,re,time,urllib.error,urllib.request
 from collections import defaultdict
-from price_history import enrich
+from price_history import enrich, PATH as HISTORY_PATH
 from candidate_queue import build_queue
 ROOT=pathlib.Path(__file__).parent
 OUT=ROOT/'data'/'amazon-deals.json'
@@ -36,6 +36,9 @@ QUICK_LINK_QUERIES=[
 # Up to 24 requests x 10 items = 240 product results per half-hour run (not all unique).
 # Respect the daily cap and API throttling; requests may return fewer items.
 PER_RUN=24
+WATCH_CALLS=6
+WATCH_BATCH=10
+WATCH_POOL_LIMIT=150
 MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
 RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
 def api(url,payload,headers=None):
@@ -117,17 +120,39 @@ def scan():
     errors=[]; scanned=0; completed=0; newly=0
     observed={}
     baseline={}
+    # Build a rotating watch pool from observed history; API lookups cost one call per 10 ASINs.
+    try:
+        history=json.loads(HISTORY_PATH.read_text()).get('items',{})
+        if not isinstance(history,dict):history={}
+    except (OSError,ValueError,TypeError):history={}
+    eligible=[]
+    for asin,entry in history.items():
+        if not re.fullmatch(r'[A-Z0-9]{10}',asin) or not isinstance(entry,dict):continue
+        if excluded_audio(entry.get('title','')) or not entry.get('points'):continue
+        try:
+            last=datetime.datetime.fromisoformat(entry.get('lastSeen','').replace('Z','+00:00'))
+            if (NOW-last).days>30:continue
+        except (ValueError,TypeError):continue
+        essential=bool(re.search(r'coffee|laundry|detergent|paper|soap|diaper|clean|trash|dish|battery|toothpaste|shampoo|wipes',entry.get('title',''),re.I))
+        eligible.append((asin,entry,essential))
+    eligible.sort(key=lambda x:(x[2],len(x[1].get('points',[])),x[1].get('lastSeen','')),reverse=True)
+    watch_pool=[x[0] for x in eligible[:WATCH_POOL_LIMIT]]
+    watch_offset=int(state.get('watchOffset',0))%max(1,len(watch_pool))
+    rotated=watch_pool[watch_offset:]+watch_pool[:watch_offset]
+    watch_batches=[rotated[i:i+WATCH_BATCH] for i in range(0,min(len(rotated),WATCH_CALLS*WATCH_BATCH),WATCH_BATCH)]
+    watch_budget=min(len(watch_batches),budget,WATCH_CALLS)
+    discovery_budget=budget-watch_budget
     # Core repeat-purchase searches recur every run; remaining calls rotate across
     # seasonal, popular and broad categories so the feed discovers different items.
-    essential_budget=min(8,budget)
+    essential_budget=min(8,discovery_budget)
     seasonal_active=NOW.month==11 and NOW.day<=30
-    seasonal_budget=min(6,max(0,budget-essential_budget)) if seasonal_active else 0
-    demand_budget=min(5,max(0,budget-essential_budget-seasonal_budget))
-    quick_budget=min(3,max(0,budget-essential_budget-seasonal_budget-demand_budget))
-    broad_budget=budget-essential_budget-seasonal_budget-demand_budget-quick_budget
+    seasonal_budget=min(6,max(0,discovery_budget-essential_budget)) if seasonal_active else 0
+    demand_budget=min(5,max(0,discovery_budget-essential_budget-seasonal_budget))
+    quick_budget=min(3,max(0,discovery_budget-essential_budget-seasonal_budget-demand_budget))
+    broad_budget=discovery_budget-essential_budget-seasonal_budget-demand_budget-quick_budget
     searched=[]
     unique_seen=set()
-    for i in range(budget):
+    for i in range(discovery_budget):
         if i<essential_budget:
             category,keyword=ESSENTIAL_QUERIES[(essential_offset+i)%len(ESSENTIAL_QUERIES)]
         elif i<essential_budget+seasonal_budget:
@@ -168,6 +193,35 @@ def scan():
             errors.append(category+' / '+keyword+': HTTP '+str(e.code))
             if e.code in (401,403,429):break
         except Exception as e:errors.append(category+' / '+keyword+': '+type(e).__name__)
+    watch_completed=0
+    for j,batch in enumerate(watch_batches[:watch_budget]):
+        if j or discovery_budget:time.sleep(1.25)
+        searched.append({'category':'Watched ASINs','keyword':'GetItems','count':len(batch)})
+        try:
+            result=api('https://creatorsapi.amazon/catalog/v1/getItems',
+                       {'partnerTag':tag,'marketplace':'www.amazon.com','itemIds':batch,'resources':RESOURCES},
+                       {'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'})
+            items=result.get('itemsResult',{}).get('items',[]) or []
+            scanned+=len(items)
+            unique_seen.update(item.get('asin') for item in items if item.get('asin'))
+            for item in items:
+                asin=item.get('asin','')
+                category=history.get(asin,{}).get('category') or 'All'
+                baseline_item=parse(item,category,'Watched ASIN',minimum_discount=0)
+                if baseline_item:
+                    all_products[asin]=baseline_item
+                    baseline[asin]=baseline_item
+                d=parse(item,category,'Watched ASIN')
+                if d:
+                    observed[asin]=d
+                    if asin not in previous or previous[asin].get('price')!=d['price']:newly+=1
+                    fresh[asin]=d
+            completed+=1
+            watch_completed+=1
+        except urllib.error.HTTPError as e:
+            errors.append('Watch GetItems: HTTP '+str(e.code))
+            if e.code in (401,403,429):break
+        except Exception as e:errors.append('Watch GetItems: '+type(e).__name__)
     # Never overwrite a working public feed when every API request failed or returned nothing.
     if completed==0 or scanned==0:
         raise RuntimeError(f'Amazon scan returned no usable products (requests={completed}, products={scanned}, errors={errors[:4]}). Previous public feed preserved.')
@@ -189,11 +243,11 @@ def scan():
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
+      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':sum(map(len,watch_batches[:watch_budget])),'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
     STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
       'quickLinkOffset':(quick_offset+quick_budget)%len(QUICK_LINK_QUERIES),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
-      'runNumber':run_number+1,'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
+      'watchOffset':(watch_offset+watch_budget*WATCH_BATCH)%max(1,len(watch_pool)),'runNumber':run_number+1,'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
     print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors))
 if __name__=='__main__':scan()
