@@ -5,6 +5,9 @@ on:
 permissions:
   contents: write
   issues: write
+concurrency:
+  group: daily-drops-community-publish
+  cancel-in-progress: false
 jobs:
   publish:
     if: github.event.issue.user.login == 'NicheFlip' && github.event.issue.title == 'Publish verified community deal'
