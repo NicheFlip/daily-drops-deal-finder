@@ -8,5 +8,15 @@
       "name": "Slickdeals Popular",
       "url": "https://slickdeals.net/newsearch.php?mode=popular&searcharea=deals&rss=1"
     }
+  ],
+  "sites": [
+    {
+      "name": "Sales-Aholic",
+      "url": "https://sales-aholic.com/deals"
+    },
+    {
+      "name": "Heavenly Steals",
+      "url": "https://www.heavenlysteals.com/"
+    }
   ]
 }
