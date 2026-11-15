@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-15T02:36:25.284769+00:00",
+  "updated": "2026-11-15T10:43:27.882917+00:00",
   "source": "Official Walmart search URLs; no product API or price verification",
   "status": "research_only",
-  "count": 29,
+  "count": 39,
   "searches": [
     {
       "category": "Essentials",
       "query": "laundry detergent clearance",
-      "url": "https://www.walmart.com/search?q=laundry+detergent+clearance",
+      "url": "https://www.walmart.com/search?q=laundry+detergent+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -15,7 +15,7 @@
     {
       "category": "Essentials",
       "query": "paper towels deals",
-      "url": "https://www.walmart.com/search?q=paper+towels+deals",
+      "url": "https://www.walmart.com/search?q=paper+towels+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -23,7 +23,7 @@
     {
       "category": "Essentials",
       "query": "coffee rollback",
-      "url": "https://www.walmart.com/search?q=coffee+rollback",
+      "url": "https://www.walmart.com/search?q=coffee+rollback&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -31,7 +31,7 @@
     {
       "category": "Essentials",
       "query": "diapers clearance",
-      "url": "https://www.walmart.com/search?q=diapers+clearance",
+      "url": "https://www.walmart.com/search?q=diapers+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -39,7 +39,7 @@
     {
       "category": "Essentials",
       "query": "cleaning supplies deals",
-      "url": "https://www.walmart.com/search?q=cleaning+supplies+deals",
+      "url": "https://www.walmart.com/search?q=cleaning+supplies+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -47,7 +47,7 @@
     {
       "category": "Essentials",
       "query": "toilet paper deals",
-      "url": "https://www.walmart.com/search?q=toilet+paper+deals",
+      "url": "https://www.walmart.com/search?q=toilet+paper+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -55,7 +55,7 @@
     {
       "category": "Toys and gifts",
       "query": "toys clearance",
-      "url": "https://www.walmart.com/search?q=toys+clearance",
+      "url": "https://www.walmart.com/search?q=toys+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -63,7 +63,7 @@
     {
       "category": "Toys and gifts",
       "query": "LEGO deals",
-      "url": "https://www.walmart.com/search?q=LEGO+deals",
+      "url": "https://www.walmart.com/search?q=LEGO+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -71,7 +71,7 @@
     {
       "category": "Toys and gifts",
       "query": "ride on toys clearance",
-      "url": "https://www.walmart.com/search?q=ride+on+toys+clearance",
+      "url": "https://www.walmart.com/search?q=ride+on+toys+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -79,7 +79,7 @@
     {
       "category": "Toys and gifts",
       "query": "electric ride on car kids",
-      "url": "https://www.walmart.com/search?q=electric+ride+on+car+kids",
+      "url": "https://www.walmart.com/search?q=electric+ride+on+car+kids&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -87,7 +87,7 @@
     {
       "category": "Toys and gifts",
       "query": "holiday gifts clearance",
-      "url": "https://www.walmart.com/search?q=holiday+gifts+clearance",
+      "url": "https://www.walmart.com/search?q=holiday+gifts+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -95,7 +95,7 @@
     {
       "category": "Bikes and scooters",
       "query": "electric bikes deals",
-      "url": "https://www.walmart.com/search?q=electric+bikes+deals",
+      "url": "https://www.walmart.com/search?q=electric+bikes+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -103,7 +103,7 @@
     {
       "category": "Bikes and scooters",
       "query": "electric scooters deals",
-      "url": "https://www.walmart.com/search?q=electric+scooters+deals",
+      "url": "https://www.walmart.com/search?q=electric+scooters+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -111,7 +111,7 @@
     {
       "category": "Bikes and scooters",
       "query": "kids scooters clearance",
-      "url": "https://www.walmart.com/search?q=kids+scooters+clearance",
+      "url": "https://www.walmart.com/search?q=kids+scooters+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -119,7 +119,7 @@
     {
       "category": "Beauty",
       "query": "skin care clearance",
-      "url": "https://www.walmart.com/search?q=skin+care+clearance",
+      "url": "https://www.walmart.com/search?q=skin+care+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -127,7 +127,7 @@
     {
       "category": "Beauty",
       "query": "makeup deals",
-      "url": "https://www.walmart.com/search?q=makeup+deals",
+      "url": "https://www.walmart.com/search?q=makeup+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -135,7 +135,7 @@
     {
       "category": "Beauty",
       "query": "hair styling tools clearance",
-      "url": "https://www.walmart.com/search?q=hair+styling+tools+clearance",
+      "url": "https://www.walmart.com/search?q=hair+styling+tools+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -143,7 +143,7 @@
     {
       "category": "Home and kitchen",
       "query": "air fryer clearance",
-      "url": "https://www.walmart.com/search?q=air+fryer+clearance",
+      "url": "https://www.walmart.com/search?q=air+fryer+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -151,7 +151,7 @@
     {
       "category": "Home and kitchen",
       "query": "robot vacuum deals",
-      "url": "https://www.walmart.com/search?q=robot+vacuum+deals",
+      "url": "https://www.walmart.com/search?q=robot+vacuum+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -159,7 +159,7 @@
     {
       "category": "Home and kitchen",
       "query": "cookware clearance",
-      "url": "https://www.walmart.com/search?q=cookware+clearance",
+      "url": "https://www.walmart.com/search?q=cookware+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -167,7 +167,7 @@
     {
       "category": "Home and kitchen",
       "query": "bedding clearance",
-      "url": "https://www.walmart.com/search?q=bedding+clearance",
+      "url": "https://www.walmart.com/search?q=bedding+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -175,15 +175,7 @@
     {
       "category": "Home and kitchen",
       "query": "storage organizers deals",
-      "url": "https://www.walmart.com/search?q=storage+organizers+deals",
-      "verifiedProduct": false,
-      "verifiedPrice": false,
-      "affiliateLink": null
-    },
-    {
-      "category": "Electronics",
-      "query": "headphones clearance",
-      "url": "https://www.walmart.com/search?q=headphones+clearance",
+      "url": "https://www.walmart.com/search?q=storage+organizers+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -191,7 +183,7 @@
     {
       "category": "Electronics",
       "query": "tablets deals",
-      "url": "https://www.walmart.com/search?q=tablets+deals",
+      "url": "https://www.walmart.com/search?q=tablets+deals&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -199,7 +191,95 @@
     {
       "category": "Electronics",
       "query": "portable chargers clearance",
-      "url": "https://www.walmart.com/search?q=portable+chargers+clearance",
+      "url": "https://www.walmart.com/search?q=portable+chargers+clearance&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box electronics",
+      "url": "https://www.walmart.com/search?q=open+box+electronics&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box televisions",
+      "url": "https://www.walmart.com/search?q=open+box+televisions&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box laptops",
+      "url": "https://www.walmart.com/search?q=open+box+laptops&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box tablets",
+      "url": "https://www.walmart.com/search?q=open+box+tablets&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box kitchen appliances",
+      "url": "https://www.walmart.com/search?q=open+box+kitchen+appliances&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box vacuum cleaners",
+      "url": "https://www.walmart.com/search?q=open+box+vacuum+cleaners&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box furniture",
+      "url": "https://www.walmart.com/search?q=open+box+furniture&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box toys",
+      "url": "https://www.walmart.com/search?q=open+box+toys&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "open box gaming consoles",
+      "url": "https://www.walmart.com/search?q=open+box+gaming+consoles&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "returned items clearance",
+      "url": "https://www.walmart.com/search?q=returned+items+clearance&sort=price_low",
+      "verifiedProduct": false,
+      "verifiedPrice": false,
+      "affiliateLink": null
+    },
+    {
+      "category": "Open box and returns",
+      "query": "like new refurbished appliances",
+      "url": "https://www.walmart.com/search?q=like+new+refurbished+appliances&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -207,7 +287,7 @@
     {
       "category": "Fashion",
       "query": "boys clothing clearance",
-      "url": "https://www.walmart.com/search?q=boys+clothing+clearance",
+      "url": "https://www.walmart.com/search?q=boys+clothing+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -215,7 +295,7 @@
     {
       "category": "Fashion",
       "query": "girls clothing clearance",
-      "url": "https://www.walmart.com/search?q=girls+clothing+clearance",
+      "url": "https://www.walmart.com/search?q=girls+clothing+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -223,7 +303,7 @@
     {
       "category": "Fashion",
       "query": "women clothing clearance",
-      "url": "https://www.walmart.com/search?q=women+clothing+clearance",
+      "url": "https://www.walmart.com/search?q=women+clothing+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
@@ -231,7 +311,7 @@
     {
       "category": "Fashion",
       "query": "shoes clearance",
-      "url": "https://www.walmart.com/search?q=shoes+clearance",
+      "url": "https://www.walmart.com/search?q=shoes+clearance&sort=price_low",
       "verifiedProduct": false,
       "verifiedPrice": false,
       "affiliateLink": null
