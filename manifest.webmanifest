@@ -3,7 +3,7 @@
   "short_name": "Daily Drops",
   "description": "Browse curated Amazon finds from Daily Drops with Heather",
   "start_url": "./shop.html",
-  "scope": "./",
+  "scope": "./shop.html",
   "display": "standalone",
   "background_color": "#fbf9f5",
   "theme_color": "#70233e",
