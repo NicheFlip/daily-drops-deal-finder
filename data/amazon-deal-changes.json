@@ -1,16 +1,5 @@
 {
-  "updated": "2026-11-15T21:20:18.739665+00:00",
-  "changes": [
-    {
-      "asin": "0310368596",
-      "title": "The Body Teaches the Soul: Ten Essential Habits to Form a Healthy and Holy Life",
-      "previousObservedPrice": 11.55,
-      "currentObservedPrice": 11.43,
-      "dropPercent": 1.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-15T21:20:18.739665+00:00",
-      "url": "https://www.amazon.com/dp/0310368596"
-    }
-  ],
+  "updated": "2026-11-15T22:06:14.498039+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
