@@ -562,7 +562,7 @@ function renderLeads(){
  const asin=leadAsin(d)||(match?match.item.asin:'');
  const affiliate=asin?postingLink(asin):'';
  const image=String(d.imageUrl||d.image||match?.item?.imageUrl||'');
- const safeImage=/^https:\/\/(?:m\\.media-amazon\\.com|images-na\\.ssl-images-amazon\\.com)\//.test(image)?'<img src="'+esc(image)+'" alt="" loading="lazy" style="width:84px;height:84px;object-fit:contain;background:#fff;border-radius:9px;flex-shrink:0">':'';
+ const safeImage=(image.startsWith('https://m.media-amazon.com/')||image.startsWith('https://images-na.ssl-images-amazon.com/'))?'<img src="'+esc(image)+'" alt="" loading="lazy" style="width:84px;height:84px;object-fit:contain;background:#fff;border-radius:9px;flex-shrink:0">':'';
  const original=String(d.url||'');
  const originalLink=original.startsWith('https://')?'<a href="'+esc(original)+'" target="_blank" rel="noopener noreferrer">Source ↗</a>':'';
  const find=d.retailer==='Amazon'?'<a href="'+esc(affiliate||leadSearchUrl(d))+'" target="_blank" rel="sponsored noopener noreferrer">'+(affiliate?'View product ↗':'Find product ↗')+'</a>':'';
