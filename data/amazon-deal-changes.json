@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-15T10:44:36.249212+00:00",
-  "changes": [
-    {
-      "asin": "B0GT7JG8SK",
-      "title": "Jasion EB5 Electric Bike for Adults 1000W Peak Motor with 26\" tire Ebike | Removable Battery Commuting Electric Mountain Bike,Up to 40Miles,7-Speed and Front Fork Suspension Ebike",
-      "previousObservedPrice": 699.99,
-      "currentObservedPrice": 299.99,
-      "dropPercent": 57.1,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-15T10:44:36.249212+00:00",
-      "url": "https://www.amazon.com/dp/B0GT7JG8SK"
-    },
-    {
-      "asin": "B082F1QH7S",
-      "title": "Colgate Optic White Advanced Hydrogen Peroxide Toothpaste, 3 Pack, 3.2 oz | Sparkling White, Teeth Whitening Toothpaste, Removes 5 Years of Deep-Set Coffee, Tea, and Wine Stains, E",
-      "previousObservedPrice": 11.49,
-      "currentObservedPrice": 7.0,
-      "dropPercent": 39.1,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-15T10:44:36.249212+00:00",
-      "url": "https://www.amazon.com/dp/B082F1QH7S"
-    },
-    {
-      "asin": "B08R6KMBQT",
-      "title": "Instant Pot Vortex Plus Mini 4 Qt 6-in-1 Air Fryer, Stainless Steel | Crisps, broils, roasts, dehydrates, bakes and reheats, with customizable programs and an app featuring 100+ re",
-      "previousObservedPrice": 69.98,
-      "currentObservedPrice": 66.49,
-      "dropPercent": 5.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-15T10:44:36.249212+00:00",
-      "url": "https://www.amazon.com/dp/B08R6KMBQT"
-    }
-  ],
+  "updated": "2026-11-15T14:09:54.239150+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
