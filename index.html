@@ -115,7 +115,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <select id="sort" aria-label="Sort"><option value="practical" selected>Everyday value first</option><option value="score">Smart deal score</option><option value="discount">Biggest discount</option><option value="low">Lowest price first</option><option value="newest">Newest to oldest</option><option value="oldest">Oldest to newest</option><option value="high">Highest price</option></select></div>
 <div class="actions"><label><input type="checkbox" id="essentials" style="width:auto;vertical-align:middle"> Household essentials only</label><label><input type="checkbox" id="deep" style="width:auto;vertical-align:middle"> Show only 70%+ leads</label><button type="button" class="btn secondary" id="reload">↻ Refresh results</button></div>
 <p class="muted small" id="status" role="status">Loading latest scan…</p>
-<div id="products" class="grid"></div>
+<section id="scanDrops" hidden><h2>↓ Dropped since last observation</h2><p class="muted small" id="scanDropsStatus"></p><div id="scanDropsResults" class="grid"></div></section><div id="products" class="grid"></div>
 </section>
 <section id="panel-inbox" role="tabpanel" aria-labelledby="tab-inbox" hidden>
 <h1>Missed Deals Inbox</h1><p class="muted small">Previously discovered products, saved for quick review.</p>
@@ -213,7 +213,7 @@ function handleJudgmentClick(e){
  const card=btn.closest('[data-review-card]');const reason=card?.querySelector('[data-review-reason]')?.value;
  saveJudgment(btn.dataset.asin,btn.dataset.judgment,btn.dataset.judgment==='clear'?null:(reason==='Inflated reference price'&&btn.dataset.judgment!=='no-deal'?null:reason));
 }
-for(const id of ['historyResults','products','inboxResults','candidateResults','detailBody'])$(id).addEventListener('click',handleJudgmentClick);
+for(const id of ['historyResults','products','inboxResults','candidateResults','detailBody','scanDropsResults'])$(id).addEventListener('click',handleJudgmentClick);
 $('exportJudgments').addEventListener('click',()=>{
  const data=JSON.stringify({format:'daily-drops-judgments-v1',exportedAt:new Date().toISOString(),judgments:readJudgments()},null,2);
  const blob=new Blob([data],{type:'application/json'});
@@ -336,6 +336,7 @@ function renderHistory(){
 $('historyFind').addEventListener('input',renderHistory);
 $('historyRefresh').addEventListener('click',loadHistory);
 let inboxEvents=[];
+loadScanDrops();
 const requestedTab=location.hash.slice(1);
 window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'].includes(tab))selectTab(tab)});
 $('openInbox').addEventListener('click',()=>selectTab('inbox'));
@@ -387,8 +388,25 @@ function closeDetail(){$('detailOverlay').hidden=true;document.body.style.overfl
 $('closeDetail').addEventListener('click',closeDetail);$('detailOverlay').addEventListener('click',e=>{if(e.target===$('detailOverlay'))closeDetail()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('detailOverlay').hidden)closeDetail()});$('products').addEventListener('click',e=>{const b=e.target.closest('[data-detail]');if(b)showDetail(Number(b.dataset.detail))});
 document.querySelector('.quicknav').addEventListener('click',e=>{const b=e.target.closest('[data-jump]');if(!b)return;selectTab(b.dataset.jump);if(b.dataset.sort){$('sort').value=b.dataset.sort;render()}});
 let allScannedProducts=[];let allScannedFeedError='';let allScannedFeedUpdated='';
+let scanDropRows=[];
+function renderScanDrops(){
+ const visible=scanDropRows.filter(d=>!isRejectedDeal(d.asin));
+ $('scanDrops').hidden=!visible.length;
+ $('scanDropsStatus').textContent=visible.length+' API-observed price drops · compare with previous recorded price · verify at checkout';
+ $('scanDropsResults').innerHTML=visible.slice(0,12).map(d=>'<article class="card product"><h3>'+esc(d.title||d.asin)+'</h3><p class="small muted">Previously observed <s>'+cash(d.previousObservedPrice)+'</s> → <strong>'+cash(d.currentObservedPrice)+'</strong></p><p class="deal">'+esc(d.dropPercent)+'% observed drop'+(d.newObservedLow?' · NEW RECORDED LOW':'')+'</p><p class="small muted">Observed '+esc(date(d.checkedAt))+'</p><a href="'+esc(d.url)+'" target="_blank" rel="sponsored noopener noreferrer">Verify on Amazon</a><div class="scan-review"><button type="button" data-judgment="pass" data-asin="'+esc(d.asin)+'">Pass</button></div></article>').join('');
+}
+async function loadScanDrops(){
+ try{
+  const response=await fetch('data/amazon-deal-changes.json?ts='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw Error('No changes feed');
+  const feed=await response.json();
+  scanDropRows=(Array.isArray(feed.changes)?feed.changes:[]).filter(d=>validUrl(d.url)&&Number(d.dropPercent)>0).sort((a,b)=>Number(b.dropPercent)-Number(a.dropPercent));
+  renderScanDrops();
+ }catch{scanDropRows=[];renderScanDrops()}
+}
 function render(){
  if(!data)return;
+ renderScanDrops();
  const now=Date.now(),latest=Array.isArray(data.deals)?data.deals:[];const combined=$('showAllScanned').checked?[...allScannedProducts,...latest,...inboxEvents]:[...latest,...inboxEvents];const byProduct=new Map();for(const d of combined){if(!d||!validUrl(d.url)||!Number.isFinite(Number(d.price))||Number(d.price)<=0)continue;const key=String(d.asin||d.url);const prev=byProduct.get(key);if(!prev||Date.parse(d.checkedAt||0)>Date.parse(prev.checkedAt||0))byProduct.set(key,d)}const all=[...byProduct.values()].filter(d=>!isRejectedDeal(d.asin));
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked,essentialOnly=$('essentials').checked;
  const filtered=all.filter(d=>(!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||Number(d.discountPercent)>=70)&&(!essentialOnly||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))));
