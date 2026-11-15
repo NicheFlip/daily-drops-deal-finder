@@ -9,5 +9,16 @@ if not re.fullmatch(r'[A-Z0-9]{10}',asin) or not title or not (0<price<100000):r
 u=urllib.parse.urlparse(url)
 if u.scheme!='https' or u.hostname not in ('amazon.com','www.amazon.com') or u.path!='/dp/'+asin or urllib.parse.parse_qs(u.query).get('tag')!=['dealstoday0b3-20']:raise SystemExit('Link must be clean product URL with own affiliate tag')
 now=datetime.datetime.now(datetime.timezone.utc).isoformat();p=pathlib.Path('data/community-verified.json');j=json.loads(p.read_text());deals=[x for x in j.get('deals',[]) if x.get('asin')!=asin]
-deals.insert(0,{'asin':asin,'title':title,'price':round(price,2),'url':url,'retailer':'Amazon','category':'Other','keyword':'Community verified','checkedAt':now,'firstSeen':now,'source':'Community lead — owner verified','verification':'Price and product manually verified by owner; confirm at checkout','discountPercent':0,'imageUrl':''})
-j.update({'format':'daily-drops-community-verified-v1','updatedAt':now,'deals':deals[:250]});p.write_text(json.dumps(j,indent=2)+'\\n')
+existing=next((x for x in j.get('deals',[]) if x.get('asin')==asin),{})
+scan={}
+for name in ('data/amazon-deals.json','data/amazon-all-products.json'):
+ try:
+  src=json.loads(pathlib.Path(name).read_text())
+  for item in src.get('deals',src.get('products',[])):
+   if item.get('asin')==asin:scan=item;break
+ except (ValueError,OSError,TypeError):pass
+ if scan:break
+image=str(scan.get('imageUrl') or existing.get('imageUrl') or '')
+if image and not (image.startswith('https://m.media-amazon.com/') or image.startswith('https://images-na.ssl-images-amazon.com/')):image=''
+deals.insert(0,{'asin':asin,'title':title,'price':round(price,2),'url':url,'retailer':'Amazon','category':'Other','keyword':'Community verified','checkedAt':now,'firstSeen':now,'source':'Community lead — owner verified','verification':'Price and product manually verified by owner; confirm at checkout','discountPercent':0,'imageUrl':image})
+j.update({'format':'daily-drops-community-verified-v1','updatedAt':now,'deals':deals[:250]});p.write_text(json.dumps(j,indent=2) + chr(10))
