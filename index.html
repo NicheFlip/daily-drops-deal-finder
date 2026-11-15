@@ -549,7 +549,7 @@ async function loadLeads(){await loadCommunityMatches();await refreshCommunityPu
 function leadAsin(d){const explicit=String(d.asin||'').toUpperCase();if(/^[A-Z0-9]{10}$/.test(explicit))return explicit;try{const u=new URL(d.url||'');if(!['amazon.com','www.amazon.com','smile.amazon.com'].includes(u.hostname))return '';const parts=u.pathname.split('/').filter(Boolean);const pos=parts.indexOf('dp');const gp=parts.indexOf('gp');const candidate=pos>=0?parts[pos+1]:gp>=0&&parts[gp+1]==='product'?parts[gp+2]:'';return /^[A-Z0-9]{10}$/i.test(candidate||'')?candidate.toUpperCase():''}catch{return ''}}
 function leadAffiliateUrl(d){const asin=leadAsin(d);return asin?postingLink(asin):''}
 function leadSearchUrl(d){return 'https://www.amazon.com/s?k='+encodeURIComponent(String(d.title||'').slice(0,110))+'&tag=dealstoday0b3-20'}
-function communityKey(t){return String(t||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\\s+/g,' ')}
+function communityKey(t){return String(t||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().split(' ').filter(Boolean).join(' ')}
 async function refreshCommunityPublished(){try{const r=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});if(!r.ok)return;const j=await r.json();if(j.format==='daily-drops-publisher-v1'&&Array.isArray(j.deals)){cloudCommunity=j.deals;renderLeads()}}catch{}}
 function renderLeads(){
  const q=$('leadfind').value.toLowerCase();
