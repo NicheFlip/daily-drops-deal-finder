@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-15T17:40:58.389097+00:00",
+  "updated": "2026-11-15T21:20:18.739665+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "0310368596",
+      "title": "The Body Teaches the Soul: Ten Essential Habits to Form a Healthy and Holy Life",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/0310368596",
+      "imageUrl": "https://m.media-amazon.com/images/I/41j+SCge3RL._SL160_.jpg",
+      "price": 11.43,
+      "referencePrice": 19.99,
+      "discountPercent": 43,
+      "dealScore": 35,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 11.55,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-15T21:20:18.739665+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0GYX2SZ9T",
       "title": "WIHOLL Pants Sets Women 2 Piece Outfits Matching Set Lounge Sets Gray XL | Postpartum Pajamas,Fall Outfits For Women,Comfy Sets,Lounge Sets,Fashion Clothing,Cruise Outfit,Teacher O",
