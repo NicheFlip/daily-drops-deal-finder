@@ -1,24 +1,6 @@
 {
-  "updated": "2026-11-15T01:25:14.646850+00:00",
-  "candidates": [
-    {
-      "asin": "B0HLG4L7ZS",
-      "title": "5 Pack Closet Organizers and Storage, Reinforced Stackable Closet 16.73\" in | Foldable Closet Storage Bins for Clothes, Towels, Stackable Wardrobe Shelf Organizer for Bedroom & Lau",
-      "category": "HomeAndKitchen",
-      "url": "https://www.amazon.com/dp/B0HLG4L7ZS",
-      "imageUrl": "https://m.media-amazon.com/images/I/51E4FI31kFL._SL160_.jpg",
-      "price": 35.98,
-      "referencePrice": 59.99,
-      "discountPercent": 40,
-      "dealScore": 20,
-      "everydayEssential": false,
-      "reason": "Observed price drop",
-      "previousObservedPrice": 35.99,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-15T01:25:14.646850+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
-    }
-  ],
-  "count": 1,
+  "updated": "2026-11-15T01:38:00.013927+00:00",
+  "candidates": [],
+  "count": 0,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
