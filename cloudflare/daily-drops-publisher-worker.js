@@ -52,6 +52,10 @@ export default {async fetch(request,env){
    const {results}=await env.DB.prepare("SELECT asin,title,price,affiliate_url AS url,image_url AS imageUrl,source,status,verified_at AS checkedAt FROM deals ORDER BY updated_at DESC LIMIT 1000").all();
    return json({format:'daily-drops-publisher-v1',deals:results.map(x=>({...x,retailer:'Amazon',category:'Other',keyword:'Owner verified',discountPercent:0}))},200,cors);
   }
+  if(path==='/api/health'&&request.method==='GET'){
+   try{await env.DB.prepare('SELECT asin FROM deals LIMIT 1').first();return json({ok:true,database:'connected',version:'publisher-v2'},200,cors)}
+   catch{return json({ok:false,database:'unavailable'},503,cors)}
+  }
   if(path==='/api/session'&&request.method==='GET')return json({authenticated:await authorized(request,env)});
   if(path==='/api/login'&&request.method==='POST'){
    if(!originOK(request))return json({error:'Origin rejected'},403);
