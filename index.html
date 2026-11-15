@@ -134,7 +134,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <div class="card" id="walmartWatchPanel"><h2 style="margin:0 0 7px">Walmart product watchlist</h2><p class="small muted">Save products you find on Walmart. Enter only prices you personally checked; these are manual observations, not live Walmart API quotes. Saved on this device only.</p><div class="filters"><input id="wmWatchTitle" placeholder="Product name" aria-label="Walmart product name"><input id="wmWatchUrl" type="url" placeholder="https://www.walmart.com/ip/…" aria-label="Walmart product URL"><input id="wmWatchPrice" type="number" min="0.01" step="0.01" placeholder="Price checked ($)" aria-label="Observed Walmart price"><button type="button" class="btn" id="wmWatchSave">Save observation</button></div><p id="wmWatchMessage" class="small muted" role="status"></p><div id="wmWatchResults" class="grid"></div></div>
 <div class="notice"><strong>Research mode:</strong> Walmart Creator product data is not connected to this site. These are Walmart search pages, not automatically verified deal listings. Local clearance, prices and availability can vary by store.</div>
 <div class="card"><label for="walmartTerm"><strong>Search Walmart</strong></label><input id="walmartTerm" type="search" value="clearance" placeholder="Search clearance, toys, kitchen…" style="margin:10px 0"><div id="walmartLinks" class="search-links"></div></div>
-<p class="section-label">Quick shopping categories</p><div id="walmartChips" class="chips"></div>
+<h2>Walmart Open Box &amp; Returns</h2><p class="muted small">Research searches only. Walmart may return new, refurbished, or unrelated products. Confirm the individual listing condition, seller, price, and return policy before sharing.</p><div id="walmartOpenBox" class="search-links"></div><p class="section-label">Quick shopping categories</p><div id="walmartChips" class="chips"></div>
 <div class="filters"><input id="walmartFilter" type="search" placeholder="Filter categories…" aria-label="Filter Walmart categories"><select id="walmartSort" aria-label="Sort Walmart category list"><option value="default">Popular categories</option><option value="az">A to Z</option></select></div>
 <div id="walmartCategories" class="search-links"></div>
 <h2>Walmart deals & clearance</h2><div class="search-links"><a href="https://www.walmart.com/shop/deals" target="_blank" rel="noopener noreferrer">Walmart Deals ↗</a><a href="https://www.walmart.com/shop/deals/clearance" target="_blank" rel="noopener noreferrer">Walmart Clearance ↗</a></div>
@@ -454,7 +454,7 @@ async function loadWalmartRadar(){loadWalmartProducts();
 }
 $('walmartRadarRefresh').addEventListener('click',loadWalmartRadar);
 $('walmartRadarFind').addEventListener('input',()=>{renderWalmartRadar();renderWalmartProducts()});
-const walmartCategories=['Clearance','Toys','Home & Kitchen','Electronics','Clothing','Beauty','Baby','Gifts','Furniture','Bedding','Storage & Organization','Appliances','School Supplies','Pet Supplies','Holiday Decorations'];
+const walmartCategories=['Open Box & Returns','Clearance','Toys','Home & Kitchen','Electronics','Clothing','Beauty','Baby','Gifts','Furniture','Bedding','Storage & Organization','Appliances','School Supplies','Pet Supplies','Holiday Decorations'];
 const walmartDealPhrases=[
 ['Women’s pants deals','women pants deals'],['Women’s pants clearance','women pants clearance'],['Shoe deals','shoe deals'],['Women’s shoe clearance','women shoes clearance'],
 ['Boys clothing clearance','boys clothes clearance'],['Girls clothing clearance','girls clothes clearance'],['Kids shoes deals','kids shoes deals'],
@@ -473,6 +473,8 @@ const walmartOfficialDeals=[
 ];
 function dealQuery(q){const v=q.trim();return /\b(deal|deals|clearance|rollback|sale|markdown|discount)\b/i.test(v)?v:v+' deals'}
 function walmartUrl(q,low=false){const url=new URL('https://www.walmart.com/search');url.searchParams.set('q',q);if(low)url.searchParams.set('sort','price_low');return url.href}
+const openBoxTerms=['open box electronics','open box TVs','open box laptops','open box kitchen appliances','open box vacuums','open box furniture','open box toys','returned items clearance'];
+$('walmartOpenBox').innerHTML=openBoxTerms.map(q=>link(q,walmartUrl(q))).join('');
 function walmartLinks(){const q=dealQuery($('walmartTerm').value.trim()||'clearance');$('walmartLinks').innerHTML=link('Find '+q,walmartUrl(q))+link('Compare lowest prices',walmartUrl(q,true))}
 $('walmartTerm').addEventListener('input',walmartLinks);walmartLinks();
 function renderWalmartCategories(){const q=$('walmartFilter').value.trim().toLowerCase();const categories=walmartCategories.filter(x=>x.toLowerCase().includes(q));if($('walmartSort').value==='az')categories.sort((a,b)=>a.localeCompare(b));$('walmartCategories').innerHTML=categories.map(x=>link(x+' · deals',walmartUrl(dealQuery(x)))).join('')||'<div class="empty">No matching categories</div>'}
