@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-15T04:45:44.882383+00:00",
+  "updated": "2026-11-15T09:47:17.557136+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0B96LXQ49",
+      "title": "Head & Shoulders Classic Clean Anti-Dandruff Shampoo, 72-Hour Dandruff Protection, 1% Pyrithione Zinc, 28.2 fl oz",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B0B96LXQ49",
+      "imageUrl": "https://m.media-amazon.com/images/I/41n4Vmlm+1L._SL160_.jpg",
+      "price": 8.98,
+      "referencePrice": 14.99,
+      "discountPercent": 40,
+      "dealScore": 59,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-15T09:47:17.557136+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B08KKCV4D5",
       "title": "Softsoap Antibacterial Hand Soap, Cool Splash Scent, 11.25 fl oz (6 Pack) | Paraben-Free, Phthalate-Free, Washes Away Germs, Bathroom Hand Soap, Kitchen Hand Soap, Daily Handwashin",

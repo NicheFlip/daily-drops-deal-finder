@@ -1,5 +1,16 @@
 {
-  "updated": "2026-11-15T04:45:44.882383+00:00",
-  "changes": [],
+  "updated": "2026-11-15T09:47:17.557136+00:00",
+  "changes": [
+    {
+      "asin": "B0B96LXQ49",
+      "title": "Head & Shoulders Classic Clean Anti-Dandruff Shampoo, 72-Hour Dandruff Protection, 1% Pyrithione Zinc, 28.2 fl oz",
+      "previousObservedPrice": 11.12,
+      "currentObservedPrice": 8.98,
+      "dropPercent": 19.2,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-15T09:47:17.557136+00:00",
+      "url": "https://www.amazon.com/dp/B0B96LXQ49"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
