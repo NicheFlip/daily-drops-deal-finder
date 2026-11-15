@@ -146,8 +146,8 @@ async function load(options={}){
  shopLoadInFlight=true;lastShopCheck=Date.now();
  if(!options.silent)$('status').textContent='Loading recent finds...';
  try{
-  const res=await fetch('./data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Feed unavailable');
-  const payload=await res.json();
+  let payload={updated:'',deals:[]};let scannerOnline=false;
+  try{const res=await fetch('./data/amazon-deals.json?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(6500)});if(res.ok){payload=await res.json();scannerOnline=true}}catch(e){console.warn('Scanner feed temporarily unavailable',e)}
   const list=Array.isArray(payload.deals)?payload.deals:[];
   let community=[];try{const cr=await fetch('./data/community-verified.json?ts='+Date.now(),{cache:'no-store'});if(cr.ok){const cj=await cr.json();community=Array.isArray(cj.deals)?cj.deals:[]}}catch{}
   // Repair missing images from the larger Amazon product archive without changing the product.
@@ -160,16 +160,13 @@ async function load(options={}){
   try{const cached=JSON.parse(localStorage.getItem('dailyDropsCloudCatalogV1')||'null');if(cached&&Array.isArray(cached.deals)&&Date.now()-Number(cached.savedAt)<7*86400000)cloud=cached.deals}catch{}
   try{const wr=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(4500)});if(wr.ok){const wj=await wr.json();if(wj.format==='daily-drops-publisher-v1'&&Array.isArray(wj.deals)){cloud=wj.deals;cloudFresh=true;try{localStorage.setItem('dailyDropsCloudCatalogV1',JSON.stringify({deals:cloud,savedAt:Date.now()}))}catch{}}}}catch{}
   if(!cloudFresh&&cloud.length===0)console.warn('Cloudflare publisher unavailable; no cached decisions available');
+  if(!scannerOnline&&!cloud.length&&!community.length)throw Error('No available deal sources');
   const cloudPass=new Set(cloud.filter(d=>d.status==='pass').map(d=>d.asin));
   const combined=new Map();for(const d of [...list,...community])if(d&&validAsin(d.asin))combined.set(d.asin,d);
   for(const d of cloud){if(!d||!validAsin(d.asin))continue;if(d.status==='published'){const prior=combined.get(d.asin)||{};combined.set(d.asin,{...prior,...d,imageUrl:d.imageUrl||prior.imageUrl||'',title:d.title||prior.title||''})}else combined.delete(d.asin)}
   for(const asin of cloudPass)combined.delete(asin);
   for(const [asin,item] of combined)if(!hasProductImage(item)&&archiveImages.has(asin))combined.set(asin,{...item,imageUrl:archiveImages.get(asin)});
-  const exclusionResponse=await fetch('./data/shop-excluded.json?ts='+Date.now(),{cache:'no-store'});
-  if(!exclusionResponse.ok)throw Error('Exclusion list unavailable');
-  const exclusions=await exclusionResponse.json();
-  if(exclusions.format!=='daily-drops-shop-excluded-v1'||!Array.isArray(exclusions.asins))throw Error('Invalid exclusion list');
-  excludedAsins=new Set(exclusions.asins.filter(validAsin));
+  try{const exclusionResponse=await fetch('./data/shop-excluded.json?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});if(exclusionResponse.ok){const exclusions=await exclusionResponse.json();if(exclusions.format==='daily-drops-shop-excluded-v1'&&Array.isArray(exclusions.asins))excludedAsins=new Set(exclusions.asins.filter(validAsin))}}catch(e){console.warn('Using last known exclusion list',e)}
   const incomingUpdated=String(payload.updated||'');
   
   lastFeedUpdated=incomingUpdated;
