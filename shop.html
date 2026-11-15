@@ -73,6 +73,39 @@ body{background:#fffdfb}header{padding:16px 14px 13px;background:#fffdfb}.brand{
 .install-banner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px 16px;background:#fff;border:1px solid #eadce0;border-radius:15px;padding:14px 16px;margin:8px 0 13px;box-shadow:0 2px 10px rgba(80,20,45,.04)}.install-banner strong{color:#721032;font-size:.93rem}.install-banner p{font-size:.78rem;line-height:1.45;color:#6c5f65;margin:5px 0 0}.install-banner button{background:#820d31;color:#fff;border-color:#820d31;border-radius:999px;font-size:.8rem;font-weight:750;padding:11px 15px;white-space:nowrap}.install-banner .install-help{grid-column:1/-1;border-top:1px solid #eadce0;padding-top:10px;font-size:.79rem;color:#4e4148;margin:0;white-space:pre-line}@media(max-width:380px){.install-banner{grid-template-columns:1fr}.install-banner button{width:100%}}
 .shop-promise{text-align:center;font-size:.84rem;color:#67545e;margin:12px 0 7px}.install-details{margin:0 0 5px}.install-details>summary{cursor:pointer;color:#78213e;font-size:.78rem;padding:7px 3px}.install-details .install-banner{margin:7px 0}.preferences-panel{margin:0 0 5px}.shop-search{display:flex;align-items:center;flex-wrap:wrap;margin:6px 0 2px}.shop-search input[type=search]{flex:1 1 60%;min-width:0}.shop-search select:not([hidden]){flex:0 1 190px;min-width:130px}.shop-search [hidden]{display:none!important}.finds-heading{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 14px;margin:8px 0 12px}.finds-heading h2{font-size:1.55rem;font-style:italic;margin:0}.finds-heading #status{margin:0}.signal{display:inline-block;align-self:flex-start;color:#78213e;background:#faf0f3;border-radius:7px;font-size:.7rem;font-weight:750;padding:5px 7px}.reference{gap:3px 6px;line-height:1.25}.reference .was{text-decoration:line-through}.card .photo img{object-fit:contain}.card .name{min-height:2.5em}@media(max-width:600px){header{padding:12px 10px 9px}.brand{font-size:1.5rem}.sub{margin:2px 0 0}.shop-promise{margin:9px 0 4px;font-size:.78rem}.shop-search{gap:7px}.shop-search input[type=search]{flex:1 1 100%;min-width:0}.shop-search select:not([hidden]){flex:0 0 auto;min-width:0;width:auto;padding:9px;font-size:.75rem}.finds-heading h2{font-size:1.3rem}.finds-heading #status{font-size:.68rem}.shop-categories{padding-bottom:8px}.reference .was,.reference .saving{font-size:.65rem}.card .body{gap:6px}}
 .card .photo{flex:0 0 240px;height:240px;min-height:0;overflow:hidden;position:relative}.card .photo img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.card .body{flex:1 0 auto;min-height:0}.card{min-width:0;overflow:hidden}.card .name{overflow-wrap:anywhere}@media(max-width:600px){.card .photo{flex-basis:158px;height:158px;padding:9px}.card .photo img{width:100%;height:100%}}@media(max-width:360px){.card .photo{flex-basis:200px;height:200px}}
+
+/* Keep product images inside their cards */
+.card,
+.card .photo,
+.card .body {
+  min-width: 0;
+}
+
+.card .photo {
+  height: 220px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.card .photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 600px) {
+  .card .photo {
+    height: 155px;
+    padding: 10px;
+  }
+}
 </style></head><body>
 <header><div class="wrap"><div class="brand">DAILY DROPS WITH HEATHER</div><p class="sub">Thoughtfully found. Easy to shop.</p></div></header>
 <main><p class="shop-promise">Thoughtfully found favorites, ready to shop.</p>
