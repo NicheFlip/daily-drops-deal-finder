@@ -40,6 +40,7 @@ def discover_public_feeds():
             if not parser.links:print('No public RSS advertised:',site['name'])
         except Exception as exc:print('Site feed discovery unavailable:',site['name'],type(exc).__name__)
     return found
+site_names={site['name'] for site in config.get('sites',[])}
 for feed in config['feeds']+discover_public_feeds():
     url=feed['url']
     if urlparse(url).scheme!='https': continue
@@ -57,16 +58,28 @@ for feed in config['feeds']+discover_public_feeds():
             if not title or not link.startswith('https://'): continue
             combined=(title+' '+text(item,'description')).lower()
             if any(w in combined for w in ['firearm','ammunition','gun safe','vape','nicotine','liquor','whiskey','casino','sportsbook','lottery','pepper spray','switchblade']):continue
-            if not any(w in combined for w in ['amazon','walmart','clearance','coupon','price mistake','price error','glitch']): continue
+            if feed['name'] not in site_names and not any(w in combined for w in ['amazon','walmart','clearance','coupon','price mistake','price error','glitch']): continue
             retailer='Amazon' if 'amazon' in combined else 'Walmart' if 'walmart' in combined else 'Other / verify'
-            if retailer=='Other / verify' and not any(w in combined for w in ['clearance','coupon','glitch','price error']):continue
+            if retailer=='Other / verify' and feed['name'] not in site_names and not any(w in combined for w in ['clearance','coupon','glitch','price error']):continue
             prior=by_url.get(link,{})
             image=''
             for el in item.iter():
-                if el.tag.split('}')[-1].lower() in ('thumbnail','content'):
+                tag=el.tag.split('}')[-1].lower()
+                if tag in ('thumbnail','content','enclosure'):
                     candidate=el.attrib.get('url','')
-                    if candidate.startswith('https://') and any(candidate.lower().split('?')[0].endswith(ext) for ext in ('.jpg','.jpeg','.png','.webp')):
+                    media_type=el.attrib.get('type','')
+                    if candidate.startswith('https://') and (media_type.startswith('image/') or candidate.lower().split('?')[0].endswith(('.jpg','.jpeg','.png','.webp'))):
                         image=candidate;break
+            if not image:
+                class DescriptionImage(HTMLParser):
+                    def __init__(self):super().__init__();self.src=''
+                    def handle_starttag(self,tag,attrs):
+                        if tag=='img' and not self.src:
+                            a=dict(attrs);self.src=a.get('src','') or a.get('data-src','')
+                desc=' '.join(''.join(el.itertext()) for el in item.iter() if el.tag.split('}')[-1].lower() in ('description','encoded','summary','content'))
+                if desc:
+                    parser=DescriptionImage();parser.feed(desc[:100000])
+                    if parser.src.startswith('https://'):image=parser.src
             by_url[link]={**prior,'title':title[:200],'url':link,'source':feed['name'],'retailer':retailer,'firstSeen':prior.get('firstSeen',now),'lastSeen':now,'imageUrl':image or prior.get('imageUrl',''),'verified':False,'notes':'Deal lead only. Verify retailer price and coupon terms.'}
     except Exception as exc:
         print('Feed unavailable:',feed['name'],type(exc).__name__,str(exc)[:120])
