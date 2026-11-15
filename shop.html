@@ -156,7 +156,10 @@ async function load(options={}){
    const ar=await fetch('./data/amazon-all-products.json?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});
    if(ar.ok){const aj=await ar.json();const items=[...(Array.isArray(aj.products)?aj.products:[]),...(Array.isArray(aj.deals)?aj.deals:[])];for(const item of items)if(validAsin(item.asin)&&hasProductImage(item))archiveImages.set(item.asin,item.imageUrl)}
   }catch{}
-  let cloud=[];try{const wr=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(4500)});if(wr.ok){const wj=await wr.json();if(wj.format==='daily-drops-publisher-v1'&&Array.isArray(wj.deals))cloud=wj.deals}}catch{}
+  let cloud=[];let cloudFresh=false;
+  try{const cached=JSON.parse(localStorage.getItem('dailyDropsCloudCatalogV1')||'null');if(cached&&Array.isArray(cached.deals)&&Date.now()-Number(cached.savedAt)<7*86400000)cloud=cached.deals}catch{}
+  try{const wr=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(4500)});if(wr.ok){const wj=await wr.json();if(wj.format==='daily-drops-publisher-v1'&&Array.isArray(wj.deals)){cloud=wj.deals;cloudFresh=true;try{localStorage.setItem('dailyDropsCloudCatalogV1',JSON.stringify({deals:cloud,savedAt:Date.now()}))}catch{}}}}catch{}
+  if(!cloudFresh&&cloud.length===0)console.warn('Cloudflare publisher unavailable; no cached decisions available');
   const cloudPass=new Set(cloud.filter(d=>d.status==='pass').map(d=>d.asin));
   const combined=new Map();for(const d of [...list,...community])if(d&&validAsin(d.asin))combined.set(d.asin,d);
   for(const d of cloud){if(!d||!validAsin(d.asin))continue;if(d.status==='published'){const prior=combined.get(d.asin)||{};combined.set(d.asin,{...prior,...d,imageUrl:d.imageUrl||prior.imageUrl||'',title:d.title||prior.title||''})}else combined.delete(d.asin)}
