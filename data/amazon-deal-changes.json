@@ -1,5 +1,16 @@
 {
-  "updated": "2026-11-15T14:09:54.239150+00:00",
-  "changes": [],
+  "updated": "2026-11-15T14:29:38.553517+00:00",
+  "changes": [
+    {
+      "asin": "B0DBLRD5K4",
+      "title": "Trendy Queen Womens Wide Leg Fleece Lined Sweatpants Grey S | Winter Lounge Travel Pants Fall Fashion Outfits 2026 Clothes With Pockets",
+      "previousObservedPrice": 19.99,
+      "currentObservedPrice": 18.99,
+      "dropPercent": 5.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-15T14:29:38.553517+00:00",
+      "url": "https://www.amazon.com/dp/B0DBLRD5K4"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
