@@ -119,7 +119,7 @@ const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const money=n=>'$'+Number(n).toFixed(2);
 const validAsin=a=>/^[A-Z0-9]{10}$/.test(String(a||''));
 const link=asin=>'https://www.amazon.com/dp/'+encodeURIComponent(asin)+'?tag=dealstoday0b3-20';
-let rows=[];let featured=[];let approvedAsins=new Set();let selectedCategories=[];let lastFeedUpdated='';let shopLoadInFlight=false;let lastShopCheck=0;try{selectedCategories=JSON.parse(localStorage.getItem('dailyDropsShopCategories')||'[]');if(!Array.isArray(selectedCategories))selectedCategories=[]}catch{selectedCategories=[]}
+let rows=[];let featured=[];let excludedAsins=new Set();let selectedCategories=[];let lastFeedUpdated='';let shopLoadInFlight=false;let lastShopCheck=0;try{selectedCategories=JSON.parse(localStorage.getItem('dailyDropsShopCategories')||'[]');if(!Array.isArray(selectedCategories))selectedCategories=[]}catch{selectedCategories=[]}
 const CATEGORY_NAMES={All:'All finds',Beauty:'Beauty',Electronics:'Electronics',Fashion:'Fashion',HomeAndKitchen:'Home & Kitchen',ToysAndGames:'Toys & Games',OfficeProducts:'Office',PetSupplies:'Pets',Household:'Household essentials'};
 const SHOP_CATEGORIES=['Beauty','Electronics','Fashion','HomeAndKitchen','ToysAndGames','Household','OfficeProducts','PetSupplies'];
 function shopCategory(d){const t=((d.title||'')+' '+(d.keyword||'')).toLowerCase();const c=d.category||'';if(c&&c!=='All'&&CATEGORY_NAMES[c])return c;if(/detergent|paper towel|toilet paper|dish soap|trash bag|cleaning|laundry|disinfect|diaper|wipes|fabric softener|ground coffee|espresso|cafe bustelo|coffee pods/.test(t))return 'Household';if(/toy|lego|doll|barbie|playset|puzzle|game|ride.on|action figure|plush/.test(t))return 'ToysAndGames';if(/earbud|headphone|bluetooth|laptop|tablet|camera|charger|speaker|smartwatch|electronics|television|monitor|electric bike|e-bike|ebike/.test(t))return 'Electronics';if(/makeup|skincare|lipstick|serum|shampoo|conditioner|perfume|beauty|cosmetic/.test(t))return 'Beauty';if(/shirt|dress|legging|pants|jacket|shoe|sneaker|handbag|sweater|hoodie|fashion|sock/.test(t))return 'Fashion';if(/pet food|dog toy|cat litter|pet supplies|cat toy/.test(t))return 'PetSupplies';if(/office|printer|notebook|stationery|desk organizer/.test(t))return 'OfficeProducts';if(/home|kitchen|cookware|coffee maker|bedding|comforter|storage|basket|blanket|pillow|vacuum|furniture|towel/.test(t))return 'HomeAndKitchen';return 'Other'}
@@ -127,7 +127,7 @@ function updateCategoryUI(){document.querySelectorAll('[data-shop-cat]').forEach
 function evidenceTag(d){return d.newObservedLow?'New observed low':d.priceEvidence==='observed_reduction'?'Observed price drop':d.priceEvidence==='repeat_observation'?'Price observed again':'Reference-price lead'}
 function qualityRank(d){return (d.newObservedLow?150:0)+(d.priceEvidence==='observed_reduction'?100:0)+(d.priceEvidence==='repeat_observation'?25:0)+Math.min(75,Number(d.dealScore)||0)}
 function isExcludedAudio(d){return /\b(?:headphones?|headsets?|earbuds?|earpods?|airpods?|earphones?)\b/i.test(String(d.title||''))}
-function isShopRejected(d){try{const x=JSON.parse(localStorage.getItem('dailyDropsDealJudgmentsV1')||'{}');return ['pass','no-deal'].includes(x[String(d.asin||'')]?.choice)}catch{return false}} // Same-browser filtering; public-wide moderation requires a published exclusion feed.
+function isShopRejected(d){if(excludedAsins.has(d.asin))return true;try{const x=JSON.parse(localStorage.getItem('dailyDropsDealJudgmentsV1')||'{}');return ['pass','no-deal'].includes(x[String(d.asin||'')]?.choice)}catch{return false}} // Same-browser filtering; public-wide moderation requires a published exclusion feed.
 function referenceMarkup(d){const p=Number(d.price),r=Number(d.referencePrice);if(!Number.isFinite(r)||!Number.isFinite(p)||p<=0||r<=p)return '';return '<div class="reference"><span class="was">'+money(r)+'</span><span class="saving">'+Math.round((r-p)/r*100)+'% below listed ref.</span></div>'}
 function card(d){return '<article class="card"><div class="photo">'+(d.imageUrl&&/^https:\/\/m\.media-amazon\.com\//.test(d.imageUrl)?'<img loading="lazy" src="'+esc(d.imageUrl)+'" alt="'+esc(d.title)+'">':'<span class="small">Product image unavailable</span>')+'</div><div class="body"><span class="badge">'+esc(CATEGORY_NAMES[shopCategory(d)]||'Other finds')+'</span><h3 class="name">'+esc(d.title)+'</h3><div class="price">'+money(d.price)+'</div>'+referenceMarkup(d)+(d.newObservedLow?'<span class="signal">New recorded low</span>':d.priceEvidence==='observed_reduction'?'<span class="signal">Price dropped</span>':'')+'<a class="cta" href="'+esc(link(d.asin))+'" target="_blank" rel="sponsored noopener noreferrer">Shop on Amazon</a></div></article>'}
 function draw(){
@@ -138,7 +138,7 @@ function draw(){
  if(sort==='discount')filtered.sort((a,b)=>(b.discountPercent||0)-(a.discountPercent||0));
  if(sort==='newest')filtered.sort((a,b)=>Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0));
  $('status').textContent=filtered.length+' finds · '+(lastFeedUpdated?'Updated '+new Date(lastFeedUpdated).toLocaleString([],{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Freshly scanned');
- $('results').innerHTML=filtered.slice(0,150).map(card).join('')||'<div class="empty">'+(approvedAsins.size===0?'Heather is curating the next collection. Check back soon!':'No finds match your search. Try All finds or another category.')+'</div>';
+ $('results').innerHTML=filtered.slice(0,150).map(card).join('')||'<div class="empty">'+(rows.length===0?'Fresh finds are on the way. Check back soon!':'No finds match your search. Try All finds or another category.')+'</div>';
 }
 async function load(options={}){
  if(shopLoadInFlight)return;
@@ -148,20 +148,15 @@ async function load(options={}){
   const res=await fetch('./data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Feed unavailable');
   const payload=await res.json();
   const list=Array.isArray(payload.deals)?payload.deals:[];
-  const approvalResponse=await fetch('./data/shop-approved.json?ts='+Date.now(),{cache:'no-store'});
-  if(!approvalResponse.ok)throw Error('Approval list unavailable');
-  const approvalData=await approvalResponse.json();
-  if(approvalData.format!=='daily-drops-shop-approved-v1'||!Array.isArray(approvalData.asins))throw Error('Invalid approval list');
-  approvedAsins=new Set(approvalData.asins.filter(validAsin));
-const approvedAsins = new Set(
-  Array.isArray(window.SHOP_APPROVED_ASINS)
-    ? window.SHOP_APPROVED_ASINS
-    : []
-);
+  const exclusionResponse=await fetch('./data/shop-excluded.json?ts='+Date.now(),{cache:'no-store'});
+  if(!exclusionResponse.ok)throw Error('Exclusion list unavailable');
+  const exclusions=await exclusionResponse.json();
+  if(exclusions.format!=='daily-drops-shop-excluded-v1'||!Array.isArray(exclusions.asins))throw Error('Invalid exclusion list');
+  excludedAsins=new Set(exclusions.asins.filter(validAsin));
   const incomingUpdated=String(payload.updated||'');
-  if(options.silent&&incomingUpdated&&incomingUpdated===lastFeedUpdated){draw();return;}
+  if(options.silent&&incomingUpdated&&incomingUpdated===lastFeedUpdated){rows=rows.filter(d=>!excludedAsins.has(d.asin));draw();return;}
   lastFeedUpdated=incomingUpdated;
-  rows=list.filter(d=>d&&approvedAsins.has(d.asin)&&validAsin(d.asin)&&d.retailer==='Amazon'&&typeof d.title==='string'&&Number.isFinite(Number(d.price))&&Number(d.price)>0);
+  rows=list.filter(d=>d&&!excludedAsins.has(d.asin)&&validAsin(d.asin)&&d.retailer==='Amazon'&&typeof d.title==='string'&&Number.isFinite(Number(d.price))&&Number(d.price)>0);
   const cats=SHOP_CATEGORIES.filter(c=>rows.some(d=>shopCategory(d)===c));if(rows.some(d=>shopCategory(d)==='Other'))cats.push('Other');
   const old=$('category').value;$('category').innerHTML='<option value="">All categories</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(CATEGORY_NAMES[c]||'Other')+'</option>').join('');if(cats.includes(old))$('category').value=old;updateCategoryUI();
   $('shopCategories').innerHTML='<button type="button" data-shop-cat="" class="active">All finds</button>'+cats.map(c=>'<button type="button" data-shop-cat="'+esc(c)+'">'+esc(CATEGORY_NAMES[c]||'Other')+'</button>').join('');
