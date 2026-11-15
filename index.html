@@ -564,9 +564,10 @@ function renderLeads(){
  $('leadstatus').textContent=filtered.length+' leads to review · Published and passed items hidden';
  $('leaditems').innerHTML=filtered.map(d=>{
  const match=d.retailer==='Amazon'&&!leadAsin(d)?bestCommunityMatch(d):null;
- const asin=leadAsin(d)||(match?match.item.asin:'');
+ const asin=leadAsin(d);
  const affiliate=asin?postingLink(asin):'';
- const image=String(d.imageUrl||d.image||d.thumbnail||match?.item?.imageUrl||match?.item?.image||'');
+ const exact=communityMatches.find(item=>leadAsin(d)&&item.asin===leadAsin(d));
+ const image=String(d.imageUrl||d.image||d.thumbnail||exact?.imageUrl||exact?.image||'');
  const safeImage=(image.startsWith('https://')&&!image.includes('\\')&&!image.includes('\\"'))?'<img src="'+esc(image)+'" alt="" loading="lazy" style="width:96px;height:96px;object-fit:contain;background:#fff;border-radius:9px;flex-shrink:0">':'<div aria-label="Product photo unavailable" title="No verified product photo available" style="width:96px;height:96px;flex-shrink:0;border-radius:9px;background:#f3f0ed;display:grid;place-items:center;color:#7b6e6c;font-size:11px;text-align:center">Photo<br>unavailable</div>';
  const original=String(d.url||'');
  const originalLink=original.startsWith('https://')?'<a href="'+esc(original)+'" target="_blank" rel="noopener noreferrer">Source ↗</a>':'';
