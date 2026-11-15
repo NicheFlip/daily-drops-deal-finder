@@ -148,6 +148,11 @@ async function load(options={}){
   const res=await fetch('./data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Feed unavailable');
   const payload=await res.json();
   const list=Array.isArray(payload.deals)?payload.deals:[];
+const approvedAsins = new Set(
+  Array.isArray(window.SHOP_APPROVED_ASINS)
+    ? window.SHOP_APPROVED_ASINS
+    : []
+);
   const incomingUpdated=String(payload.updated||'');
   if(options.silent&&incomingUpdated&&incomingUpdated===lastFeedUpdated){draw();return;}
   lastFeedUpdated=incomingUpdated;
