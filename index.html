@@ -555,7 +555,7 @@ function leadAsin(d){const explicit=String(d.asin||'').toUpperCase();if(/^[A-Z0-
 function leadAffiliateUrl(d){const asin=leadAsin(d);return asin?postingLink(asin):''}
 function leadSearchUrl(d){return 'https://www.amazon.com/s?k='+encodeURIComponent(String(d.title||'').slice(0,110))+'&tag=dealstoday0b3-20'}
 function communityKey(t){return String(t||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().split(' ').filter(Boolean).join(' ')}
-async function refreshCommunityPublished(){try{const r=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});if(!r.ok)return;const j=await r.json();if(j.format==='daily-drops-publisher-v1'&&Array.isArray(j.deals)){cloudCommunity=j.deals;renderLeads()}}catch{}}
+async function refreshCommunityPublished(){try{const r=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});if(!r.ok)return;const j=await r.json();if(j.format==='daily-drops-publisher-v1'&&Array.isArray(j.deals)){cloudCommunity=j.deals;renderLeads();if(data)render()}}catch{}}
 function renderLeads(){
  const q=$('leadfind').value.toLowerCase();
  const done=new Set([...verifiedCommunity,...cloudCommunity].map(d=>communityKey(d.title)));
@@ -568,7 +568,7 @@ function renderLeads(){
  const affiliate=asin?postingLink(asin):'';
  const exact=communityMatches.find(item=>leadAsin(d)&&item.asin===leadAsin(d));
  const image=String(d.imageUrl||d.image||d.thumbnail||exact?.imageUrl||exact?.image||'');
- const safeImage=(image.startsWith('https://')&&!image.includes('\\')&&!image.includes('\\"'))?'<img src="'+esc(image)+'" alt="" loading="lazy" style="width:96px;height:96px;object-fit:contain;background:#fff;border-radius:9px;flex-shrink:0">':'<div aria-label="Product photo unavailable" title="No verified product photo available" style="width:96px;height:96px;flex-shrink:0;border-radius:9px;background:#f3f0ed;display:grid;place-items:center;color:#7b6e6c;font-size:11px;text-align:center">Photo<br>unavailable</div>';
+ const safeImage=(image.startsWith('https://')&&!image.includes('\\')&&!image.includes('\\"'))?'<img src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML=\'<div style=&quot;width:96px;height:96px;flex-shrink:0;border-radius:9px;background:#f3f0ed;display:grid;place-items:center;font-size:11px;text-align:center;color:#7b6e6c&quot;>Photo unavailable</div>\'" style="width:96px;height:96px;object-fit:contain;background:#fff;border-radius:9px;flex-shrink:0">':'<div aria-label="Product photo unavailable" title="No verified product photo available" style="width:96px;height:96px;flex-shrink:0;border-radius:9px;background:#f3f0ed;display:grid;place-items:center;color:#7b6e6c;font-size:11px;text-align:center">Photo<br>unavailable</div>';
  const original=String(d.url||'');
  const originalLink=original.startsWith('https://')?'<a href="'+esc(original)+'" target="_blank" rel="noopener noreferrer">Source ↗</a>':'';
  const find=d.retailer==='Amazon'?'<a href="'+esc(affiliate||leadSearchUrl(d))+'" target="_blank" rel="sponsored noopener noreferrer">'+(affiliate?'View product ↗':'Find product ↗')+'</a>':'';
