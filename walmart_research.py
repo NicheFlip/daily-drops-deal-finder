@@ -8,7 +8,8 @@ GROUPS={
  'Bikes and scooters':['electric bikes deals','electric scooters deals','kids scooters clearance'],
  'Beauty':['skin care clearance','makeup deals','hair styling tools clearance'],
  'Home and kitchen':['air fryer clearance','robot vacuum deals','cookware clearance','bedding clearance','storage organizers deals'],
- 'Electronics':['headphones clearance','tablets deals','portable chargers clearance'],
+ 'Electronics':['tablets deals','portable chargers clearance'],
+ 'Open box and returns':['open box electronics','open box televisions','open box laptops','open box tablets','open box kitchen appliances','open box vacuum cleaners','open box furniture','open box toys','open box gaming consoles','returned items clearance','like new refurbished appliances'],
  'Fashion':['boys clothing clearance','girls clothing clearance','women clothing clearance','shoes clearance']
 }
 def build():
