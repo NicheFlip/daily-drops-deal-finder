@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15T14:29:38.553517+00:00",
+  "updated": "2026-11-15T14:31:52.546065+00:00",
   "candidates": [
     {
       "asin": "B0DBLRD5K4",
@@ -15,7 +15,7 @@
       "reason": "Observed price drop",
       "previousObservedPrice": 19.99,
       "newObservedLow": true,
-      "checkedAt": "2026-11-15T14:29:38.553517+00:00",
+      "checkedAt": "2026-11-15T14:31:52.546065+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -32,7 +32,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-15T14:29:38.553517+00:00",
+      "checkedAt": "2026-11-15T14:31:52.546065+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -49,7 +49,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-15T14:29:38.553517+00:00",
+      "checkedAt": "2026-11-15T14:31:52.546065+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     }
   ],
