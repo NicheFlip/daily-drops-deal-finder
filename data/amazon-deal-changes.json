@@ -1,16 +1,5 @@
 {
-  "updated": "2026-11-15T03:46:21.673764+00:00",
-  "changes": [
-    {
-      "asin": "B08KKCV4D5",
-      "title": "Softsoap Antibacterial Hand Soap, Cool Splash Scent, 11.25 fl oz (6 Pack) | Paraben-Free, Phthalate-Free, Washes Away Germs, Bathroom Hand Soap, Kitchen Hand Soap, Daily Handwashin",
-      "previousObservedPrice": 10.35,
-      "currentObservedPrice": 10.32,
-      "dropPercent": 0.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-15T03:46:21.673764+00:00",
-      "url": "https://www.amazon.com/dp/B08KKCV4D5"
-    }
-  ],
+  "updated": "2026-11-15T03:55:38.367404+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
