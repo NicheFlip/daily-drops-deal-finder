@@ -150,11 +150,18 @@ async function load(options={}){
   const payload=await res.json();
   const list=Array.isArray(payload.deals)?payload.deals:[];
   let community=[];try{const cr=await fetch('./data/community-verified.json?ts='+Date.now(),{cache:'no-store'});if(cr.ok){const cj=await cr.json();community=Array.isArray(cj.deals)?cj.deals:[]}}catch{}
+  // Repair missing images from the larger Amazon product archive without changing the product.
+  let archiveImages=new Map();
+  try{
+   const ar=await fetch('./data/amazon-all-products.json?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});
+   if(ar.ok){const aj=await ar.json();const items=[...(Array.isArray(aj.products)?aj.products:[]),...(Array.isArray(aj.deals)?aj.deals:[])];for(const item of items)if(validAsin(item.asin)&&hasProductImage(item))archiveImages.set(item.asin,item.imageUrl)}
+  }catch{}
   let cloud=[];try{const wr=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(4500)});if(wr.ok){const wj=await wr.json();if(wj.format==='daily-drops-publisher-v1'&&Array.isArray(wj.deals))cloud=wj.deals}}catch{}
   const cloudPass=new Set(cloud.filter(d=>d.status==='pass').map(d=>d.asin));
   const combined=new Map();for(const d of [...list,...community])if(d&&validAsin(d.asin))combined.set(d.asin,d);
   for(const d of cloud){if(!d||!validAsin(d.asin))continue;if(d.status==='published'){const prior=combined.get(d.asin)||{};combined.set(d.asin,{...prior,...d,imageUrl:d.imageUrl||prior.imageUrl||'',title:d.title||prior.title||''})}else combined.delete(d.asin)}
   for(const asin of cloudPass)combined.delete(asin);
+  for(const [asin,item] of combined)if(!hasProductImage(item)&&archiveImages.has(asin))combined.set(asin,{...item,imageUrl:archiveImages.get(asin)});
   const exclusionResponse=await fetch('./data/shop-excluded.json?ts='+Date.now(),{cache:'no-store'});
   if(!exclusionResponse.ok)throw Error('Exclusion list unavailable');
   const exclusions=await exclusionResponse.json();
