@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-16T18:11:14.507180+00:00",
-  "changes": [
-    {
-      "asin": "B00FLFIGF0",
-      "title": "Lysol Disinfecting Wipes, Multi-Surface Cleaner, Crisp Linen, 80 ct. | All Purpose Cleaner, Sanitizing, Deodorizing, Apartment Essentials, Back To School Cleaning Supplies, Kitchen",
-      "previousObservedPrice": 4.97,
-      "currentObservedPrice": 1.45,
-      "dropPercent": 70.8,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-16T18:11:14.507180+00:00",
-      "url": "https://www.amazon.com/dp/B00FLFIGF0"
-    },
-    {
-      "asin": "B07VH667FV",
-      "title": "ARM & HAMMER Plus OxiClean Odor Blasters Laundry Detergent Pak, 42 Count | 5-in-1 Benefits, Eliminates Tough Odors, Attacks Tough Stains, Whitens & Brightens, Fresh Burst Scent",
-      "previousObservedPrice": 8.99,
-      "currentObservedPrice": 4.98,
-      "dropPercent": 44.6,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-16T18:11:14.507180+00:00",
-      "url": "https://www.amazon.com/dp/B07VH667FV"
-    },
-    {
-      "asin": "B0F8GFMZ5V",
-      "title": "WIHOLL Long Sleeve Shirts For Women Womens Tops Trendy Business Casual Fall Outfits 2026 Sweaters for Women Winter Fashion Clothing Chocolate Brown Plus Size Clothes Lightweight Cu",
-      "previousObservedPrice": 8.98,
-      "currentObservedPrice": 8.53,
-      "dropPercent": 5.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-16T18:11:14.507180+00:00",
-      "url": "https://www.amazon.com/dp/B0F8GFMZ5V"
-    }
-  ],
+  "updated": "2026-11-16T18:41:15.253277+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
