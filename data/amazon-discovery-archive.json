@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T19:41:13.764931+00:00",
+  "updated": "2026-11-16T19:54:25.677838+00:00",
   "retentionDays": null,
   "events": [
     {
@@ -16,24 +16,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
-    },
-    {
-      "asin": "B087JG6H25",
-      "title": "GOLDEN HOUR Men's Watches with Stainless Steel and Metal Casual Waterproof Chronograph Quartz Watch, Auto Date in Grey Hands",
-      "category": "Fashion",
-      "url": "https://www.amazon.com/dp/B087JG6H25",
-      "imageUrl": "https://m.media-amazon.com/images/I/41tLZq2dE1L._SL160_.jpg",
-      "price": 43.99,
-      "referencePrice": 298.99,
-      "discountPercent": 85,
-      "dealScore": 20,
-      "everydayEssential": false,
-      "reason": "First observation",
-      "previousObservedPrice": null,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -50,7 +33,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -67,7 +50,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -84,7 +67,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -101,7 +84,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -118,7 +101,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -135,7 +118,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -152,7 +135,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -169,7 +152,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -186,7 +169,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -203,7 +186,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -220,7 +203,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -237,7 +220,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -254,7 +237,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -271,7 +254,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -288,7 +271,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -305,7 +288,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -322,7 +305,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -339,7 +322,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -356,7 +339,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -373,7 +356,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -390,7 +373,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -407,7 +390,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -424,7 +407,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-16T19:41:13.764931+00:00",
+      "checkedAt": "2026-11-16T19:54:25.677838+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
