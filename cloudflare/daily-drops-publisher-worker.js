@@ -73,7 +73,15 @@ async function ogLookup(request,u,ctx){
  if(cache&&ctx?.waitUntil)ctx.waitUntil(cache.put(cacheKey,res.clone()).catch(()=>{}));
  return res;
 }
-export default {async fetch(request,env,ctx){
+async function dispatchAmazonScan(env){
+ const t=env.GH_DISPATCH_TOKEN;if(!t){console.log('Scan timer skipped: GH_DISPATCH_TOKEN not set');return}
+ const api='https://api.github.com/repos/NicheFlip/daily-drops-deal-finder/actions',h={authorization:'Bearer '+t,accept:'application/vnd.github+json','user-agent':'daily-drops-scan-timer','x-github-api-version':'2022-11-28'};
+ for(const st of ['in_progress','queued']){const r=await fetch(api+'/workflows/amazon-scan.yml/runs?per_page=1&status='+st,{headers:h,signal:AbortSignal.timeout(10000)});if(r.ok&&((await r.json()).total_count||0)>0){console.log('Scan timer skipped: a scan is already '+st);return}}
+ const r=await fetch(api+'/workflows/amazon-scan.yml/dispatches',{method:'POST',headers:{...h,'content-type':'application/json'},body:JSON.stringify({ref:'main'}),signal:AbortSignal.timeout(10000)});
+ console.log(r.status===204?'Scan timer started amazon-scan.yml':'Scan timer dispatch failed: HTTP '+r.status);
+}
+export default {async scheduled(event,env,ctx){ctx.waitUntil(dispatchAmazonScan(env).catch(e=>console.error('Scan timer error',e)))},
+async fetch(request,env,ctx){
  try{
   const u=new URL(request.url),path=u.pathname;
   if(!env.DB||!env.PUBLISH_SECRET)return json({error:'Worker setup incomplete: DB and PUBLISH_SECRET required'},503);
