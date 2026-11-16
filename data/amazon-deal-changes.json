@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-16T17:41:14.690686+00:00",
+  "updated": "2026-11-16T18:02:30.115043+00:00",
   "changes": [
     {
-      "asin": "B0822LKVN6",
-      "title": "MRS. MEYER'S CLEAN DAY Hand Soap, Peony Scent, 12.5 Fl Oz Bottle - 3 Pack",
-      "previousObservedPrice": 15.87,
-      "currentObservedPrice": 11.13,
-      "dropPercent": 29.9,
+      "asin": "B0DFF39WYC",
+      "title": "Mrs. Meyer's Clean Day Laundry Scent Boosters, Lavender Scent, 18oz",
+      "previousObservedPrice": 8.32,
+      "currentObservedPrice": 7.88,
+      "dropPercent": 5.3,
       "newObservedLow": true,
-      "checkedAt": "2026-11-16T17:41:14.690686+00:00",
-      "url": "https://www.amazon.com/dp/B0822LKVN6"
+      "checkedAt": "2026-11-16T18:02:30.115043+00:00",
+      "url": "https://www.amazon.com/dp/B0DFF39WYC"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
