@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-16T01:58:21.598033+00:00",
+  "updated": "2026-11-16T08:03:43.239288+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0CKMCCSN2",
+      "title": "adidas Men's Daily 4.0, Grey/Black/White, 10 | Casual Shoes, Skateboarding Shoes, Low-Cut, Regular Fit, Lace-Up, For Skateboarding and Everyday Wear",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0CKMCCSN2",
+      "imageUrl": "https://m.media-amazon.com/images/I/31HN5uhRr-L._SL160_.jpg",
+      "price": 35.75,
+      "referencePrice": 65.0,
+      "discountPercent": 45,
+      "dealScore": 47,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 39.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-16T08:03:43.239288+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B089QXMQXK",
+      "title": "Bedsure Orthopedic Dog Bed Medium Washable Original Design, 28\" Grey | Dog Couch Sofa Cozy Bolster Sides, Removable Cover, Nonslip Bottom, Pet Bed for Puppies, Cats, Senior Dogs, D",
+      "category": "PetSupplies",
+      "url": "https://www.amazon.com/dp/B089QXMQXK",
+      "imageUrl": "https://m.media-amazon.com/images/I/31xQzXPnx8L._SL160_.jpg",
+      "price": 42.99,
+      "referencePrice": 79.99,
+      "discountPercent": 46,
+      "dealScore": 6,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-16T08:03:43.239288+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0CKYJ63SG",
       "title": "COSLUS C40 Electric Nail Drill Professional, Precise Speed Dial, Purple | Nail File Machine for Acrylic Gel Dip Powder Removal, Compact Manicure Tools, Beginner-friendly Polishing ",
