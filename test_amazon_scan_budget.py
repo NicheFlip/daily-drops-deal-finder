@@ -41,7 +41,7 @@ class ScanBudgetChecks(unittest.TestCase):
             with patch.dict(os.environ,env),patch.object(amazon_scan,'api',fake),\
                  patch.object(amazon_scan,'PER_RUN',budget),patch.object(amazon_scan,'MIN_REQUEST_INTERVAL',0),\
                  patch.object(amazon_scan,'RETRY_DELAYS',(0,0,0)),\
-                 patch.object(amazon_scan,'OUT',root/'deals.json'),patch.object(amazon_scan,'ALL_OUT',root/'all.json'),\
+                 patch.object(amazon_scan,'OUT',root/'deals.json'),patch.object(amazon_scan,'ALL_OUT',root/'all.json'),patch.object(amazon_scan,'USED_OUT',root/'used.json'),\
                  patch.object(amazon_scan,'STATE',root/'state.json'),patch.object(amazon_scan,'HISTORY_PATH',hist),\
                  patch.object(price_history,'PATH',hist),patch.object(price_history,'CHANGES',root/'changes.json'),\
                  patch.object(candidate_queue,'STATE',root/'cstate.json'),patch.object(candidate_queue,'QUEUE',root/'queue.json'),\

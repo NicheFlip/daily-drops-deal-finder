@@ -8,6 +8,7 @@ from candidate_queue import build_queue
 ROOT=pathlib.Path(__file__).parent
 OUT=ROOT/'data'/'amazon-deals.json'
 ALL_OUT=ROOT/'data'/'amazon-all-products.json'
+USED_OUT=ROOT/'data'/'amazon-used-offers.json'
 STATE=ROOT/'data'/'amazon-scan-state.json'
 NOW=datetime.datetime.now(datetime.timezone.utc)
 STAMP=NOW.isoformat()
@@ -72,7 +73,7 @@ BROAD_PAGES=3
 WATCH_CALLS=30
 WATCH_BATCH=10
 WATCH_POOL_LIMIT=600
-RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
+RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition','offersV2.listings.merchantInfo','offersV2.listings.isBuyBoxWinner']
 class BudgetReached(Exception):
     """Raised when the per-run request budget or time limit is used up."""
 def api(url,payload,headers=None):
@@ -113,6 +114,63 @@ def parse(item,category,keyword,minimum_discount=40):
           'checkedAt':STAMP,'couponVerified':False,'possibleGlitch':False,
           'verification':'Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified'}
     return None
+USED_RETENTION_HOURS=48
+USED_LIMIT=500
+def condition_label(value,sub_condition,merchant):
+    """Plain badge for a non-new Amazon listing: Warehouse, Open Box, Renewed or Used."""
+    value=str(value or '').strip().lower();sub=str(sub_condition or '').strip().lower().replace(' ','').replace('_','');merchant=str(merchant or '').lower()
+    if value in ('','new','unknown'):return None
+    if 'warehouse' in merchant or 'resale' in merchant:return 'Warehouse'
+    if sub=='openbox':return 'Open Box'
+    if value in ('refurbished','renewed') or sub=='refurbished':return 'Renewed'
+    if value in ('used','collectible'):return 'Used'
+    return None
+def parse_condition_offer(item,category,keyword):
+    """Additive: capture a used / open-box / Amazon Resale (Warehouse) listing returned in the same API response.
+    Never feeds the new-item deal judgment or new-item price history. Savings are only computed
+    against a New listing for the same ASIN in the same response."""
+    asin=item.get('asin','')
+    if not re.fullmatch('[A-Z0-9]{10}',asin):return None
+    title=item.get('itemInfo',{}).get('title',{}).get('displayValue','')
+    if not title or excluded_audio(title):return None
+    new_price=None;best=None
+    for offer in item.get('offersV2',{}).get('listings',[]) or []:
+        if not isinstance(offer,dict):continue
+        if (offer.get('availability') or {}).get('type') in ('OUT_OF_STOCK','UNAVAILABLE'):continue
+        price=amount(offer.get('price') or {})
+        if not price or price<=0:continue
+        cond=offer.get('condition') or {}
+        value=cond.get('value') or 'New'
+        if value=='New':
+            new_price=price if new_price is None else min(new_price,price);continue
+        merchant=(offer.get('merchantInfo') or {}).get('name') or ''
+        label=condition_label(value,cond.get('subCondition'),merchant)
+        if not label:continue
+        if best is None or price<best['price']:
+            best={'price':price,'condition':value,'subCondition':cond.get('subCondition') or 'Unknown','conditionLabel':label,
+                  'conditionNote':str(cond.get('conditionNote') or '')[:200],'merchant':merchant[:80],'isBuyBoxWinner':bool(offer.get('isBuyBoxWinner'))}
+    if not best:return None
+    savings=round(100*(new_price-best['price'])/new_price) if new_price and new_price>best['price'] else None
+    return {'asin':asin,'title':title[:180],'retailer':'Amazon','url':'https://www.amazon.com/dp/'+asin,
+      'imageUrl':((item.get('images') or {}).get('primary') or {}).get('medium',{}).get('url'),**best,
+      'newPrice':new_price,'savingsVsNewPercent':savings,'category':category,'keyword':keyword,'checkedAt':STAMP,
+      'verification':'Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history'}
+def write_used_offers(found):
+    """Merge this run's non-new offers with still-recent ones from earlier runs (additive feed)."""
+    keep={}
+    try:
+        old=json.loads(USED_OUT.read_text()).get('offers',[]) if USED_OUT.exists() else []
+    except ValueError:old=[]
+    cutoff=NOW-datetime.timedelta(hours=USED_RETENTION_HOURS)
+    for d in old:
+        try:
+            if d.get('asin') and datetime.datetime.fromisoformat(d['checkedAt'])>=cutoff:keep[d['asin']]=d
+        except (KeyError,TypeError,ValueError):pass
+    keep.update(found)
+    rows=sorted(keep.values(),key=lambda d:(d.get('savingsVsNewPercent') or -1,d['checkedAt']),reverse=True)[:USED_LIMIT]
+    USED_OUT.write_text(json.dumps({'updated':STAMP,'foundThisScan':len(found),'offers':rows,
+      'note':'Used, open-box, renewed and Amazon Resale (Warehouse) offers seen in the scanner\'s normal API calls. Prices are condition-specific; never compare them with new-item price history.'},indent=2))
+    return len(rows)
 def scan():
     cid=os.environ['AMAZON_CREATORS_CREDENTIAL_ID'];secret=os.environ['AMAZON_CREATORS_SECRET'];tag=os.environ['AMAZON_PARTNER_TAG']
     token=api('https://api.amazon.com/auth/o2/token',{'grant_type':'client_credentials','client_id':cid,'client_secret':secret,'scope':'creatorsapi::default'})['access_token']
@@ -215,6 +273,7 @@ def scan():
     plan=deduped
     searched=[]
     unique_seen=set()
+    used_offers={}
     headers={'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'}
     meter={'attempts':0,'last':0.0}
     started=time.monotonic()
@@ -244,6 +303,8 @@ def scan():
             scanned+=len(items)
             unique_seen.update(item.get('asin') for item in items if item.get('asin'))
             for item in items:
+                used=parse_condition_offer(item,category,keyword)
+                if used:used_offers[used['asin']]=used
                 baseline_item=parse(item,category,keyword,minimum_discount=0)
                 if baseline_item:
                     all_products[baseline_item['asin']]=baseline_item
@@ -285,6 +346,8 @@ def scan():
             for item in items:
                 asin=item.get('asin','')
                 category=history.get(asin,{}).get('category') or 'All'
+                used=parse_condition_offer(item,category,'Watched ASIN')
+                if used:used_offers[asin]=used
                 baseline_item=parse(item,category,'Watched ASIN',minimum_discount=0)
                 if baseline_item:
                     all_products[asin]=baseline_item
@@ -327,9 +390,11 @@ def scan():
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
       'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':watch_requested,'requestBudget':budget,'requestsAttempted':attempts,'durationSeconds':duration,'stoppedEarly':stopped_reason,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
+    try:used_total=write_used_offers(used_offers)
+    except OSError as e:used_total=0;print('Used-offer feed not written:',type(e).__name__)
     STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+attempts,
       'quickLinkOffset':(quick_offset+quick_budget)%len(QUICK_LINK_QUERIES),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
       'watchOffset':(watch_offset+consumed)%max(1,len(watch_pool)),'runNumber':run_number+1,'cycle':cycle+(offset+broad_budget)//len(QUERIES)},indent=2))
-    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'attempts:',attempts,'budget:',budget,'seconds:',duration,'stopped early:',stopped_reason,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors))
+    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'attempts:',attempts,'budget:',budget,'seconds:',duration,'stopped early:',stopped_reason,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors),'used/open-box offers:',len(used_offers),'used feed rows:',used_total)
 if __name__=='__main__':scan()

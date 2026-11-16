@@ -36,7 +36,7 @@ jobs:
         run: python scan_health.py
       - name: Verify deal engine and frontend after scan
         continue-on-error: true
-        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py test_amazon_scan_budget.py
+        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py test_amazon_scan_budget.py test_amazon_used_offers.py
       - name: Archive observations in PostgreSQL (if configured)
         id: database_archive
         continue-on-error: true
@@ -64,7 +64,7 @@ jobs:
           set -euo pipefail
           git config user.name "deal-scanner[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/amazon-all-products.json data/amazon-scan-health.json data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json
+          git add data/amazon-all-products.json data/amazon-scan-health.json data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json data/amazon-used-offers.json
           if git diff --cached --quiet; then
             echo "::error::No scan files changed. Refusing to report a successful refresh."
             exit 1
