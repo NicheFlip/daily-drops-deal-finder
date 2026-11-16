@@ -1,15 +1,35 @@
 {
-  "updated": "2026-11-16T18:02:30.115043+00:00",
+  "updated": "2026-11-16T18:11:14.507180+00:00",
   "changes": [
     {
-      "asin": "B0DFF39WYC",
-      "title": "Mrs. Meyer's Clean Day Laundry Scent Boosters, Lavender Scent, 18oz",
-      "previousObservedPrice": 8.32,
-      "currentObservedPrice": 7.88,
-      "dropPercent": 5.3,
+      "asin": "B00FLFIGF0",
+      "title": "Lysol Disinfecting Wipes, Multi-Surface Cleaner, Crisp Linen, 80 ct. | All Purpose Cleaner, Sanitizing, Deodorizing, Apartment Essentials, Back To School Cleaning Supplies, Kitchen",
+      "previousObservedPrice": 4.97,
+      "currentObservedPrice": 1.45,
+      "dropPercent": 70.8,
       "newObservedLow": true,
-      "checkedAt": "2026-11-16T18:02:30.115043+00:00",
-      "url": "https://www.amazon.com/dp/B0DFF39WYC"
+      "checkedAt": "2026-11-16T18:11:14.507180+00:00",
+      "url": "https://www.amazon.com/dp/B00FLFIGF0"
+    },
+    {
+      "asin": "B07VH667FV",
+      "title": "ARM & HAMMER Plus OxiClean Odor Blasters Laundry Detergent Pak, 42 Count | 5-in-1 Benefits, Eliminates Tough Odors, Attacks Tough Stains, Whitens & Brightens, Fresh Burst Scent",
+      "previousObservedPrice": 8.99,
+      "currentObservedPrice": 4.98,
+      "dropPercent": 44.6,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-16T18:11:14.507180+00:00",
+      "url": "https://www.amazon.com/dp/B07VH667FV"
+    },
+    {
+      "asin": "B0F8GFMZ5V",
+      "title": "WIHOLL Long Sleeve Shirts For Women Womens Tops Trendy Business Casual Fall Outfits 2026 Sweaters for Women Winter Fashion Clothing Chocolate Brown Plus Size Clothes Lightweight Cu",
+      "previousObservedPrice": 8.98,
+      "currentObservedPrice": 8.53,
+      "dropPercent": 5.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-16T18:11:14.507180+00:00",
+      "url": "https://www.amazon.com/dp/B0F8GFMZ5V"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
