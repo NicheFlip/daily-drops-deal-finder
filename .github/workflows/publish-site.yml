@@ -43,7 +43,7 @@ jobs:
             amazon-deal-changes.json price-history-public.json \
             impact-deals.json impact-status.json \
             walmart-research.json walmart-products.json walmart-price-history.json \
-            amazon-used-deals.json featured-finds.json shop-excluded.json community-verified.json
+            amazon-used-deals.json amazon-used-offers.json featured-finds.json shop-excluded.json community-verified.json
           do
             if [ -f "data/$file" ]; then
               cp "data/$file" "_site/data/$file"
