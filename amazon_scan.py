@@ -26,21 +26,55 @@ ESSENTIAL_QUERIES=[("All","laundry detergent"),("All","paper towels"),("All","to
 HIGH_DEMAND_QUERIES=[('All','best selling household essentials'),('ToysAndGames','ride on toys for kids'),('ToysAndGames','electric ride on cars for kids'),('All','electric scooters'),('All','electric bikes'),('ToysAndGames','outdoor toys'),('ToysAndGames','educational toys'),('ToysAndGames','LEGO building sets'),('Beauty','skin care gift sets'),('Beauty','hair styling tools'),('Beauty','makeup gift sets'),('HomeAndKitchen','robot vacuums'),('HomeAndKitchen','air fryers'),('HomeAndKitchen','blenders'),('HomeAndKitchen','bedding sets'),('HomeAndKitchen','storage organizers'),('Electronics','portable chargers'),('All','cleaning supplies'),('All','coffee'),('All','paper products'),('All','pet supplies')]
 BLACK_FRIDAY_QUERIES=[('All','early black friday deals'),('HomeAndKitchen','black friday kitchen deals'),('ToysAndGames','black friday toys'),('HomeAndKitchen','black friday vacuum'),('All','black friday household essentials'),('All','black friday coffee makers'),('All','black friday gifts')]
 # Search Amazon quick-link topics are also scanned automatically, not just opened in a browser.
-# The existing 24-request budget is shared; this does not add API requests.
 QUICK_LINK_QUERIES=[
  ('ToysAndGames','toys and games'),('HomeAndKitchen','kitchen appliances'),
  ('HomeAndKitchen','home organization'),
  ('Beauty','beauty tools'),('ToysAndGames','holiday gifts'),
  ('Fashion','women pants'),('Fashion','shoes')
 ]
-# Up to 24 requests x 10 items = 240 product results per half-hour run (not all unique).
-# Respect the daily cap and API throttling; requests may return fewer items.
-PER_RUN=24
-WATCH_CALLS=2
+# Wider catalog coverage: popular deal categories beyond the original list.
+# Search indexes are the standard www.amazon.com SearchIndex values.
+QUERIES+=[
+('Electronics','bluetooth speakers'),('Electronics','smart watches'),('Electronics','streaming devices'),('Electronics','security cameras'),('Electronics','smart plugs'),('Electronics','power banks'),('Electronics','usb c cables'),('Electronics','wireless chargers'),('Electronics','phone cases'),('Electronics','tv mounts'),('Electronics','dash cams'),('Electronics','action cameras'),('Electronics','projectors'),('Electronics','e readers'),('Electronics','fitness trackers'),('Electronics','surge protectors'),('Electronics','smart lights'),('Electronics','video doorbells'),
+('Computers','computer monitors'),('Computers','gaming mouse'),('Computers','mechanical keyboards'),('Computers','external hard drives'),('Computers','usb flash drives'),('Computers','laptop stands'),('Computers','webcams'),('Computers','wifi routers'),('Computers','memory cards'),('Computers','laptop bags'),
+('HomeAndKitchen','air purifiers'),('HomeAndKitchen','humidifiers'),('HomeAndKitchen','space heaters'),('HomeAndKitchen','throw blankets'),('HomeAndKitchen','pillows'),('HomeAndKitchen','mattress toppers'),('HomeAndKitchen','bath towels'),('HomeAndKitchen','shower curtains'),('HomeAndKitchen','curtains'),('HomeAndKitchen','area rugs'),('HomeAndKitchen','wall art'),('HomeAndKitchen','candles'),('HomeAndKitchen','christmas decorations'),('HomeAndKitchen','closet organizers'),('HomeAndKitchen','food storage containers'),('HomeAndKitchen','knife sets'),('HomeAndKitchen','cutting boards'),('HomeAndKitchen','baking supplies'),('HomeAndKitchen','water bottles'),('HomeAndKitchen','travel mugs'),('HomeAndKitchen','slow cookers'),('HomeAndKitchen','pressure cookers'),('HomeAndKitchen','toasters'),('HomeAndKitchen','electric kettles'),('HomeAndKitchen','espresso machines'),('HomeAndKitchen','stand mixers'),('HomeAndKitchen','food processors'),('HomeAndKitchen','cordless vacuums'),('HomeAndKitchen','steam mops'),('HomeAndKitchen','dinnerware sets'),('HomeAndKitchen','kitchen utensils'),
+('Appliances','mini fridges'),('Appliances','ice makers'),('Appliances','countertop microwaves'),
+('ToysAndGames','stem toys'),('ToysAndGames','action figures'),('ToysAndGames','plush toys'),('ToysAndGames','card games'),('ToysAndGames','arts and crafts kits'),('ToysAndGames','play kitchen'),('ToysAndGames','toy vehicles'),('ToysAndGames','dollhouses'),('ToysAndGames','nerf blasters'),('ToysAndGames','magnetic tiles'),('ToysAndGames','kids tablets'),('ToysAndGames','stocking stuffers'),
+('VideoGames','nintendo switch games'),('VideoGames','ps5 games'),('VideoGames','xbox games'),('VideoGames','gaming controllers'),('VideoGames','gaming accessories'),('VideoGames','gaming chairs'),
+('Beauty','perfume'),('Beauty','nail polish'),('Beauty','face masks'),('Beauty','hair dryers'),('Beauty','curling irons'),('Beauty','makeup brushes'),('Beauty','sunscreen'),('Beauty','moisturizer'),('Beauty','serum'),('Beauty','lip care'),
+('HealthPersonalCare','vitamins'),('HealthPersonalCare','electric toothbrush'),('HealthPersonalCare','electric shavers'),('HealthPersonalCare','massage guns'),('HealthPersonalCare','first aid'),('HealthPersonalCare','protein powder'),('HealthPersonalCare','thermometers'),('HealthPersonalCare','heating pads'),('HealthPersonalCare','oral care'),('HealthPersonalCare','deodorant'),('HealthPersonalCare','razors'),
+('ToolsAndHomeImprovement','power tools'),('ToolsAndHomeImprovement','cordless drills'),('ToolsAndHomeImprovement','tool sets'),('ToolsAndHomeImprovement','led light bulbs'),('ToolsAndHomeImprovement','flashlights'),('ToolsAndHomeImprovement','smart thermostats'),('ToolsAndHomeImprovement','door locks'),('ToolsAndHomeImprovement','extension cords'),('ToolsAndHomeImprovement','shop vacuums'),('ToolsAndHomeImprovement','faucets'),('ToolsAndHomeImprovement','shower heads'),('ToolsAndHomeImprovement','tool storage'),
+('GardenAndOutdoor','patio furniture'),('GardenAndOutdoor','grills'),('GardenAndOutdoor','solar lights'),('GardenAndOutdoor','garden hoses'),('GardenAndOutdoor','planters'),('GardenAndOutdoor','string lights'),('GardenAndOutdoor','leaf blowers'),('GardenAndOutdoor','pressure washers'),
+('SportsAndOutdoors','camping gear'),('SportsAndOutdoors','yoga mats'),('SportsAndOutdoors','dumbbells'),('SportsAndOutdoors','resistance bands'),('SportsAndOutdoors','bikes'),('SportsAndOutdoors','coolers'),('SportsAndOutdoors','hiking backpacks'),('SportsAndOutdoors','fishing gear'),('SportsAndOutdoors','exercise bikes'),('SportsAndOutdoors','sleds'),('SportsAndOutdoors','golf accessories'),
+('PetSupplies','cat litter'),('PetSupplies','dog toys'),('PetSupplies','cat trees'),('PetSupplies','dog treats'),('PetSupplies','pet carriers'),('PetSupplies','aquarium supplies'),('PetSupplies','dog harness'),('PetSupplies','pet grooming'),
+('Baby','strollers'),('Baby','car seats'),('Baby','baby monitors'),('Baby','high chairs'),('Baby','baby bottles'),('Baby','diaper bags'),('Baby','baby toys'),('Baby','nursery decor'),
+('OfficeProducts','office chairs'),('OfficeProducts','desk organizers'),('OfficeProducts','printers'),('OfficeProducts','notebooks'),('OfficeProducts','pens'),('OfficeProducts','label makers'),('OfficeProducts','standing desks'),('OfficeProducts','shredders'),
+('Automotive','car accessories'),('Automotive','car vacuums'),('Automotive','jump starters'),('Automotive','tire inflators'),('Automotive','car phone mounts'),('Automotive','car seat covers'),('Automotive','car cleaning'),('Automotive','floor mats'),
+('Fashion','men clothing'),('Fashion','hoodies'),('Fashion','leggings'),('Fashion','socks'),('Fashion','pajamas'),('Fashion','backpacks'),('Fashion','wallets'),('Fashion','watches'),('Fashion','jewelry'),('Fashion','sunglasses'),('Fashion','kids clothing'),('Fashion','boots'),('Fashion','slippers'),('Fashion','gloves'),
+('Luggage','luggage sets'),('Luggage','carry on luggage'),('Luggage','travel accessories'),
+('GroceryAndGourmetFood','snacks'),('GroceryAndGourmetFood','candy'),('GroceryAndGourmetFood','tea'),('GroceryAndGourmetFood','k cups'),('GroceryAndGourmetFood','energy drinks'),('GroceryAndGourmetFood','protein bars'),('GroceryAndGourmetFood','gift baskets'),('GroceryAndGourmetFood','spices'),
+('All','household supplies'),('All','storage bins'),('All','light bulbs'),('All','air fresheners'),('All','sponges'),('All','zip bags'),('All','aluminum foil'),('All','plastic wrap'),('All','paper plates'),('All','gift wrap'),
+]
+# Each scan is limited by a request budget (env AMAZON_SCAN_REQUEST_BUDGET, hard cap 2000),
+# a wall-clock limit, the daily cap, and >=1.1s spacing between requests (API limit is 1 TPS).
+def _env_int(name,default,low,high):
+    try:value=int(os.environ.get(name,default))
+    except (TypeError,ValueError):value=default
+    return max(low,min(high,value))
+REQUEST_BUDGET_HARD_CAP=2000
+PER_RUN=_env_int('AMAZON_SCAN_REQUEST_BUDGET',300,1,REQUEST_BUDGET_HARD_CAP)
+MAX_DAILY_CALLS=_env_int('AMAZON_MAX_DAILY_CALLS',8000,1,200000)  # kept under the base 8,640 requests/day
+MAX_SCAN_SECONDS=_env_int('AMAZON_SCAN_MAX_SECONDS',1200,60,3000)
+MIN_REQUEST_INTERVAL=1.1
+RETRY_DELAYS=(2,5,10)
+TRANSIENT_HTTP=(429,500,502,503,504)
+BROAD_PAGES=3
+WATCH_CALLS=30
 WATCH_BATCH=10
-WATCH_POOL_LIMIT=150
-MAX_DAILY_CALLS=1200  # conservative cap, well below initial 8640 TPD
+WATCH_POOL_LIMIT=600
 RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition']
+class BudgetReached(Exception):
+    """Raised when the per-run request budget or time limit is used up."""
 def api(url,payload,headers=None):
     req=urllib.request.Request(url,json.dumps(payload).encode(),{'Content-Type':'application/json',**(headers or {})},method='POST')
     with urllib.request.urlopen(req,timeout=30) as response:return json.load(response)
@@ -138,21 +172,22 @@ def scan():
         eligible.append((asin,entry,essential))
     eligible.sort(key=lambda x:(x[2],len(x[1].get('points',[])),x[1].get('lastSeen','')),reverse=True)
     watch_pool=[x[0] for x in eligible[:WATCH_POOL_LIMIT]]
+    watch_set=set(watch_pool)
     watch_offset=int(state.get('watchOffset',0))%max(1,len(watch_pool))
     rotated=watch_pool[watch_offset:]+watch_pool[:watch_offset]
-    watch_batches=[rotated[i:i+WATCH_BATCH] for i in range(0,min(len(rotated),WATCH_CALLS*WATCH_BATCH),WATCH_BATCH)]
-    watch_budget=min(len(watch_batches),budget,WATCH_CALLS)
+    # Reserve up to a quarter of the run for re-checking watched ASINs (10 per GetItems call).
+    watch_budget=min(-(-len(rotated)//WATCH_BATCH),budget//4,WATCH_CALLS) if rotated else 0
     discovery_budget=budget-watch_budget
     # Core repeat-purchase searches recur every run; remaining calls rotate across
     # seasonal, popular and broad categories so the feed discovers different items.
-    essential_budget=min(6,discovery_budget)
+    essential_budget=min(len(ESSENTIAL_QUERIES),discovery_budget)
     seasonal_active=NOW.month==11 and NOW.day<=30
-    seasonal_budget=min(4,max(0,discovery_budget-essential_budget)) if seasonal_active else 0
-    demand_budget=min(4,max(0,discovery_budget-essential_budget-seasonal_budget))
-    quick_budget=min(2,max(0,discovery_budget-essential_budget-seasonal_budget-demand_budget))
+    seasonal_budget=min(len(BLACK_FRIDAY_QUERIES),max(0,discovery_budget-essential_budget)) if seasonal_active else 0
+    demand_budget=min(len(HIGH_DEMAND_QUERIES),max(0,discovery_budget-essential_budget-seasonal_budget))
+    quick_budget=min(len(QUICK_LINK_QUERIES),max(0,discovery_budget-essential_budget-seasonal_budget-demand_budget))
     broad_budget=discovery_budget-essential_budget-seasonal_budget-demand_budget-quick_budget
-    searched=[]
-    unique_seen=set()
+    cycle=int(state.get('cycle',0))
+    plan=[]
     for i in range(discovery_budget):
         if i<essential_budget:
             category,keyword=ESSENTIAL_QUERIES[(essential_offset+i)%len(ESSENTIAL_QUERIES)]
@@ -163,19 +198,48 @@ def scan():
         elif i<essential_budget+seasonal_budget+demand_budget+quick_budget:
             category,keyword=QUICK_LINK_QUERIES[(quick_offset+i-essential_budget-seasonal_budget-demand_budget)%len(QUICK_LINK_QUERIES)]
         else:
-            category,keyword=QUERIES[(offset+i-essential_budget-seasonal_budget-demand_budget-quick_budget)%len(QUERIES)]
+            # Broad list: walk keywords in order; each full pass moves to the next results page.
+            g=cycle*len(QUERIES)+offset+i-(discovery_budget-broad_budget)
+            category,keyword=QUERIES[g%len(QUERIES)]
+            plan.append((category,keyword,1+(g//len(QUERIES))%BROAD_PAGES,False))
+            continue
         # Rotate results pages on every run, not only when a keyword list wraps.
-        # Changing both the keyword and page makes each scan explore a wider catalog.
         page=1+((run_number//2+i//6)%5)
-        searched.append({'category':category,'keyword':keyword,'page':page})
-        # Spread requests, respect throttling, and continue after transient failures.
-        if i:time.sleep(1.25)
+        plan.append((category,keyword,page,i<essential_budget))
+    # Never spend a request on the same search twice in one run.
+    seen_searches=set(); deduped=[]
+    for entry in plan:
+        key=(entry[0],entry[1].lower(),entry[2])
+        if key in seen_searches:continue
+        seen_searches.add(key); deduped.append(entry)
+    plan=deduped
+    searched=[]
+    unique_seen=set()
+    headers={'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'}
+    meter={'attempts':0,'last':0.0}
+    started=time.monotonic()
+    def call(url,payload):
+        """One throttled API request with backoff on throttling/transient errors.
+        Every attempt (including retries) counts against this run's request budget."""
+        for retry in range(len(RETRY_DELAYS)+1):
+            if meter['attempts']>=budget or time.monotonic()-started>MAX_SCAN_SECONDS:raise BudgetReached()
+            wait=MIN_REQUEST_INTERVAL-(time.monotonic()-meter['last'])
+            if wait>0:time.sleep(wait)
+            meter['last']=time.monotonic(); meter['attempts']+=1
+            try:return api(url,payload,headers)
+            except urllib.error.HTTPError as e:
+                if e.code not in TRANSIENT_HTTP or retry==len(RETRY_DELAYS):raise
+            except (urllib.error.URLError,TimeoutError,ConnectionError):
+                if retry==len(RETRY_DELAYS):raise
+            time.sleep(RETRY_DELAYS[retry])
+    stopped_reason=None
+    for i,(category,keyword,page,is_essential) in enumerate(plan):
         payload={'partnerTag':tag,'marketplace':'www.amazon.com','keywords':keyword,
                  'searchIndex':category,'itemCount':10,'itemPage':page,
                  'resources':RESOURCES}
         try:
-            result=api('https://creatorsapi.amazon/catalog/v1/searchItems',payload,
-                       {'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'})
+            result=call('https://creatorsapi.amazon/catalog/v1/searchItems',payload)
+            searched.append({'category':category,'keyword':keyword,'page':page})
             items=result.get('searchResult',{}).get('items',[]) or []
             scanned+=len(items)
             unique_seen.update(item.get('asin') for item in items if item.get('asin'))
@@ -183,25 +247,38 @@ def scan():
                 baseline_item=parse(item,category,keyword,minimum_discount=0)
                 if baseline_item:
                     all_products[baseline_item['asin']]=baseline_item
-                    if i<essential_budget:baseline[baseline_item['asin']]=baseline_item
+                    # Watched ASINs found by search keep their history baseline without a GetItems call.
+                    if is_essential or baseline_item['asin'] in watch_set:baseline[baseline_item['asin']]=baseline_item
                 d=parse(item,category,keyword)
                 if d:
                     observed[d['asin']]=d
                     if d['asin'] not in previous or previous[d['asin']].get('price')!=d['price']:newly+=1
                     fresh[d['asin']]=d
             completed+=1
+        except BudgetReached:
+            stopped_reason='budget'; break
         except urllib.error.HTTPError as e:
             errors.append(category+' / '+keyword+': HTTP '+str(e.code))
-            if e.code in (401,403,429):break
+            if e.code in (401,403,429):stopped_reason='HTTP '+str(e.code); break
         except Exception as e:errors.append(category+' / '+keyword+': '+type(e).__name__)
+    # Watched ASINs already returned by a search this run are skipped (deduped).
+    watch_batches=[]; pending=[]; consumed=0
+    for asin in rotated:
+        if len(watch_batches)>=watch_budget:break
+        consumed+=1
+        if asin in unique_seen:continue
+        pending.append(asin)
+        if len(pending)==WATCH_BATCH:watch_batches.append(pending); pending=[]
+    if pending and len(watch_batches)<watch_budget:watch_batches.append(pending)
     watch_completed=0
-    for j,batch in enumerate(watch_batches[:watch_budget]):
-        if j or discovery_budget:time.sleep(1.25)
-        searched.append({'category':'Watched ASINs','keyword':'GetItems','count':len(batch)})
+    watch_requested=0
+    for batch in watch_batches:
+        if stopped_reason:break
         try:
-            result=api('https://creatorsapi.amazon/catalog/v1/getItems',
-                       {'partnerTag':tag,'marketplace':'www.amazon.com','itemIds':batch,'resources':RESOURCES},
-                       {'Authorization':'Bearer '+token,'x-marketplace':'www.amazon.com'})
+            result=call('https://creatorsapi.amazon/catalog/v1/getItems',
+                       {'partnerTag':tag,'marketplace':'www.amazon.com','itemIds':batch,'resources':RESOURCES})
+            searched.append({'category':'Watched ASINs','keyword':'GetItems','count':len(batch)})
+            watch_requested+=len(batch)
             items=result.get('itemsResult',{}).get('items',[]) or []
             scanned+=len(items)
             unique_seen.update(item.get('asin') for item in items if item.get('asin'))
@@ -219,10 +296,14 @@ def scan():
                     fresh[asin]=d
             completed+=1
             watch_completed+=1
+        except BudgetReached:
+            stopped_reason='budget'; break
         except urllib.error.HTTPError as e:
             errors.append('Watch GetItems: HTTP '+str(e.code))
             if e.code in (401,403,429):break
         except Exception as e:errors.append('Watch GetItems: '+type(e).__name__)
+    attempts=meter['attempts']
+    duration=round(time.monotonic()-started,1)
     # Never overwrite a working public feed when every API request failed or returned nothing.
     if completed==0 or scanned==0:
         raise RuntimeError(f'Amazon scan returned no usable products (requests={completed}, products={scanned}, errors={errors[:4]}). Previous public feed preserved.')
@@ -244,11 +325,11 @@ def scan():
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':sum(map(len,watch_batches[:watch_budget])),'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
+      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':watch_requested,'requestBudget':budget,'requestsAttempted':attempts,'durationSeconds':duration,'stoppedEarly':stopped_reason,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
       'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
-    STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+completed+len(errors),
+    STATE.write_text(json.dumps({'essentialOffset':(essential_offset+essential_budget)%len(ESSENTIAL_QUERIES),'day':day,'callsToday':calls+attempts,
       'quickLinkOffset':(quick_offset+quick_budget)%len(QUICK_LINK_QUERIES),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
-      'watchOffset':(watch_offset+watch_budget*WATCH_BATCH)%max(1,len(watch_pool)),'runNumber':run_number+1,'cycle':int(state.get('cycle',0))+(1 if offset+broad_budget>=len(QUERIES) else 0)},indent=2))
-    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors))
+      'watchOffset':(watch_offset+consumed)%max(1,len(watch_pool)),'runNumber':run_number+1,'cycle':cycle+(offset+broad_budget)//len(QUERIES)},indent=2))
+    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'attempts:',attempts,'budget:',budget,'seconds:',duration,'stopped early:',stopped_reason,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors))
 if __name__=='__main__':scan()

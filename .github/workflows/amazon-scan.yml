@@ -17,7 +17,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -35,7 +35,7 @@ jobs:
         run: python scan_health.py
       - name: Verify deal engine and frontend after scan
         continue-on-error: true
-        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py
+        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py test_amazon_scan_budget.py
       - name: Archive observations in PostgreSQL (if configured)
         id: database_archive
         continue-on-error: true
