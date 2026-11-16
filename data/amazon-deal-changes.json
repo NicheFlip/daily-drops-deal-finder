@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-16T08:03:43.239288+00:00",
+  "updated": "2026-11-16T09:32:30.405385+00:00",
   "changes": [
     {
-      "asin": "B0CKMCCSN2",
-      "title": "adidas Men's Daily 4.0, Grey/Black/White, 10 | Casual Shoes, Skateboarding Shoes, Low-Cut, Regular Fit, Lace-Up, For Skateboarding and Everyday Wear",
-      "previousObservedPrice": 39.0,
-      "currentObservedPrice": 35.75,
-      "dropPercent": 8.3,
+      "asin": "B0FJTL63J6",
+      "title": "\u200bBarbie Rainbow Sparkle Hair Doll and Accessories | Fashion Doll Featuring Extra-Long Hair with 12 Stylish Accessories Including Glitter Tube and Hair Dryer",
+      "previousObservedPrice": 14.99,
+      "currentObservedPrice": 14.39,
+      "dropPercent": 4.0,
       "newObservedLow": true,
-      "checkedAt": "2026-11-16T08:03:43.239288+00:00",
-      "url": "https://www.amazon.com/dp/B0CKMCCSN2"
+      "checkedAt": "2026-11-16T09:32:30.405385+00:00",
+      "url": "https://www.amazon.com/dp/B0FJTL63J6"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
