@@ -1,6 +1,58 @@
 {
-  "updated": "2026-11-16T23:11:15.249988+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-16T23:41:13.989770+00:00",
+  "candidates": [
+    {
+      "asin": "B006K1U8A0",
+      "title": "Kleenex Professional Facial Tissue, Bulk, 36 Boxes x 90 Tissues (21271) | Upright Cube Tissue Boxes (6 Packs of 6), 2-Ply, Soft & Strong, Premium Tier",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B006K1U8A0",
+      "imageUrl": "https://m.media-amazon.com/images/I/41vs9vfHzcL._SL160_.jpg",
+      "price": 26.52,
+      "referencePrice": 74.8,
+      "discountPercent": 65,
+      "dealScore": 48,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 27.95,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-16T23:41:13.989770+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0C7YJ7WML",
+      "title": "Shark SpeedStyle Hair Dryer, 3 Styling Tools, Fine to Medium Hair, HD331 | QuickSmooth Brush & Turbo Concentrator, RapidGloss Finisher for Shine, Wet-to-Dry Ultra-Fast, Less Frizz",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B0C7YJ7WML",
+      "imageUrl": "https://m.media-amazon.com/images/I/41n-8DKun2L._SL160_.jpg",
+      "price": 129.0,
+      "referencePrice": 229.99,
+      "discountPercent": 44,
+      "dealScore": 4,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 129.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-16T23:41:13.989770+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0BZR6YBHK",
+      "title": "Bedsure Heated Blanket Throw Blanket with Preheat Function - Fast Heating Electric Blanket, Soft Flannel Throw with 6 Time Settings(Up to 10H), 6 Heating Settings, Gifts for Grandm",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0BZR6YBHK",
+      "imageUrl": "https://m.media-amazon.com/images/I/51HH3nDrCDL._SL160_.jpg",
+      "price": 38.99,
+      "referencePrice": 68.99,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-16T23:41:13.989770+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    }
+  ],
+  "count": 3,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
