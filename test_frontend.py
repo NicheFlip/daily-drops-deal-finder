@@ -68,6 +68,18 @@ class FrontendSmoke(unittest.TestCase):
         self.assertIn("candidateAsins.has(String(d.asin))",html)
         self.assertIn("name='deals';$('newOnly').checked=true",html)
         self.assertIn('amazon-discovery-archive.json',html)
+    def test_dashboard_quick_deal_finds(self):
+        html,el=parse('index.html')
+        self.assertIn('quickFinds',el.ids)
+        for mode in ('best','drops','lows','clearance','deep','under15','essentials','gifts','used'):
+            self.assertIn('data-quick="'+mode+'"',html)
+            self.assertIn(mode+':{label:',html)
+        # History-window labels must come from tracked price points, never from list prices.
+        self.assertIn("e.windowDays=days>=365?365:days>=90?90:days>=30?30:0",html)
+        self.assertIn('used prices are never new-item history lows',html)
+        self.assertIn("'p_8:'+pct+'-99'",html)
+        self.assertIn('special_offers:Clearance',html)
+
     def test_public_shop_excludes_admin_controls(self):
         html,_=parse('shop.html')
         self.assertNotIn('DATABASE_URL',html)
