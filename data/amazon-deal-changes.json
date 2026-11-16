@@ -1,26 +1,5 @@
 {
-  "updated": "2026-11-16T12:29:20.435748+00:00",
-  "changes": [
-    {
-      "asin": "B0CNY1F31S",
-      "title": "Chefman Air Fryer \u2013 4 QT Compact Airfryer for Quick & Easy Meals in Minutes, Features Hi-Fry Technology for Extra Crisp, Touchscreen Controls with 4 Presets, Nonstick & Dishwasher ",
-      "previousObservedPrice": 57.91,
-      "currentObservedPrice": 49.99,
-      "dropPercent": 13.7,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-16T12:29:20.435748+00:00",
-      "url": "https://www.amazon.com/dp/B0CNY1F31S"
-    },
-    {
-      "asin": "B0CNY1YVDD",
-      "title": "Chefman Air Fryer \u2013 6 QT Compact Airfryer for Quick & Easy Meals in Minutes, Features Hi-Fry Technology for Extra Crisp, Touchscreen Controls with 4 Presets, Nonstick & Dishwasher ",
-      "previousObservedPrice": 69.95,
-      "currentObservedPrice": 69.94,
-      "dropPercent": 0.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-16T12:29:20.435748+00:00",
-      "url": "https://www.amazon.com/dp/B0CNY1YVDD"
-    }
-  ],
+  "updated": "2026-11-16T17:18:16.744015+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
