@@ -1,6 +1,24 @@
 {
-  "updated": "2026-11-17T15:11:14.522931+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-17T15:41:15.784929+00:00",
+  "candidates": [
+    {
+      "asin": "B0G156GM21",
+      "title": "Oral-B Rechargeable Electric Toothbrush, iO3 Limited Deep Clean, 3 Cleaning Modes, Visual Pressure Sensor to Protect Gums, 2 Brush Heads, Travel Case, Azalea Pink",
+      "category": "HealthPersonalCare",
+      "url": "https://www.amazon.com/dp/B0G156GM21",
+      "imageUrl": "https://m.media-amazon.com/images/I/41rxqSr3UgL._SL160_.jpg",
+      "price": 59.99,
+      "referencePrice": 109.99,
+      "discountPercent": 45,
+      "dealScore": 5,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T15:41:15.784929+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
