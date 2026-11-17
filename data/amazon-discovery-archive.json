@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-17T11:11:13.012801+00:00",
+  "updated": "2026-11-17T11:41:13.830058+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0F95XH6ZM",
+      "title": "Blink Outdoor 2K+ (newest model) \u2014 Wireless smart security camera, 2K video resolution, enhanced audio, two-year battery. Required Sync Module not included \u2014 Add-On (Black)",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0F95XH6ZM",
+      "imageUrl": "https://m.media-amazon.com/images/I/215x+zAAqsL._SL160_.jpg",
+      "price": 30.99,
+      "referencePrice": 89.99,
+      "discountPercent": 66,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0GTBN7CS2",
+      "title": "Chefman Air Fryer 6-in-1, XL 14-Quart Multifunctional Airfryer with Touchscreen Controls, Rotisserie, Food Dehydrator, Convection Oven, Bake, Broil, and Reheat Functions, Windowed ",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0GTBN7CS2",
+      "imageUrl": "https://m.media-amazon.com/images/I/41xGNLceKZL._SL160_.jpg",
+      "price": 89.99,
+      "referencePrice": 149.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B07PRJJ7DT",
       "title": "Fossil Men's Minimalist Quartz Stainless Steel and Brown Leather Three-Hand Watch for Men, 44mm Big Face, Black/Dark Brown",
