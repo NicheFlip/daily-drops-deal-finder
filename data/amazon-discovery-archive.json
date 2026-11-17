@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-17T13:41:14.045641+00:00",
+  "updated": "2026-11-17T14:11:14.384758+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B00NU9MJYS",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Hand Soap, Lemon Verbena, 12.5 fl oz, 3 Pack | Moisturizing Liquid Hand Soap, Softens and Cleans Hands, Cruelty Free, Made with Essential Oils, Olive ",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B00NU9MJYS",
+      "imageUrl": "https://m.media-amazon.com/images/I/51yYm2fIHDL._SL160_.jpg",
+      "price": 10.5,
+      "referencePrice": 19.47,
+      "discountPercent": 46,
+      "dealScore": 66,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-17T14:11:14.384758+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0CC6DY9TN",
       "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Rain Water, 16 fl. oz",
