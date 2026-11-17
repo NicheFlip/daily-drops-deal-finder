@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-17T16:17:55.816666+00:00",
-  "changes": [],
+  "updated": "2026-11-17T16:41:14.338728+00:00",
+  "changes": [
+    {
+      "asin": "B00DDMIMXE",
+      "title": "Pampers Sensitive Baby Wipes, Unscented, Fragrance Free, Clinically Proven, Water Based, Hypoallergenic, Multi-Use, Hand Wipes, 168 Wipes Total (3X Flip-Top Packs)",
+      "previousObservedPrice": 6.97,
+      "currentObservedPrice": 2.49,
+      "dropPercent": 64.3,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T16:41:14.338728+00:00",
+      "url": "https://www.amazon.com/dp/B00DDMIMXE",
+      "seller": "KRALIX",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
