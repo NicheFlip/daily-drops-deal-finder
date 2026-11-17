@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-17T18:09:04.999056+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-17T18:15:44.721460+00:00",
+  "candidates": [
+    {
+      "asin": "B0178ENI4K",
+      "title": "ALOHA Organic Plant Based Protein Bar | Peanut Butter Chocolate Chip, 12 Ct | 14g Plant-Based Protein, 10g Fiber, 5g Sugar | No Sucralose or Stevia | Non-GMO, Vegan & Dairy Free",
+      "category": "GroceryAndGourmetFood",
+      "url": "https://www.amazon.com/dp/B0178ENI4K",
+      "imageUrl": "https://m.media-amazon.com/images/I/51M5HrXPw0L._SL160_.jpg",
+      "price": 16.1,
+      "referencePrice": 32.99,
+      "discountPercent": 51,
+      "dealScore": 11,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T18:15:44.721460+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon Resale",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
