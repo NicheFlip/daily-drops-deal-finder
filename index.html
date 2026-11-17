@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#111827"><meta name="color-scheme" content="light"><meta name="description" content="Daily Drops Amazon and Walmart deal research dashboard. Research leads only; verify at checkout.">
-<title>Daily Drops | Deal Intelligence</title>
+<title>Daily Drops | Deal Intelligence</title><link rel="icon" href="./app-icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./app-icon.svg">
 <style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#1d2939;background:#f6f7fa;font-synthesis:none}
 *{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}
@@ -162,6 +162,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 #panel-deals .quickfinds .jump{background:transparent;border-style:dashed;color:#53657b;font-weight:650}
 .ev{display:flex;flex-wrap:wrap;gap:5px}.ev span{font-size:.72rem;line-height:1.2;padding:4px 8px;border-radius:999px;font-weight:750}
 .ev .good{background:#dff8e9;color:#155e46}.ev .info{background:#eef2f8;color:#3b4a60;font-weight:650}.ev .cond{background:#fff1d6;color:#7a4a00}
+.copy-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}.copy-btn{min-height:40px;padding:8px 12px;font-size:.85rem}.copy-status{font-size:.78rem;color:#155e46;font-weight:650}
 .ship-badge{display:inline-block;margin:4px 6px 2px 0;padding:2px 8px;border-radius:999px;background:#e7f0ff;color:#0b4fa8;font-size:.78rem;font-weight:700}.ship-badge.unknown{background:#f1f1f4;color:#555}.ship-badge.prime-only{background:#fff4e0;color:#7a4a00}
 .cond-pill{background:#fff1d6!important;color:#7a4a00!important}
 .quick-more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;font-size:.8rem;color:#53657b}
@@ -199,7 +200,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 <div class="notice"><strong>Research only:</strong> Amazon reference prices are not necessarily previous selling prices. Browse prices captured by the scanner.</div>
 <p class="section-label">Browse categories</p><div id="categoryChips" class="chips" aria-label="Quick category filters"></div><div class="filters"><input id="find" type="search" placeholder="Search products…" aria-label="Search products">
 <select id="category" aria-label="Category"><option value="">All categories</option><option value="ToysAndGames">Toys & gifts</option><option value="HomeAndKitchen">Home & kitchen</option><option value="Electronics">Electronics</option><option value="Beauty">Beauty</option><option value="Fashion">Fashion</option><option value="OfficeProducts">Office</option><option value="PetSupplies">Pets</option><option value="Baby">Baby</option></select>
-<select id="sort" aria-label="Sort"><option value="practical">Everyday value first</option><option value="score">Smart deal score</option><option value="discount">Biggest discount</option><option value="low">Lowest price first</option><option value="newest" selected>Newest discoveries first</option><option value="oldest">Oldest to newest</option><option value="high">Highest price</option></select></div>
+<select id="sort" aria-label="Sort"><option value="evidence" selected>Best evidence first (tracked drops)</option><option value="practical">Everyday value first</option><option value="score">Smart deal score</option><option value="discount">Biggest discount</option><option value="low">Lowest price first</option><option value="newest">Newest discoveries first</option><option value="oldest">Oldest to newest</option><option value="high">Highest price</option></select></div>
 <div class="actions"><label><input type="checkbox" id="essentials" style="width:auto;vertical-align:middle"> Household essentials only</label><label><input type="checkbox" id="deep" style="width:auto;vertical-align:middle"> Show only 70%+ leads</label><button type="button" class="btn secondary" id="reload">↻ Refresh results</button></div>
 <p class="muted small" id="status" role="status">Loading latest scan…</p>
 <section id="scanDrops" hidden><h2>↓ Dropped since last observation</h2><p class="muted small" id="scanDropsStatus"></p><div id="scanDropsResults" class="grid"></div></section><div id="products" class="grid"></div>
@@ -253,10 +254,10 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 <h2>Shop by category</h2><p class="muted small">Opens Amazon filtered to items 30%+ off. Amazon’s % off uses its own reference prices, so check price history before posting.</p><div id="quick" class="search-links"></div>
 </section>
 <section id="panel-used" role="tabpanel" aria-labelledby="tab-used" hidden>
-<h1>Used & Amazon Resale</h1>
-<p class="muted small">Only used-condition offers discounted at least 50% against a documented reference belong in the qualifying feed. Sorted by lowest price first.</p>
-<div class="stats"><div class="stat"><strong id="usedcount">0</strong><span>Qualifying offers</span></div><div class="stat"><strong>50%+</strong><span>Minimum discount</span></div><div class="stat"><strong>Low → high</strong><span>Price order</span></div></div>
-<div class="notice"><strong>Verification matters:</strong> A regular Amazon search cannot enforce a 50% used-item discount. This feed excludes offers without a confirmed used condition, a used price, and a comparable reference price. Search links below are for discovery only.</div>
+<h1>Used, Open Box & Amazon Resale</h1>
+<p class="muted small">Used, open-box, renewed and Amazon Resale (Warehouse) offers the scanner saw in its normal Amazon checks. Third-party sellers are left out, so these ship free with Prime. Sorted by biggest savings versus the new price.</p>
+<div class="stats"><div class="stat"><strong id="usedcount">0</strong><span>Offers sold by Amazon</span></div><div class="stat"><strong id="usedsavers">0</strong><span>At least 30% below new</span></div><div class="stat"><strong>Prime</strong><span>Free shipping</span></div></div>
+<div class="notice"><strong>Check the condition:</strong> used prices are compared only with the new price in the same Amazon check, never with new-item price history. Read the condition note before you post.</div>
 <p id="usedstatus" class="muted small" role="status">Checking available used-offer data…</p><div id="usedresults" class="grid"></div>
 <h2>Find more used inventory</h2><p class="muted small">These searches request used condition and lowest-price sorting on Amazon. Results are <strong>not</strong> verified 50%+ discounts.</p>
 <div class="card"><label for="usedterm"><strong>Search Amazon used listings</strong></label><input id="usedterm" value="kitchen appliances" placeholder="Search used items…" style="margin:10px 0"><div id="usedlinks" class="search-links"></div></div>
@@ -329,6 +330,23 @@ function postingCaption(d,link){
  return [price+'Found one worth a closer look!','',d.title,'','👉 '+link,'','Follow Daily Drops with Heather for more finds.','','#DailyDropsWithHeather #AmazonFinds #SmartShopping #DealFinds','','As an Amazon Associate, I earn from qualifying purchases.'].join(String.fromCharCode(10));
 }
 function postingComment(d,link){return '👉 '+(link||postingLink(d.asin))}
+// One-tap share: ready Facebook caption with the affiliate link and only evidence we actually have.
+const copyLookup=new Map();
+function shareCaption(d){
+ const nl=String.fromCharCode(10),price=Number(d.price),lines=[];const used=!!d.conditionLabel;
+ let head=price>0?'🔥 $'+price.toFixed(2):'🔥 Deal alert';
+ if(used&&Number(d.savingsVsNewPercent)>0&&Number(d.newPrice)>0)head+=' · '+d.conditionLabel+' ('+d.savingsVsNewPercent+'% less than new at $'+Number(d.newPrice).toFixed(2)+')';
+ else if(used)head+=' · '+d.conditionLabel+' condition';
+ else if(Number(d.referencePrice)>price&&price>0)head+=' (was $'+Number(d.referencePrice).toFixed(2)+' '+(String(d.referenceType||'').toLowerCase().includes('list')?'list price':'reference price')+', '+Math.round((1-price/Number(d.referencePrice))*100)+'% off)';
+ lines.push(head,'',String(d.title||'Amazon find').replace(/\s+/g,' ').slice(0,200),'');
+ if(!used&&trackedHistory){const e=quickEvidence(d);if(e.lowLabel)lines.push('📉 '+e.lowLabel+' (my price tracking)');else if(e.dropLabel)lines.push('📉 '+e.dropLabel.replace('↓ ','Down ')+' (my price tracking)')}
+ if(shipsFree(d))lines.push('✅ Sold by Amazon · free shipping with Prime');
+ if(d.conditionNote)lines.push('📝 Condition: '+String(d.conditionNote).slice(0,140));
+ lines.push('','👉 '+postingLink(d.asin),'','Price checked '+date(d.checkedAt)+'. Prices change fast, so check before you buy.','','#DailyDropsWithHeather #AmazonFinds #DealFinds','As an Amazon Associate, I earn from qualifying purchases.');
+ return lines.join(nl).replace(/\n{3,}/g,nl+nl);
+}
+async function copyText(t){try{await navigator.clipboard.writeText(t);return true}catch{const a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch{}a.remove();return ok}}
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-copy-post],[data-copy-link]');if(!b)return;const asin=b.dataset.copyPost||b.dataset.copyLink;const d=copyLookup.get(asin);if(!d)return;const isPost=!!b.dataset.copyPost;const ok=await copyText(isPost?shareCaption(d):postingLink(asin));const st=b.parentElement.querySelector('.copy-status');if(st)st.textContent=ok?(isPost?'Post copied, paste it into Facebook':'Affiliate link copied'):'Copy blocked. Long-press to copy instead.'});
 function updatePostingCount(){const n=Object.values(readJudgments()).filter(x=>x?.choice==='deal').length;const node=$('postingCount');if(node)node.textContent=n}
 function renderPostingQueue(){
  updatePostingCount();
@@ -408,7 +426,7 @@ function judgmentButtons(d){
 }
 function shortName(d){return String(d.title||'Amazon find').replace(/\s+/g,' ').slice(0,160)}
 function compactReview(d){const asin=String(d.asin||'');if(!/^[A-Z0-9]{10}$/.test(asin))return '';const x=readJudgments()[asin]||{},choice=x.choice||'';return '<div class="scan-review" role="group" aria-label="Your decision"><button type="button" data-asin="'+esc(asin)+'" data-judgment="deal" aria-pressed="'+(choice==='deal')+'">✓ Deal</button><button type="button" data-asin="'+esc(asin)+'" data-judgment="no-deal" aria-pressed="'+(choice==='no-deal')+'">✕ No</button><button type="button" data-asin="'+esc(asin)+'" data-judgment="pass" aria-pressed="'+(choice==='pass')+'">↷ Pass</button></div><div class="scan-review-status">'+(choice==='deal'?'✓ Saved to Posting Queue':choice==='no-deal'?'Marked No Deal':choice==='pass'?'Passed':'')+'</div>'}
-function compactCard(d,kind,i){const ref=Number(d.referencePrice)>Number(d.price)?'<span class="scan-meta">'+esc(d.discountPercent||Math.round((1-d.price/d.referencePrice)*100))+'% vs reference</span>':'';const img=d.imageUrl?imageMarkup(d).replace('style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0"','class="scan-photo"'):'';const label=d.newObservedLow?'New recorded low':d.priceEvidence==='observed_reduction'?'Observed drop':kind==='candidate'?'New candidate':Number(d.discountPercent)>=40?'Discount lead':'Scanned product';const historyButton='<button type="button" class="btn secondary" data-price-history="'+esc(d.asin||'')+'">Price history</button>';return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill">'+esc(label)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> '+ref+'</div>'+shipBadge(d)+'<div class="scan-meta">Scanned '+esc(date(d.checkedAt))+'</div>'+compactReview(d)+'<div class="scan-actions">'+(kind==='deal'?'<button type="button" class="btn secondary" data-detail="'+i+'">Details</button>':'')+historyButton+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Amazon ↗</a></div></article>'}
+function compactCard(d,kind,i){const ref=Number(d.referencePrice)>Number(d.price)?'<span class="scan-meta">'+esc(d.discountPercent||Math.round((1-d.price/d.referencePrice)*100))+'% vs reference</span>':'';const img=d.imageUrl?imageMarkup(d).replace('style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0"','class="scan-photo"'):'';const label=d.newObservedLow?'New recorded low':d.priceEvidence==='observed_reduction'?'Observed drop':kind==='candidate'?'New candidate':Number(d.discountPercent)>=40?'Discount lead':'Scanned product';const historyButton='<button type="button" class="btn secondary" data-price-history="'+esc(d.asin||'')+'">Price history</button>';return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill">'+esc(label)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> '+ref+'</div>'+shipBadge(d)+'<div class="scan-meta">Scanned '+esc(date(d.checkedAt))+'</div>'+compactReview(d)+'<div class="scan-actions">'+(kind==='deal'?'<button type="button" class="btn secondary" data-detail="'+i+'">Details</button>':'')+historyButton+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Amazon ↗</a></div>'+copyButtons(d)+'</article>'}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-price-history]');if(!b)return;const asin=b.dataset.priceHistory;selectTab('history');$('historyFind').value=asin;loadHistory()});
 let historyRows=[];
 async function loadHistory(){
@@ -479,6 +497,7 @@ $('candidateResults').innerHTML=items.map(d=>compactCard(d,'candidate')).join(''
 $('candidateRefresh').addEventListener('click',loadCandidates);
 const essentialsTerms=/laundry|detergent|paper towel|toilet paper|dish soap|trash bag|coffee|diaper|baby wipe|cleaning wipe|hand soap|toothpaste|shampoo|pet food|storage bag|batteries|dryer sheet|facial tissue|body wash|cereal|snack|water filter|dishwasher|cleaner|disinfect|soap|fabric softener/i;
 function evidenceLabel(d){return d.priceEvidence==='observed_reduction'?'Observed price drop':d.priceEvidence==='repeat_observation'?'Repeat observation':'First observed price'}
+function evidenceRank(d){return trackedHistory?quickStrength(quickEvidence(d),d):(d.newObservedLow?150:0)+(d.priceEvidence==='observed_reduction'?100:0)+Number(d.dealScore||0)+Math.min(Number(d.discountPercent)||0,90)/2}
 function practicalScore(d){return (essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))?40:0)+Number(d.dealScore||0)+(d.newObservedLow?15:0)}
 function historyUrl(d){const asin=String(d.asin||'');return /^[A-Z0-9]{10}$/.test(asin)?'https://keepa.com/#!product/1-'+asin:null}
 function historyMarkup(d){
@@ -563,10 +582,11 @@ function quickPool(latest,publishedCloud,cloudHidden){
 }
 function quickCommonFilter(d){const q=$('find').value.trim().toLowerCase(),cat=$('category').value;return (!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!$('deep').checked||Number(d.discountPercent)>=70||Number(d.savingsVsNewPercent)>=70)&&(!$('essentials').checked||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||'')))}
 function quickUsedRows(){const q=$('find').value.trim().toLowerCase(),cat=$('category').value;return usedOffers.filter(d=>!isRejectedDeal(d.asin)&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!$('deep').checked||Number(d.savingsVsNewPercent)>=70)).sort((a,b)=>(Number(b.savingsVsNewPercent)||-1)-(Number(a.savingsVsNewPercent)||-1)||Number(a.price)-Number(b.price))}
+function copyButtons(d){const asin=String(d.asin||'');if(!/^[A-Z0-9]{10}$/.test(asin))return '';copyLookup.set(asin,d);return '<div class="copy-row"><button type="button" class="btn copy-btn" data-copy-post="'+esc(asin)+'">📋 Copy post</button><button type="button" class="btn secondary copy-btn" data-copy-link="'+esc(asin)+'">🔗 Copy link</button><span class="copy-status" role="status"></span></div>'}
 function usedCard(d){
  const img=d.imageUrl?'<img class="scan-photo" src="'+esc(d.imageUrl)+'" alt="'+esc(d.title)+'" loading="lazy" referrerpolicy="no-referrer">':'';
  const save=Number(d.savingsVsNewPercent)>0?'<span class="good">Save '+esc(d.savingsVsNewPercent)+'% vs new '+cash(d.newPrice)+'</span>':Number(d.newPrice)>0?'<span class="info">New: '+cash(d.newPrice)+'</span>':'<span class="info">No new price to compare</span>';
- return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill cond-pill">'+esc(d.conditionLabel)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> <span class="scan-meta">'+esc(d.conditionLabel)+' price'+(d.subCondition&&d.subCondition!=='Unknown'?' · '+esc(d.subCondition.replace(/([a-z])([A-Z])/g,'$1 $2')):'')+'</span></div><div class="ev"><span class="cond">'+esc(d.conditionLabel)+'</span>'+save+'</div>'+shipBadge(d)+(d.conditionNote?'<div class="scan-meta">“'+esc(d.conditionNote)+'”</div>':'')+'<div class="scan-meta">'+(d.merchant?'Sold by '+esc(d.merchant)+' · ':'')+'Checked '+esc(date(d.checkedAt))+'</div><div class="scan-actions"><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Check '+esc(d.conditionLabel.toLowerCase())+' offer on Amazon ↗</a></div></article>'
+ return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill cond-pill">'+esc(d.conditionLabel)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> <span class="scan-meta">'+esc(d.conditionLabel)+' price'+(d.subCondition&&d.subCondition!=='Unknown'?' · '+esc(d.subCondition.replace(/([a-z])([A-Z])/g,'$1 $2')):'')+'</span></div><div class="ev"><span class="cond">'+esc(d.conditionLabel)+'</span>'+save+'</div>'+shipBadge(d)+(d.conditionNote?'<div class="scan-meta">“'+esc(d.conditionNote)+'”</div>':'')+'<div class="scan-meta">'+(d.merchant?'Sold by '+esc(d.merchant)+' · ':'')+'Checked '+esc(date(d.checkedAt))+'</div><div class="scan-actions"><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Check '+esc(d.conditionLabel.toLowerCase())+' offer on Amazon ↗</a></div>'+copyButtons(d)+'</article>'
 }
 function amazonDealUrl(q,pct=30){const u=new URL('https://www.amazon.com/s');if(q)u.searchParams.set('k',q);u.searchParams.set('rh','p_8:'+pct+'-99');return u.href}
 function amazonUsedUrl(q){const u=new URL('https://www.amazon.com/s');u.searchParams.set('k',q);u.searchParams.set('rh','p_n_condition-type:6461718011');return u.href}
@@ -602,7 +622,7 @@ function render(){
  if(quickMode&&QUICK[quickMode]){$('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);renderQuick(latest,publishedCloud,cloudHidden);return}
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked,essentialOnly=$('essentials').checked;
  const filtered=all.filter(d=>(!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||Number(d.discountPercent)>=70)&&(!essentialOnly||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))));
- const sort=$('sort').value;filtered.sort((a,b)=>(shipsFree(b)-shipsFree(a))||(sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):sort==='oldest'?Date.parse(a.checkedAt)-Date.parse(b.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0)));
+ const sort=$('sort').value;filtered.sort((a,b)=>(shipsFree(b)-shipsFree(a))||(sort==='evidence'?evidenceRank(b)-evidenceRank(a)||Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0):sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):sort==='oldest'?Date.parse(a.checkedAt)-Date.parse(b.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0)));
  $('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);
  $('status').textContent=filtered.length+($('showAllScanned').checked?' products shown from '+allScannedProducts.length+' full-feed products':$('newOnly').checked?' new finds from latest scan':' saved and recent discoveries')+' · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated)+' · third-party sellers hidden'+(shipHiddenCount?' ('+shipHiddenCount+')':'')+($('showAllScanned').checked?(allScannedFeedError?' · '+allScannedFeedError:' · Full feed: '+date(allScannedFeedUpdated)):'');
  detailIndex=filtered;
@@ -627,7 +647,8 @@ $('sort').addEventListener('change',()=>{if(quickMode){quickMode='';render()}});
 let walmartRadarRows=[];
 let walmartProductRows=[];
 function renderWalmartProducts(){const q=$('walmartRadarFind').value.trim().toLowerCase();const rows=walmartProductRows.filter(d=>(d.title+' '+d.category).toLowerCase().includes(q));$('walmartProductResults').innerHTML=rows.map(d=>'<article class="card product scan-card"><div class="scan-top">'+(d.imageUrl?'<img class="scan-photo" src="'+esc(d.imageUrl)+'" alt="'+esc(d.title)+'" loading="lazy">':'')+'<div class="scan-heading"><span class="pill">'+esc(d.category)+'</span><h3>'+esc(d.title)+'</h3></div></div><div class="scan-price">'+cash(d.price)+'</div><div class="scan-meta">'+(d.priceChanged?'Price changed since last observation · ':'')+'Scanned '+esc(date(d.checkedAt))+'</div><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">View on Walmart ↗</a></article>').join('');}
-async function loadWalmartProducts(){try{const res=await fetch('data/walmart-products.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('not connected');const payload=await res.json();walmartProductRows=(Array.isArray(payload.products)?payload.products:[]).filter(d=>validUrlWalmart(d.url)&&Number(d.price)>0);$('walmartProductsStatus').textContent=walmartProductRows.length+' products from authorized Walmart feed · '+date(payload.updated);renderWalmartProducts()}catch{$('walmartProductsStatus').textContent='Walmart product-level feed not connected yet. Category research links below are available.';walmartProductRows=[];$('walmartProductResults').innerHTML=''}}
+const WALMART_PRODUCT_FEED=false; // no authorized Walmart product feed is published yet; avoids a 404 on every visit
+async function loadWalmartProducts(){try{if(!WALMART_PRODUCT_FEED)throw Error('not connected');const res=await fetch('data/walmart-products.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('not connected');const payload=await res.json();walmartProductRows=(Array.isArray(payload.products)?payload.products:[]).filter(d=>validUrlWalmart(d.url)&&Number(d.price)>0);$('walmartProductsStatus').textContent=walmartProductRows.length+' products from authorized Walmart feed · '+date(payload.updated);renderWalmartProducts()}catch{$('walmartProductsStatus').textContent='Walmart product-level feed not connected yet. Category research links below are available.';walmartProductRows=[];$('walmartProductResults').innerHTML=''}}
 function validUrlWalmart(u){try{const x=new URL(u);return x.protocol==='https:'&&['www.walmart.com','walmart.com'].includes(x.hostname)}catch{return false}}
 let walmartRadarCategory='All';
 function renderWalmartRadar(){
@@ -706,27 +727,12 @@ function searchLinks(){const q=$('term').value.trim()||'clearance';$('search-lin
 $('term').addEventListener('input',searchLinks);searchLinks();
 $('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','Headphones','Beauty tools','Holiday gifts','Women pants','Shoes','Amazon Outlet'].map(q=>link(q==='Amazon Outlet'?q:q+' · 30%+ off',q==='Amazon Outlet'?'https://www.amazon.com/outlet':amazonDealUrl(q,30))).join('');
 async function loadUsed(){
-  usedLoaded=true;
-  try{
-    const response=await fetch('data/amazon-used-deals.json?ts='+Date.now(),{cache:'no-store'});
-    if(!response.ok)throw Error('No verified used-offer feed is connected yet');
-    const payload=await response.json();
-    const now=Date.now();
-    const items=(Array.isArray(payload.deals)?payload.deals:[]).filter(d=>
-      d.conditionVerified===true && ['used','amazon resale','renewed','open box'].includes(String(d.condition||'').toLowerCase()) &&
-      Number.isFinite(Number(d.price)) && Number(d.price)>0 &&
-      Number.isFinite(Number(d.referencePrice)) && Number(d.referencePrice)>Number(d.price) &&
-      Math.round(100*(Number(d.referencePrice)-Number(d.price))/Number(d.referencePrice))>=50 &&
-      validUrl(d.url) && d.checkedAt && Date.parse(d.checkedAt)<=now && now-Date.parse(d.checkedAt)<3600000
-    ).sort((a,b)=>Number(a.price)-Number(b.price));
-    $('usedcount').textContent=items.length;
-    $('usedstatus').textContent=items.length+' verified-condition offers at 50%+ off reference, sorted lowest price first.';
-    $('usedresults').innerHTML=items.map(d=>'<article class="card product"><span class="pill">'+esc(d.condition)+'</span><h3>'+esc(d.title)+'</h3><strong class="price">'+cash(d.price)+'</strong><p class="small muted">Reference '+cash(d.referencePrice)+' · '+Math.round(100*(d.referencePrice-d.price)/d.referencePrice)+'% off · Checked '+esc(date(d.checkedAt))+'</p><a target="_blank" rel="noopener noreferrer" href="'+esc(d.url)+'">Check used offer on Amazon ↗</a></article>').join('')||'<div class="empty" style="grid-column:1/-1">No qualifying used offers are available right now.</div>';
-  }catch(e){
-    $('usedcount').textContent='0';
-    $('usedstatus').textContent='Automatic used-offer verification is not connected yet.';
-    $('usedresults').innerHTML='<div class="empty" style="grid-column:1/-1"><strong>No verified 50%+ used deals yet</strong><p>The current Amazon scanner checks new-condition offers only. Browse used inventory below, but verify the condition and savings on Amazon before posting.</p></div>';
-  }
+  usedLoaded=true;$('usedstatus').textContent='Loading used and Warehouse offers…';
+  quickDataLoaded=false;await loadQuickData();
+  const items=usedOffers.filter(d=>!isRejectedDeal(d.asin)).sort((a,b)=>(shipsFree(b)-shipsFree(a))||(Number(b.savingsVsNewPercent)||-1)-(Number(a.savingsVsNewPercent)||-1)||Number(a.price)-Number(b.price));
+  $('usedcount').textContent=items.length;$('usedsavers').textContent=items.filter(d=>Number(d.savingsVsNewPercent)>=30).length;
+  $('usedstatus').textContent=items.length?items.length+' offers · updated '+date(usedOffersUpdated)+' · biggest savings vs. new first':'No used or Warehouse offers in the latest scans. Check back after the next scan.';
+  $('usedresults').innerHTML=items.slice(0,120).map(usedCard).join('')||'<div class="empty" style="grid-column:1/-1">No offers right now.</div>';
 }
 function usedLinks(){const q=$('usedterm').value.trim()||'used';$('usedlinks').innerHTML=link('Used listings · lowest first',searchUrl(q,true,true))+link('Used listings · all prices',searchUrl(q,false,true))}
 $('usedterm').addEventListener('input',usedLinks);usedLinks();
