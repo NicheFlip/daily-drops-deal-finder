@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T11:41:13.830058+00:00",
+  "updated": "2026-11-17T11:49:18.989767+00:00",
   "retentionDays": null,
   "events": [
     {
@@ -16,7 +16,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {
@@ -33,7 +33,7 @@
       "reason": "First observation",
       "previousObservedPrice": null,
       "newObservedLow": false,
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
     },
     {

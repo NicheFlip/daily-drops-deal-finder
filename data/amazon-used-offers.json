@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-17T11:41:13.830058+00:00",
-  "foundThisScan": 223,
+  "updated": "2026-11-17T11:49:18.989767+00:00",
+  "foundThisScan": 224,
   "offers": [
     {
       "asin": "0312087950",
@@ -99,7 +99,7 @@
       "savingsVsNewPercent": 50,
       "category": "All",
       "keyword": "best selling household essentials",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -419,7 +419,7 @@
       "savingsVsNewPercent": 43,
       "category": "Electronics",
       "keyword": "power banks",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -679,7 +679,7 @@
       "savingsVsNewPercent": 40,
       "category": "HomeAndKitchen",
       "keyword": "vacuum cleaners",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -699,7 +699,7 @@
       "savingsVsNewPercent": 40,
       "category": "Beauty",
       "keyword": "makeup organizers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -1259,7 +1259,7 @@
       "savingsVsNewPercent": 36,
       "category": "HomeAndKitchen",
       "keyword": "air fryers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -1279,7 +1279,7 @@
       "savingsVsNewPercent": 36,
       "category": "HomeAndKitchen",
       "keyword": "coffee makers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -1299,7 +1299,7 @@
       "savingsVsNewPercent": 36,
       "category": "HomeAndKitchen",
       "keyword": "vacuum cleaners",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -1319,7 +1319,7 @@
       "savingsVsNewPercent": 36,
       "category": "HomeAndKitchen",
       "keyword": "vacuum cleaners",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -1339,7 +1339,7 @@
       "savingsVsNewPercent": 36,
       "category": "Electronics",
       "keyword": "smart watches",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -2132,14 +2132,14 @@
       "condition": "Used",
       "subCondition": "LikeNew",
       "conditionLabel": "Warehouse",
-      "conditionNote": "No item damage observed during inspection. Packaging shows minimal signs of wear, consistent with being opened.",
+      "conditionNote": "Little to no damage on cover or pages. Packaging shows minimal signs of wear, consistent with being opened.",
       "merchant": "Amazon Resale",
       "isBuyBoxWinner": false,
       "newPrice": 28.99,
       "savingsVsNewPercent": 35,
       "category": "OfficeProducts",
       "keyword": "school supplies",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -2159,7 +2159,7 @@
       "savingsVsNewPercent": 35,
       "category": "All",
       "keyword": "storage bins",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -2179,7 +2179,7 @@
       "savingsVsNewPercent": 35,
       "category": "HomeAndKitchen",
       "keyword": "blenders",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -2199,7 +2199,7 @@
       "savingsVsNewPercent": 35,
       "category": "Electronics",
       "keyword": "portable chargers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -3859,7 +3859,7 @@
       "savingsVsNewPercent": 34,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -3879,7 +3879,7 @@
       "savingsVsNewPercent": 34,
       "category": "HomeAndKitchen",
       "keyword": "coffee makers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -3899,7 +3899,7 @@
       "savingsVsNewPercent": 34,
       "category": "Computers",
       "keyword": "computer monitors",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -4279,7 +4279,7 @@
       "savingsVsNewPercent": 33,
       "category": "All",
       "keyword": "plastic wrap",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -4299,7 +4299,7 @@
       "savingsVsNewPercent": 33,
       "category": "HomeAndKitchen",
       "keyword": "vacuum cleaners",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -4779,7 +4779,7 @@
       "savingsVsNewPercent": 32,
       "category": "Electronics",
       "keyword": "tv mounts",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -4799,7 +4799,7 @@
       "savingsVsNewPercent": 32,
       "category": "HomeAndKitchen",
       "keyword": "small kitchen appliances",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -4819,7 +4819,7 @@
       "savingsVsNewPercent": 32,
       "category": "OfficeProducts",
       "keyword": "school supplies",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -5199,7 +5199,7 @@
       "savingsVsNewPercent": 31,
       "category": "Electronics",
       "keyword": "tv mounts",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -5219,7 +5219,7 @@
       "savingsVsNewPercent": 31,
       "category": "Electronics",
       "keyword": "portable chargers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -5239,7 +5239,7 @@
       "savingsVsNewPercent": 31,
       "category": "Electronics",
       "keyword": "bluetooth speakers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -5679,7 +5679,7 @@
       "savingsVsNewPercent": 30,
       "category": "Electronics",
       "keyword": "projectors",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -6319,7 +6319,7 @@
       "savingsVsNewPercent": 29,
       "category": "All",
       "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -6858,8 +6858,8 @@
       "newPrice": 58.9,
       "savingsVsNewPercent": 28,
       "category": "Electronics",
-      "keyword": "smart home",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "keyword": "smart lights",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -6879,7 +6879,7 @@
       "savingsVsNewPercent": 28,
       "category": "HomeAndKitchen",
       "keyword": "outdoor decor",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -7272,14 +7272,14 @@
       "condition": "Used",
       "subCondition": "VeryGood",
       "conditionLabel": "Used",
-      "conditionNote": "No item damage observed during inspection. Item may not come in original packaging.",
+      "conditionNote": "Item may not come in original packaging.",
       "merchant": "Lifewit Home US",
       "isBuyBoxWinner": false,
       "newPrice": 15.97,
       "savingsVsNewPercent": 27,
       "category": "HomeAndKitchen",
       "keyword": "storage organizers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -7299,7 +7299,7 @@
       "savingsVsNewPercent": 27,
       "category": "Electronics",
       "keyword": "wireless chargers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -7319,7 +7319,7 @@
       "savingsVsNewPercent": 27,
       "category": "Electronics",
       "keyword": "tv mounts",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -7339,7 +7339,7 @@
       "savingsVsNewPercent": 27,
       "category": "Luggage",
       "keyword": "carry on luggage",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -8379,7 +8379,7 @@
       "savingsVsNewPercent": 25,
       "category": "Electronics",
       "keyword": "tv mounts",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -8399,7 +8399,7 @@
       "savingsVsNewPercent": 25,
       "category": "Beauty",
       "keyword": "makeup organizers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -8418,8 +8418,8 @@
       "newPrice": 13.99,
       "savingsVsNewPercent": 25,
       "category": "Electronics",
-      "keyword": "wireless chargers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "keyword": "portable chargers",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -8432,14 +8432,14 @@
       "condition": "Used",
       "subCondition": "VeryGood",
       "conditionLabel": "Warehouse",
-      "conditionNote": "Minor cosmetic damage on top, front or side of the item. Item may not come in original packaging.",
+      "conditionNote": "Item will come in original packaging.",
       "merchant": "Amazon Resale",
       "isBuyBoxWinner": false,
       "newPrice": 109.99,
       "savingsVsNewPercent": 25,
       "category": "HomeAndKitchen",
       "keyword": "coffee makers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -8459,7 +8459,7 @@
       "savingsVsNewPercent": 25,
       "category": "HomeAndKitchen",
       "keyword": "coffee makers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -9739,7 +9739,7 @@
       "savingsVsNewPercent": 23,
       "category": "HomeAndKitchen",
       "keyword": "Watched ASIN",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -9759,7 +9759,7 @@
       "savingsVsNewPercent": 23,
       "category": "HomeAndKitchen",
       "keyword": "air fryers",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
@@ -9772,14 +9772,14 @@
       "condition": "Used",
       "subCondition": "LikeNew",
       "conditionLabel": "Warehouse",
-      "conditionNote": "Screen is like new with no visible scratches. Item will come in original packaging.",
+      "conditionNote": "Item will come in original packaging.",
       "merchant": "Amazon Resale",
       "isBuyBoxWinner": false,
       "newPrice": 69.99,
       "savingsVsNewPercent": 23,
       "category": "Electronics",
       "keyword": "computer accessories",
-      "checkedAt": "2026-11-17T11:41:13.830058+00:00",
+      "checkedAt": "2026-11-17T11:49:18.989767+00:00",
       "verification": "Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history"
     },
     {
