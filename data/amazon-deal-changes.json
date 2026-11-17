@@ -1,5 +1,16 @@
 {
-  "updated": "2026-11-17T07:41:13.672279+00:00",
-  "changes": [],
+  "updated": "2026-11-17T08:11:15.098044+00:00",
+  "changes": [
+    {
+      "asin": "B0CNY1YVDD",
+      "title": "Chefman Air Fryer \u2013 6 QT Compact Airfryer for Quick & Easy Meals in Minutes, Features Hi-Fry Technology for Extra Crisp, Touchscreen Controls with 4 Presets, Nonstick & Dishwasher ",
+      "previousObservedPrice": 69.94,
+      "currentObservedPrice": 59.99,
+      "dropPercent": 14.2,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-17T08:11:15.098044+00:00",
+      "url": "https://www.amazon.com/dp/B0CNY1YVDD"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
