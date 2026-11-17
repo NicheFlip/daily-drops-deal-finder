@@ -163,6 +163,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 .ev{display:flex;flex-wrap:wrap;gap:5px}.ev span{font-size:.72rem;line-height:1.2;padding:4px 8px;border-radius:999px;font-weight:750}
 .ev .good{background:#dff8e9;color:#155e46}.ev .info{background:#eef2f8;color:#3b4a60;font-weight:650}.ev .cond{background:#fff1d6;color:#7a4a00}
 .copy-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}.copy-btn{min-height:40px;padding:8px 12px;font-size:.85rem}.copy-status{font-size:.78rem;color:#155e46;font-weight:650}
+.price-timeline{display:flex;flex-wrap:wrap;gap:4px;list-style:none;padding:0;margin:6px 0}.price-timeline li{display:flex;flex-direction:column;align-items:center;background:#f4f6fa;border-radius:8px;padding:3px 7px;font-size:.72rem}.price-timeline li strong{font-size:.8rem}.prev-price{color:#3b4a60;font-weight:600}
 .ship-badge{display:inline-block;margin:4px 6px 2px 0;padding:2px 8px;border-radius:999px;background:#e7f0ff;color:#0b4fa8;font-size:.78rem;font-weight:700}.ship-badge.unknown{background:#f1f1f4;color:#555}.ship-badge.prime-only{background:#fff4e0;color:#7a4a00}
 .cond-pill{background:#fff1d6!important;color:#7a4a00!important}
 .quick-more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;font-size:.8rem;color:#53657b}
@@ -426,24 +427,28 @@ function judgmentButtons(d){
 }
 function shortName(d){return String(d.title||'Amazon find').replace(/\s+/g,' ').slice(0,160)}
 function compactReview(d){const asin=String(d.asin||'');if(!/^[A-Z0-9]{10}$/.test(asin))return '';const x=readJudgments()[asin]||{},choice=x.choice||'';return '<div class="scan-review" role="group" aria-label="Your decision"><button type="button" data-asin="'+esc(asin)+'" data-judgment="deal" aria-pressed="'+(choice==='deal')+'">✓ Deal</button><button type="button" data-asin="'+esc(asin)+'" data-judgment="no-deal" aria-pressed="'+(choice==='no-deal')+'">✕ No</button><button type="button" data-asin="'+esc(asin)+'" data-judgment="pass" aria-pressed="'+(choice==='pass')+'">↷ Pass</button></div><div class="scan-review-status">'+(choice==='deal'?'✓ Saved to Posting Queue':choice==='no-deal'?'Marked No Deal':choice==='pass'?'Passed':'')+'</div>'}
-function compactCard(d,kind,i){const ref=Number(d.referencePrice)>Number(d.price)?'<span class="scan-meta">'+esc(d.discountPercent||Math.round((1-d.price/d.referencePrice)*100))+'% vs reference</span>':'';const img=d.imageUrl?imageMarkup(d).replace('style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0"','class="scan-photo"'):'';const label=d.newObservedLow?'New recorded low':d.priceEvidence==='observed_reduction'?'Observed drop':kind==='candidate'?'New candidate':Number(d.discountPercent)>=40?'Discount lead':'Scanned product';const historyButton='<button type="button" class="btn secondary" data-price-history="'+esc(d.asin||'')+'">Price history</button>';return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill">'+esc(label)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> '+ref+'</div>'+shipBadge(d)+'<div class="scan-meta">Scanned '+esc(date(d.checkedAt))+'</div>'+compactReview(d)+'<div class="scan-actions">'+(kind==='deal'?'<button type="button" class="btn secondary" data-detail="'+i+'">Details</button>':'')+historyButton+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Amazon ↗</a></div>'+copyButtons(d)+'</article>'}
+function compactCard(d,kind,i){const ref=Number(d.referencePrice)>Number(d.price)?'<span class="scan-meta">'+esc(d.discountPercent||Math.round((1-d.price/d.referencePrice)*100))+'% vs reference</span>':'';const img=d.imageUrl?imageMarkup(d).replace('style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0"','class="scan-photo"'):'';const label=d.newObservedLow?'New recorded low':d.priceEvidence==='observed_reduction'?'Observed drop':kind==='candidate'?'New candidate':Number(d.discountPercent)>=40?'Discount lead':'Scanned product';const historyButton='<button type="button" class="btn secondary" data-price-history="'+esc(d.asin||'')+'">Price history</button>';return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill">'+esc(label)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> '+ref+'</div>'+shipBadge(d)+previousPriceLine(d)+'<div class="scan-meta">Scanned '+esc(date(d.checkedAt))+'</div>'+compactReview(d)+'<div class="scan-actions">'+(kind==='deal'?'<button type="button" class="btn secondary" data-detail="'+i+'">Details</button>':'')+historyButton+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Amazon ↗</a></div>'+copyButtons(d)+'</article>'}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-price-history]');if(!b)return;const asin=b.dataset.priceHistory;selectTab('history');$('historyFind').value=asin;loadHistory()});
 let historyRows=[];
 async function loadHistory(){
- $('historyStatus').textContent='Loading database history…';
+ $('historyStatus').textContent='Loading recorded price history…';
  try{
-  const response=await fetch('data/price-history-public.json?ts='+Date.now(),{cache:'no-store'});
-  if(!response.ok)throw Error('Database history has not been published yet');
-  const payload=await response.json();
-  historyRows=Array.isArray(payload.products)?payload.products.filter(d=>/^[A-Z0-9]{10}$/.test(d.asin||'')&&Number.isFinite(Number(d.observedLow))&&Number(d.observedLow)>0):[];
+  if(!trackedHistory){quickDataLoaded=false;await loadQuickData()}
+  if(!trackedHistory)throw Error('Price history has not been published yet');
+  let extra={};try{const r=await fetch('data/price-history-public.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();for(const d of (Array.isArray(j.products)?j.products:[]))if(/^[A-Z0-9]{10}$/.test(d.asin||''))extra[d.asin]=d}}catch{}
+  const look=new Map();for(const d of [...allScannedProducts,...(data&&Array.isArray(data.deals)?data.deals:[])])if(d&&d.asin)look.set(d.asin,d);
+  historyRows=Object.keys(trackedHistory).filter(a=>/^[A-Z0-9]{10}$/.test(a)).map(asin=>{const f=historyFacts(asin);if(!f)return null;const src=look.get(asin)||extra[asin]||{};return {asin,title:f.title||src.title||asin,imageUrl:src.imageUrl||'',url:'https://www.amazon.com/dp/'+asin,f}}).filter(Boolean)
+   .sort((x,y)=>((y.f.prev?1:0)-(x.f.prev?1:0))||Date.parse(y.f.lastChecked||0)-Date.parse(x.f.lastChecked||0));
   renderHistory();
- }catch(e){$('historyStatus').textContent=e.message;$('historyResults').innerHTML='<div class="empty">History will appear after the next successful database export.</div>'}
+ }catch(e){$('historyStatus').textContent=e.message;$('historyResults').innerHTML='<div class="empty">History will appear after the next successful scan.</div>'}
 }
+function historyTimeline(f){const pts=f.pts.slice(-6);return '<ol class="price-timeline">'+pts.map(p=>'<li><span>'+esc(new Date(p[0]).toLocaleDateString([], {month:'short',day:'numeric'}))+'</span><strong>'+cash(p[1])+'</strong></li>').join('')+'</ol>'}
 function renderHistory(){
  const q=$('historyFind').value.toLowerCase().trim();
  const rows=historyRows.filter(d=>!isRejectedDeal(d.asin)&&(!q||String(d.title||'').toLowerCase().includes(q)||String(d.asin).toLowerCase().includes(q)));
- $('historyStatus').textContent=rows.length+' tracked products';
- $('historyResults').innerHTML=rows.map(d=>'<article class="card product">'+imageMarkup(d)+'<h3>'+esc(d.title)+'</h3><p class="small muted">Lowest observed: <strong>'+cash(d.observedLow)+'</strong> · Latest observed: '+cash(d.latestObserved)+'</p><p class="small muted">'+esc(d.observations)+' observations · Last seen '+esc(date(d.checkedAt))+'</p>'+judgmentButtons(d)+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current Amazon price ↗</a></article>').join('')||'<div class="empty">No tracked products match your search.</div>';
+ const changed=rows.filter(d=>d.f.prev).length;
+ $('historyStatus').textContent=rows.length+' tracked products · '+changed+' with a recorded price change · tracking began Nov 12, 2026';
+ $('historyResults').innerHTML=rows.slice(0,150).map(d=>{const f=d.f;const prev=f.prev?'<p class="small">Previous price: <strong>'+cash(f.prev[1])+'</strong> ('+esc(date(f.prev[0]))+') → now <strong>'+cash(f.cur)+'</strong></p>':'<p class="small muted">No price change recorded yet ('+esc(f.checks)+' checks at '+cash(f.cur)+').</p>';return '<article class="card product">'+imageMarkup(d)+'<h3>'+esc(d.title)+'</h3><p class="small muted">Latest '+cash(f.cur)+' · Low <strong>'+cash(f.low)+'</strong> · High '+cash(f.high)+'</p>'+prev+historyTimeline(f)+'<p class="small muted">First seen '+esc(date(f.first))+' · last checked '+esc(date(f.lastChecked))+' · '+esc(f.checks)+' checks · '+esc(f.pts.length-1)+' price '+(f.pts.length===2?'change':'changes')+'</p>'+judgmentButtons(d)+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Check current Amazon price ↗</a></article>'}).join('')||'<div class="empty">No tracked products match your search.</div>';
 }
 $('historyFind').addEventListener('input',renderHistory);
 $('historyRefresh').addEventListener('click',loadHistory);
@@ -458,6 +463,14 @@ function shipsFree(d){if(!d)return false;if(d.soldByAmazon===true)return true;if
 function shipVisible(d){if(!d)return false;if(shipsFree(d))return true;if(d.shippingStatus==='third_party')return false;if(d.soldByAmazon===undefined&&d.merchant)return false;return true}
 function shipBadge(d){if(d&&!shipsFree(d))return '<div><span class="ship-badge unknown" title="Seller and shipping not in this older scan">Shipping not checked</span></div>';return shipsFree(d)?'<div><span class="ship-badge" title="Sold by Amazon: free shipping with Prime">✓ Prime · Free shipping</span>'+(d.primeOnlyDeal?'<span class="ship-badge prime-only" title="Deal price may require Prime">Prime-only price</span>':'')+'</div>':''}
 let shipHiddenCount=0;
+// One card per product: same ASIN, same parent ASIN (variants) or the same normalized title.
+function productGroup(d){const p=String(d&&d.parentAsin||'');if(/^[A-Z0-9]{10}$/.test(p))return 'p:'+p;const t=String(d&&d.title||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();return t.length>=12?'t:'+t.slice(0,120):'a:'+String(d&&(d.asin||d.url)||'')}
+function offerRank(d){return [shipsFree(d)?1:0,d.priceEvidence==='observed_reduction'?1:0,Number(d.dealScore||0),-Number(d.price||0),Date.parse(d.checkedAt||0)||0]}
+function betterOffer(a,b){const x=offerRank(a),y=offerRank(b);for(let i=0;i<x.length;i++){if(x[i]!==y[i])return x[i]>y[i]}return false}
+function dedupeProducts(rows){const byAsin=new Map();for(const d of rows){if(!d)continue;const k=String(d.asin||d.url);const prev=byAsin.get(k);if(!prev||betterOffer(d,prev))byAsin.set(k,d)}const byGroup=new Map();for(const d of byAsin.values()){const g=productGroup(d);const prev=byGroup.get(g);if(!prev||betterOffer(d,prev))byGroup.set(g,d)}return [...byGroup.values()]}
+// Price history facts from the scanner's recorded timeline (one point per price change).
+function historyFacts(asin,price){const h=trackedHistory&&trackedHistory[asin];if(!h||!Array.isArray(h.points))return null;const raw=h.points.filter(p=>Array.isArray(p)&&Number(p[1])>0&&Date.parse(p[0]));const pts=raw.slice().sort((a,b)=>Date.parse(a[0])-Date.parse(b[0])).filter((p,i,arr)=>i===0||Math.abs(Number(p[1])-Number(arr[i-1][1]))>0.004);if(!pts.length)return null;const cur=Number.isFinite(Number(price))&&Number(price)>0?Number(price):Number(pts[pts.length-1][1]);const vals=pts.map(p=>Number(p[1])).concat([cur]);let prev=null;for(let i=pts.length-1;i>=0;i--){if(Math.abs(Number(pts[i][1])-cur)>0.004){prev=pts[i];break}}return {pts,cur,low:Math.min(...vals),high:Math.max(...vals),prev,first:pts[0][0],checks:Number(h.checks)||raw.length,lastChecked:h.lastChecked||h.lastSeen||raw.map(p=>p[0]).sort().pop(),title:h.title}}
+function previousPriceLine(d){const f=historyFacts(d.asin,d.price);if(!f||!f.prev)return '';const was=Number(f.prev[1]),dir=was>f.cur?'↓ was ':'↑ was ';return '<div class="scan-meta prev-price">'+dir+cash(was)+' on '+esc(new Date(f.prev[0]).toLocaleDateString([], {month:'short',day:'numeric'}))+' · tracked low '+cash(f.low)+'</div>'}
 loadScanDrops();
 const requestedTab=location.hash.slice(1);
 window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'].includes(tab))selectTab(tab)});
@@ -469,7 +482,7 @@ $('homeDealJudge').addEventListener('click',()=>selectTab('history'));
 function renderInbox(){
  const filter=$('inboxFilter').value;
  const q=$('inboxSearch').value.trim().toLowerCase();
- const rows=inboxEvents.filter(d=>!isRejectedDeal(d.asin)&&(!q||String(d.title||'').toLowerCase().includes(q))&&(filter==='all'||(filter==='drop'&&d.reason==='Observed price drop')||(filter==='new'&&d.reason==='First observation')));
+ const seenInbox=new Set();const rows=inboxEvents.slice().sort((a,b)=>Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0)).filter(d=>{const g=productGroup(d);if(seenInbox.has(g))return false;seenInbox.add(g);return true}).filter(d=>!isRejectedDeal(d.asin)&&(!q||String(d.title||'').toLowerCase().includes(q))&&(filter==='all'||(filter==='drop'&&d.reason==='Observed price drop')||(filter==='new'&&d.reason==='First observation')));
  $('inboxStatus').textContent=rows.length+' saved finds · newest first';
  $('inboxResults').innerHTML=rows.map(d=>compactCard(d,'inbox')).join('')||'<div class="empty">No saved discoveries match this filter.</div>';
 }
@@ -489,7 +502,7 @@ const response=await fetch('data/amazon-candidates.json?ts='+Date.now(),{cache:'
 if(!response.ok)throw Error('Candidate feed not published yet');
 const payload=await response.json();candidatesLoaded=true;
 const now=Date.now(),all=Array.isArray(payload.candidates)?payload.candidates:[];
-const items=all.filter(d=>shipVisible(d)&&!isRejectedDeal(d.asin)&&validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);candidateAsins=new Set(items.map(d=>String(d.asin)));if(data)render();
+const items=dedupeProducts(all.filter(d=>shipVisible(d)&&!isRejectedDeal(d.asin)&&validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0));candidateAsins=new Set(items.map(d=>String(d.asin)));if(data)render();
 $('candidateStatus').textContent=items.length+' saved candidates from latest scan · last scan '+date(payload.updated)+' · unchanged offers suppressed';
 $('candidateResults').innerHTML=items.map(d=>compactCard(d,'candidate')).join('')||'<div class="empty">No new candidates in the latest scan.</div>';
 }catch(e){$('candidateStatus').textContent=e.message;$('candidateResults').innerHTML='<div class="empty">The next successful scanner and website publish will generate this feed.</div>'}
@@ -547,7 +560,7 @@ const QUICK_SEARCH={best:'deals',drops:'price drop',lows:'deals',clearance:'clea
 async function loadQuickData(){
  if(quickDataLoaded)return;quickDataLoaded=true;
  try{const r=await fetch('data/amazon-price-history.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();trackedHistory=j&&typeof j.items==='object'?j.items:{}}}catch{trackedHistory={}}
- try{const r=await fetch('data/amazon-used-offers.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();usedOffersUpdated=j.updated||'';usedOffers=(Array.isArray(j.offers)?j.offers:[]).filter(d=>shipVisible(d)&&validUrl(d.url)&&Number(d.price)>0&&['Used','Open Box','Warehouse','Renewed'].includes(d.conditionLabel))}}catch{usedOffers=[]}
+ try{const r=await fetch('data/amazon-used-offers.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();usedOffersUpdated=j.updated||'';usedOffers=(Array.isArray(j.offers)?j.offers:[]).filter(d=>shipVisible(d)&&validUrl(d.url)&&Number(d.price)>0&&['Used','Open Box','Warehouse','Renewed'].includes(d.conditionLabel));{const g=new Map();for(const d of usedOffers){const k=productGroup(d)+'|'+d.conditionLabel;const prev=g.get(k);if(!prev||(Number(d.savingsVsNewPercent)||-1)>(Number(prev.savingsVsNewPercent)||-1)||((Number(d.savingsVsNewPercent)||-1)===(Number(prev.savingsVsNewPercent)||-1)&&Number(d.price)<Number(prev.price)))g.set(k,d)}usedOffers=[...g.values()]}}}catch{usedOffers=[]}
  if(data)render();
 }
 function quickEvidence(d){
@@ -556,7 +569,7 @@ function quickEvidence(d){
  const h=trackedHistory&&trackedHistory[d.asin];const pts=h&&Array.isArray(h.points)?h.points.filter(p=>Array.isArray(p)&&Number(p[1])>0&&Date.parse(p[0])):[];
  if(pts.length){
   const vals=pts.map(p=>Number(p[1])),low=Math.min(...vals),high=Math.max(...vals),first=Math.min(...pts.map(p=>Date.parse(p[0])));
-  const days=(Date.now()-first)/864e5;e.checks=pts.length;e.high=high;
+  const days=(Date.now()-first)/864e5;e.checks=Number(h.checks)||pts.length;e.high=high;
   e.atLow=price<=low+0.005;e.wasHigher=high>price+0.005;
   if(e.wasHigher){e.drop=Math.round((high-price)/high*100);e.dropLabel='↓ '+e.drop+'% from tracked high '+cash(high)}
   if(e.atLow&&pts.length>=2){
@@ -578,7 +591,7 @@ function quickBadges(e){
 function quickPool(latest,publishedCloud,cloudHidden){
  const byProduct=new Map(),now=Date.now();
  for(const d of [...allScannedProducts,...latest,...verifiedCommunity,...publishedCloud]){if(!d||!validUrl(d.url)||!(Number(d.price)>0))continue;const t=Date.parse(d.checkedAt||0);if(!(now-t<QUICK_FRESH_MS))continue;const key=String(d.asin||d.url);const prev=byProduct.get(key);if(!prev||t>Date.parse(prev.checkedAt||0)||(t===Date.parse(prev.checkedAt||0)&&d.dealScore!=null))byProduct.set(key,d)}
- return [...byProduct.values()].filter(d=>!isRejectedDeal(d.asin)&&!cloudHidden.has(d.asin)).map(d=>{const e=quickEvidence(d);return {d,e,s:quickStrength(e,d)}});
+ return dedupeProducts([...byProduct.values()]).filter(d=>!isRejectedDeal(d.asin)&&!cloudHidden.has(d.asin)).map(d=>{const e=quickEvidence(d);return {d,e,s:quickStrength(e,d)}});
 }
 function quickCommonFilter(d){const q=$('find').value.trim().toLowerCase(),cat=$('category').value;return (!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!$('deep').checked||Number(d.discountPercent)>=70||Number(d.savingsVsNewPercent)>=70)&&(!$('essentials').checked||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||'')))}
 function quickUsedRows(){const q=$('find').value.trim().toLowerCase(),cat=$('category').value;return usedOffers.filter(d=>!isRejectedDeal(d.asin)&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!$('deep').checked||Number(d.savingsVsNewPercent)>=70)).sort((a,b)=>(Number(b.savingsVsNewPercent)||-1)-(Number(a.savingsVsNewPercent)||-1)||Number(a.price)-Number(b.price))}
@@ -618,7 +631,7 @@ function renderQuick(latest,publishedCloud,cloudHidden){
 function render(){
  if(!data)return;
  renderScanDrops();
- const now=Date.now(),latest=Array.isArray(data.deals)?data.deals:[];const publishedCloud=cloudCommunity.filter(d=>d.status==='published');const cloudHidden=new Set(cloudCommunity.filter(d=>d.status!=='published').map(d=>d.asin));const combined=$('showAllScanned').checked?[...allScannedProducts,...latest,...inboxEvents,...verifiedCommunity,...publishedCloud]:[...latest,...inboxEvents,...verifiedCommunity,...publishedCloud];const byProduct=new Map();for(const d of combined){if(!d||!validUrl(d.url)||!Number.isFinite(Number(d.price))||Number(d.price)<=0)continue;const key=String(d.asin||d.url);const prev=byProduct.get(key);if(!prev||Date.parse(d.checkedAt||0)>Date.parse(prev.checkedAt||0))byProduct.set(key,d)}const all=[...byProduct.values()].filter(d=>!isRejectedDeal(d.asin)&&!cloudHidden.has(d.asin));
+ const now=Date.now(),latest=Array.isArray(data.deals)?data.deals:[];const publishedCloud=cloudCommunity.filter(d=>d.status==='published');const cloudHidden=new Set(cloudCommunity.filter(d=>d.status!=='published').map(d=>d.asin));const combined=$('showAllScanned').checked?[...allScannedProducts,...latest,...inboxEvents,...verifiedCommunity,...publishedCloud]:[...latest,...inboxEvents,...verifiedCommunity,...publishedCloud];const byProduct=new Map();for(const d of combined){if(!d||!validUrl(d.url)||!Number.isFinite(Number(d.price))||Number(d.price)<=0)continue;const key=String(d.asin||d.url);const prev=byProduct.get(key);if(!prev||Date.parse(d.checkedAt||0)>Date.parse(prev.checkedAt||0))byProduct.set(key,d)}const all=dedupeProducts([...byProduct.values()]).filter(d=>!isRejectedDeal(d.asin)&&!cloudHidden.has(d.asin));
  if(quickMode&&QUICK[quickMode]){$('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);renderQuick(latest,publishedCloud,cloudHidden);return}
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked,essentialOnly=$('essentials').checked;
  const filtered=all.filter(d=>(!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||Number(d.discountPercent)>=70)&&(!essentialOnly||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))));
@@ -729,7 +742,7 @@ $('quick').innerHTML=['Toys & games','Kitchen appliances','Home organization','H
 async function loadUsed(){
   usedLoaded=true;$('usedstatus').textContent='Loading used and Warehouse offers…';
   quickDataLoaded=false;await loadQuickData();
-  const items=usedOffers.filter(d=>!isRejectedDeal(d.asin)).sort((a,b)=>(shipsFree(b)-shipsFree(a))||(Number(b.savingsVsNewPercent)||-1)-(Number(a.savingsVsNewPercent)||-1)||Number(a.price)-Number(b.price));
+  const usedSeen=new Set();const items=usedOffers.filter(d=>!isRejectedDeal(d.asin)&&!usedSeen.has(d.asin)&&usedSeen.add(d.asin)).sort((a,b)=>(shipsFree(b)-shipsFree(a))||(Number(b.savingsVsNewPercent)||-1)-(Number(a.savingsVsNewPercent)||-1)||Number(a.price)-Number(b.price));
   $('usedcount').textContent=items.length;$('usedsavers').textContent=items.filter(d=>Number(d.savingsVsNewPercent)>=30).length;
   $('usedstatus').textContent=items.length?items.length+' offers · updated '+date(usedOffersUpdated)+' · biggest savings vs. new first':'No used or Warehouse offers in the latest scans. Check back after the next scan.';
   $('usedresults').innerHTML=items.slice(0,120).map(usedCard).join('')||'<div class="empty" style="grid-column:1/-1">No offers right now.</div>';

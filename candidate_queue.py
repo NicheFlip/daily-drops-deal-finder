@@ -14,6 +14,22 @@ def is_essential(deal):
     return any(term in name for term in ESSENTIAL_TERMS)
 
 
+def dedupe_events(rows):
+    """Archive keeps one 'First observation' per ASIN (the earliest) and a price-drop
+    event only when the price is lower than the previous event for that ASIN."""
+    out=[];first_seen=set();last_price={}
+    for e in sorted(rows,key=lambda d:(d.get('checkedAt',''),d.get('reason')!='First observation')):
+        asin=str(e.get('asin',''))
+        try:price=round(float(e.get('price')),2)
+        except (TypeError,ValueError):continue
+        if e.get('reason')=='First observation':
+            if asin in first_seen or asin in last_price:continue
+            first_seen.add(asin)
+        elif asin in last_price and price>=last_price[asin]:
+            continue
+        last_price[asin]=price
+        out.append(e)
+    return sorted(out,key=lambda d:d.get('checkedAt',''),reverse=True)
 SHIP_KEYS=('seller','soldByAmazon','isPrime','freeShipping','shippingStatus')
 def build_queue(observed, stamp):
     now=datetime.datetime.fromisoformat(stamp)
@@ -34,12 +50,15 @@ def build_queue(observed, stamp):
         price=round(float(deal['price']),2)
         earlier=retained.get(asin)
         old_price=earlier.get('lastPrice') if earlier else None
-        if earlier is None:
+        history_prior=deal.get('priorObservedPrice')
+        if old_price is None and history_prior is not None:
+            old_price=history_prior   # price history already knows this product
+        if earlier is None and deal.get('priceEvidence','first_observation')=='first_observation' and history_prior is None:
             reason='First observation'
         elif old_price is not None and price<round(float(old_price),2):
             reason='Observed price drop'
         else:
-            reason=None
+            reason=None   # same (or higher) price as before: not new
         # Only newly discovered or actually reduced-price products enter
         # this run's queue; no re-alert for an unchanged price.
         if reason:
@@ -80,7 +99,7 @@ def build_queue(observed, stamp):
     for candidate in candidates:
         key=candidate['asin']+'|'+candidate['checkedAt']+'|'+candidate['reason']
         saved[key]=candidate
-    events=sorted(saved.values(),key=lambda d:d.get('checkedAt',''),reverse=True)
+    events=dedupe_events(saved.values())
     ARCHIVE.write_text(json.dumps({
         'updated':stamp,'retentionDays':None,'events':events,
         'note':'Historical research observations, NOT live prices or verified checkout offers. Recheck the exact product before sharing.'

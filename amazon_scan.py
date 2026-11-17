@@ -73,7 +73,7 @@ BROAD_PAGES=3
 WATCH_CALLS=30
 WATCH_BATCH=10
 WATCH_POOL_LIMIT=600
-RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition','offersV2.listings.merchantInfo','offersV2.listings.isBuyBoxWinner','offersV2.listings.dealDetails','offersV2.listings.type']
+RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition','offersV2.listings.merchantInfo','offersV2.listings.isBuyBoxWinner','offersV2.listings.dealDetails','offersV2.listings.type','parentASIN']
 class BudgetReached(Exception):
     """Raised when the per-run request budget or time limit is used up."""
 def api(url,payload,headers=None):
@@ -150,6 +150,7 @@ def parse(item,category,keyword,minimum_discount=40):
           'discountPercent':percent,'category':category,'keyword':keyword,
           'checkedAt':STAMP,'couponVerified':False,'possibleGlitch':False,
           'verification':'Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified',
+          **({'parentAsin':item['parentASIN']} if re.fullmatch('[A-Z0-9]{10}',str(item.get('parentASIN') or '')) and item.get('parentASIN')!=asin else {}),
           **shipping_info(offer)}
     return None
 USED_RETENTION_HOURS=48
@@ -207,6 +208,25 @@ def summarize_shipping(rows):
               'discountPercent':d.get('discountPercent'),'seller':d.get('seller'),
               'reason':'Third-party seller (shipping not verified free)' if third else 'Seller unknown (older or incomplete data)'})
     return out
+def product_group(d):
+    """Same product across variants/scans: parent ASIN when Amazon gives one, else normalized title."""
+    parent=str(d.get('parentAsin') or '')
+    if re.fullmatch('[A-Z0-9]{10}',parent):return 'p:'+parent
+    title=re.sub(r'[^a-z0-9]+',' ',str(d.get('title') or '').lower()).strip()
+    return 't:'+title[:120] if len(title)>=12 else 'a:'+str(d.get('asin'))
+def dedupe_offers(rows):
+    """One row per ASIN and per product group; keeps the best offer
+    (sold by Amazon first, then strongest evidence/score, then lowest price, then newest)."""
+    best={}
+    def rank(d):return (ships_free(d),d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),-(d.get('price') or 0),d.get('checkedAt',''))
+    by_asin={}
+    for d in rows:
+        a=d.get('asin')
+        if a and (a not in by_asin or rank(d)>rank(by_asin[a])):by_asin[a]=d
+    for d in by_asin.values():
+        g=product_group(d)
+        if g not in best or rank(d)>rank(best[g]):best[g]=d
+    return list(best.values())
 def write_used_offers(found):
     """Merge this run's non-new offers with still-recent ones from earlier runs (additive feed)."""
     keep={}
@@ -362,8 +382,9 @@ def scan():
                 baseline_item=parse(item,category,keyword,minimum_discount=0)
                 if baseline_item:
                     all_products[baseline_item['asin']]=baseline_item
-                    # Watched ASINs found by search keep their history baseline without a GetItems call.
-                    if is_essential or baseline_item['asin'] in watch_set:baseline[baseline_item['asin']]=baseline_item
+                    # Every valid product seen extends its price history, so a later discount is
+                    # compared with real earlier prices instead of being called "first seen".
+                    baseline[baseline_item['asin']]=baseline_item
                 d=parse(item,category,keyword)
                 if d:
                     observed[d['asin']]=d
@@ -427,6 +448,9 @@ def scan():
     # Track valid everyday essentials even without a qualifying discount.
     # Only qualifying leads enter the public deal and candidate feeds.
     observed_drops=enrich(observed,STAMP,baseline=baseline)
+    # "New" means genuinely first seen in price history, or a lower price than last recorded.
+    # Same price as before is not new, even if the product had left the feed for a while.
+    newly=sum(1 for d in observed.values() if d.get('priceEvidence') in ('first_observation','observed_reduction'))
     # Retained still-fresh leads may predate the evidence schema. Never
     # preserve a legacy score or imply a witnessed reduction for those leads.
     for asin, deal in fresh.items():
@@ -442,7 +466,8 @@ def scan():
     # Amazon-sold offers rank first; rows with no seller data (older scans, or none returned) are
     # kept after them so the feed is never wiped out. The deal math is unchanged.
     shipping_filter=summarize_shipping(fresh.values())
-    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title')) and d.get('shippingStatus')!='third_party'),key=lambda d:(ships_free(d),d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
+    eligible_deals=dedupe_offers([d for d in fresh.values() if not excluded_audio(d.get('title')) and d.get('shippingStatus')!='third_party'])
+    deals=sorted(eligible_deals,key=lambda d:(ships_free(d),d.get('priceEvidence')=='first_observation' and d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
