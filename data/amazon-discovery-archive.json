@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-17T21:41:14.192797+00:00",
+  "updated": "2026-11-17T22:11:14.159430+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0GMW9XT9X",
+      "title": "HP DeskJet 2923 Color Inkjet Printer | Wireless | All-in-One | Easy Home Printing | Color Documents | Mobile Compatibility | Print, Scan & Copy | Ideal Home Use",
+      "category": "OfficeProducts",
+      "url": "https://www.amazon.com/dp/B0GMW9XT9X",
+      "imageUrl": "https://m.media-amazon.com/images/I/41DMntD8cXL._SL160_.jpg",
+      "price": 51.99,
+      "referencePrice": 89.99,
+      "discountPercent": 42,
+      "dealScore": 2,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "antonline",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B07R75YS8L",
       "title": "Lee Women's Ultra Lux Comfort with Flex Motion Trouser Pant, Black, 10",
