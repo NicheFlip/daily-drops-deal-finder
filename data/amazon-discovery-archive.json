@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-17T03:41:13.617968+00:00",
+  "updated": "2026-11-17T04:11:14.113172+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0H2K6W7P9",
+      "title": "EA SPORTS College Football 27 - Standard Edition PS5 |Disc I VideoGame",
+      "category": "VideoGames",
+      "url": "https://www.amazon.com/dp/B0H2K6W7P9",
+      "imageUrl": "https://m.media-amazon.com/images/I/71ZGsxBczrL._SL160_.jpg",
+      "price": 34.97,
+      "referencePrice": 69.99,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 34.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T04:11:14.113172+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0CC6DY9TN",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Rain Water, 16 fl. oz",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B0CC6DY9TN",
+      "imageUrl": "https://m.media-amazon.com/images/I/41McsNUSAgL._SL160_.jpg",
+      "price": 1.9,
+      "referencePrice": 6.49,
+      "discountPercent": 71,
+      "dealScore": 90,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-17T04:11:14.113172+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B000GAYQLI",
       "title": "Casio Men's G-Shock DW9052-1V Shock Resistant Black Resin Sport Watch",
