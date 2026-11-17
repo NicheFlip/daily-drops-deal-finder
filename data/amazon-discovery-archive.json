@@ -1,7 +1,24 @@
 {
-  "updated": "2026-11-17T08:41:13.813068+00:00",
+  "updated": "2026-11-17T09:11:13.946218+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HGQY7STR",
+      "title": "Android 16 Kids Tablet HD 10 Inch with Stylus & Case, 24GB RAM 64GB ROM 1TB | Electronics Tablets for Kids 3-12 Toddler, Parental Control & Kids Space, 6000mAh, WiFi 6, BT 5.4, 2*C",
+      "category": "ToysAndGames",
+      "url": "https://www.amazon.com/dp/B0HGQY7STR",
+      "imageUrl": "https://m.media-amazon.com/images/I/51wIYKh+DSL._SL160_.jpg",
+      "price": 89.96,
+      "referencePrice": 149.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T09:11:13.946218+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0FYLSMS25",
       "title": "Smart Watch for Men Women with Amazon Alexa Built-in, 1.83\" HD Fitness Tracker Bluetooth Calls, Notifications, Heart Rate/Sleep Monitor, 120+ Sport Modes, IP68 Waterproof, DIY Dial",
