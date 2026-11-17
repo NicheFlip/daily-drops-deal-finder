@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-16T23:41:13.989770+00:00",
+  "updated": "2026-11-17T00:11:13.878270+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B008J2GP9G",
+      "title": "OGX Renewing + Argan Oil of Morocco Repairing Shampoo, 25.4 fl. oz",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B008J2GP9G",
+      "imageUrl": "https://m.media-amazon.com/images/I/31x-Z-O0tmL._SL160_.jpg",
+      "price": 9.84,
+      "referencePrice": 16.39,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T00:11:13.878270+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0GKJZ864R",
+      "title": "HP DeskJet 2955 Color Inkjet Printer | Wireless | All-in-One | Easy Home Printing | Color Documents | Mobile Compatibility | Print, Scan & Copy | Ideal Home Use",
+      "category": "OfficeProducts",
+      "url": "https://www.amazon.com/dp/B0GKJZ864R",
+      "imageUrl": "https://m.media-amazon.com/images/I/41nRKLHEx0L._SL160_.jpg",
+      "price": 49.89,
+      "referencePrice": 89.99,
+      "discountPercent": 45,
+      "dealScore": 5,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T00:11:13.878270+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B006K1U8A0",
       "title": "Kleenex Professional Facial Tissue, Bulk, 36 Boxes x 90 Tissues (21271) | Upright Cube Tissue Boxes (6 Packs of 6), 2-Ply, Soft & Strong, Premium Tier",

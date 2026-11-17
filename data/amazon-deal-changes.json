@@ -1,16 +1,5 @@
 {
-  "updated": "2026-11-16T23:41:13.989770+00:00",
-  "changes": [
-    {
-      "asin": "B006K1U8A0",
-      "title": "Kleenex Professional Facial Tissue, Bulk, 36 Boxes x 90 Tissues (21271) | Upright Cube Tissue Boxes (6 Packs of 6), 2-Ply, Soft & Strong, Premium Tier",
-      "previousObservedPrice": 27.95,
-      "currentObservedPrice": 26.52,
-      "dropPercent": 5.1,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-16T23:41:13.989770+00:00",
-      "url": "https://www.amazon.com/dp/B006K1U8A0"
-    }
-  ],
+  "updated": "2026-11-17T00:11:13.878270+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
