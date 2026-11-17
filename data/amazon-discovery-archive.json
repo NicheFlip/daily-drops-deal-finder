@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-17T15:48:27.520031+00:00",
+  "updated": "2026-11-17T16:00:33.701805+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0CC6DY9TN",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Rain Water, 16 fl. oz",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B0CC6DY9TN",
+      "imageUrl": "https://m.media-amazon.com/images/I/41McsNUSAgL._SL160_.jpg",
+      "price": 1.9,
+      "referencePrice": 6.49,
+      "discountPercent": 71,
+      "dealScore": 90,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 1.95,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T16:00:33.701805+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0G156GM21",
       "title": "Oral-B Rechargeable Electric Toothbrush, iO3 Limited Deep Clean, 3 Cleaning Modes, Visual Pressure Sensor to Protect Gums, 2 Brush Heads, Travel Case, Azalea Pink",

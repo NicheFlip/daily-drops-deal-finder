@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-17T15:48:27.520031+00:00",
-  "changes": [],
+  "updated": "2026-11-17T16:00:33.701805+00:00",
+  "changes": [
+    {
+      "asin": "B0CC6DY9TN",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Rain Water, 16 fl. oz",
+      "previousObservedPrice": 4.26,
+      "currentObservedPrice": 1.9,
+      "dropPercent": 55.4,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T16:00:33.701805+00:00",
+      "url": "https://www.amazon.com/dp/B0CC6DY9TN",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
