@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-17T20:11:14.629115+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-17T20:41:15.173266+00:00",
+  "candidates": [
+    {
+      "asin": "B0DBMLN386",
+      "title": "Armani Beauty Acqua di Gioia Eau de Parfum Intense Perfume - 3.3 Fl Oz | Fruity Floral Citrus Fragrance for Women - With Bergamot, Jasmine & Cedarwood - Long Lasting Scent - Suitab",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B0DBMLN386",
+      "imageUrl": "https://m.media-amazon.com/images/I/31m6s9uo7pL._SL160_.jpg",
+      "price": 74.0,
+      "referencePrice": 148.0,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T20:41:15.173266+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Armani beauty",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
