@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-17T16:41:14.338728+00:00",
+  "updated": "2026-11-17T17:11:14.629526+00:00",
   "changes": [
     {
-      "asin": "B00DDMIMXE",
-      "title": "Pampers Sensitive Baby Wipes, Unscented, Fragrance Free, Clinically Proven, Water Based, Hypoallergenic, Multi-Use, Hand Wipes, 168 Wipes Total (3X Flip-Top Packs)",
-      "previousObservedPrice": 6.97,
-      "currentObservedPrice": 2.49,
-      "dropPercent": 64.3,
+      "asin": "B08KKCV4D5",
+      "title": "Softsoap Antibacterial Hand Soap, Cool Splash Scent, 11.25 fl oz (6 Pack) | Paraben-Free, Phthalate-Free, Washes Away Germs, Bathroom Hand Soap, Kitchen Hand Soap, Daily Handwashin",
+      "previousObservedPrice": 18.72,
+      "currentObservedPrice": 10.52,
+      "dropPercent": 43.8,
       "newObservedLow": false,
-      "checkedAt": "2026-11-17T16:41:14.338728+00:00",
-      "url": "https://www.amazon.com/dp/B00DDMIMXE",
-      "seller": "KRALIX",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "checkedAt": "2026-11-17T17:11:14.629526+00:00",
+      "url": "https://www.amazon.com/dp/B08KKCV4D5",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
