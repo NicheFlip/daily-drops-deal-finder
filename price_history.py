@@ -106,7 +106,8 @@ def enrich(observed, stamp, baseline=None):
                     'previousObservedPrice': round(previous / 100, 2),
                     'currentObservedPrice': round(price_cents / 100, 2),
                     'dropPercent': drop, 'newObservedLow': new_low,
-                    'checkedAt': stamp, 'url': deal['url']
+                    'checkedAt': stamp, 'url': deal['url'],
+                    **{k: deal[k] for k in ('seller', 'soldByAmazon', 'isPrime', 'freeShipping', 'shippingStatus') if k in deal}
                 })
 
         # Bound storage growth, then export JSON as the durable checkpoint.

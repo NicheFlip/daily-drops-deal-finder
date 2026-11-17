@@ -68,14 +68,16 @@ class UsedFeed(unittest.TestCase):
     def test_merge_keeps_recent_and_sorts_by_savings(self):
         with tempfile.TemporaryDirectory() as tmp:
             out=Path(tmp)/'used.json'
-            old={'asin':'B000000009','checkedAt':amazon_scan.STAMP,'savingsVsNewPercent':10}
-            stale={'asin':'B000000008','checkedAt':'2000-01-01T00:00:00+00:00','savingsVsNewPercent':90}
-            out.write_text(json.dumps({'offers':[old,stale]}))
+            old={'asin':'B000000009','checkedAt':amazon_scan.STAMP,'savingsVsNewPercent':10,'merchant':'Amazon Resale'}
+            stale={'asin':'B000000008','checkedAt':'2000-01-01T00:00:00+00:00','savingsVsNewPercent':90,'merchant':'Amazon Resale'}
+            third={'asin':'B000000007','checkedAt':amazon_scan.STAMP,'savingsVsNewPercent':80,'merchant':'Some Seller'}
+            out.write_text(json.dumps({'offers':[old,stale,third]}))
             with patch.object(amazon_scan,'USED_OUT',out):
-                n=amazon_scan.write_used_offers({'B000000001':{'asin':'B000000001','checkedAt':amazon_scan.STAMP,'savingsVsNewPercent':40}})
+                n=amazon_scan.write_used_offers({'B000000001':{'asin':'B000000001','checkedAt':amazon_scan.STAMP,'savingsVsNewPercent':40,'soldByAmazon':True}})
             j=json.loads(out.read_text())
             self.assertEqual(n,2)
             self.assertEqual([d['asin'] for d in j['offers']],['B000000001','B000000009'])
             self.assertEqual(j['foundThisScan'],1)
+            self.assertEqual(j['excludedNotSoldByAmazon'],1)
 
 if __name__=='__main__':unittest.main()

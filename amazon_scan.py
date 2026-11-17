@@ -73,7 +73,7 @@ BROAD_PAGES=3
 WATCH_CALLS=30
 WATCH_BATCH=10
 WATCH_POOL_LIMIT=600
-RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition','offersV2.listings.merchantInfo','offersV2.listings.isBuyBoxWinner']
+RESOURCES=['itemInfo.title','images.primary.medium','offersV2.listings.price','offersV2.listings.availability','offersV2.listings.condition','offersV2.listings.merchantInfo','offersV2.listings.isBuyBoxWinner','offersV2.listings.dealDetails','offersV2.listings.type']
 class BudgetReached(Exception):
     """Raised when the per-run request budget or time limit is used up."""
 def api(url,payload,headers=None):
@@ -88,6 +88,43 @@ def amount(v):
 EXCLUDED_AUDIO=re.compile(r'\b(?:headphones?|headsets?|earbuds?|earpods?|airpods?|earphones?|in[ -]?ear headphones?|over[ -]?ear headphones?)\b',re.I)
 def excluded_audio(title):
     return bool(EXCLUDED_AUDIO.search(str(title or '')))
+# --- Shipping / Prime signal -------------------------------------------------
+# The Creators API OffersV2 has NO DeliveryInfo (IsPrimeEligible, IsFreeShippingEligible,
+# IsAmazonFulfilled were PA-API 5 "Offers" V1 fields and are "Not Available" in OffersV2).
+# The best signal in the same response is merchantInfo: an offer sold by Amazon itself
+# (Amazon.com, or Amazon Resale / Warehouse for used items) ships free with Prime.
+# Third-party sellers may charge shipping and their Prime/FBA status is not exposed, so
+# they are treated as "not verified free shipping" and kept out of the public feeds.
+AMAZON_MERCHANT_IDS={'ATVPDKIKX0DER','A2L77EE7U53NWQ'}  # Amazon.com, Amazon Resale (Warehouse)
+AMAZON_MERCHANT_NAME=re.compile(r'^\s*amazon(?:\.com)?(?:\s+(?:services(?:\s+llc)?|resale|warehouse|warehouse\s+deals))?\s*$',re.I)
+def shipping_info(offer):
+    """Shipping fields for one OffersV2 listing. Never guesses for third-party sellers."""
+    merchant=(offer or {}).get('merchantInfo') or {} if isinstance(offer,dict) else {}
+    name=str(merchant.get('name') or '').strip()[:80];mid=str(merchant.get('id') or '').strip()[:20]
+    deal=(offer or {}).get('dealDetails') or {} if isinstance(offer,dict) else {}
+    if mid in AMAZON_MERCHANT_IDS or (name and AMAZON_MERCHANT_NAME.match(name)):status='amazon'
+    elif name or mid:status='third_party'
+    else:status='unknown'
+    amazon=status=='amazon'
+    info={'seller':name or None,'sellerId':mid or None,'soldByAmazon':amazon,
+          'fulfilledByAmazon':True if amazon else None,'isPrime':True if amazon else None,
+          'freeShipping':True if amazon else None,'shippingStatus':status,
+          'shippingBasis':'Sold by Amazon (API seller field); ships free with Prime' if amazon else
+            ('Third-party seller; the API does not say if shipping is free' if status=='third_party' else 'Seller not returned by the API')}
+    access=str(deal.get('accessType') or '').upper()
+    if access in ('PRIME_EXCLUSIVE','PRIME_EARLY_ACCESS'):info['primeOnlyDeal']=True
+    if deal.get('badge'):info['dealBadge']=str(deal['badge'])[:40]
+    return info
+def ships_free(d):
+    """True only when the item is verified sold by Amazon (free shipping with Prime)."""
+    if not isinstance(d,dict):return False
+    if d.get('soldByAmazon') is True:return True
+    if 'soldByAmazon' not in d and d.get('merchant'):  # older used-offer rows carry only the merchant name
+        return bool(AMAZON_MERCHANT_NAME.match(str(d['merchant'])))
+    return False
+SHIP_FIELDS=('seller','sellerId','soldByAmazon','fulfilledByAmazon','isPrime','freeShipping','shippingStatus','shippingBasis','primeOnlyDeal','dealBadge')
+def ship_fields(d):
+    return {k:d[k] for k in SHIP_FIELDS if isinstance(d,dict) and k in d}
 def parse(item,category,keyword,minimum_discount=40):
     asin=item.get('asin','')
     if not re.fullmatch('[A-Z0-9]{10}',asin):return None
@@ -112,7 +149,8 @@ def parse(item,category,keyword,minimum_discount=40):
           'referencePrice':reference,'referenceType':basis.get('savingBasisTypeLabel') or basis.get('savingBasisType') or 'API savings basis',
           'discountPercent':percent,'category':category,'keyword':keyword,
           'checkedAt':STAMP,'couponVerified':False,'possibleGlitch':False,
-          'verification':'Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified'}
+          'verification':'Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified',
+          **shipping_info(offer)}
     return None
 USED_RETENTION_HOURS=48
 USED_LIMIT=500
@@ -146,8 +184,9 @@ def parse_condition_offer(item,category,keyword):
         merchant=(offer.get('merchantInfo') or {}).get('name') or ''
         label=condition_label(value,cond.get('subCondition'),merchant)
         if not label:continue
-        if best is None or price<best['price']:
-            best={'price':price,'condition':value,'subCondition':cond.get('subCondition') or 'Unknown','conditionLabel':label,
+        ship=shipping_info(offer)
+        if best is None or (not ship['soldByAmazon'],price)<(not best['soldByAmazon'],best['price']):
+            best={**ship,'price':price,'condition':value,'subCondition':cond.get('subCondition') or 'Unknown','conditionLabel':label,
                   'conditionNote':str(cond.get('conditionNote') or '')[:200],'merchant':merchant[:80],'isBuyBoxWinner':bool(offer.get('isBuyBoxWinner'))}
     if not best:return None
     savings=round(100*(new_price-best['price'])/new_price) if new_price and new_price>best['price'] else None
@@ -155,6 +194,19 @@ def parse_condition_offer(item,category,keyword):
       'imageUrl':((item.get('images') or {}).get('primary') or {}).get('medium',{}).get('url'),**best,
       'newPrice':new_price,'savingsVsNewPercent':savings,'category':category,'keyword':keyword,'checkedAt':STAMP,
       'verification':'Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history'}
+def summarize_shipping(rows):
+    rows=[d for d in rows if isinstance(d,dict) and not excluded_audio(d.get('title'))]
+    out={'kept':0,'excludedThirdParty':0,'excludedUnknownSeller':0,'examplesExcluded':[],
+         'rule':'Only offers sold by Amazon (Amazon.com) are published; the Creators API has no Prime/free-shipping field, so third-party sellers cannot be verified.'}
+    for d in sorted(rows,key=lambda d:d.get('discountPercent',0),reverse=True):
+        if ships_free(d):out['kept']+=1;continue
+        third=d.get('shippingStatus')=='third_party'
+        out['excludedThirdParty' if third else 'excludedUnknownSeller']+=1
+        if len(out['examplesExcluded'])<8:
+            out['examplesExcluded'].append({'asin':d.get('asin'),'title':str(d.get('title',''))[:90],'price':d.get('price'),
+              'discountPercent':d.get('discountPercent'),'seller':d.get('seller'),
+              'reason':'Third-party seller (shipping not verified free)' if third else 'Seller unknown (older or incomplete data)'})
+    return out
 def write_used_offers(found):
     """Merge this run's non-new offers with still-recent ones from earlier runs (additive feed)."""
     keep={}
@@ -167,9 +219,11 @@ def write_used_offers(found):
             if d.get('asin') and datetime.datetime.fromisoformat(d['checkedAt'])>=cutoff:keep[d['asin']]=d
         except (KeyError,TypeError,ValueError):pass
     keep.update(found)
+    # Only Amazon-sold (Warehouse / Amazon.com) condition offers: free shipping with Prime.
+    before=len(keep);keep={a:d for a,d in keep.items() if ships_free(d)};dropped=before-len(keep)
     rows=sorted(keep.values(),key=lambda d:(d.get('savingsVsNewPercent') or -1,d['checkedAt']),reverse=True)[:USED_LIMIT]
-    USED_OUT.write_text(json.dumps({'updated':STAMP,'foundThisScan':len(found),'offers':rows,
-      'note':'Used, open-box, renewed and Amazon Resale (Warehouse) offers seen in the scanner\'s normal API calls. Prices are condition-specific; never compare them with new-item price history.'},indent=2))
+    USED_OUT.write_text(json.dumps({'updated':STAMP,'foundThisScan':len(found),'excludedNotSoldByAmazon':dropped,'offers':rows,
+      'note':'Used, open-box, renewed and Amazon Resale (Warehouse) offers seen in the scanner\'s normal API calls, sold by Amazon only (free shipping with Prime). Prices are condition-specific; never compare them with new-item price history.'},indent=2))
     return len(rows)
 def scan():
     cid=os.environ['AMAZON_CREATORS_CREDENTIAL_ID'];secret=os.environ['AMAZON_CREATORS_SECRET'];tag=os.environ['AMAZON_PARTNER_TAG']
@@ -384,11 +438,14 @@ def scan():
             deal['dealScore']=min(20,max(0,deal.get('discountPercent',0)-40))
     candidate_count=build_queue(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
-    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title'))),key=lambda d:(d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
+    # Free shipping / Prime filter: publish only offers verified as sold by Amazon.
+    # Third-party and unknown sellers are counted, never published. The deal math is unchanged.
+    shipping_filter=summarize_shipping(fresh.values())
+    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title')) and ships_free(d)),key=lambda d:(d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':watch_requested,'requestBudget':budget,'requestsAttempted':attempts,'durationSeconds':duration,'stoppedEarly':stopped_reason,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,
+      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':watch_requested,'requestBudget':budget,'requestsAttempted':attempts,'durationSeconds':duration,'stoppedEarly':stopped_reason,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,'shippingFilter':shipping_filter,
       'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
     try:used_total=write_used_offers(used_offers)
     except OSError as e:used_total=0;print('Used-offer feed not written:',type(e).__name__)
@@ -396,5 +453,5 @@ def scan():
       'quickLinkOffset':(quick_offset+quick_budget)%len(QUICK_LINK_QUERIES),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
       'watchOffset':(watch_offset+consumed)%max(1,len(watch_pool)),'runNumber':run_number+1,'cycle':cycle+(offset+broad_budget)//len(QUERIES)},indent=2))
-    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'attempts:',attempts,'budget:',budget,'seconds:',duration,'stopped early:',stopped_reason,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors),'used/open-box offers:',len(used_offers),'used feed rows:',used_total)
+    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'attempts:',attempts,'budget:',budget,'seconds:',duration,'stopped early:',stopped_reason,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors),'used/open-box offers:',len(used_offers),'used feed rows:',used_total,'shipping filter:',{k:shipping_filter[k] for k in ('kept','excludedThirdParty','excludedUnknownSeller')})
 if __name__=='__main__':scan()

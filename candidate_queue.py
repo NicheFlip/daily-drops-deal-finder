@@ -14,6 +14,7 @@ def is_essential(deal):
     return any(term in name for term in ESSENTIAL_TERMS)
 
 
+SHIP_KEYS=('seller','soldByAmazon','isPrime','freeShipping','shippingStatus')
 def build_queue(observed, stamp):
     now=datetime.datetime.fromisoformat(stamp)
     try:
@@ -53,7 +54,8 @@ def build_queue(observed, stamp):
                 'previousObservedPrice':old_price,
                 'newObservedLow':bool(deal.get('newObservedLow')),
                 'checkedAt':deal['checkedAt'],
-                'verification':'Amazon API snapshot; checkout and coupon stacking not verified'
+                'verification':'Amazon API snapshot; checkout and coupon stacking not verified',
+                **{k:deal[k] for k in SHIP_KEYS if k in deal}
             })
         retained[asin]={'lastPrice':price,'lastSeen':stamp}
     retained=dict(sorted(retained.items(),key=lambda pair:pair[1]['lastSeen'],reverse=True)[:3000])

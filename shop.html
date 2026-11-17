@@ -149,7 +149,8 @@ async function load(options={}){
  try{
   let payload={updated:'',deals:[]};let scannerOnline=false;
   try{const res=await fetch('./data/amazon-deals.json?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(6500)});if(res.ok){payload=await res.json();scannerOnline=true}}catch(e){console.warn('Scanner feed temporarily unavailable',e)}
-  const list=Array.isArray(payload.deals)?payload.deals:[];
+  // Scanner deals: only items sold by Amazon (free shipping with Prime); third-party/unknown sellers hidden.
+  const list=(Array.isArray(payload.deals)?payload.deals:[]).filter(d=>d&&(d.soldByAmazon===true||(d.soldByAmazon===undefined&&/^\s*amazon(?:\.com)?(?:\s+(?:services(?:\s+llc)?|resale|warehouse))?\s*$/i.test(String(d.merchant||'')))));
   let community=[];try{const cr=await fetch('./data/community-verified.json?ts='+Date.now(),{cache:'no-store'});if(cr.ok){const cj=await cr.json();community=Array.isArray(cj.deals)?cj.deals:[]}}catch{}
   // Repair missing images from the larger Amazon product archive without changing the product.
   let archiveImages=archiveImageCache;
