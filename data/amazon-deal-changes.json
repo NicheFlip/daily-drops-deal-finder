@@ -1,25 +1,15 @@
 {
-  "updated": "2026-11-17T12:41:17.524340+00:00",
+  "updated": "2026-11-17T13:11:14.654514+00:00",
   "changes": [
     {
-      "asin": "B00DDMIMXE",
-      "title": "Pampers Sensitive Baby Wipes, Unscented, Fragrance Free, Clinically Proven, Water Based, Hypoallergenic, Multi-Use, Hand Wipes, 168 Wipes Total (3X Flip-Top Packs)",
-      "previousObservedPrice": 6.97,
-      "currentObservedPrice": 2.49,
-      "dropPercent": 64.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-17T12:41:17.524340+00:00",
-      "url": "https://www.amazon.com/dp/B00DDMIMXE"
-    },
-    {
-      "asin": "B07TJG79HP",
-      "title": "MRS. MEYER'S CLEAN DAY Liquid Hand Soap, Rain Water, 12.5 fl oz, 3 Pack | Moisturizing Liquid Hand Soap, Softens and Cleans Hands, Cruelty Free, Made with Essential Oils, Olive Oil",
-      "previousObservedPrice": 14.28,
-      "currentObservedPrice": 11.63,
-      "dropPercent": 18.6,
+      "asin": "B07MG5YJLT",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap, Rain Water Scent, 12.5 Fl Oz",
+      "previousObservedPrice": 3.71,
+      "currentObservedPrice": 1.55,
+      "dropPercent": 58.2,
       "newObservedLow": false,
-      "checkedAt": "2026-11-17T12:41:17.524340+00:00",
-      "url": "https://www.amazon.com/dp/B07TJG79HP"
+      "checkedAt": "2026-11-17T13:11:14.654514+00:00",
+      "url": "https://www.amazon.com/dp/B07MG5YJLT"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
