@@ -1,26 +1,5 @@
 {
-  "updated": "2026-11-17T14:11:14.384758+00:00",
-  "changes": [
-    {
-      "asin": "B00NU9MJYS",
-      "title": "MRS. MEYER'S CLEAN DAY Liquid Hand Soap, Lemon Verbena, 12.5 fl oz, 3 Pack | Moisturizing Liquid Hand Soap, Softens and Cleans Hands, Cruelty Free, Made with Essential Oils, Olive ",
-      "previousObservedPrice": 15.24,
-      "currentObservedPrice": 10.5,
-      "dropPercent": 31.1,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-17T14:11:14.384758+00:00",
-      "url": "https://www.amazon.com/dp/B00NU9MJYS"
-    },
-    {
-      "asin": "B000S5VE2K",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap, Lavender Scent, 12.5 Fl Oz | Hand Soaps, Liquid Hand Soaps, for personal care, made without parabens, 12.5 oz capacity, bottle container",
-      "previousObservedPrice": 5.29,
-      "currentObservedPrice": 3.71,
-      "dropPercent": 29.9,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-17T14:11:14.384758+00:00",
-      "url": "https://www.amazon.com/dp/B000S5VE2K"
-    }
-  ],
+  "updated": "2026-11-17T14:41:15.390364+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
