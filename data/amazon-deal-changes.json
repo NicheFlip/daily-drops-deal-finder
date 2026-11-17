@@ -1,16 +1,5 @@
 {
-  "updated": "2026-11-17T10:41:15.029449+00:00",
-  "changes": [
-    {
-      "asin": "B0H982J8SN",
-      "title": "Astercook Knife Set for Kitchen with Block and Sharpener 21pcs | German Stainless Steel Kitchen Utensils Set Dishwasher Safe",
-      "previousObservedPrice": 64.99,
-      "currentObservedPrice": 59.99,
-      "dropPercent": 7.7,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-17T10:41:15.029449+00:00",
-      "url": "https://www.amazon.com/dp/B0H982J8SN"
-    }
-  ],
+  "updated": "2026-11-17T11:11:13.012801+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
