@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-17T02:54:02.817159+00:00",
+  "updated": "2026-11-17T03:11:13.143319+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B000GAYQLI",
+      "title": "Casio Men's G-Shock DW9052-1V Shock Resistant Black Resin Sport Watch",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B000GAYQLI",
+      "imageUrl": "https://m.media-amazon.com/images/I/41+6836WK1L._SL160_.jpg",
+      "price": 44.94,
+      "referencePrice": 89.95,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T03:11:13.143319+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B08P541MM3",
+      "title": "The Children's Place boys Basic Straight Leg Jeans, Carbon Wash/Deep Blue Wash/Dk Juptier 3 Pack, 6 US",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B08P541MM3",
+      "imageUrl": "https://m.media-amazon.com/images/I/415nFIzQ00L._SL160_.jpg",
+      "price": 44.97,
+      "referencePrice": 74.95,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T03:11:13.143319+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0H9YZPYR3",
       "title": "NBA 2K27 - Nintendo Switch 2",
