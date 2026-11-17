@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-17T18:15:44.721460+00:00",
+  "updated": "2026-11-17T18:41:14.740183+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B09VK154VZ",
+      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B09VK154VZ",
+      "imageUrl": "https://m.media-amazon.com/images/I/51jtHbfMgIL._SL160_.jpg",
+      "price": 6.38,
+      "referencePrice": 13.96,
+      "discountPercent": 54,
+      "dealScore": 84,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 13.26,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-17T18:41:14.740183+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon Resale",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0178ENI4K",
       "title": "ALOHA Organic Plant Based Protein Bar | Peanut Butter Chocolate Chip, 12 Ct | 14g Plant-Based Protein, 10g Fiber, 5g Sugar | No Sucralose or Stevia | Non-GMO, Vegan & Dairy Free",
