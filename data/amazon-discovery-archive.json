@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-17T04:11:14.113172+00:00",
+  "updated": "2026-11-17T04:41:14.031728+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HGFPX1VS",
+      "title": "Aeitto Blenders for Kitchen 1800W Professional Countertop Blender, 68Oz Large Capacity Smoothie Blender with 3 Programs & 7 Speeds for Smoothies, Ice Crush, Frozen Drinks, Generati",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0HGFPX1VS",
+      "imageUrl": "https://m.media-amazon.com/images/I/41d9CF0yMSL._SL160_.jpg",
+      "price": 79.99,
+      "referencePrice": 229.99,
+      "discountPercent": 65,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T04:41:14.031728+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B00005249G",
+      "title": "BIC Round Stic Black Ballpoint Pens, Medium Point, 1.0mm, 10-Count | Bulk Pack for Office or School, Flexible Round Barrel for Comfort, Smooth Ink for Consistent Writing, Dependabl",
+      "category": "OfficeProducts",
+      "url": "https://www.amazon.com/dp/B00005249G",
+      "imageUrl": "https://m.media-amazon.com/images/I/51CAeXcZj-L._SL160_.jpg",
+      "price": 1.59,
+      "referencePrice": 3.75,
+      "discountPercent": 58,
+      "dealScore": 18,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T04:41:14.031728+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B0H2K6W7P9",
       "title": "EA SPORTS College Football 27 - Standard Edition PS5 |Disc I VideoGame",
