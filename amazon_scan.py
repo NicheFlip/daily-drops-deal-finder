@@ -223,10 +223,19 @@ def dedupe_offers(rows):
     for d in rows:
         a=d.get('asin')
         if a and (a not in by_asin or rank(d)>rank(by_asin[a])):by_asin[a]=d
-    for d in by_asin.values():
-        g=product_group(d)
-        if g not in best or rank(d)>rank(best[g]):best[g]=d
-    return list(best.values())
+    rows=list(by_asin.values())
+    def parent_key(d):
+        p=str(d.get('parentAsin') or '');return 'p:'+p if re.fullmatch('[A-Z0-9]{10}',p) else None
+    def title_key(d):
+        t=re.sub(r'[^a-z0-9]+',' ',str(d.get('title') or '').lower()).strip();return 't:'+t[:120] if len(t)>=12 else None
+    for key in (parent_key,title_key):   # variants by parent ASIN, then identical titles
+        best={};rest=[]
+        for d in rows:
+            k=key(d)
+            if k is None:rest.append(d);continue
+            if k not in best or rank(d)>rank(best[k]):best[k]=d
+        rows=list(best.values())+rest
+    return rows
 def write_used_offers(found):
     """Merge this run's non-new offers with still-recent ones from earlier runs (additive feed)."""
     keep={}

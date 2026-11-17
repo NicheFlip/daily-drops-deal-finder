@@ -92,6 +92,10 @@ class OfferDedupe(unittest.TestCase):
               deal(25,'t',asin='B000000003',title='Silicone Spatula Set 5 pieces',soldByAmazon=True)]
         out={d['asin']:d for d in amazon_scan.dedupe_offers(rows)}
         self.assertEqual(sorted(out),['B000000002','B000000004'])   # Amazon-sold variant kept; cheapest identical-title kept
+    def test_same_title_with_and_without_parent_collapses(self):
+        rows=[deal(199.99,'t',asin='B000000011',title='Robot Vacuum and Mop 20000Pa',parentAsin='B0000000P9'),
+              deal(199.99,'t',asin='B000000012',title='Robot Vacuum and Mop 20000Pa')]
+        self.assertEqual(len(amazon_scan.dedupe_offers(rows)),1)
     def test_parse_reads_parent_asin(self):
         item={'asin':'B000000001','parentASIN':'B0000000P1','itemInfo':{'title':{'displayValue':'Mixer'}},
               'offersV2':{'listings':[{'condition':{'value':'New'},'availability':{'type':'IN_STOCK'},'merchantInfo':{'name':'Amazon.com'},
