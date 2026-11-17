@@ -1,14 +1,24 @@
 {
-  "updated": "2026-11-17T13:11:14.654514+00:00",
+  "updated": "2026-11-17T13:41:14.045641+00:00",
   "changes": [
+    {
+      "asin": "B0CC6DY9TN",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Rain Water, 16 fl. oz",
+      "previousObservedPrice": 4.26,
+      "currentObservedPrice": 1.49,
+      "dropPercent": 65.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-17T13:41:14.045641+00:00",
+      "url": "https://www.amazon.com/dp/B0CC6DY9TN"
+    },
     {
       "asin": "B07MG5YJLT",
       "title": "Mrs. Meyer's Clean Day, Hand Soap, Rain Water Scent, 12.5 Fl Oz",
-      "previousObservedPrice": 3.71,
-      "currentObservedPrice": 1.55,
-      "dropPercent": 58.2,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-17T13:11:14.654514+00:00",
+      "previousObservedPrice": 1.55,
+      "currentObservedPrice": 1.49,
+      "dropPercent": 3.9,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-17T13:41:14.045641+00:00",
       "url": "https://www.amazon.com/dp/B07MG5YJLT"
     }
   ],
