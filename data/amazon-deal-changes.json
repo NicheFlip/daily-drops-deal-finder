@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-17T19:11:14.146738+00:00",
-  "changes": [
-    {
-      "asin": "B083FR7YSJ",
-      "title": "Clarks Men's Whiddon Cap Oxford, Black Leather, 13 Wide",
-      "previousObservedPrice": 62.22,
-      "currentObservedPrice": 59.97,
-      "dropPercent": 3.6,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-17T19:11:14.146738+00:00",
-      "url": "https://www.amazon.com/dp/B083FR7YSJ",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-17T19:41:15.198405+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
