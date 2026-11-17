@@ -196,13 +196,13 @@ def parse_condition_offer(item,category,keyword):
       'verification':'Amazon API featured-offer snapshot for a non-new condition; not a new-item price and not price history'}
 def summarize_shipping(rows):
     rows=[d for d in rows if isinstance(d,dict) and not excluded_audio(d.get('title'))]
-    out={'kept':0,'excludedThirdParty':0,'excludedUnknownSeller':0,'examplesExcluded':[],
-         'rule':'Only offers sold by Amazon (Amazon.com) are published; the Creators API has no Prime/free-shipping field, so third-party sellers cannot be verified.'}
+    out={'kept':0,'excludedThirdParty':0,'keptUnknownSeller':0,'examplesExcluded':[],
+         'rule':'Third-party seller offers are not published (the Creators API has no Prime/free-shipping field, so their shipping cannot be verified). Amazon-sold offers rank first; offers with no seller data rank last.'}
     for d in sorted(rows,key=lambda d:d.get('discountPercent',0),reverse=True):
         if ships_free(d):out['kept']+=1;continue
         third=d.get('shippingStatus')=='third_party'
-        out['excludedThirdParty' if third else 'excludedUnknownSeller']+=1
-        if len(out['examplesExcluded'])<8:
+        out['excludedThirdParty' if third else 'keptUnknownSeller']+=1
+        if third and len(out['examplesExcluded'])<8:
             out['examplesExcluded'].append({'asin':d.get('asin'),'title':str(d.get('title',''))[:90],'price':d.get('price'),
               'discountPercent':d.get('discountPercent'),'seller':d.get('seller'),
               'reason':'Third-party seller (shipping not verified free)' if third else 'Seller unknown (older or incomplete data)'})
@@ -438,10 +438,11 @@ def scan():
             deal['dealScore']=min(20,max(0,deal.get('discountPercent',0)-40))
     candidate_count=build_queue(observed,STAMP)
     # Don't discard existing still-fresh results when an API call fails.
-    # Free shipping / Prime filter: publish only offers verified as sold by Amazon.
-    # Third-party and unknown sellers are counted, never published. The deal math is unchanged.
+    # Free shipping / Prime filter: third-party sellers (shipping may cost extra) are never published.
+    # Amazon-sold offers rank first; rows with no seller data (older scans, or none returned) are
+    # kept after them so the feed is never wiped out. The deal math is unchanged.
     shipping_filter=summarize_shipping(fresh.values())
-    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title')) and ships_free(d)),key=lambda d:(d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
+    deals=sorted((d for d in fresh.values() if not excluded_audio(d.get('title')) and d.get('shippingStatus')!='third_party'),key=lambda d:(ships_free(d),d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
@@ -453,5 +454,5 @@ def scan():
       'quickLinkOffset':(quick_offset+quick_budget)%len(QUICK_LINK_QUERIES),
       'seasonalOffset':(seasonal_offset+seasonal_budget)%len(BLACK_FRIDAY_QUERIES),'demandOffset':(demand_offset+demand_budget)%len(HIGH_DEMAND_QUERIES),'nextOffset':(offset+broad_budget)%len(QUERIES),
       'watchOffset':(watch_offset+consumed)%max(1,len(watch_pool)),'runNumber':run_number+1,'cycle':cycle+(offset+broad_budget)//len(QUERIES)},indent=2))
-    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'attempts:',attempts,'budget:',budget,'seconds:',duration,'stopped early:',stopped_reason,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors),'used/open-box offers:',len(used_offers),'used feed rows:',used_total,'shipping filter:',{k:shipping_filter[k] for k in ('kept','excludedThirdParty','excludedUnknownSeller')})
+    print('API products:',scanned,'unique products:',len(unique_seen),'requests:',completed,'attempts:',attempts,'budget:',budget,'seconds:',duration,'stopped early:',stopped_reason,'new/changed:',newly,'rolling leads:',len(deals),'errors:',len(errors),'used/open-box offers:',len(used_offers),'used feed rows:',used_total,'shipping filter:',{k:shipping_filter[k] for k in ('kept','excludedThirdParty','keptUnknownSeller')})
 if __name__=='__main__':scan()

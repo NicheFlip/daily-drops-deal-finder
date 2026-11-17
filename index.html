@@ -162,7 +162,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 #panel-deals .quickfinds .jump{background:transparent;border-style:dashed;color:#53657b;font-weight:650}
 .ev{display:flex;flex-wrap:wrap;gap:5px}.ev span{font-size:.72rem;line-height:1.2;padding:4px 8px;border-radius:999px;font-weight:750}
 .ev .good{background:#dff8e9;color:#155e46}.ev .info{background:#eef2f8;color:#3b4a60;font-weight:650}.ev .cond{background:#fff1d6;color:#7a4a00}
-.ship-badge{display:inline-block;margin:4px 6px 2px 0;padding:2px 8px;border-radius:999px;background:#e7f0ff;color:#0b4fa8;font-size:.78rem;font-weight:700}.ship-badge.prime-only{background:#fff4e0;color:#7a4a00}
+.ship-badge{display:inline-block;margin:4px 6px 2px 0;padding:2px 8px;border-radius:999px;background:#e7f0ff;color:#0b4fa8;font-size:.78rem;font-weight:700}.ship-badge.unknown{background:#f1f1f4;color:#555}.ship-badge.prime-only{background:#fff4e0;color:#7a4a00}
 .cond-pill{background:#fff1d6!important;color:#7a4a00!important}
 .quick-more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;font-size:.8rem;color:#53657b}
 .quick-more a{min-height:44px;display:inline-flex;align-items:center;padding:8px 12px;border:1px solid #cdd8e8;border-radius:10px;background:#fff;color:#1c365c;text-decoration:none}
@@ -435,7 +435,10 @@ let inboxEvents=[];
 // including older cached rows that predate the seller fields.
 const AMAZON_SELLER=/^\s*amazon(?:\.com)?(?:\s+(?:services(?:\s+llc)?|resale|warehouse|warehouse\s+deals))?\s*$/i;
 function shipsFree(d){if(!d)return false;if(d.soldByAmazon===true)return true;if(d.soldByAmazon===undefined&&d.merchant)return AMAZON_SELLER.test(String(d.merchant));return false}
-function shipBadge(d){return shipsFree(d)?'<div><span class="ship-badge" title="Sold by Amazon: free shipping with Prime">✓ Prime · Free shipping</span>'+(d.primeOnlyDeal?'<span class="ship-badge prime-only" title="Deal price may require Prime">Prime-only price</span>':'')+'</div>':''}
+// Hide only offers the API says come from a third-party seller. Rows with no seller data yet
+// (older cached scans) stay visible with a "shipping not checked" badge and rank lower.
+function shipVisible(d){if(!d)return false;if(shipsFree(d))return true;if(d.shippingStatus==='third_party')return false;if(d.soldByAmazon===undefined&&d.merchant)return false;return true}
+function shipBadge(d){if(d&&!shipsFree(d))return '<div><span class="ship-badge unknown" title="Seller and shipping not in this older scan">Shipping not checked</span></div>';return shipsFree(d)?'<div><span class="ship-badge" title="Sold by Amazon: free shipping with Prime">✓ Prime · Free shipping</span>'+(d.primeOnlyDeal?'<span class="ship-badge prime-only" title="Deal price may require Prime">Prime-only price</span>':'')+'</div>':''}
 let shipHiddenCount=0;
 loadScanDrops();
 const requestedTab=location.hash.slice(1);
@@ -454,7 +457,7 @@ function renderInbox(){
 }
 async function loadInbox(){
  $('inboxStatus').textContent='Loading saved discoveries…';
- try{const res=await fetch('data/amazon-discovery-archive.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Inbox will appear after the next successful scan');const payload=await res.json();inboxEvents=(Array.isArray(payload.events)?payload.events:[]).filter(d=>shipsFree(d)&&validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);renderInbox();if(data)render()}
+ try{const res=await fetch('data/amazon-discovery-archive.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Inbox will appear after the next successful scan');const payload=await res.json();inboxEvents=(Array.isArray(payload.events)?payload.events:[]).filter(d=>shipVisible(d)&&validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);renderInbox();if(data)render()}
  catch(e){$('inboxStatus').textContent='Could not load saved discoveries: '+e.message;$('inboxResults').innerHTML='<div class="empty">Could not load the archive. Try Refresh inbox.</div>'}
 }
 $('inboxRefresh').addEventListener('click',loadInbox);
@@ -468,7 +471,7 @@ const response=await fetch('data/amazon-candidates.json?ts='+Date.now(),{cache:'
 if(!response.ok)throw Error('Candidate feed not published yet');
 const payload=await response.json();candidatesLoaded=true;
 const now=Date.now(),all=Array.isArray(payload.candidates)?payload.candidates:[];
-const items=all.filter(d=>shipsFree(d)&&!isRejectedDeal(d.asin)&&validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);candidateAsins=new Set(items.map(d=>String(d.asin)));if(data)render();
+const items=all.filter(d=>shipVisible(d)&&!isRejectedDeal(d.asin)&&validUrl(d.url)&&Number.isFinite(Number(d.price))&&Number(d.price)>0);candidateAsins=new Set(items.map(d=>String(d.asin)));if(data)render();
 $('candidateStatus').textContent=items.length+' saved candidates from latest scan · last scan '+date(payload.updated)+' · unchanged offers suppressed';
 $('candidateResults').innerHTML=items.map(d=>compactCard(d,'candidate')).join('')||'<div class="empty">No new candidates in the latest scan.</div>';
 }catch(e){$('candidateStatus').textContent=e.message;$('candidateResults').innerHTML='<div class="empty">The next successful scanner and website publish will generate this feed.</div>'}
@@ -501,7 +504,7 @@ async function loadScanDrops(){
   const response=await fetch('data/amazon-deal-changes.json?ts='+Date.now(),{cache:'no-store'});
   if(!response.ok)throw Error('No changes feed');
   const feed=await response.json();
-  scanDropRows=(Array.isArray(feed.changes)?feed.changes:[]).filter(d=>shipsFree(d)&&validUrl(d.url)&&Number(d.dropPercent)>0).sort((a,b)=>Number(b.dropPercent)-Number(a.dropPercent));
+  scanDropRows=(Array.isArray(feed.changes)?feed.changes:[]).filter(d=>shipVisible(d)&&validUrl(d.url)&&Number(d.dropPercent)>0).sort((a,b)=>Number(b.dropPercent)-Number(a.dropPercent));
   renderScanDrops();
  }catch{scanDropRows=[];renderScanDrops()}
 }
@@ -525,7 +528,7 @@ const QUICK_SEARCH={best:'deals',drops:'price drop',lows:'deals',clearance:'clea
 async function loadQuickData(){
  if(quickDataLoaded)return;quickDataLoaded=true;
  try{const r=await fetch('data/amazon-price-history.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();trackedHistory=j&&typeof j.items==='object'?j.items:{}}}catch{trackedHistory={}}
- try{const r=await fetch('data/amazon-used-offers.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();usedOffersUpdated=j.updated||'';usedOffers=(Array.isArray(j.offers)?j.offers:[]).filter(d=>shipsFree(d)&&validUrl(d.url)&&Number(d.price)>0&&['Used','Open Box','Warehouse','Renewed'].includes(d.conditionLabel))}}catch{usedOffers=[]}
+ try{const r=await fetch('data/amazon-used-offers.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();usedOffersUpdated=j.updated||'';usedOffers=(Array.isArray(j.offers)?j.offers:[]).filter(d=>shipVisible(d)&&validUrl(d.url)&&Number(d.price)>0&&['Used','Open Box','Warehouse','Renewed'].includes(d.conditionLabel))}}catch{usedOffers=[]}
  if(data)render();
 }
 function quickEvidence(d){
@@ -547,7 +550,7 @@ function quickEvidence(d){
  if(since>e.drop){e.drop=since;e.dropLabel='↓ '+since+'% since last check'}
  return e;
 }
-function quickStrength(e,d){return (e.windowDays>=365?400:e.windowDays>=90?300:e.windowDays>=30?200:0)+(e.atLow&&e.wasHigher?60:0)+Math.min(e.drop,60)*2+Math.min(e.discount,90)+Number(d.dealScore||0)*0.5}
+function quickStrength(e,d){return (shipsFree(d)?0:-500)+(e.windowDays>=365?400:e.windowDays>=90?300:e.windowDays>=30?200:0)+(e.atLow&&e.wasHigher?60:0)+Math.min(e.drop,60)*2+Math.min(e.discount,90)+Number(d.dealScore||0)*0.5}
 function quickBadges(e){
  const b=[];if(e.lowLabel)b.push('<span class="good" title="Based on '+e.checks+' tracked price checks">'+esc(e.lowLabel)+'</span>');
  if(e.dropLabel)b.push('<span class="good">'+esc(e.dropLabel)+'</span>');
@@ -599,9 +602,9 @@ function render(){
  if(quickMode&&QUICK[quickMode]){$('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);renderQuick(latest,publishedCloud,cloudHidden);return}
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked,essentialOnly=$('essentials').checked;
  const filtered=all.filter(d=>(!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||Number(d.discountPercent)>=70)&&(!essentialOnly||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))));
- const sort=$('sort').value;filtered.sort((a,b)=>sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):sort==='oldest'?Date.parse(a.checkedAt)-Date.parse(b.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0));
+ const sort=$('sort').value;filtered.sort((a,b)=>(shipsFree(b)-shipsFree(a))||sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='newest'?Date.parse(b.checkedAt)-Date.parse(a.checkedAt):sort==='oldest'?Date.parse(a.checkedAt)-Date.parse(b.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0));
  $('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);
- $('status').textContent=filtered.length+($('showAllScanned').checked?' products shown from '+allScannedProducts.length+' full-feed products':$('newOnly').checked?' new finds from latest scan':' saved and recent discoveries')+' · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated)+' · Prime / free-shipping only'+(shipHiddenCount?' ('+shipHiddenCount+' third-party hidden)':'')+($('showAllScanned').checked?(allScannedFeedError?' · '+allScannedFeedError:' · Full feed: '+date(allScannedFeedUpdated)):'');
+ $('status').textContent=filtered.length+($('showAllScanned').checked?' products shown from '+allScannedProducts.length+' full-feed products':$('newOnly').checked?' new finds from latest scan':' saved and recent discoveries')+' · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated)+' · third-party sellers hidden'+(shipHiddenCount?' ('+shipHiddenCount+')':'')+($('showAllScanned').checked?(allScannedFeedError?' · '+allScannedFeedError:' · Full feed: '+date(allScannedFeedUpdated)):'');
  detailIndex=filtered;
  const emptyMessage=$('newOnly').checked
   ? 'No newly discovered candidates in this scan. Your existing deal leads are still available.'
@@ -612,8 +615,8 @@ function render(){
  const reset=$('resetDealFilters');if(reset)reset.addEventListener('click',()=>{$('newOnly').checked=false;$('deep').checked=false;$('essentials').checked=false;$('find').value='';$('category').value='';$('showAllScanned').checked=false;render()});
  renderQuickCounts(latest,publishedCloud,cloudHidden);
 }
-async function loadAllScanned(){try{const r=await fetch('data/amazon-all-products.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('not published');const j=await r.json();allScannedProducts=(Array.isArray(j.products)?j.products:[]).filter(d=>shipsFree(d)&&validUrl(d.url)&&Number(d.price)>0);allScannedFeedUpdated=j.updated||'';allScannedFeedError='';if(!allScannedProducts.length)allScannedFeedError='The full-product feed is empty.'}catch(e){allScannedProducts=[];allScannedFeedError='Full-product feed unavailable: '+e.message;allScannedFeedUpdated=''}}
-async function loadAmazon(){ $('status').textContent='Checking latest Amazon results…';try{const res=await fetch('data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Scan data not available');data=await res.json();{const raw=Array.isArray(data.deals)?data.deals:[];data.deals=raw.filter(shipsFree);shipHiddenCount=raw.length-data.deals.length}await loadAllScanned();try{const cr=await fetch('data/community-verified.json?ts='+Date.now(),{cache:'no-store'});if(cr.ok){const cj=await cr.json();verifiedCommunity=Array.isArray(cj.deals)?cj.deals:[]}}catch{}try{const wr=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(4500)});if(wr.ok){const wj=await wr.json();if(wj.format==='daily-drops-publisher-v1'&&Array.isArray(wj.deals))cloudCommunity=wj.deals;}}catch{}render();loadInbox();loadQuickData()}catch(e){$('status').textContent='Could not load Amazon scan: '+e.message;$('products').innerHTML='<div class="empty">Try refreshing in a moment.</div>'}}
+async function loadAllScanned(){try{const r=await fetch('data/amazon-all-products.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('not published');const j=await r.json();allScannedProducts=(Array.isArray(j.products)?j.products:[]).filter(d=>shipVisible(d)&&validUrl(d.url)&&Number(d.price)>0);allScannedFeedUpdated=j.updated||'';allScannedFeedError='';if(!allScannedProducts.length)allScannedFeedError='The full-product feed is empty.'}catch(e){allScannedProducts=[];allScannedFeedError='Full-product feed unavailable: '+e.message;allScannedFeedUpdated=''}}
+async function loadAmazon(){ $('status').textContent='Checking latest Amazon results…';try{const res=await fetch('data/amazon-deals.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('Scan data not available');data=await res.json();{const raw=Array.isArray(data.deals)?data.deals:[];data.deals=raw.filter(shipVisible);shipHiddenCount=raw.length-data.deals.length}await loadAllScanned();try{const cr=await fetch('data/community-verified.json?ts='+Date.now(),{cache:'no-store'});if(cr.ok){const cj=await cr.json();verifiedCommunity=Array.isArray(cj.deals)?cj.deals:[]}}catch{}try{const wr=await fetch('https://daily-drops-publisher.alcorn224.workers.dev/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(4500)});if(wr.ok){const wj=await wr.json();if(wj.format==='daily-drops-publisher-v1'&&Array.isArray(wj.deals))cloudCommunity=wj.deals;}}catch{}render();loadInbox();loadQuickData()}catch(e){$('status').textContent='Could not load Amazon scan: '+e.message;$('products').innerHTML='<div class="empty">Try refreshing in a moment.</div>'}}
 const chipItems=[['','All'],['ToysAndGames','Toys'],['HomeAndKitchen','Home'],['Electronics','Tech'],['Beauty','Beauty'],['Fashion','Fashion'],['OfficeProducts','Office'],['PetSupplies','Pets']];
 function updateChips(){$('categoryChips').innerHTML=chipItems.map(([value,label])=>'<button type="button" data-cat="'+esc(value)+'" aria-pressed="'+String($('category').value===value)+'">'+esc(label)+'</button>').join('')}
 $('categoryChips').addEventListener('click',e=>{const btn=e.target.closest('button[data-cat]');if(!btn)return;$('category').value=btn.dataset.cat;updateChips();render()});

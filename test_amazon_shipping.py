@@ -48,8 +48,8 @@ class ParseCarriesShipping(unittest.TestCase):
     def test_summary_counts(self):
         rows=[amazon_scan.parse(item(listing(40,100,m),asin='B00000000'+str(i)),'All','x') for i,m in enumerate(['Amazon.com','Joe',None])]
         s=amazon_scan.summarize_shipping(rows)
-        self.assertEqual((s['kept'],s['excludedThirdParty'],s['excludedUnknownSeller']),(1,1,1))
-        self.assertEqual(len(s['examplesExcluded']),2)
+        self.assertEqual((s['kept'],s['excludedThirdParty'],s['keptUnknownSeller']),(1,1,1))
+        self.assertEqual(len(s['examplesExcluded']),1)
 
 class ScanPublishesOnlyAmazonSold(unittest.TestCase):
     def test_feed_filter(self):
@@ -70,9 +70,9 @@ class ScanPublishesOnlyAmazonSold(unittest.TestCase):
                  patch.object(amazon_scan,'enrich',lambda *a,**k:0),patch.object(amazon_scan,'build_queue',lambda *a,**k:0),patch.object(amazon_scan,'PER_RUN',3):
                 amazon_scan.scan()
             j=json.loads((t/'d.json').read_text())
-            self.assertEqual([d['asin'] for d in j['deals']],['B0000000A1'])
+            self.assertEqual([d['asin'] for d in j['deals']],['B0000000A1','B0000000A3'])  # Amazon-sold first, unknown kept, third-party dropped
             self.assertEqual(j['shippingFilter']['excludedThirdParty'],1)
-            self.assertEqual(j['shippingFilter']['excludedUnknownSeller'],1)
+            self.assertEqual(j['shippingFilter']['keptUnknownSeller'],1)
             a=json.loads((t/'a.json').read_text())
             self.assertEqual(len(a['products']),3)  # full research feed keeps everything, with fields
 
