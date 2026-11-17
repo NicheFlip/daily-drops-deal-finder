@@ -1,7 +1,41 @@
 {
-  "updated": "2026-11-17T05:41:13.651286+00:00",
+  "updated": "2026-11-17T06:11:14.723411+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B07JPFHQKG",
+      "title": "DEWALT 20V MAX XR Jig Saw, 3,200 Blade Speed, Cordless, Brushless Motor, LED Light, Bare Tool Only (DCS334B)",
+      "category": "ToolsAndHomeImprovement",
+      "url": "https://www.amazon.com/dp/B07JPFHQKG",
+      "imageUrl": "https://m.media-amazon.com/images/I/51-jKoyzPrL._SL160_.jpg",
+      "price": 118.99,
+      "referencePrice": 239.0,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 122.0,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T06:11:14.723411+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
+    {
+      "asin": "B0G2WS4LH8",
+      "title": "Dokotoo Women's Striped Barrel Casual Pants High Waisted 2026 Elastic Drawstring Trousers Loose Fit Tapered Trendy Balloon Pants with Pockets Spring Resort Wear,Brown Stripe Small",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0G2WS4LH8",
+      "imageUrl": "https://m.media-amazon.com/images/I/41Qm0EuX27L._SL160_.jpg",
+      "price": 19.99,
+      "referencePrice": 49.99,
+      "discountPercent": 60,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-17T06:11:14.723411+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified"
+    },
     {
       "asin": "B002K9KVH6",
       "title": "Kleenex Professional Anti-Viral Facial Tissue, 3-Ply, 3/Pack | Each Kleenex facial tissue sheet is 3-ply, absorbent, soft and strong",
