@@ -20,6 +20,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Always scan from the newest published data, even for push-triggered runs.
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -64,19 +67,21 @@ jobs:
           set -euo pipefail
           git config user.name "deal-scanner[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/amazon-all-products.json data/amazon-scan-health.json data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json data/amazon-used-offers.json
-          if git diff --cached --quiet; then
-            echo "::error::No scan files changed. Refusing to report a successful refresh."
-            exit 1
-          fi
-          git commit -m "Refresh Amazon deal research"
+          # Generated files are copied over the newest main instead of being line-merged
+          # by a rebase (a JSON line merge can mix two scans and duplicate products).
+          FILES="data/amazon-all-products.json data/amazon-scan-health.json data/amazon-deals.json data/amazon-scan-state.json data/amazon-price-history.json data/amazon-deal-changes.json data/amazon-candidates.json data/amazon-candidate-state.json data/amazon-discovery-archive.json data/price-history-public.json data/amazon-used-offers.json"
+          mkdir -p /tmp/scan-out
+          for f in $FILES; do cp "$f" /tmp/scan-out/; done
           for attempt in 1 2 3 4; do
             git fetch origin main
-            if ! git rebase -X theirs origin/main; then
-              git rebase --abort || true
-              echo "::error::Could not reconcile scanner changes with main"
+            git reset --hard origin/main
+            for f in $FILES; do cp "/tmp/scan-out/$(basename "$f")" "$f"; done
+            git add $FILES
+            if git diff --cached --quiet; then
+              echo "::error::No scan files changed. Refusing to report a successful refresh."
               exit 1
             fi
+            git commit -m "Refresh Amazon deal research"
             if git push origin HEAD:main; then
               echo "Scanner feed pushed successfully on attempt $attempt"
               break
