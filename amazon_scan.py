@@ -453,9 +453,19 @@ def scan():
     newly=sum(1 for d in observed.values() if d.get('priceEvidence') in ('first_observation','observed_reduction'))
     # Retained still-fresh leads may predate the evidence schema. Never
     # preserve a legacy score or imply a witnessed reduction for those leads.
+    try:recorded=json.loads(HISTORY_PATH.read_text()).get('items',{})
+    except (OSError,ValueError,AttributeError):recorded={}
     for asin, deal in fresh.items():
         if asin not in observed:
-            deal['priceEvidence']='first_observation'
+            # A retained lead is only "first seen" if price history has nothing earlier.
+            pts=[p for p in ((recorded.get(asin) or {}).get('points') or []) if isinstance(p,list) and len(p)==2]
+            earlier=[p for p in pts if str(p[0])<str(deal.get('checkedAt',''))]
+            deal['priceEvidence']='repeat_observation' if earlier else 'first_observation'
+            if pts:
+                prices=[float(p[1]) for p in pts]+[float(deal['price'])]
+                prev=next((p for p in reversed(pts) if abs(float(p[1])-float(deal['price']))>0.004),None)
+                deal.update({'observedLow90d':min(prices),'observedHigh90d':max(prices),'firstSeenAt':pts[0][0],
+                  'previousDifferentPrice':float(prev[1]) if prev else None,'previousDifferentPriceAt':prev[0] if prev else None})
             deal['priorObservedPrice']=None
             deal['newObservedLow']=False
             deal['observedPriceDropPercent']=0
