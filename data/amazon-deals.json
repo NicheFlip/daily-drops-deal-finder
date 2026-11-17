@@ -1,794 +1,54 @@
 {
-  "updated": "2026-11-17T22:11:14.159430+00:00",
+  "updated": "2026-11-17T22:41:14.057756+00:00",
   "status": "ok",
-  "scannedProducts": 1574,
-  "requestsCompleted": 159,
-  "uniqueProductsSeen": 1563,
+  "scannedProducts": 110,
+  "requestsCompleted": 11,
+  "uniqueProductsSeen": 110,
   "searches": [
     {
       "category": "All",
       "keyword": "baby wipes",
-      "page": 2
+      "page": 3
     },
     {
       "category": "All",
       "keyword": "dishwasher pods",
-      "page": 2
+      "page": 3
     },
     {
       "category": "All",
       "keyword": "cleaning wipes",
-      "page": 2
+      "page": 3
     },
     {
       "category": "All",
       "keyword": "hand soap",
-      "page": 2
+      "page": 3
     },
     {
       "category": "All",
       "keyword": "toothpaste",
-      "page": 2
+      "page": 3
     },
     {
       "category": "All",
       "keyword": "shampoo",
-      "page": 2
+      "page": 3
     },
     {
       "category": "All",
       "keyword": "pet food",
-      "page": 3
+      "page": 4
     },
     {
       "category": "All",
       "keyword": "food storage bags",
-      "page": 3
+      "page": 4
     },
     {
       "category": "All",
       "keyword": "batteries AA",
-      "page": 3
-    },
-    {
-      "category": "All",
-      "keyword": "dryer sheets",
-      "page": 3
-    },
-    {
-      "category": "All",
-      "keyword": "facial tissues",
-      "page": 3
-    },
-    {
-      "category": "All",
-      "keyword": "body wash",
-      "page": 3
-    },
-    {
-      "category": "All",
-      "keyword": "breakfast cereal",
       "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "snack variety pack",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "water filters",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "laundry scent boosters",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "laundry detergent",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "paper towels",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "toilet paper",
-      "page": 5
-    },
-    {
-      "category": "All",
-      "keyword": "dish soap",
-      "page": 5
-    },
-    {
-      "category": "All",
-      "keyword": "trash bags",
-      "page": 5
-    },
-    {
-      "category": "All",
-      "keyword": "coffee pods",
-      "page": 5
-    },
-    {
-      "category": "All",
-      "keyword": "ground coffee",
-      "page": 5
-    },
-    {
-      "category": "All",
-      "keyword": "diapers",
-      "page": 5
-    },
-    {
-      "category": "All",
-      "keyword": "early black friday deals",
-      "page": 1
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "black friday kitchen deals",
-      "page": 1
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "black friday toys",
-      "page": 1
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "black friday vacuum",
-      "page": 1
-    },
-    {
-      "category": "All",
-      "keyword": "black friday household essentials",
-      "page": 1
-    },
-    {
-      "category": "All",
-      "keyword": "black friday coffee makers",
-      "page": 1
-    },
-    {
-      "category": "All",
-      "keyword": "black friday gifts",
-      "page": 2
-    },
-    {
-      "category": "All",
-      "keyword": "electric bikes",
-      "page": 2
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "outdoor toys",
-      "page": 2
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "educational toys",
-      "page": 2
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "LEGO building sets",
-      "page": 2
-    },
-    {
-      "category": "Beauty",
-      "keyword": "skin care gift sets",
-      "page": 2
-    },
-    {
-      "category": "Beauty",
-      "keyword": "hair styling tools",
-      "page": 3
-    },
-    {
-      "category": "Beauty",
-      "keyword": "makeup gift sets",
-      "page": 3
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "robot vacuums",
-      "page": 3
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "air fryers",
-      "page": 3
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "blenders",
-      "page": 3
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "bedding sets",
-      "page": 3
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "storage organizers",
-      "page": 4
-    },
-    {
-      "category": "Electronics",
-      "keyword": "portable chargers",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "cleaning supplies",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "coffee",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "paper products",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "pet supplies",
-      "page": 4
-    },
-    {
-      "category": "All",
-      "keyword": "best selling household essentials",
-      "page": 5
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "ride on toys for kids",
-      "page": 5
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "electric ride on cars for kids",
-      "page": 5
-    },
-    {
-      "category": "All",
-      "keyword": "electric scooters",
-      "page": 5
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "kitchen appliances",
-      "page": 5
-    },
-    {
-      "category": "HomeAndKitchen",
-      "keyword": "home organization",
-      "page": 5
-    },
-    {
-      "category": "Beauty",
-      "keyword": "beauty tools",
-      "page": 1
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "holiday gifts",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "women pants",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "shoes",
-      "page": 1
-    },
-    {
-      "category": "ToysAndGames",
-      "keyword": "toys and games",
-      "page": 1
-    },
-    {
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "smart thermostats",
-      "page": 1
-    },
-    {
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "door locks",
-      "page": 1
-    },
-    {
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "extension cords",
-      "page": 1
-    },
-    {
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "shop vacuums",
-      "page": 1
-    },
-    {
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "faucets",
-      "page": 1
-    },
-    {
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "shower heads",
-      "page": 1
-    },
-    {
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "tool storage",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "patio furniture",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "grills",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "solar lights",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "garden hoses",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "planters",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "string lights",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "leaf blowers",
-      "page": 1
-    },
-    {
-      "category": "GardenAndOutdoor",
-      "keyword": "pressure washers",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "camping gear",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "yoga mats",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "dumbbells",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "resistance bands",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "bikes",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "coolers",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "hiking backpacks",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "fishing gear",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "exercise bikes",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "sleds",
-      "page": 1
-    },
-    {
-      "category": "SportsAndOutdoors",
-      "keyword": "golf accessories",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "cat litter",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "dog toys",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "cat trees",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "dog treats",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "pet carriers",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "aquarium supplies",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "dog harness",
-      "page": 1
-    },
-    {
-      "category": "PetSupplies",
-      "keyword": "pet grooming",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "strollers",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "car seats",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "baby monitors",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "high chairs",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "baby bottles",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "diaper bags",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "baby toys",
-      "page": 1
-    },
-    {
-      "category": "Baby",
-      "keyword": "nursery decor",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "office chairs",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "desk organizers",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "printers",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "notebooks",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "pens",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "label makers",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "standing desks",
-      "page": 1
-    },
-    {
-      "category": "OfficeProducts",
-      "keyword": "shredders",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "car accessories",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "car vacuums",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "jump starters",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "tire inflators",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "car phone mounts",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "car seat covers",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "car cleaning",
-      "page": 1
-    },
-    {
-      "category": "Automotive",
-      "keyword": "floor mats",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "men clothing",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "hoodies",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "leggings",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "socks",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "pajamas",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "backpacks",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "wallets",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "watches",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "jewelry",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "sunglasses",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "kids clothing",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "boots",
-      "page": 1
-    },
-    {
-      "category": "Fashion",
-      "keyword": "slippers",
-      "page": 1
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
-    },
-    {
-      "category": "Watched ASINs",
-      "keyword": "GetItems",
-      "count": 10
     },
     {
       "category": "Watched ASINs",
@@ -801,297 +61,33 @@
       "count": 10
     }
   ],
-  "runNumber": 114,
-  "discoveryRequestsPlanned": 130,
-  "watchRequestsCompleted": 29,
-  "watchedAsinsRequested": 290,
-  "requestBudget": 160,
-  "requestsAttempted": 160,
-  "durationSeconds": 176.3,
-  "stoppedEarly": "budget",
+  "runNumber": 115,
+  "discoveryRequestsPlanned": 9,
+  "watchRequestsCompleted": 2,
+  "watchedAsinsRequested": 20,
+  "requestBudget": 11,
+  "requestsAttempted": 11,
+  "durationSeconds": 11.5,
+  "stoppedEarly": null,
   "errors": [],
   "deals": [
     {
-      "asin": "B0GKJZ864R",
-      "title": "HP DeskJet 2955 Color Inkjet Printer | Wireless | All-in-One | Easy Home Printing | Color Documents | Mobile Compatibility | Print, Scan & Copy | Ideal Home Use",
+      "asin": "B00L26Y0R0",
+      "title": "Freshpet Dog Food, Multi-Protein Dog Meals, 3 lb.",
       "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0GKJZ864R",
-      "imageUrl": "https://m.media-amazon.com/images/I/41nRKLHEx0L._SL160_.jpg",
-      "price": 49.89,
-      "referencePrice": 89.99,
-      "referenceType": "List Price:",
-      "discountPercent": 45,
-      "category": "OfficeProducts",
-      "keyword": "printers",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 49.89,
-      "observedHigh90d": 49.89,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 5
-    },
-    {
-      "asin": "B0CWS44STK",
-      "title": "Five Star Spiral Notebook, 2 Subject, College Ruled Paper, 6\" x 9.5\", 80 Sheets, Blue (840029CG1)",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0CWS44STK",
-      "imageUrl": "https://m.media-amazon.com/images/I/41dwGQfiBWL._SL160_.jpg",
-      "price": 2.79,
-      "referencePrice": 4.99,
-      "referenceType": "List Price:",
-      "discountPercent": 44,
-      "category": "OfficeProducts",
-      "keyword": "notebooks",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0FDN9C9J6",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 2.79,
-      "observedHigh90d": 2.79,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 4
-    },
-    {
-      "asin": "B0FMBTJLX6",
-      "title": "Canon PIXMA TS6520 Wireless Color Inkjet Printer, 1.42\" OLED Display, White | Print, Scan, Copy, 1.42\u201d OLED Display, Intuitive Control Panel, Compact for Home Design",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0FMBTJLX6",
-      "imageUrl": "https://m.media-amazon.com/images/I/21otfD1pi6L._SL160_.jpg",
-      "price": 79.0,
-      "referencePrice": 140.99,
-      "referenceType": "List Price:",
-      "discountPercent": 44,
-      "category": "OfficeProducts",
-      "keyword": "printers",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 79.0,
-      "observedHigh90d": 79.0,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 4
-    },
-    {
-      "asin": "B0FMBGXC2C",
-      "title": "Canon PIXMA TS4320 \u2013 Wireless Color Inkjet Printer with Print, Copy, Scan | Cost Efficient Multi-Function Photo Printer, Copier, Scanner for Home Use, Compact Design, Easy Setup",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0FMBGXC2C",
-      "imageUrl": "https://m.media-amazon.com/images/I/21pMhQdzPnL._SL160_.jpg",
-      "price": 59.99,
-      "referencePrice": 107.99,
-      "referenceType": "List Price:",
-      "discountPercent": 44,
-      "category": "OfficeProducts",
-      "keyword": "printers",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 59.99,
-      "observedHigh90d": 59.99,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 4
-    },
-    {
-      "asin": "B01LXW28II",
-      "title": "STANLEY Shop Vacuum 5 Gallon 4 HP Wet Dry Vac with Blower Function SL18115 | Stainless Steel Tank Wet/Dry/Blow 3-in-1 85CFM Airflow 15ft Reach Various Accessories Ideal for Garage/",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B01LXW28II",
-      "imageUrl": "https://m.media-amazon.com/images/I/41yLwIi4haL._SL160_.jpg",
-      "price": 49.39,
-      "referencePrice": 84.99,
-      "referenceType": "List Price:",
-      "discountPercent": 42,
-      "category": "ToolsAndHomeImprovement",
-      "keyword": "shop vacuums",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0G4TXDW66",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 49.39,
-      "observedHigh90d": 49.39,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 2
-    },
-    {
-      "asin": "B003O2RXUQ",
-      "title": "Five Star Spiral Notebook + Study App, 5 Subject, College Ruled Paper, 8-1/2\" x 11\", 200 Sheets, Fights Ink Bleed, Water Resistant Cover, Black (72081)",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B003O2RXUQ",
-      "imageUrl": "https://m.media-amazon.com/images/I/518UOyAgaZL._SL160_.jpg",
-      "price": 6.97,
-      "referencePrice": 11.99,
-      "referenceType": "List Price:",
-      "discountPercent": 42,
-      "category": "OfficeProducts",
-      "keyword": "notebooks",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0FKT16KWV",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 6.97,
-      "observedHigh90d": 6.97,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 2
-    },
-    {
-      "asin": "B0C24NCRHX",
-      "title": "The Children's Place,Long Sleeve Thermal Henley Shirt,Medium (7/8)",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0C24NCRHX",
-      "imageUrl": "https://m.media-amazon.com/images/I/51g6JhhAFJL._SL160_.jpg",
-      "price": 14.38,
-      "referencePrice": 24.95,
-      "referenceType": "List Price:",
-      "discountPercent": 42,
-      "category": "Fashion",
-      "keyword": "kids clothing",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0FLZLR5SS",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "dealBadge": "Limited time deal",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 14.38,
-      "observedHigh90d": 14.38,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 2
-    },
-    {
-      "asin": "B008J2GP9G",
-      "title": "OGX Renewing + Argan Oil of Morocco Repairing Shampoo, 25.4 fl. oz",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B008J2GP9G",
-      "imageUrl": "https://m.media-amazon.com/images/I/31x-Z-O0tmL._SL160_.jpg",
-      "price": 9.84,
-      "referencePrice": 16.39,
-      "referenceType": "List Price:",
-      "discountPercent": 40,
+      "url": "https://www.amazon.com/dp/B00L26Y0R0",
+      "imageUrl": "https://m.media-amazon.com/images/I/51f7mCrCYGL._SL160_.jpg",
+      "price": 16.79,
+      "referencePrice": 41.98,
+      "referenceType": "Typical price:",
+      "discountPercent": 60,
       "category": "All",
-      "keyword": "shampoo",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "keyword": "pet food",
+      "checkedAt": "2026-11-17T22:41:14.057756+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0H26VN3N8",
+      "parentAsin": "B0CGHDTCMF",
       "seller": "Amazon.com",
       "sellerId": "ATVPDKIKX0DER",
       "soldByAmazon": true,
@@ -1104,91 +100,14 @@
       "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
-      "observedLow90d": 9.84,
-      "observedHigh90d": 9.84,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observedLow90d": 16.79,
+      "observedHigh90d": 16.79,
+      "firstSeenAt": "2026-11-17T22:41:14.057756+00:00",
       "observationCount": 1,
       "priceChangeCount": 1,
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
-      "dealScore": 0
-    },
-    {
-      "asin": "B071NVVNK3",
-      "title": "OGX Thick & Full + Biotin & Collagen Volumizing Shampoo, 25.4 fl. oz",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B071NVVNK3",
-      "imageUrl": "https://m.media-amazon.com/images/I/31Wtq7-WRmL._SL160_.jpg",
-      "price": 9.84,
-      "referencePrice": 16.39,
-      "referenceType": "List Price:",
-      "discountPercent": 40,
-      "category": "All",
-      "keyword": "shampoo",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0H272S86G",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 9.84,
-      "observedHigh90d": 9.84,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 0
-    },
-    {
-      "asin": "B07NNTCV5K",
-      "title": "PUMA mens 8 Pack Low Cut Running Socks, Black, 10 13 US | Arch Support and Cushioned Footbed",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B07NNTCV5K",
-      "imageUrl": "https://m.media-amazon.com/images/I/41SJVbg+jtS._SL160_.jpg",
-      "price": 8.39,
-      "referencePrice": 14.0,
-      "referenceType": "List Price:",
-      "discountPercent": 40,
-      "category": "Fashion",
-      "keyword": "socks",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B07PXTYMHW",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "dealBadge": "Early Black Friday Deal",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 8.39,
-      "observedHigh90d": 8.39,
-      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
-      "observationCount": 1,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 0
+      "dealScore": 20
     },
     {
       "asin": "B00262227E",
@@ -1216,7 +135,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 6.98,
+      "priorObservedPrice": null,
       "previousDifferentPrice": 4.09,
       "previousDifferentPriceAt": "2026-11-14T00:52:55.293274+00:00",
       "observedLow90d": 4.09,
@@ -1226,7 +145,7 @@
       "priceChangeCount": 3,
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
-      "dealScore": 30
+      "dealScore": 20
     },
     {
       "asin": "B08J8GZXKZ",
@@ -1255,7 +174,7 @@
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "dealBadge": "Early Black Friday Deal",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 11.49,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 11.49,
@@ -2110,44 +1029,6 @@
       "dealScore": 20
     },
     {
-      "asin": "B00L26Y0R0",
-      "title": "Freshpet Dog Food, Multi-Protein Dog Meals, 3 lb.",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B00L26Y0R0",
-      "imageUrl": "https://m.media-amazon.com/images/I/51f7mCrCYGL._SL160_.jpg",
-      "price": 16.79,
-      "referencePrice": 41.98,
-      "referenceType": "Typical price:",
-      "discountPercent": 60,
-      "category": "All",
-      "keyword": "pet food",
-      "checkedAt": "2026-11-17T18:41:14.740183+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0CGHDTCMF",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "first_observation",
-      "priorObservedPrice": null,
-      "previousDifferentPrice": null,
-      "previousDifferentPriceAt": null,
-      "observedLow90d": 16.79,
-      "observedHigh90d": 16.79,
-      "firstSeenAt": "2026-11-17T18:15:44.721460+00:00",
-      "observationCount": 2,
-      "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 20
-    },
-    {
       "asin": "B0G4XRP464",
       "title": "Amazon Fire TV Stick 4K (newest model), simple 4K streaming, new Fire TV Remote, all your apps in one place, free & live TV, find shows faster with Alexa+",
       "retailer": "Amazon",
@@ -2474,7 +1355,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 2.87,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 2.87,
@@ -2968,7 +1849,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 7.99,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 7.99,
@@ -3328,43 +2209,6 @@
       "dealScore": 14
     },
     {
-      "asin": "B07MG5YJLT",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap, Rain Water Scent, 12.5 Fl Oz",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B07MG5YJLT",
-      "imageUrl": "https://m.media-amazon.com/images/I/41c7JaxuWbL._SL160_.jpg",
-      "price": 3.71,
-      "referencePrice": 6.49,
-      "referenceType": "List Price:",
-      "discountPercent": 43,
-      "category": "All",
-      "keyword": "hand soap",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 3.71,
-      "previousDifferentPrice": 1.49,
-      "previousDifferentPriceAt": "2026-11-17T18:41:14.740183+00:00",
-      "observedLow90d": 1.49,
-      "observedHigh90d": 3.71,
-      "firstSeenAt": "2026-11-16T23:11:15.249988+00:00",
-      "observationCount": 17,
-      "priceChangeCount": 10,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 13
-    },
-    {
       "asin": "B081DNWG7N",
       "title": "Mr. Coffee Programmable Coffee Maker, Glass Carafe, Black, 5-Count | Programmable Brew Later, Compact Design, Ergonomic Carafe with Ounce Markings, 25 oz. Capacity",
       "retailer": "Amazon",
@@ -3375,8 +2219,8 @@
       "referenceType": "Typical price:",
       "discountPercent": 52,
       "category": "All",
-      "keyword": "black friday coffee makers",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "keyword": "Watched ASIN",
+      "checkedAt": "2026-11-17T22:41:14.057756+00:00",
       "couponVerified": false,
       "possibleGlitch": false,
       "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
@@ -3396,7 +2240,7 @@
       "observedLow90d": 22.99,
       "observedHigh90d": 22.99,
       "firstSeenAt": "2026-11-17T21:11:13.636509+00:00",
-      "observationCount": 3,
+      "observationCount": 4,
       "priceChangeCount": 1,
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
@@ -3478,44 +2322,6 @@
       "dealScore": 12
     },
     {
-      "asin": "B08KKCV4D5",
-      "title": "Softsoap Antibacterial Hand Soap, Cool Splash Scent, 11.25 fl oz (6 Pack) | Paraben-Free, Phthalate-Free, Washes Away Germs, Bathroom Hand Soap, Kitchen Hand Soap, Daily Handwashin",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B08KKCV4D5",
-      "imageUrl": "https://m.media-amazon.com/images/I/41G16S+j0WL._SL160_.jpg",
-      "price": 10.52,
-      "referencePrice": 17.94,
-      "referenceType": "List Price:",
-      "discountPercent": 41,
-      "category": "All",
-      "keyword": "Watched ASIN",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0G6DN1C78",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 10.52,
-      "previousDifferentPrice": 18.72,
-      "previousDifferentPriceAt": "2026-11-17T16:00:33.701805+00:00",
-      "observedLow90d": 10.32,
-      "observedHigh90d": 18.72,
-      "firstSeenAt": "2026-11-13T17:09:55.625787+00:00",
-      "observationCount": 20,
-      "priceChangeCount": 8,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 11
-    },
-    {
       "asin": "B0178ENI4K",
       "title": "ALOHA Organic Plant Based Protein Bar | Peanut Butter Chocolate Chip, 12 Ct | 14g Plant-Based Protein, 10g Fiber, 5g Sugar | No Sucralose or Stevia | Non-GMO, Vegan & Dairy Free",
       "retailer": "Amazon",
@@ -3580,7 +2386,7 @@
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "dealBadge": "Early Black Friday Deal",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 11.99,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 11.99,
@@ -3618,7 +2424,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 10.0,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 10.0,
@@ -3657,7 +2463,7 @@
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "dealBadge": "Early Black Friday Deal",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 199.99,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 199.99,
@@ -3665,81 +2471,6 @@
       "firstSeenAt": "2026-11-17T21:41:14.192797+00:00",
       "observationCount": 2,
       "priceChangeCount": 1,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 10
-    },
-    {
-      "asin": "B0D5NVGB3V",
-      "title": "Downy Light Laundry Scent Booster Beads, Ocean Mist Scent, 30.1 oz, In-Wash Fabric Beads Designed to Be Gentle with a Light Boost of Scent, No Heavy Perfumes",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0D5NVGB3V",
-      "imageUrl": "https://m.media-amazon.com/images/I/41N0OFovAlL._SL160_.jpg",
-      "price": 11.46,
-      "referencePrice": 18.99,
-      "referenceType": "List Price:",
-      "discountPercent": 40,
-      "category": "All",
-      "keyword": "Watched ASIN",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "parentAsin": "B0D5MQX81Z",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 11.46,
-      "previousDifferentPrice": 18.97,
-      "previousDifferentPriceAt": "2026-11-14T01:00:47.367128+00:00",
-      "observedLow90d": 11.46,
-      "observedHigh90d": 18.97,
-      "firstSeenAt": "2026-11-13T17:15:34.657441+00:00",
-      "observationCount": 16,
-      "priceChangeCount": 3,
-      "observedPriceDropPercent": 0,
-      "newObservedLow": false,
-      "dealScore": 10
-    },
-    {
-      "asin": "B0B96LXQ49",
-      "title": "Head & Shoulders Classic Clean Anti-Dandruff Shampoo, 72-Hour Dandruff Protection, 1% Pyrithione Zinc, 28.2 fl oz",
-      "retailer": "Amazon",
-      "url": "https://www.amazon.com/dp/B0B96LXQ49",
-      "imageUrl": "https://m.media-amazon.com/images/I/41n4Vmlm+1L._SL160_.jpg",
-      "price": 8.98,
-      "referencePrice": 14.99,
-      "referenceType": "List Price:",
-      "discountPercent": 40,
-      "category": "All",
-      "keyword": "Watched ASIN",
-      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
-      "couponVerified": false,
-      "possibleGlitch": false,
-      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
-      "seller": "Amazon.com",
-      "sellerId": "ATVPDKIKX0DER",
-      "soldByAmazon": true,
-      "fulfilledByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon",
-      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
-      "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 8.98,
-      "previousDifferentPrice": 11.12,
-      "previousDifferentPriceAt": "2026-11-12T16:50:40.970773+00:00",
-      "observedLow90d": 8.98,
-      "observedHigh90d": 11.12,
-      "firstSeenAt": "2026-11-12T16:50:40.970773+00:00",
-      "observationCount": 14,
-      "priceChangeCount": 2,
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
       "dealScore": 10
@@ -4992,7 +3723,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 16.14,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 16.14,
@@ -5413,7 +4144,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 5.86,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 5.86,
@@ -5642,7 +4373,7 @@
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "dealBadge": "Early Black Friday Deal",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 14.99,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 14.99,
@@ -5679,7 +4410,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 21.49,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 21.49,
@@ -6212,7 +4943,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 11.69,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 11.69,
@@ -6251,13 +4982,50 @@
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "dealBadge": "Early Black Friday Deal",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 59.99,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 59.99,
       "observedHigh90d": 59.99,
       "firstSeenAt": "2026-11-12T16:15:03.473945+00:00",
       "observationCount": 16,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 5
+    },
+    {
+      "asin": "B0GKJZ864R",
+      "title": "HP DeskJet 2955 Color Inkjet Printer | Wireless | All-in-One | Easy Home Printing | Color Documents | Mobile Compatibility | Print, Scan & Copy | Ideal Home Use",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0GKJZ864R",
+      "imageUrl": "https://m.media-amazon.com/images/I/41nRKLHEx0L._SL160_.jpg",
+      "price": 49.89,
+      "referencePrice": 89.99,
+      "referenceType": "List Price:",
+      "discountPercent": 45,
+      "category": "OfficeProducts",
+      "keyword": "printers",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 49.89,
+      "observedHigh90d": 49.89,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
       "priceChangeCount": 1,
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
@@ -6337,6 +5105,118 @@
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
       "dealScore": 5
+    },
+    {
+      "asin": "B0CWS44STK",
+      "title": "Five Star Spiral Notebook, 2 Subject, College Ruled Paper, 6\" x 9.5\", 80 Sheets, Blue (840029CG1)",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0CWS44STK",
+      "imageUrl": "https://m.media-amazon.com/images/I/41dwGQfiBWL._SL160_.jpg",
+      "price": 2.79,
+      "referencePrice": 4.99,
+      "referenceType": "List Price:",
+      "discountPercent": 44,
+      "category": "OfficeProducts",
+      "keyword": "notebooks",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0FDN9C9J6",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 2.79,
+      "observedHigh90d": 2.79,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 4
+    },
+    {
+      "asin": "B0FMBTJLX6",
+      "title": "Canon PIXMA TS6520 Wireless Color Inkjet Printer, 1.42\" OLED Display, White | Print, Scan, Copy, 1.42\u201d OLED Display, Intuitive Control Panel, Compact for Home Design",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0FMBTJLX6",
+      "imageUrl": "https://m.media-amazon.com/images/I/21otfD1pi6L._SL160_.jpg",
+      "price": 79.0,
+      "referencePrice": 140.99,
+      "referenceType": "List Price:",
+      "discountPercent": 44,
+      "category": "OfficeProducts",
+      "keyword": "printers",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 79.0,
+      "observedHigh90d": 79.0,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 4
+    },
+    {
+      "asin": "B0FMBGXC2C",
+      "title": "Canon PIXMA TS4320 \u2013 Wireless Color Inkjet Printer with Print, Copy, Scan | Cost Efficient Multi-Function Photo Printer, Copier, Scanner for Home Use, Compact Design, Easy Setup",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0FMBGXC2C",
+      "imageUrl": "https://m.media-amazon.com/images/I/21pMhQdzPnL._SL160_.jpg",
+      "price": 59.99,
+      "referencePrice": 107.99,
+      "referenceType": "List Price:",
+      "discountPercent": 44,
+      "category": "OfficeProducts",
+      "keyword": "printers",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 59.99,
+      "observedHigh90d": 59.99,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 4
     },
     {
       "asin": "B004A2QTRC",
@@ -6480,7 +5360,7 @@
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "dealBadge": "Early Black Friday Deal",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 359.95,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 359.95,
@@ -6488,6 +5368,43 @@
       "firstSeenAt": "2026-11-17T21:41:14.192797+00:00",
       "observationCount": 2,
       "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 3
+    },
+    {
+      "asin": "B07MG5YJLT",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap, Rain Water Scent, 12.5 Fl Oz",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B07MG5YJLT",
+      "imageUrl": "https://m.media-amazon.com/images/I/41c7JaxuWbL._SL160_.jpg",
+      "price": 3.71,
+      "referencePrice": 6.49,
+      "referenceType": "List Price:",
+      "discountPercent": 43,
+      "category": "All",
+      "keyword": "hand soap",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "repeat_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": 1.49,
+      "previousDifferentPriceAt": "2026-11-17T18:41:14.740183+00:00",
+      "observedLow90d": 1.49,
+      "observedHigh90d": 3.71,
+      "firstSeenAt": "2026-11-16T23:11:15.249988+00:00",
+      "observationCount": 17,
+      "priceChangeCount": 10,
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
       "dealScore": 3
@@ -6517,7 +5434,7 @@
       "shippingStatus": "amazon",
       "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
       "priceEvidence": "repeat_observation",
-      "priorObservedPrice": 15.39,
+      "priorObservedPrice": null,
       "previousDifferentPrice": null,
       "previousDifferentPriceAt": null,
       "observedLow90d": 15.39,
@@ -6528,81 +5445,359 @@
       "observedPriceDropPercent": 0,
       "newObservedLow": false,
       "dealScore": 3
+    },
+    {
+      "asin": "B01LXW28II",
+      "title": "STANLEY Shop Vacuum 5 Gallon 4 HP Wet Dry Vac with Blower Function SL18115 | Stainless Steel Tank Wet/Dry/Blow 3-in-1 85CFM Airflow 15ft Reach Various Accessories Ideal for Garage/",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B01LXW28II",
+      "imageUrl": "https://m.media-amazon.com/images/I/41yLwIi4haL._SL160_.jpg",
+      "price": 49.39,
+      "referencePrice": 84.99,
+      "referenceType": "List Price:",
+      "discountPercent": 42,
+      "category": "ToolsAndHomeImprovement",
+      "keyword": "shop vacuums",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0G4TXDW66",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 49.39,
+      "observedHigh90d": 49.39,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 2
+    },
+    {
+      "asin": "B003O2RXUQ",
+      "title": "Five Star Spiral Notebook + Study App, 5 Subject, College Ruled Paper, 8-1/2\" x 11\", 200 Sheets, Fights Ink Bleed, Water Resistant Cover, Black (72081)",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B003O2RXUQ",
+      "imageUrl": "https://m.media-amazon.com/images/I/518UOyAgaZL._SL160_.jpg",
+      "price": 6.97,
+      "referencePrice": 11.99,
+      "referenceType": "List Price:",
+      "discountPercent": 42,
+      "category": "OfficeProducts",
+      "keyword": "notebooks",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0FKT16KWV",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 6.97,
+      "observedHigh90d": 6.97,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 2
+    },
+    {
+      "asin": "B0C24NCRHX",
+      "title": "The Children's Place,Long Sleeve Thermal Henley Shirt,Medium (7/8)",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0C24NCRHX",
+      "imageUrl": "https://m.media-amazon.com/images/I/51g6JhhAFJL._SL160_.jpg",
+      "price": 14.38,
+      "referencePrice": 24.95,
+      "referenceType": "List Price:",
+      "discountPercent": 42,
+      "category": "Fashion",
+      "keyword": "kids clothing",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0FLZLR5SS",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "dealBadge": "Limited time deal",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 14.38,
+      "observedHigh90d": 14.38,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 2
+    },
+    {
+      "asin": "B00ADRH2OM",
+      "title": "OGX Thick & Full + Biotin & Collagen Volumizing Shampoo, Nutrient-Infused Hair Shampoo with Vitamin B7 Biotin Gives Hair Volume & Body for 72+ Hours, Sulfate-Free Surfactants, 13 f",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B00ADRH2OM",
+      "imageUrl": "https://m.media-amazon.com/images/I/419dPHBs6sL._SL160_.jpg",
+      "price": 5.45,
+      "referencePrice": 9.29,
+      "referenceType": "List Price:",
+      "discountPercent": 41,
+      "category": "All",
+      "keyword": "shampoo",
+      "checkedAt": "2026-11-17T22:41:14.057756+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0H272S86G",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "repeat_observation",
+      "priorObservedPrice": 5.45,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 5.45,
+      "observedHigh90d": 5.45,
+      "firstSeenAt": "2026-11-17T18:15:44.721460+00:00",
+      "observationCount": 6,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 1
+    },
+    {
+      "asin": "B08KKCV4D5",
+      "title": "Softsoap Antibacterial Hand Soap, Cool Splash Scent, 11.25 fl oz (6 Pack) | Paraben-Free, Phthalate-Free, Washes Away Germs, Bathroom Hand Soap, Kitchen Hand Soap, Daily Handwashin",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B08KKCV4D5",
+      "imageUrl": "https://m.media-amazon.com/images/I/41G16S+j0WL._SL160_.jpg",
+      "price": 10.52,
+      "referencePrice": 17.94,
+      "referenceType": "List Price:",
+      "discountPercent": 41,
+      "category": "All",
+      "keyword": "Watched ASIN",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0G6DN1C78",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "repeat_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": 18.72,
+      "previousDifferentPriceAt": "2026-11-17T16:00:33.701805+00:00",
+      "observedLow90d": 10.32,
+      "observedHigh90d": 18.72,
+      "firstSeenAt": "2026-11-13T17:09:55.625787+00:00",
+      "observationCount": 20,
+      "priceChangeCount": 8,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 1
+    },
+    {
+      "asin": "B008J2GP9G",
+      "title": "OGX Renewing + Argan Oil of Morocco Repairing Shampoo, 25.4 fl. oz",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B008J2GP9G",
+      "imageUrl": "https://m.media-amazon.com/images/I/31x-Z-O0tmL._SL160_.jpg",
+      "price": 9.84,
+      "referencePrice": 16.39,
+      "referenceType": "List Price:",
+      "discountPercent": 40,
+      "category": "All",
+      "keyword": "shampoo",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0H26VN3N8",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 9.84,
+      "observedHigh90d": 9.84,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 0
+    },
+    {
+      "asin": "B07NNTCV5K",
+      "title": "PUMA mens 8 Pack Low Cut Running Socks, Black, 10 13 US | Arch Support and Cushioned Footbed",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B07NNTCV5K",
+      "imageUrl": "https://m.media-amazon.com/images/I/41SJVbg+jtS._SL160_.jpg",
+      "price": 8.39,
+      "referencePrice": 14.0,
+      "referenceType": "List Price:",
+      "discountPercent": 40,
+      "category": "Fashion",
+      "keyword": "socks",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B07PXTYMHW",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "dealBadge": "Early Black Friday Deal",
+      "priceEvidence": "first_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": null,
+      "previousDifferentPriceAt": null,
+      "observedLow90d": 8.39,
+      "observedHigh90d": 8.39,
+      "firstSeenAt": "2026-11-17T22:11:14.159430+00:00",
+      "observationCount": 1,
+      "priceChangeCount": 1,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 0
+    },
+    {
+      "asin": "B0D5NVGB3V",
+      "title": "Downy Light Laundry Scent Booster Beads, Ocean Mist Scent, 30.1 oz, In-Wash Fabric Beads Designed to Be Gentle with a Light Boost of Scent, No Heavy Perfumes",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0D5NVGB3V",
+      "imageUrl": "https://m.media-amazon.com/images/I/41N0OFovAlL._SL160_.jpg",
+      "price": 11.46,
+      "referencePrice": 18.99,
+      "referenceType": "List Price:",
+      "discountPercent": 40,
+      "category": "All",
+      "keyword": "Watched ASIN",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "parentAsin": "B0D5MQX81Z",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "repeat_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": 18.97,
+      "previousDifferentPriceAt": "2026-11-14T01:00:47.367128+00:00",
+      "observedLow90d": 11.46,
+      "observedHigh90d": 18.97,
+      "firstSeenAt": "2026-11-13T17:15:34.657441+00:00",
+      "observationCount": 16,
+      "priceChangeCount": 3,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 0
+    },
+    {
+      "asin": "B0B96LXQ49",
+      "title": "Head & Shoulders Classic Clean Anti-Dandruff Shampoo, 72-Hour Dandruff Protection, 1% Pyrithione Zinc, 28.2 fl oz",
+      "retailer": "Amazon",
+      "url": "https://www.amazon.com/dp/B0B96LXQ49",
+      "imageUrl": "https://m.media-amazon.com/images/I/41n4Vmlm+1L._SL160_.jpg",
+      "price": 8.98,
+      "referencePrice": 14.99,
+      "referenceType": "List Price:",
+      "discountPercent": 40,
+      "category": "All",
+      "keyword": "Watched ASIN",
+      "checkedAt": "2026-11-17T22:11:14.159430+00:00",
+      "couponVerified": false,
+      "possibleGlitch": false,
+      "verification": "Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified",
+      "seller": "Amazon.com",
+      "sellerId": "ATVPDKIKX0DER",
+      "soldByAmazon": true,
+      "fulfilledByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon",
+      "shippingBasis": "Sold by Amazon (API seller field); ships free with Prime",
+      "priceEvidence": "repeat_observation",
+      "priorObservedPrice": null,
+      "previousDifferentPrice": 11.12,
+      "previousDifferentPriceAt": "2026-11-12T16:50:40.970773+00:00",
+      "observedLow90d": 8.98,
+      "observedHigh90d": 11.12,
+      "firstSeenAt": "2026-11-12T16:50:40.970773+00:00",
+      "observationCount": 14,
+      "priceChangeCount": 2,
+      "observedPriceDropPercent": 0,
+      "newObservedLow": false,
+      "dealScore": 0
     }
   ],
-  "newOrChangedLeads": 43,
+  "newOrChangedLeads": 1,
   "observedPriceDrops": 0,
-  "newCandidates": 1,
+  "newCandidates": 0,
   "shippingFilter": {
-    "kept": 167,
-    "excludedThirdParty": 42,
+    "kept": 151,
+    "excludedThirdParty": 0,
     "keptUnknownSeller": 0,
-    "examplesExcluded": [
-      {
-        "asin": "B0HKVJZ5QJ",
-        "title": "LVKANGDA Robot Vacuum and Mop Combo, 12,000 Pa Strong Suction, dToF Laser Navigation with ",
-        "price": 249.99,
-        "discountPercent": 72,
-        "seller": "Woot",
-        "reason": "Third-party seller (shipping not verified free)"
-      },
-      {
-        "asin": "B09Z5YT94K",
-        "title": "TW SHINE Warm White Christmas Lights Outdoor, 20FT 100 Count Incandescent Christmas Light ",
-        "price": 11.99,
-        "discountPercent": 70,
-        "seller": "Junji Ya",
-        "reason": "Third-party seller (shipping not verified free)"
-      },
-      {
-        "asin": "B0H7111XBY",
-        "title": "Exercise Bike, Stationary Indoor Spin Bike for Home Cardio Folding bike | Magnetic low\u2011noi",
-        "price": 129.99,
-        "discountPercent": 68,
-        "seller": "Wdemngg",
-        "reason": "Third-party seller (shipping not verified free)"
-      },
-      {
-        "asin": "B0CGX3KN95",
-        "title": "LN LENQIN Mens Watches Military Sport Analog Quartz Watch for Men",
-        "price": 9.99,
-        "discountPercent": 67,
-        "seller": "BIDEN WATCHES US",
-        "reason": "Third-party seller (shipping not verified free)"
-      },
-      {
-        "asin": "B006K1U8A0",
-        "title": "Kleenex Professional Facial Tissue, Bulk, 36 Boxes x 90 Tissues (21271) | Upright Cube Tis",
-        "price": 26.95,
-        "discountPercent": 63,
-        "seller": "Value Point Supply",
-        "reason": "Third-party seller (shipping not verified free)"
-      },
-      {
-        "asin": "B0DSZ9HY83",
-        "title": "ZITY 3 Pack Men's Flannel Hoodie Shirts Long Sleeve Button Down Plaid Shirt | Vintage, Cla",
-        "price": 39.99,
-        "discountPercent": 58,
-        "seller": "ZITY\u00ae",
-        "reason": "Third-party seller (shipping not verified free)"
-      },
-      {
-        "asin": "B0FJL9K6R5",
-        "title": "EFAN Mens Oversized Hoodies Fleece Lined Sweatshirts Black | Fall Winter Hooded Collar Dra",
-        "price": 16.99,
-        "discountPercent": 58,
-        "seller": "EFANBoutique",
-        "reason": "Third-party seller (shipping not verified free)"
-      },
-      {
-        "asin": "B07WFZ5MLT",
-        "title": "Lulex Moccasins for Men House Slippers Indoor Outdoor Plush Mens Bedroom Shoes with Hard S",
-        "price": 12.37,
-        "discountPercent": 57,
-        "seller": "Delma global",
-        "reason": "Third-party seller (shipping not verified free)"
-      }
-    ],
+    "examplesExcluded": [],
     "rule": "Third-party seller offers are not published (the Creators API has no Prime/free-shipping field, so their shipping cannot be verified). Amazon-sold offers rank first; offers with no seller data rank last."
   },
   "note": "Scanner observations with individual timestamps; recent discoveries are retained across runs."
