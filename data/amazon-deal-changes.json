@@ -1,5 +1,36 @@
 {
-  "updated": "2026-11-18T18:55:25.599200+00:00",
-  "changes": [],
+  "updated": "2026-11-18T19:11:15.171441+00:00",
+  "changes": [
+    {
+      "asin": "B0H7HYD1XR",
+      "title": "for Magsafe Portable Charger, 5000mAh Magnetic Power Bank with USB-C Charge | for Magsafe Battery Pack, 15W Fast Charging, Lighting Input Wireless Portable Charger for iPhone 18/17",
+      "previousObservedPrice": 47.29,
+      "currentObservedPrice": 16.99,
+      "dropPercent": 64.1,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T19:11:15.171441+00:00",
+      "url": "https://www.amazon.com/dp/B0H7HYD1XR",
+      "seller": "Woot",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B01LB1J9BW",
+      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
+      "previousObservedPrice": 7.99,
+      "currentObservedPrice": 4.9,
+      "dropPercent": 38.7,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T19:11:15.171441+00:00",
+      "url": "https://www.amazon.com/dp/B01LB1J9BW",
+      "seller": "DEPPY SHOP",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
