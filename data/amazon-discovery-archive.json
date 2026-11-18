@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T13:11:14.114703+00:00",
+  "updated": "2026-11-18T13:41:14.188218+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0GMW9XT9X",
+      "title": "HP DeskJet 2923 Color Inkjet Printer | Wireless | All-in-One | Easy Home Printing | Color Documents | Mobile Compatibility | Print, Scan & Copy | Ideal Home Use",
+      "category": "OfficeProducts",
+      "url": "https://www.amazon.com/dp/B0GMW9XT9X",
+      "imageUrl": "https://m.media-amazon.com/images/I/41DMntD8cXL._SL160_.jpg",
+      "price": 49.99,
+      "referencePrice": 89.99,
+      "discountPercent": 44,
+      "dealScore": 4,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 51.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T13:41:14.188218+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B01AXM4WV2",
       "title": "Cuisinart Food Processor, 14-Cup Vegetable Food Chopper for Mincing, Dicing, Shredding, Puree & Kneading Dough, 720-Watt Motor, Stainless Steel, DFP-14BCNY",
