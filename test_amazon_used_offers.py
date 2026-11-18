@@ -79,5 +79,14 @@ class UsedFeed(unittest.TestCase):
             self.assertEqual([d['asin'] for d in j['offers']],['B000000001','B000000009'])
             self.assertEqual(j['foundThisScan'],1)
             self.assertEqual(j['excludedNotSoldByAmazon'],1)
+            self.assertEqual(j['offers'][0]['firstSeenAt'],amazon_scan.STAMP)   # brand-new offer
+
+    def test_first_seen_is_kept_across_scans(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp)/'used.json'
+            out.write_text(json.dumps({'offers':[{'asin':'B000000009','checkedAt':amazon_scan.STAMP,'firstSeenAt':'2026-11-12T00:00:00+00:00','merchant':'Amazon Resale'}]}))
+            with patch.object(amazon_scan,'USED_OUT',out):
+                amazon_scan.write_used_offers({'B000000009':{'asin':'B000000009','checkedAt':amazon_scan.STAMP,'soldByAmazon':True}})
+            self.assertEqual(json.loads(out.read_text())['offers'][0]['firstSeenAt'],'2026-11-12T00:00:00+00:00')
 
 if __name__=='__main__':unittest.main()

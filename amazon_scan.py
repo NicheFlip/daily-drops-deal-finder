@@ -247,6 +247,10 @@ def write_used_offers(found):
         try:
             if d.get('asin') and datetime.datetime.fromisoformat(d['checkedAt'])>=cutoff:keep[d['asin']]=d
         except (KeyError,TypeError,ValueError):pass
+    # firstSeenAt: when this used offer first appeared (kept across scans; no extra API calls).
+    for asin,d in found.items():
+        prior=keep.get(asin)
+        d['firstSeenAt']=(prior.get('firstSeenAt') or prior.get('checkedAt')) if prior else STAMP
     keep.update(found)
     # Only Amazon-sold (Warehouse / Amazon.com) condition offers: free shipping with Prime.
     before=len(keep);keep={a:d for a,d in keep.items() if ships_free(d)};dropped=before-len(keep)
