@@ -1,5 +1,51 @@
 {
-  "updated": "2026-11-18T12:11:13.987228+00:00",
-  "changes": [],
+  "updated": "2026-11-18T12:41:15.149125+00:00",
+  "changes": [
+    {
+      "asin": "B00DDMIMXE",
+      "title": "Pampers Sensitive Baby Wipes, Unscented, Fragrance Free, Clinically Proven, Water Based, Hypoallergenic, Multi-Use, Hand Wipes, 168 Wipes Total (3X Flip-Top Packs)",
+      "previousObservedPrice": 6.97,
+      "currentObservedPrice": 2.49,
+      "dropPercent": 64.3,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T12:41:15.149125+00:00",
+      "url": "https://www.amazon.com/dp/B00DDMIMXE",
+      "seller": "KRALIX",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B00MVWGQX0",
+      "title": "Cuisinart Coffee Maker, Programmable, 14-Cup Glass Carafe, DCC-3200 | PerfecTemp hotter brewing with adjustable warming plate, 14-cup glass carafe, stainless steel",
+      "previousObservedPrice": 89.95,
+      "currentObservedPrice": 59.99,
+      "dropPercent": 33.3,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-18T12:41:15.149125+00:00",
+      "url": "https://www.amazon.com/dp/B00MVWGQX0",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
+    {
+      "asin": "B00HSC9F2C",
+      "title": "Clorox Disinfecting Wipes Variety Pack Bleach Free 75 Count 3 Pack | Kills Cold and Flu Viruses, 100 Plus Surface Safe, Germ Hotspot Disinfectant, Bleach Free, 75 Count, 3 Pack",
+      "previousObservedPrice": 11.79,
+      "currentObservedPrice": 8.49,
+      "dropPercent": 28.0,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T12:41:15.149125+00:00",
+      "url": "https://www.amazon.com/dp/B00HSC9F2C",
+      "seller": "KRALIX",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }

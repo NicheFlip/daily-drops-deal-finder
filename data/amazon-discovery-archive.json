@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T12:11:13.987228+00:00",
+  "updated": "2026-11-18T12:41:15.149125+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B00MVWGQX0",
+      "title": "Cuisinart Coffee Maker, Programmable, 14-Cup Glass Carafe, DCC-3200 | PerfecTemp hotter brewing with adjustable warming plate, 14-cup glass carafe, stainless steel",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B00MVWGQX0",
+      "imageUrl": "https://m.media-amazon.com/images/I/41YsIssyN1L._SL160_.jpg",
+      "price": 59.99,
+      "referencePrice": 119.95,
+      "discountPercent": 50,
+      "dealScore": 70,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 89.95,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-18T12:41:15.149125+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0H8MTJGFL",
       "title": "Ljuren Cordless Vacuum Cleaner, 85,000PRM Upgraded Dual Suction Cordless Stick Vacuum up to 35mins Runtime, Lightweight Rechargeable Vacuum for Home\uff08Rose Metallic\uff09",
