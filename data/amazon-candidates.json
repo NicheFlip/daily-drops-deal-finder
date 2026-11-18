@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-18T08:41:20.965651+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-18T09:11:23.592731+00:00",
+  "candidates": [
+    {
+      "asin": "B0H3WJ3QPR",
+      "title": "Kilgone Robot Vacuum Cleaner, Auto Empty Base and Auto Recharge, Household Cleaning Robot Vacuum and Mop Combo for Home",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0H3WJ3QPR",
+      "imageUrl": "https://m.media-amazon.com/images/I/41zItwAuAzL._SL160_.jpg",
+      "price": 269.99,
+      "referencePrice": 999.99,
+      "discountPercent": 73,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T09:11:23.592731+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Phzejin",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
