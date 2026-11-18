@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T22:41:13.672560+00:00",
+  "updated": "2026-11-18T23:11:15.279675+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0BWSPP9HH",
+      "title": "WYZE Cam Pan v3, Indoor/Outdoor Security Camera with 360\u00b0 Pan/Tilt/Zoom | Vibrant Color Night Vision, IP65-Rated, Easy Setup, 360\u00b0 Pan Scan and 2-Way Audio for Home Security, Baby ",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0BWSPP9HH",
+      "imageUrl": "https://m.media-amazon.com/images/I/31jEa3hyPiL._SL160_.jpg",
+      "price": 52.98,
+      "referencePrice": 87.98,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T23:11:15.279675+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0DYNLP6KK",
       "title": "The Essential Canning Cookbook: Water Bath and Pressure Canning Recipes for Every Season",
