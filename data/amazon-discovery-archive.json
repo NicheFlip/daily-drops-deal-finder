@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T22:11:16.030638+00:00",
+  "updated": "2026-11-18T22:41:13.672560+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DYNLP6KK",
+      "title": "The Essential Canning Cookbook: Water Bath and Pressure Canning Recipes for Every Season",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B0DYNLP6KK",
+      "imageUrl": "https://m.media-amazon.com/images/I/51oqQueXfCL._SL160_.jpg",
+      "price": 1.99,
+      "referencePrice": 24.99,
+      "discountPercent": 92,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T22:41:13.672560+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "HarperCollins Publishing",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0H1TZN1ZF",
       "title": "Women's Track Pants Wide Leg High Waist Yoga Pants for Women Black M | Petite Pants for Women, Casual Pants for Women, Athletic Yoga Casual Clothing Workout Tall Sweatpants Joggers",
