@@ -89,4 +89,17 @@ class UsedFeed(unittest.TestCase):
                 amazon_scan.write_used_offers({'B000000009':{'asin':'B000000009','checkedAt':amazon_scan.STAMP,'soldByAmazon':True}})
             self.assertEqual(json.loads(out.read_text())['offers'][0]['firstSeenAt'],'2026-11-12T00:00:00+00:00')
 
+    def test_previous_price_only_when_price_changed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp)/'used.json'
+            row=lambda p:{'asin':'B000000009','checkedAt':amazon_scan.STAMP,'price':p,'soldByAmazon':True}
+            out.write_text(json.dumps({'offers':[{**row(30.0),'merchant':'Amazon Resale'}]}))
+            with patch.object(amazon_scan,'USED_OUT',out):
+                amazon_scan.write_used_offers({'B000000009':row(30.0)})
+                self.assertNotIn('previousPrice',json.loads(out.read_text())['offers'][0])
+                amazon_scan.write_used_offers({'B000000009':row(24.5)})
+                self.assertEqual(json.loads(out.read_text())['offers'][0]['previousPrice'],30.0)
+                amazon_scan.write_used_offers({'B000000009':row(24.5)})
+                self.assertEqual(json.loads(out.read_text())['offers'][0]['previousPrice'],30.0)
+
 if __name__=='__main__':unittest.main()

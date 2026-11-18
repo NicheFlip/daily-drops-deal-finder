@@ -10,6 +10,9 @@ OUT=ROOT/'data'/'amazon-deals.json'
 ALL_OUT=ROOT/'data'/'amazon-all-products.json'
 USED_OUT=ROOT/'data'/'amazon-used-offers.json'
 STATE=ROOT/'data'/'amazon-scan-state.json'
+WATCHLIST=ROOT/'data'/'watchlist.json'
+WATCH_MAX_ASINS=50      # at most 5 GetItems calls (10 ASINs each)
+WATCH_MAX_KEYWORDS=8    # at most 8 search calls
 NOW=datetime.datetime.now(datetime.timezone.utc)
 STAMP=NOW.isoformat()
 # Broad, deliberately safe categories. Keyword rotation widens coverage across runs.
@@ -208,6 +211,26 @@ def summarize_shipping(rows):
               'discountPercent':d.get('discountPercent'),'seller':d.get('seller'),
               'reason':'Third-party seller (shipping not verified free)' if third else 'Seller unknown (older or incomplete data)'})
     return out
+def load_watchlist(path=None):
+    """Heather's pinned ASINs and keywords (data/watchlist.json). Bad entries are ignored."""
+    try:raw=json.loads((path or WATCHLIST).read_text())
+    except (OSError,ValueError):return [],[]
+    asins=[];keywords=[]
+    for a in raw.get('asins',[]) if isinstance(raw,dict) else []:
+        a=str(a).strip().upper()
+        if re.fullmatch('[A-Z0-9]{10}',a) and a not in asins:asins.append(a)
+    for k in raw.get('keywords',[]) if isinstance(raw,dict) else []:
+        k=re.sub(r'\s+',' ',str(k)).strip()[:60]
+        if len(k)>=2 and k.lower() not in [x.lower() for x in keywords]:keywords.append(k)
+    return asins[:WATCH_MAX_ASINS],keywords[:WATCH_MAX_KEYWORDS]
+def watch_match(d,asins,keywords):
+    """Why a product is on the watch list (ASIN or every word of a keyword in the title), else None."""
+    if not isinstance(d,dict):return None
+    if d.get('asin') in asins:return 'ASIN '+d['asin']
+    title=str(d.get('title') or '').lower()
+    for k in keywords:
+        if all(w in title for w in k.lower().split()):return 'Keyword: '+k
+    return None
 def product_group(d):
     """Same product across variants/scans: parent ASIN when Amazon gives one, else normalized title."""
     parent=str(d.get('parentAsin') or '')
@@ -251,6 +274,15 @@ def write_used_offers(found):
     for asin,d in found.items():
         prior=keep.get(asin)
         d['firstSeenAt']=(prior.get('firstSeenAt') or prior.get('checkedAt')) if prior else STAMP
+        # Previous price of this used offer, only when it really changed between scans.
+        try:old_price=float(prior['price']) if prior else None
+        except (KeyError,TypeError,ValueError):old_price=None
+        try:new_price=float(d.get('price'))
+        except (TypeError,ValueError):new_price=None
+        if old_price and new_price and abs(old_price-new_price)>0.004:
+            d['previousPrice']=round(old_price,2);d['priceChangedAt']=STAMP
+        elif prior and prior.get('previousPrice'):
+            d['previousPrice']=prior['previousPrice'];d['priceChangedAt']=prior.get('priceChangedAt')
     keep.update(found)
     # Only Amazon-sold (Warehouse / Amazon.com) condition offers: free shipping with Prime.
     before=len(keep);keep={a:d for a,d in keep.items() if ships_free(d)};dropped=before-len(keep)
@@ -320,8 +352,13 @@ def scan():
     watch_set=set(watch_pool)
     watch_offset=int(state.get('watchOffset',0))%max(1,len(watch_pool))
     rotated=watch_pool[watch_offset:]+watch_pool[:watch_offset]
+    pinned_asins,pinned_keywords=load_watchlist()
+    pinned_set=set(pinned_asins)
+    rotated=pinned_asins+[a for a in rotated if a not in pinned_set]
     # Reserve up to a quarter of the run for re-checking watched ASINs (10 per GetItems call).
     watch_budget=min(-(-len(rotated)//WATCH_BATCH),budget//4,WATCH_CALLS) if rotated else 0
+    # Pinned ASINs always get their calls (still inside this run's budget).
+    watch_budget=max(watch_budget,min(-(-len(pinned_asins)//WATCH_BATCH),budget//4))
     discovery_budget=budget-watch_budget
     # Core repeat-purchase searches recur every run; remaining calls rotate across
     # seasonal, popular and broad categories so the feed discovers different items.
@@ -357,7 +394,12 @@ def scan():
         key=(entry[0],entry[1].lower(),entry[2])
         if key in seen_searches:continue
         seen_searches.add(key); deduped.append(entry)
-    plan=deduped
+    # Pinned keywords are searched first; the plan keeps the same length, so the budget is unchanged.
+    if pinned_keywords and deduped:
+        pinned_plan=[('All',k,1,False) for k in pinned_keywords][:max(1,len(deduped)//4)]
+        taken={(c,k.lower(),p) for c,k,p,_ in pinned_plan}
+        plan=(pinned_plan+[e for e in deduped if (e[0],e[1].lower(),e[2]) not in taken])[:len(deduped)]
+    else:plan=deduped
     searched=[]
     unique_seen=set()
     used_offers={}
@@ -414,7 +456,7 @@ def scan():
     watch_batches=[]; pending=[]; consumed=0
     for asin in rotated:
         if len(watch_batches)>=watch_budget:break
-        consumed+=1
+        if asin not in pinned_set:consumed+=1
         if asin in unique_seen:continue
         pending.append(asin)
         if len(pending)==WATCH_BATCH:watch_batches.append(pending); pending=[]
@@ -489,12 +531,17 @@ def scan():
     # Amazon-sold offers rank first; rows with no seller data (older scans, or none returned) are
     # kept after them so the feed is never wiped out. The deal math is unchanged.
     shipping_filter=summarize_shipping(fresh.values())
+    for rows in (fresh.values(),all_products.values(),used_offers.values()):
+        for d in rows:
+            why=watch_match(d,pinned_set,pinned_keywords)
+            if why:d['watched']=True;d['watchReason']=why
+            else:d.pop('watched',None);d.pop('watchReason',None)
     eligible_deals=dedupe_offers([d for d in fresh.values() if not excluded_audio(d.get('title')) and d.get('shippingStatus')!='third_party'])
-    deals=sorted(eligible_deals,key=lambda d:(ships_free(d),d.get('priceEvidence')=='first_observation' and d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
+    deals=sorted(eligible_deals,key=lambda d:(bool(d.get('watched')),ships_free(d),d.get('priceEvidence')=='first_observation' and d['asin'] not in previous_asins,d.get('priceEvidence')=='observed_reduction',d.get('dealScore',0),d['checkedAt']),reverse=True)[:150]
     OUT.parent.mkdir(exist_ok=True)
     ALL_OUT.write_text(json.dumps({'updated':STAMP,'scannedProducts':scanned,'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'products':sorted(all_products.values(),key=lambda d:d['checkedAt'],reverse=True)[:4000]},indent=2))
     OUT.write_text(json.dumps({'updated':STAMP,'status':'partial' if errors else 'ok','scannedProducts':scanned,
-      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':watch_requested,'requestBudget':budget,'requestsAttempted':attempts,'durationSeconds':duration,'stoppedEarly':stopped_reason,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,'shippingFilter':shipping_filter,
+      'requestsCompleted':completed,'uniqueProductsSeen':len(unique_seen),'searches':searched,'runNumber':run_number+1,'discoveryRequestsPlanned':discovery_budget,'watchRequestsCompleted':watch_completed,'watchedAsinsRequested':watch_requested,'requestBudget':budget,'requestsAttempted':attempts,'durationSeconds':duration,'stoppedEarly':stopped_reason,'errors':errors[:12],'deals':deals,'newOrChangedLeads':newly,'observedPriceDrops':observed_drops,'newCandidates':candidate_count,'watchlist':{'asins':len(pinned_asins),'keywords':len(pinned_keywords),'watchedInFeed':sum(1 for d in deals if d.get('watched'))},'shippingFilter':shipping_filter,
       'note':'Scanner observations with individual timestamps; recent discoveries are retained across runs.'},indent=2))
     try:used_total=write_used_offers(used_offers)
     except OSError as e:used_total=0;print('Used-offer feed not written:',type(e).__name__)

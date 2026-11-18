@@ -6,6 +6,7 @@ on:
       - '.github/workflows/amazon-scan.yml'
       - 'amazon_scan.py'
       - 'scan_health.py'
+      - 'data/watchlist.json'
   schedule:
     - cron: '11,41 * * * *'
   workflow_dispatch:
@@ -39,7 +40,7 @@ jobs:
         run: python scan_health.py
       - name: Verify deal engine and frontend after scan
         continue-on-error: true
-        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py test_amazon_scan_budget.py test_amazon_used_offers.py test_amazon_shipping.py test_dedupe_history.py
+        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py test_amazon_scan_budget.py test_amazon_used_offers.py test_amazon_shipping.py test_dedupe_history.py test_watchlist.py
       - name: Archive observations in PostgreSQL (if configured)
         id: database_archive
         continue-on-error: true
