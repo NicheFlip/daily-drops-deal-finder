@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-18T10:41:14.398624+00:00",
-  "changes": [],
+  "updated": "2026-11-18T11:11:13.681552+00:00",
+  "changes": [
+    {
+      "asin": "B08DCK4MPV",
+      "title": "Cuisinart Grind and Brew 12-Cup Automatic Drip Coffee Maker, DGB-400NAS | Built-in blade grinder, 24-hour programmable timer, glass carafe, stainless steel, black, 12-cup capacity",
+      "previousObservedPrice": 83.95,
+      "currentObservedPrice": 71.99,
+      "dropPercent": 14.2,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-18T11:11:13.681552+00:00",
+      "url": "https://www.amazon.com/dp/B08DCK4MPV",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
