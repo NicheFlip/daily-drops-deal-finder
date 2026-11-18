@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T04:11:16.631067+00:00",
+  "updated": "2026-11-18T04:41:18.326601+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DLZ27VSS",
+      "title": "Calvin Klein Women's Cali Mini Satchel Crossbody Handbag, White, One Size | Women's, Vegan Leather, 2 Interior Pockets, Adjustable Crossbody Strap, Travel",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0DLZ27VSS",
+      "imageUrl": "https://m.media-amazon.com/images/I/31QpO5FhkPL._SL160_.jpg",
+      "price": 43.73,
+      "referencePrice": 73.07,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T04:41:18.326601+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B00D3OR58A",
       "title": "Oxford Spiral Notebook 6 Pack, 1 Subject, College Ruled Paper, 8 x 10-1/2 Inch, Color Assortment Design May Vary (65007)",
