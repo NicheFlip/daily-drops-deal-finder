@@ -1,29 +1,6 @@
 {
-  "updated": "2026-11-18T20:11:14.715772+00:00",
-  "candidates": [
-    {
-      "asin": "B0HJGXGNS3",
-      "title": "SQKMYSU Steam Mop 6-in-1 Multi Accessories, Lager Water Tank, Steam Cleaner for Floor Cleaning, Hardwood(Purplish)",
-      "category": "HomeAndKitchen",
-      "url": "https://www.amazon.com/dp/B0HJGXGNS3",
-      "imageUrl": "https://m.media-amazon.com/images/I/410rvhKhG3L._SL160_.jpg",
-      "price": 79.99,
-      "referencePrice": 269.99,
-      "discountPercent": 70,
-      "dealScore": 20,
-      "everydayEssential": false,
-      "reason": "First observation",
-      "previousObservedPrice": null,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-18T20:11:14.715772+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
-      "seller": "weixufengkj",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
-  "count": 1,
+  "updated": "2026-11-18T20:41:14.588920+00:00",
+  "candidates": [],
+  "count": 0,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
