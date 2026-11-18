@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-18T02:51:51.527815+00:00",
-  "changes": [
-    {
-      "asin": "B071R4MQ7G",
-      "title": "Gardetto's Original Recipe Snack Mix, Multipack, 10 ct, 17.5 oz | 10 Individually Wrapped Bags, Breadsticks, Pretzels & Rye Chips, Kosher, Lunchbox-Ready",
-      "previousObservedPrice": 5.97,
-      "currentObservedPrice": 2.85,
-      "dropPercent": 52.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-18T02:51:51.527815+00:00",
-      "url": "https://www.amazon.com/dp/B071R4MQ7G",
-      "seller": "BR_Med",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-18T03:11:14.167739+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
