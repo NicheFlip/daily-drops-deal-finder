@@ -1,20 +1,50 @@
 {
-  "updated": "2026-11-18T02:11:14.932129+00:00",
+  "updated": "2026-11-18T02:41:14.711811+00:00",
   "changes": [
     {
-      "asin": "B01N1N6FMZ",
-      "title": "MRS. MEYER'S CLEAN DAY Liquid Hand Soap, Lavender, 12.5 fl oz, 3 Pack | Moisturizing Liquid Hand Soap, Softens and Cleans Hands, Cruelty Free, Made with Essential Oils, Olive Oil, ",
-      "previousObservedPrice": 15.84,
-      "currentObservedPrice": 11.13,
-      "dropPercent": 29.7,
+      "asin": "B0CC6DY9TN",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Rain Water, 16 fl. oz",
+      "previousObservedPrice": 4.26,
+      "currentObservedPrice": 1.95,
+      "dropPercent": 54.2,
       "newObservedLow": false,
-      "checkedAt": "2026-11-18T02:11:14.932129+00:00",
-      "url": "https://www.amazon.com/dp/B01N1N6FMZ",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
+      "checkedAt": "2026-11-18T02:41:14.711811+00:00",
+      "url": "https://www.amazon.com/dp/B0CC6DY9TN",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B0C3WTYZ3G",
+      "title": "Hefty 4 Gallon Small Trash Bags, White, Fabuloso Lavender Scent, 52ct | Drawstring Closure, 4G Small White Trash Bags for Bathrooms, Dorm Rooms, Home Offices, Scented, Continuous O",
+      "previousObservedPrice": 9.79,
+      "currentObservedPrice": 4.5,
+      "dropPercent": 54.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-18T02:41:14.711811+00:00",
+      "url": "https://www.amazon.com/dp/B0C3WTYZ3G",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B01LB1J9BW",
+      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
+      "previousObservedPrice": 7.99,
+      "currentObservedPrice": 4.0,
+      "dropPercent": 49.9,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-18T02:41:14.711811+00:00",
+      "url": "https://www.amazon.com/dp/B01LB1J9BW",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
