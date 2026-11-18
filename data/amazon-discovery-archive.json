@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T14:11:22.186289+00:00",
+  "updated": "2026-11-18T14:41:21.747740+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0FPX6F917",
+      "title": "Cuisinart 5-Cup Chop & Shred Food Processor, Compact Food Choppers, FP-5 | The Two-Job Machine for Chopping and Shredding With Reversible Disc and Wide-Mouth Feed Tube, Silver",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0FPX6F917",
+      "imageUrl": "https://m.media-amazon.com/images/I/31+llHh6NpL._SL160_.jpg",
+      "price": 41.99,
+      "referencePrice": 69.95,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T14:41:21.747740+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B07PXTWJFY",
       "title": "PUMA mens 8 Pack Low Cut Running Socks, White/Grey, 10 13 US | Arch Support and Cushioned Footbed",

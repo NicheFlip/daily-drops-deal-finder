@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-18T14:11:22.186289+00:00",
-  "changes": [
-    {
-      "asin": "B01BZ0LXL8",
-      "title": "Hefty Ultra Strong 13 Gal Kitchen Trash Bags, White, Lavender Vanilla, 80ct | 13G Tall White Trash Bags with Drawstrings for Kitchen and Home Use, Resists Leaks, Punctures, Rips, C",
-      "previousObservedPrice": 15.52,
-      "currentObservedPrice": 7.99,
-      "dropPercent": 48.5,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-18T14:11:22.186289+00:00",
-      "url": "https://www.amazon.com/dp/B01BZ0LXL8",
-      "seller": "Brunoah",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-18T14:41:21.747740+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
