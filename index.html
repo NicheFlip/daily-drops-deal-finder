@@ -171,6 +171,30 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 .linkish{background:none;border:0;color:#16438d;text-decoration:underline;font:inherit;cursor:pointer;min-height:44px;padding:0 4px}
 .lab-finds{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:12px 0}.lab-finds .btn{min-height:48px;width:100%}
 #status strong{color:#172d53}
+/* Watch list, fresh-scan pills, price-history line, Ready to Post */
+.watch-badge{display:inline-block;font-size:.72rem;font-weight:800;color:#5b3a00;background:#ffe9b8;border:1px solid #f2c45c;padding:3px 8px;border-radius:999px}
+.watch-btn{min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid #d6dbe4;background:#fff;font-weight:700;cursor:pointer;font-size:.85rem}
+.watch-btn[aria-pressed="true"]{background:#fff4d6;border-color:#f2c45c;color:#5b3a00}
+.scan-card.watched{box-shadow:0 0 0 2px #f2c45c inset}
+.watch-add{display:flex;gap:8px;margin:10px 0}.watch-add input{flex:1;min-height:46px}.watch-add .btn{min-height:46px;white-space:nowrap}
+.watch-chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}.watch-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e2c27a;border-radius:999px;padding:6px 6px 6px 12px;font-size:.88rem}.watch-chip small{color:#777}.watch-chip button{border:0;background:#f5ecd8;border-radius:999px;width:30px;height:30px;cursor:pointer;font-size:1rem}
+.watch-sync.ok{border-color:#9fd8bd;background:#effaf4}.watch-sync.todo{border-color:#f2c45c;background:#fffaf0}.watch-sync ol{margin:8px 0 10px 18px;padding:0}.watch-sync li{margin:4px 0}
+.pill.fresh-drop{background:#dff8e9;color:#155e46}.pill.fresh-new{background:#e6efff;color:#1e4a9b}
+.hist-line{font-weight:800;font-size:.92rem;margin-top:2px}.hist-line.down{color:#12664a}.hist-line.up{color:#9b3a31}.hist-line.same{color:#555;font-weight:650}.hist-line span{font-weight:600;color:#666}
+.fresh-summary{display:inline-block;background:#eef6ff;border:1px solid #cfe0fb;border-radius:10px;padding:6px 10px;margin:4px 0}
+.post-card{padding:16px!important;grid-column:1/-1}.post-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.post-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.fb-preview{background:#fff;border:1px solid #dfe3ea;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0000000d}
+.fb-top{display:flex;gap:10px;align-items:center;padding:12px 14px}.fb-top small{display:block;color:#65676b;font-size:.78rem}.fb-avatar{width:40px;height:40px;border-radius:50%;background:#6b203d;color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem;flex:0 0 40px}
+.fb-text{padding:0 14px 12px;white-space:pre-wrap;word-break:break-word;font-size:.95rem;line-height:1.38;max-height:340px;overflow:auto}.fb-text a,.product .fb-text a{display:inline!important;background:none!important;color:#1b5fd6!important;padding:0!important;margin:0!important;font-weight:600;word-break:break-all;border-radius:0}
+.fb-photo{display:block;width:100%;max-height:340px;object-fit:contain;background:#f6f7f9;border-top:1px solid #eee}
+.fb-link{background:#f0f2f5;padding:10px 14px}.fb-link small{color:#65676b;letter-spacing:.04em}.fb-link strong{display:block;font-size:.92rem;line-height:1.3}
+.post-price{font-size:2rem;font-weight:850;letter-spacing:-.03em;color:var(--dd-brand-deep,#6b203d)}.post-facts{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px}.post-fact{font-size:.8rem;font-weight:750;padding:5px 9px;border-radius:999px;background:#f1f3f6;color:#333}.post-fact.good{background:#dff8e9;color:#155e46}.post-fact.cond{background:#fff1d6;color:#7a4b00}
+.post-buttons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.post-buttons .btn{min-height:52px;font-size:1rem;display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
+.post-tools textarea{width:100%;min-height:210px;font-size:.95rem;line-height:1.4;margin-top:6px}
+.post-mini{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.post-mini button{min-height:40px}
+.post-feedback{min-height:1.2em;font-weight:700;color:#12664a;margin:8px 0}
+@media(max-width:760px){.post-layout{grid-template-columns:1fr}.post-tools{order:-1}.post-buttons{grid-template-columns:1fr 1fr}.post-buttons .post-copy{grid-column:1/-1;min-height:58px;font-size:1.08rem}.watch-add{flex-direction:column}.fb-text{max-height:none}}
 </style></head>
 <body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Amazon + Walmart deal research workspace</p></div></header>
 <main>
@@ -180,6 +204,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 <button type="button" role="tab" id="tab-inbox" aria-controls="panel-inbox" aria-selected="false">📥 Missed Deals</button>
 <button type="button" role="tab" id="tab-candidates" hidden aria-controls="panel-candidates" aria-selected="false">New Finds</button>
 <button type="button" role="tab" id="tab-posting" aria-controls="panel-posting" aria-selected="false">✓ Ready to Post <span id="postingCount">0</span></button>
+<button type="button" role="tab" id="tab-watch" aria-controls="panel-watch" aria-selected="false">👁 Watch list <span id="watchCount">0</span></button>
 <button type="button" role="tab" id="tab-history" aria-controls="panel-history" aria-selected="false">Price History</button>
 <button type="button" role="tab" id="tab-walmart" aria-controls="panel-walmart" aria-selected="false">Walmart Radar</button>
 <button type="button" role="tab" id="tab-clearance" aria-controls="panel-clearance" aria-selected="false">Clearance Lab</button>
@@ -201,7 +226,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 <div class="notice"><strong>Research only:</strong> Amazon reference prices are not necessarily previous selling prices. Browse prices captured by the scanner.</div>
 <p class="section-label">Browse categories</p><div id="categoryChips" class="chips" aria-label="Quick category filters"></div><div class="filters"><input id="find" type="search" placeholder="Search products…" aria-label="Search products">
 <select id="category" aria-label="Category"><option value="">All categories</option><option value="ToysAndGames">Toys & gifts</option><option value="HomeAndKitchen">Home & kitchen</option><option value="Electronics">Electronics</option><option value="Beauty">Beauty</option><option value="Fashion">Fashion</option><option value="OfficeProducts">Office</option><option value="PetSupplies">Pets</option><option value="Baby">Baby</option></select>
-<select id="sort" aria-label="Sort"><option value="newest" selected>Newest scanned first</option><option value="evidence">Best evidence first (tracked drops)</option><option value="practical">Everyday value first</option><option value="score">Smart deal score</option><option value="discount">Biggest discount</option><option value="low">Lowest price first</option><option value="oldest">Oldest to newest</option><option value="high">Highest price</option></select></div>
+<select id="sort" aria-label="Sort"><option value="fresh" selected>New or price-dropped since last scan</option><option value="newest">Newest scanned first</option><option value="evidence">Best evidence first (tracked drops)</option><option value="practical">Everyday value first</option><option value="score">Smart deal score</option><option value="discount">Biggest discount</option><option value="low">Lowest price first</option><option value="oldest">Oldest to newest</option><option value="high">Highest price</option></select></div>
 <div class="actions"><label><input type="checkbox" id="essentials" style="width:auto;vertical-align:middle"> Household essentials only</label><label><input type="checkbox" id="deep" style="width:auto;vertical-align:middle"> Show only 70%+ leads</label><button type="button" class="btn secondary" id="reload">↻ Refresh results</button></div>
 <p class="muted small" id="status" role="status">Loading latest scan…</p>
 <section id="scanDrops" hidden><h2>↓ Dropped since last observation</h2><p class="muted small" id="scanDropsStatus"></p><div id="scanDropsResults" class="grid"></div></section><div id="products" class="grid"></div>
@@ -215,7 +240,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 <h1>New & improved deal candidates</h1><p class="muted small">First-time API discoveries and observed price drops from the latest scan. Unchanged offers are excluded. Research only—not checkout-verified.</p>
 <div class="actions"><p id="candidateStatus" class="muted small" role="status">Open this tab to load new finds.</p><button type="button" class="btn secondary" id="candidateRefresh">Refresh candidates</button></div>
 <div id="candidateResults" class="grid"></div></section>
-<section id="panel-posting" role="tabpanel" aria-labelledby="tab-posting" hidden><h1>Ready to Review & Post</h1><p class="muted small">Products you marked Deal. Copy your caption and download a graphic.</p><p id="postingStatus" role="status"></p><div class="card" style="margin:12px 0"><strong>Remove rejected products from follower shop</strong><p class="small muted">New scanner deals appear automatically. Pass and No Deal hide products in this browser immediately. To remove them for every follower, publish the rejection list to GitHub.</p><button type="button" class="btn" id="exportShopApproved">Download Pass / No Deal exclusion list</button><a href="https://github.com/NicheFlip/daily-drops-deal-finder/edit/main/data/shop-excluded.json" target="_blank" rel="noopener noreferrer" style="margin-left:10px">Edit exclusion list on GitHub ↗</a><p class="small muted">Replace the GitHub file with the downloaded JSON and commit. Until then, other followers can still see those products. Do not publish private review notes.</p></div><div id="postingResults" class="grid"></div></section>
+<section id="panel-posting" role="tabpanel" aria-labelledby="tab-posting" hidden><h1>Ready to Post</h1><p class="muted small">Products you marked ✓ Deal, with a ready Facebook post. Check the preview, edit if you like, then tap Copy post.</p><p id="postingStatus" role="status"></p><div id="postingResults" class="grid"></div><details class="card" style="margin:16px 0"><summary><strong>Remove rejected products from follower shop</strong></summary><p class="small muted">New scanner deals appear automatically. Pass and No Deal hide products in this browser immediately. To remove them for every follower, publish the rejection list to GitHub.</p><button type="button" class="btn" id="exportShopApproved">Download Pass / No Deal exclusion list</button><a href="https://github.com/NicheFlip/daily-drops-deal-finder/edit/main/data/shop-excluded.json" target="_blank" rel="noopener noreferrer" style="margin-left:10px">Edit exclusion list on GitHub ↗</a><p class="small muted">Replace the GitHub file with the downloaded JSON and commit. Until then, other followers can still see those products. Do not publish private review notes.</p></details></section>
 <section id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden><h1>Observed Price History</h1><p class="muted small">Amazon prices recorded by the scanner.</p><div class="actions"><input id="historyFind" type="search" placeholder="Search tracked products…" aria-label="Search tracked products"><button type="button" class="btn secondary" id="historyRefresh">Refresh history</button></div><p id="historyStatus" role="status" class="muted small">Open this tab to load history.</p><div class="actions"><button type="button" class="btn secondary" id="exportJudgments">Export my Deal / No Deal decisions</button><span class="small muted">Saved on this browser only. Export a backup before clearing browser data.</span></div><div id="historyResults" class="grid"></div></section>
 <section id="panel-walmart" role="tabpanel" aria-labelledby="tab-walmart" hidden>
 <h1>Walmart Radar</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
@@ -254,12 +279,21 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 <div class="card"><label for="term"><strong>What are you looking for?</strong></label><input id="term" value="clearance" placeholder="Toys, kitchen, headphones…" style="margin:10px 0"><div id="search-links" class="search-links"></div></div>
 <h2>Shop by category</h2><p class="muted small">Opens Amazon filtered to items 30%+ off. Amazon’s % off uses its own reference prices, so check price history before posting.</p><div id="quick" class="search-links"></div>
 </section>
+<section id="panel-watch" role="tabpanel" aria-labelledby="tab-watch" hidden>
+<h1>👁 Watch list</h1>
+<p class="muted small">Pin products or keywords you care about. They get a <span class="watch-badge">👁 Watching</span> badge everywhere on the dashboard, and once sent to the scanner they are checked first in every 30-minute scan (inside the normal request budget).</p>
+<form id="watchForm" class="watch-add" autocomplete="off"><input id="watchInput" type="text" placeholder="Paste an Amazon link, an ASIN (B0…), or a keyword like air fryer" aria-label="Amazon link, ASIN or keyword to watch"><button class="btn" type="submit">+ Watch</button></form>
+<p id="watchFeedback" class="small muted" role="status"></p>
+<div id="watchChips" class="watch-chips"></div>
+<div id="watchSync" class="card watch-sync"></div>
+<h2>Watched products in your scans</h2><p id="watchStatus" class="small muted" role="status"></p><div id="watchResults" class="grid"></div>
+</section>
 <section id="panel-used" role="tabpanel" aria-labelledby="tab-used" hidden>
 <h1>Used, Open Box & Amazon Resale</h1>
 <p class="muted small">Used, open-box, renewed and Amazon Resale (Warehouse) offers the scanner saw in its normal Amazon checks. Third-party sellers are left out, so these ship free with Prime. Sorted by biggest savings versus the new price.</p>
 <div class="stats"><div class="stat"><strong id="usedcount">0</strong><span>Offers sold by Amazon</span></div><div class="stat"><strong id="usedsavers">0</strong><span>At least 30% below new</span></div><div class="stat"><strong>Prime</strong><span>Free shipping</span></div></div>
 <div class="notice"><strong>Check the condition:</strong> used prices are compared only with the new price in the same Amazon check, never with new-item price history. Read the condition note before you post.</div>
-<div class="actions"><label class="small muted">Sort <select id="usedSort" aria-label="Sort used offers"><option value="newest" selected>Newest scanned first</option><option value="savings">Biggest savings vs. new</option><option value="low">Lowest price first</option></select></label></div><p id="usedstatus" class="muted small" role="status">Checking available used-offer data…</p><div id="usedresults" class="grid"></div>
+<div class="actions"><label class="small muted">Sort <select id="usedSort" aria-label="Sort used offers"><option value="fresh" selected>New or price-dropped since last scan</option><option value="newest">Newest scanned first</option><option value="savings">Biggest savings vs. new</option><option value="low">Lowest price first</option></select></label></div><p id="usedstatus" class="muted small" role="status">Checking available used-offer data…</p><div id="usedresults" class="grid"></div>
 <h2>Find more used inventory</h2><p class="muted small">These searches request used condition and lowest-price sorting on Amazon. Results are <strong>not</strong> verified 50%+ discounts.</p>
 <div class="card"><label for="usedterm"><strong>Search Amazon used listings</strong></label><input id="usedterm" value="kitchen appliances" placeholder="Search used items…" style="margin:10px 0"><div id="usedlinks" class="search-links"></div></div>
 <h2>Browse used categories</h2><div id="usedquick" class="search-links"></div>
@@ -281,9 +315,9 @@ const cash=n=>'$'+Number(n).toFixed(2);
 const imageMarkup=d=>{try{const u=new URL(d.imageUrl);if(u.protocol!=='https:'||!/(^|\.)images-amazon\.com$|(^|\.)media-amazon\.com$|(^|\.)ssl-images-amazon\.com$/.test(u.hostname))return '';return '<img src="'+esc(u.href)+'" alt="'+esc(d.title||'Product image')+'" loading="lazy" style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0" referrerpolicy="no-referrer">'}catch{return ''}};
 const validUrl=u=>{try{const x=new URL(u);return x.protocol==='https:'&&(x.hostname==='www.amazon.com'||x.hostname==='amazon.com')}catch{return false}};
 let candidateAsins=new Set();let data=null,leads=[];let verifiedCommunity=[];let cloudCommunity=[];let communityMatches=[];let lastRenderTimer=null;let usedLoaded=false;let detailIndex=[];let candidatesLoaded=false;let historyData=null;
-function selectTab(name){if(name==='candidates'){name='deals';$('newOnly').checked=true;loadCandidates()}for(const n of ['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='walmart')loadWalmartRadar();if(name==='history')loadHistory();if(name==='posting')renderPostingQueue();if(name==='leads'){if(!leads.length)loadLeads();else refreshCommunityPublished()}if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();if(location.hash!=='#'+name)history.replaceState(null,'','#'+name);window.scrollTo({top:0,behavior:'instant'})}
-for(const n of ['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
-const tabNames=['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
+function selectTab(name){if(name==='candidates'){name='deals';$('newOnly').checked=true;loadCandidates()}for(const n of ['deals','inbox','candidates','posting','watch','history','walmart','clearance','search','used','leads']){$('panel-'+n).hidden=n!==name;$('tab-'+n).setAttribute('aria-selected',String(n===name));$('tab-'+n).tabIndex=n===name?0:-1}if(name==='inbox')loadInbox();if(name==='walmart')loadWalmartRadar();if(name==='history')loadHistory();if(name==='posting')renderPostingQueue();if(name==='watch')renderWatch();if(name==='leads'){if(!leads.length)loadLeads();else refreshCommunityPublished()}if(name==='candidates'&&!candidatesLoaded)loadCandidates();if(name==='used'&&!usedLoaded)loadUsed();if(location.hash!=='#'+name)history.replaceState(null,'','#'+name);window.scrollTo({top:0,behavior:'instant'})}
+for(const n of ['deals','inbox','candidates','posting','watch','history','walmart','clearance','search','used','leads'])$('tab-'+n).addEventListener('click',()=>selectTab(n));
+const tabNames=['deals','inbox','candidates','posting','watch','history','walmart','clearance','search','used','leads'];document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;const current=tabNames.findIndex(n=>$('tab-'+n)===document.activeElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(current+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;selectTab(tabNames[next]);$('tab-'+tabNames[next]).focus()});
 $('copyShopLink').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(new URL('./shop.html',location.href).href);$('copyShopStatus').textContent=' Link copied!'}catch{$('copyShopStatus').textContent=' Copy the URL from the follower shop page.'}});
 async function updateScanHealth(){const el=$('scanHealth');if(!el)return;try{const res=await fetch('./data/amazon-scan-health.json?t='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('not published');const h=await res.json();const age=(Date.now()-Date.parse(h.lastScanAt))/60000;const ok=h.status==='healthy'&&Number.isFinite(age)&&age<110;el.textContent=ok?'✓ Scanner verified · '+h.scannedProducts+' products · '+h.requestsCompleted+' API searches':'Scanner needs attention · '+(h.issues||[]).join('; ')+' · See GitHub Actions';el.style.color=ok?'#12664a':'#9b3a31'}catch{el.textContent='Scanner health check not yet published';}}updateScanHealth();
 const JUDGMENT_KEY='dailyDropsDealJudgmentsV1';
@@ -316,10 +350,14 @@ $('exportShopApproved').addEventListener('click',()=>{
  const a=document.createElement('a');a.href=url;a.download='shop-excluded.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
 });
 
+const QUEUE_FIELDS=['asin','title','price','imageUrl','checkedAt','referencePrice','referenceType','discountPercent','soldByAmazon','shippingStatus','seller','merchant','conditionLabel','conditionNote','subCondition','savingsVsNewPercent','newPrice','previousPrice','priceChangedAt','priceEvidence','category','url'];
+function findFullProduct(asin){const rows=[copyLookup.get(asin),...detailIndex,...(data?.deals||[]),...allScannedProducts,...inboxEvents,...historyRows].filter(x=>x&&x.asin===asin&&!x.conditionLabel);
+ // newest new-item row wins (used offers share ASINs and are only a fallback)
+ rows.sort((a,b)=>(Date.parse(b.checkedAt||0)||0)-(Date.parse(a.checkedAt||0)||0));return rows[0]||usedOffers.find(x=>x.asin===asin)||null}
 function findDealForQueue(asin){
- const rows=[...detailIndex,...(data?.deals||[]),...inboxEvents,...historyRows];
- const d=rows.find(x=>x.asin===asin);if(!d)return null;
- return {asin,title:String(d.title||'Amazon find').slice(0,240),price:Number(d.price??d.latestObserved)||null,imageUrl:d.imageUrl||d.image||null,checkedAt:d.checkedAt||null};
+ const d=findFullProduct(asin);if(!d)return null;
+ const out={};for(const k of QUEUE_FIELDS)if(d[k]!==undefined&&d[k]!==null&&d[k]!=='')out[k]=d[k];
+ out.asin=asin;out.title=String(d.title||'Amazon find').slice(0,240);out.price=Number(d.price??d.latestObserved)||null;out.imageUrl=d.imageUrl||d.image||null;out.checkedAt=d.checkedAt||null;return out;
 }
 function postingLink(asin){return 'https://www.amazon.com/dp/'+encodeURIComponent(asin)+'?tag=dealstoday0b3-20'}
 function postingLinkFor(d,entry){
@@ -333,37 +371,92 @@ function postingCaption(d,link){
 function postingComment(d,link){return '👉 '+(link||postingLink(d.asin))}
 // One-tap share: ready Facebook caption with the affiliate link and only evidence we actually have.
 const copyLookup=new Map();
-function shareCaption(d){
+function shareCaption(d,link){
  const nl=String.fromCharCode(10),price=Number(d.price),lines=[];const used=!!d.conditionLabel;
  let head=price>0?'🔥 $'+price.toFixed(2):'🔥 Deal alert';
  if(used&&Number(d.savingsVsNewPercent)>0&&Number(d.newPrice)>0)head+=' · '+d.conditionLabel+' ('+d.savingsVsNewPercent+'% less than new at $'+Number(d.newPrice).toFixed(2)+')';
  else if(used)head+=' · '+d.conditionLabel+' condition';
  else if(Number(d.referencePrice)>price&&price>0)head+=' (was $'+Number(d.referencePrice).toFixed(2)+' '+(String(d.referenceType||'').toLowerCase().includes('list')?'list price':'reference price')+', '+Math.round((1-price/Number(d.referencePrice))*100)+'% off)';
- lines.push(head,'',String(d.title||'Amazon find').replace(/\s+/g,' ').slice(0,200),'');
+ const tt=String(d.title||'Amazon find').replace(/\s+/g,' ').trim();lines.push(head,'',tt.length>160?tt.slice(0,160).replace(/[\s,|;:-]+\S*$/,'')+'…':tt,'');
+ if(used&&Number(d.previousPrice)>price&&price>0)lines.push('📉 Down from $'+Number(d.previousPrice).toFixed(2)+' (my price tracking)');
  if(!used&&trackedHistory){const e=quickEvidence(d);if(e.lowLabel)lines.push('📉 '+e.lowLabel+' (my price tracking)');else if(e.dropLabel)lines.push('📉 '+e.dropLabel.replace('↓ ','Down ')+' (my price tracking)')}
  if(shipsFree(d))lines.push('✅ Sold by Amazon · free shipping with Prime');
  if(d.conditionNote)lines.push('📝 Condition: '+String(d.conditionNote).slice(0,140));
- lines.push('','👉 '+postingLink(d.asin),'','Price checked '+date(d.checkedAt)+'. Prices change fast, so check before you buy.','','#DailyDropsWithHeather #AmazonFinds #DealFinds','As an Amazon Associate, I earn from qualifying purchases.');
+ lines.push('','👉 '+(link||postingLink(d.asin)),'','Price checked '+date(d.checkedAt)+'. Prices change fast, so check before you buy.','','#DailyDropsWithHeather #AmazonFinds #DealFinds','As an Amazon Associate, I earn from qualifying purchases.');
  return lines.join(nl).replace(/\n{3,}/g,nl+nl);
 }
 async function copyText(t){try{await navigator.clipboard.writeText(t);return true}catch{const a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch{}a.remove();return ok}}
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-copy-post],[data-copy-link]');if(!b)return;const asin=b.dataset.copyPost||b.dataset.copyLink;const d=copyLookup.get(asin);if(!d)return;const isPost=!!b.dataset.copyPost;const ok=await copyText(isPost?shareCaption(d):postingLink(asin));const st=b.parentElement.querySelector('.copy-status');if(st)st.textContent=ok?(isPost?'Post copied, paste it into Facebook':'Affiliate link copied'):'Copy blocked. Long-press to copy instead.'});
+// ---- Personal watch list -------------------------------------------------
+// Saved instantly in this browser (localStorage). The scanner reads data/watchlist.json in the
+// repo; "Send to scanner" copies the list and opens that file on GitHub to paste and commit.
+// No token or secret is ever used in this page.
+const WATCH_KEY='dailyDropsWatchlistV1',WATCH_FILE_URL='https://github.com/NicheFlip/daily-drops-deal-finder/edit/main/data/watchlist.json';
+let repoWatch=null,watchCache=null;
+function cleanWatch(w){const a=[],k=[];for(const x of (w&&Array.isArray(w.asins)?w.asins:[])){const v=String(x).trim().toUpperCase();if(/^[A-Z0-9]{10}$/.test(v)&&!a.includes(v))a.push(v)}for(const x of (w&&Array.isArray(w.keywords)?w.keywords:[])){const v=String(x).replace(/\s+/g,' ').trim().slice(0,60);if(v.length>=2&&!k.some(y=>y.toLowerCase()===v.toLowerCase()))k.push(v)}return {asins:a.slice(0,50),keywords:k.slice(0,8)}}
+function readWatch(){if(watchCache)return watchCache;let w=null;try{const raw=localStorage.getItem(WATCH_KEY);if(raw)w=cleanWatch(JSON.parse(raw))}catch{}watchCache=w||cleanWatch(repoWatch||{});return watchCache}
+function writeWatch(w){watchCache=null;try{localStorage.setItem(WATCH_KEY,JSON.stringify(cleanWatch(w)))}catch{alert('Could not save your watch list in this browser.')}afterWatchChange()}
+function afterWatchChange(){watchCache=null;updateWatchCount();if(data)render();if(!$('panel-watch').hidden)renderWatch();if(usedLoaded)renderUsed()}
+function updateWatchCount(){const w=readWatch(),n=w.asins.length+w.keywords.length,node=$('watchCount');if(node)node.textContent=n}
+function watchReason(d){if(!d)return '';const w=readWatch();if(!w.asins.length&&!w.keywords.length)return '';const asin=String(d.asin||'').toUpperCase();if(w.asins.includes(asin))return 'Pinned';const t=String(d.title||'').toLowerCase();for(const k of w.keywords){if(k.toLowerCase().split(' ').every(x=>t.includes(x)))return k}return ''}
+function watchBadge(d){const r=watchReason(d);return r?' <span class="watch-badge" title="On your watch list">👁 Watching'+(r!=='Pinned'?' · '+esc(r):'')+'</span>':''}
+function watchButton(d){const asin=String(d&&d.asin||'').toUpperCase();if(!/^[A-Z0-9]{10}$/.test(asin))return '';const on=readWatch().asins.includes(asin);return '<button type="button" class="watch-btn" data-watch-asin="'+esc(asin)+'" aria-pressed="'+on+'" title="'+(on?'Stop watching this product':'Pin this product to your watch list')+'">'+(on?'★ Watching':'☆ Watch')+'</button>'}
+function parseWatchInput(v){v=String(v||'').trim();if(!v)return null;const m=v.match(/\/(?:dp|gp\/product|gp\/aw\/d|product)\/([A-Z0-9]{10})(?:[/?#]|$)/i);if(m)return {asin:m[1].toUpperCase()};if(/^https?:\/\//i.test(v))return {error:'That link has no Amazon product code. Open the product page and copy its link, or type a keyword.'};if(/^(B0[A-Z0-9]{8}|\d{9}[\dX])$/i.test(v))return {asin:v.toUpperCase()};if(v.length<2)return {error:'Type at least 2 letters.'};return {keyword:v.replace(/\s+/g,' ').slice(0,60)}}
+function toggleWatchAsin(asin){const w=readWatch(),a=w.asins.slice();const i=a.indexOf(asin);if(i>=0)a.splice(i,1);else{if(a.length>=50){alert('Your watch list holds up to 50 products. Remove one first.');return}a.unshift(asin)}writeWatch({asins:a,keywords:w.keywords})}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-watch-asin]');if(!b)return;e.preventDefault();toggleWatchAsin(b.dataset.watchAsin)});
+function watchFileText(w){return JSON.stringify({format:'daily-drops-watchlist-v1',note:'Products Heather pinned. The scanner checks these first in every scan, inside the normal request budget. Edit with the dashboard\'s Watch list tab (Send to scanner).',asins:w.asins,keywords:w.keywords},null,2)+String.fromCharCode(10)}
+function sameWatch(a,b){const k=w=>JSON.stringify([w.asins.slice().sort(),w.keywords.map(x=>x.toLowerCase()).sort()]);return k(a)===k(b)}
+function watchPool(){const rows=[...(data?.deals||[]),...allScannedProducts,...usedOffers].filter(d=>d&&Number(d.price)>0&&watchReason(d));const seen=new Map();for(const d of rows){const k=String(d.asin)+'|'+(d.conditionLabel||'');const prev=seen.get(k);if(!prev||Date.parse(d.checkedAt||0)>Date.parse(prev.checkedAt||0))seen.set(k,d)}return [...seen.values()].sort((a,b)=>freshRank(freshInfo(b))-freshRank(freshInfo(a))||(Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0)))}
+async function renderWatch(){
+ const w=readWatch();updateWatchCount();
+ const found=watchPool(),foundAsins=new Set(found.map(d=>String(d.asin)));
+ $('watchChips').innerHTML=w.asins.map(a=>{const d=found.find(x=>x.asin===a);return '<span class="watch-chip">📦 '+(d?esc(shortName(d)).slice(0,42):esc(a))+(d?'':' <small>(waiting for scan)</small>')+'<button type="button" data-unwatch-asin="'+esc(a)+'" aria-label="Stop watching '+esc(a)+'">✕</button></span>'}).join('')+w.keywords.map(k=>'<span class="watch-chip">🔎 '+esc(k)+'<button type="button" data-unwatch-keyword="'+esc(k)+'" aria-label="Stop watching '+esc(k)+'">✕</button></span>').join('')||'<p class="small muted">Nothing pinned yet. Add an Amazon link, ASIN or keyword above, or tap ☆ Watch on any deal card.</p>';
+ const repo=cleanWatch(repoWatch||{}),synced=repoWatch&&sameWatch(w,repo),sync=$('watchSync');
+ sync.className='card watch-sync '+(synced?'ok':'todo');
+ sync.innerHTML=synced?'<strong>✓ The scanner has this list.</strong><p class="small muted">'+(w.asins.length||w.keywords.length?'Pinned products and keywords are checked first in every 30-minute scan ('+w.asins.length+' products, '+w.keywords.length+' keywords).':'Add items above, then send them to the scanner.')+'</p>':
+  '<strong>'+(repoWatch?'⚠ Changes saved on this device only.':'Scanner list not loaded yet.')+'</strong><p class="small">The Watching badges already work here. To have the scanner check them first, send the list (about a minute):</p><ol class="small"><li>Tap <strong>Copy list &amp; open GitHub</strong>.</li><li>On GitHub, tap in the file, select everything (Ctrl/⌘+A, or long-press → Select all) and paste.</li><li>Tap the green <strong>Commit changes…</strong> button, then <strong>Commit changes</strong> again.</li></ol><a class="btn" id="watchSend" href="'+WATCH_FILE_URL+'" target="_blank" rel="noopener noreferrer">📋 Copy list &amp; open GitHub</a> <button type="button" class="btn secondary" id="watchDownload">⬇ Download file instead</button> <span class="small muted" id="watchSendStatus" role="status"></span>';
+ $('watchStatus').textContent=found.length?found.length+' watched products in the latest scans · newly found or dropped first':(w.asins.length||w.keywords.length)?'No watched products in the current scans yet. After you send the list, the next scan checks them first.':'';
+ $('watchResults').innerHTML=found.slice(0,60).map((d,i)=>d.conditionLabel?usedCard(d):compactCard(d,'watch',i)).join('');
+ if(!quickDataLoaded){await loadQuickData();renderWatch()}
+}
+$('watchForm').addEventListener('submit',e=>{e.preventDefault();const r=parseWatchInput($('watchInput').value),fb=$('watchFeedback');if(!r){fb.textContent='Paste an Amazon link, an ASIN or a keyword.';return}if(r.error){fb.textContent=r.error;return}const w=readWatch();
+ if(r.asin){if(w.asins.includes(r.asin)){fb.textContent='Already watching '+r.asin+'.';return}if(w.asins.length>=50){fb.textContent='Up to 50 products. Remove one first.';return}writeWatch({asins:[r.asin,...w.asins],keywords:w.keywords});fb.textContent='✓ Watching '+r.asin+'.'}
+ else{if(w.keywords.some(k=>k.toLowerCase()===r.keyword.toLowerCase())){fb.textContent='Already watching “'+r.keyword+'”.';return}if(w.keywords.length>=8){fb.textContent='Up to 8 keywords (each one uses a search in every scan). Remove one first.';return}writeWatch({asins:w.asins,keywords:[...w.keywords,r.keyword]});fb.textContent='✓ Watching “'+r.keyword+'”.'}
+ $('watchInput').value=''});
+$('panel-watch').addEventListener('click',e=>{const a=e.target.closest('[data-unwatch-asin]'),k=e.target.closest('[data-unwatch-keyword]'),w=readWatch();
+ if(a)writeWatch({asins:w.asins.filter(x=>x!==a.dataset.unwatchAsin),keywords:w.keywords});
+ if(k)writeWatch({asins:w.asins,keywords:w.keywords.filter(x=>x!==k.dataset.unwatchKeyword)});
+ if(e.target.closest('#watchSend')){const st=$('watchSendStatus');copyText(watchFileText(readWatch())).then(ok=>{if(st)st.textContent=ok?'List copied. Paste it on GitHub.':'Copy blocked: use Download file instead.'})}
+ if(e.target.closest('#watchDownload')){const blob=new Blob([watchFileText(readWatch())],{type:'application/json'}),url=URL.createObjectURL(blob),x=document.createElement('a');x.href=url;x.download='watchlist.json';x.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}});
+$('watchResults').addEventListener('click',handleJudgmentClick);
+(async()=>{try{const r=await fetch('data/watchlist.json?ts='+Date.now(),{cache:'no-store'});if(r.ok)repoWatch=await r.json()}catch{}afterWatchChange()})();
 function updatePostingCount(){const n=Object.values(readJudgments()).filter(x=>x?.choice==='deal').length;const node=$('postingCount');if(node)node.textContent=n}
+function postFacts(d){const f=[],price=Number(d.price);
+ if(d.conditionLabel)f.push('<span class="post-fact cond">♻ '+esc(d.conditionLabel)+(d.subCondition&&d.subCondition!=='Unknown'?' · '+esc(String(d.subCondition).replace(/([a-z])([A-Z])/g,'$1 $2')):'')+'</span>');
+ if(d.conditionLabel&&Number(d.newPrice)>price)f.push('<span class="post-fact">New: '+cash(d.newPrice)+(Number(d.savingsVsNewPercent)>0?' · save '+esc(d.savingsVsNewPercent)+'%':'')+'</span>');
+ else if(!d.conditionLabel&&Number(d.referencePrice)>price)f.push('<span class="post-fact">'+(String(d.referenceType||'').toLowerCase().includes('list')?'List price ':'Was ')+'<s>'+cash(d.referencePrice)+'</s> · '+Math.round((1-price/Number(d.referencePrice))*100)+'% off</span>');
+ const h=!d.conditionLabel&&historyFacts(d.asin,price);if(h&&h.prev&&Number(h.prev[1])>h.cur)f.push('<span class="post-fact good">↓ Down '+cash(Number(h.prev[1])-h.cur)+' from '+cash(h.prev[1])+' (tracked)</span>');
+ if(d.conditionLabel&&Number(d.previousPrice)>price)f.push('<span class="post-fact good">↓ Down from '+cash(d.previousPrice)+' (tracked)</span>');
+ if(shipsFree(d))f.push('<span class="post-fact good">✓ Prime · free shipping</span>');else if(d.shippingStatus!=='amazon')f.push('<span class="post-fact" title="The scan did not report the seller">Shipping not checked</span>');
+ return f.join('')}
+function previewHtml(text){return esc(text).replace(/https:\/\/[^\s<]+/g,u=>'<a href="'+u+'" target="_blank" rel="sponsored noopener noreferrer">'+u+'</a>')}
 function renderPostingQueue(){
  updatePostingCount();
- const entries=Object.entries(readJudgments()).filter(([asin,x])=>x?.choice==='deal'&&/^[A-Z0-9]{10}$/.test(asin));
- $('postingStatus').textContent=entries.length+' selected products · saved on this browser only';
+ const entries=Object.entries(readJudgments()).filter(([asin,x])=>x?.choice==='deal'&&/^[A-Z0-9]{10}$/.test(asin)).sort((a,b)=>String(b[1].updatedAt||'').localeCompare(String(a[1].updatedAt||'')));
+ $('postingStatus').textContent=entries.length?entries.length+(entries.length===1?' post':' posts')+' ready · newest first · saved on this browser':'';
  $('postingResults').innerHTML=entries.map(([asin,x])=>{
-  const d=x.product||findDealForQueue(asin)||{asin,title:'Amazon product '+asin,price:null};
-  const link=postingLinkFor(d,x);
-  return '<article class="card product" data-post-asin="'+esc(asin)+'"><h3>'+esc(d.title||'Amazon product')+'</h3><p class="small muted">Last scanned: '+(d.price?cash(d.price):'Unknown')+'</p>'+
-  (d.imageUrl&&/^https:/.test(d.imageUrl)?'<img loading="lazy" referrerpolicy="no-referrer" src="'+esc(d.imageUrl)+'" alt="Original product image" style="max-height:240px;max-width:100%;object-fit:contain">':'<p class="small muted">No original product image available.</p>')+
-  '<label class="small muted">Product affiliate link (optional: paste verified Amazon short link)<input data-post-link type="url" value="'+esc(link)+'" aria-label="Product affiliate link"></label>'+
-  '<label class="small muted">Editable caption — link included<textarea data-post-caption rows="9">'+esc(x.customCaption||postingCaption(d,link))+'</textarea></label>'+
-  '<button class="btn" type="button" data-post-action="caption">Copy complete post (1 click)</button> <button class="btn secondary" type="button" data-post-action="comment">Copy link only</button> <a href="'+esc(postingLink(asin))+'" target="_blank" rel="noopener noreferrer">Verify on Amazon</a>'+
-  '<p class="small muted">Download a clean 1080 × 1350 sale graphic.</p><button class="btn secondary" type="button" data-post-action="graphic">Download sale graphic</button> <button class="btn secondary" type="button" data-post-action="remove">Remove from queue</button><p data-post-feedback class="small muted" role="status"></p></article>';
- }).join('')||'<div class="empty">No selected deals yet. Open Deals and choose Deal to add a product here.</div>';
+  const live=findDealForQueue(asin),d={...(x.product||{}),...(live||{})};if(!d.title)d.title='Amazon product '+asin;d.asin=asin;
+  const link=postingLinkFor(d,x),caption=x.customCaption||shareCaption(d,link),img=d.imageUrl&&/^https:/.test(d.imageUrl)?d.imageUrl:'';
+  return '<article class="card product post-card" data-post-asin="'+esc(asin)+'"><div class="post-head"><span class="pill">✓ Ready to post</span><span class="small muted">Price checked '+esc(d.checkedAt?date(d.checkedAt):'—')+'</span></div><div class="post-layout">'+
+  '<div class="fb-preview" aria-label="Facebook post preview"><div class="fb-top"><span class="fb-avatar">DD</span><div><strong>Daily Drops with Heather</strong><small>Post preview · what followers see</small></div></div><div class="fb-text" data-post-preview>'+previewHtml(caption)+'</div>'+(img?'<img class="fb-photo" loading="lazy" referrerpolicy="no-referrer" src="'+esc(img)+'" alt="'+esc(d.title)+'">':'')+'<div class="fb-link"><small>AMAZON.COM</small><strong>'+esc(String(d.title).slice(0,90))+'</strong></div></div>'+
+  '<div class="post-tools"><div class="post-price">'+(Number(d.price)>0?cash(d.price):'Check price')+'</div><div class="post-facts">'+postFacts(d)+'</div>'+
+  '<div class="post-buttons"><button class="btn post-copy" type="button" data-post-action="caption">📋 Copy post</button><button class="btn secondary" type="button" data-post-action="comment">🔗 Copy link</button><a class="btn secondary" href="'+esc(link)+'" target="_blank" rel="sponsored noopener noreferrer">↗ Open product</a></div><p class="post-feedback" data-post-feedback role="status"></p>'+
+  '<label class="small muted">Caption (tap to edit · your changes are saved)<textarea data-post-caption rows="10">'+esc(caption)+'</textarea></label>'+
+  '<div class="post-mini"><button class="btn secondary" type="button" data-post-action="reset">↺ Reset caption</button><button class="btn secondary" type="button" data-post-action="graphic">⬇ Sale graphic</button><button class="btn secondary" type="button" data-post-action="remove">✕ Remove</button></div>'+
+  '<details class="small" style="margin-top:10px"><summary>Use a different affiliate link</summary><input data-post-link type="url" value="'+esc(link)+'" aria-label="Product affiliate link"><span class="muted">Paste a verified Amazon short link (link.amazon/…) if you prefer.</span></details></div></div></article>';
+ }).join('')||'<div class="empty">No posts ready yet. On the Deals tab, tap <strong>✓ Deal</strong> on a product and it appears here with a ready-to-copy Facebook post.</div>';
 }
+$('postingResults').addEventListener('input',e=>{if(!e.target.matches('[data-post-caption]'))return;const pv=e.target.closest('[data-post-asin]')?.querySelector('[data-post-preview]');if(pv)pv.innerHTML=previewHtml(e.target.value)});
 $('postingResults').addEventListener('change',e=>{
  const card=e.target.closest('[data-post-asin]');if(!card)return;
  const asin=card.dataset.postAsin,all=readJudgments(),entry=all[asin];if(!entry)return;
@@ -371,8 +464,7 @@ $('postingResults').addEventListener('change',e=>{
   const link=e.target.value.trim();
   if(!/^https:\/\/(link\.amazon|www\.amazon\.com|amazon\.com)\//i.test(link)){card.querySelector('[data-post-feedback]').textContent='Use a valid Amazon product or affiliate link.';return}
   entry.customLink=link;
-  const d=entry.product||findDealForQueue(asin)||{asin,title:'Amazon product '+asin};
-  const textarea=card.querySelector('[data-post-caption]');textarea.value=textarea.value.replace(/https:\/\/(?:link\.amazon|(?:www\.)?amazon\.com)\/[^\s]+/i,link);
+  const textarea=card.querySelector('[data-post-caption]');textarea.value=textarea.value.replace(/https:\/\/(?:link\.amazon|(?:www\.)?amazon\.com)\/[^\s]+/i,link);const pv=card.querySelector('[data-post-preview]');if(pv)pv.innerHTML=previewHtml(textarea.value);
   entry.customCaption=textarea.value;
  }else if(e.target.matches('[data-post-caption]'))entry.customCaption=e.target.value;
  try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all))}catch{}
@@ -409,12 +501,13 @@ async function postingGraphic(d){
 $('postingResults').addEventListener('click',async e=>{
  const btn=e.target.closest('[data-post-action]');if(!btn)return;
  const card=btn.closest('[data-post-asin]'),asin=card.dataset.postAsin,entry=readJudgments()[asin];if(!entry)return;
- const d=entry.product||findDealForQueue(asin)||{asin,title:'Amazon product '+asin};
+ const d={...(entry.product||{}),...(findDealForQueue(asin)||{})};d.asin=asin;if(!d.title)d.title='Amazon product '+asin;
  const feedback=card.querySelector('[data-post-feedback]');
  try{
   if(btn.dataset.postAction==='remove'){saveJudgment(asin,'clear');return}
-  if(btn.dataset.postAction==='caption'){await navigator.clipboard.writeText(card.querySelector('[data-post-caption]').value);feedback.textContent='Caption copied.'}
-  if(btn.dataset.postAction==='comment'){await navigator.clipboard.writeText(postingComment(d,card.querySelector('[data-post-link]').value));feedback.textContent='Affiliate comment copied.'}
+  if(btn.dataset.postAction==='caption'){const t=card.querySelector('[data-post-caption]').value;const ok=await copyText(t);feedback.textContent=ok?'✓ Post copied: open Facebook and paste.'+(/amazon associate/i.test(t)?'':' Tip: keep the “As an Amazon Associate…” line.'):'Copy blocked. Long-press the caption to copy.'}
+  if(btn.dataset.postAction==='comment'){const ok=await copyText(card.querySelector('[data-post-link]').value.trim()||postingLink(asin));feedback.textContent=ok?'✓ Affiliate link copied.':'Copy blocked. Long-press the link to copy.'}
+  if(btn.dataset.postAction==='reset'){const all=readJudgments();if(all[asin]){delete all[asin].customCaption;try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all))}catch{}}const ta=card.querySelector('[data-post-caption]');ta.value=shareCaption(d,postingLinkFor(d,all[asin]));card.querySelector('[data-post-preview]').innerHTML=previewHtml(ta.value);feedback.textContent='Caption reset to the evidence-based version.'}
   if(btn.dataset.postAction==='graphic'){btn.disabled=true;const imageUsed=await postingGraphic(d);feedback.textContent=imageUsed?'Graphic downloaded with original product image.':'Text-only graphic downloaded; original image export was blocked.'}
  }catch(err){feedback.textContent='Action failed: '+err.message}finally{btn.disabled=false}
 });
@@ -427,7 +520,7 @@ function judgmentButtons(d){
 }
 function shortName(d){return String(d.title||'Amazon find').replace(/\s+/g,' ').slice(0,160)}
 function compactReview(d){const asin=String(d.asin||'');if(!/^[A-Z0-9]{10}$/.test(asin))return '';const x=readJudgments()[asin]||{},choice=x.choice||'';return '<div class="scan-review" role="group" aria-label="Your decision"><button type="button" data-asin="'+esc(asin)+'" data-judgment="deal" aria-pressed="'+(choice==='deal')+'">✓ Deal</button><button type="button" data-asin="'+esc(asin)+'" data-judgment="no-deal" aria-pressed="'+(choice==='no-deal')+'">✕ No</button><button type="button" data-asin="'+esc(asin)+'" data-judgment="pass" aria-pressed="'+(choice==='pass')+'">↷ Pass</button></div><div class="scan-review-status">'+(choice==='deal'?'✓ Saved to Posting Queue':choice==='no-deal'?'Marked No Deal':choice==='pass'?'Passed':'')+'</div>'}
-function compactCard(d,kind,i){const ref=Number(d.referencePrice)>Number(d.price)?'<span class="scan-meta">'+esc(d.discountPercent||Math.round((1-d.price/d.referencePrice)*100))+'% vs reference</span>':'';const img=d.imageUrl?imageMarkup(d).replace('style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0"','class="scan-photo"'):'';const label=d.newObservedLow?'New recorded low':d.priceEvidence==='observed_reduction'?'Observed drop':kind==='candidate'?'New candidate':Number(d.discountPercent)>=40?'Discount lead':'Scanned product';const historyButton='<button type="button" class="btn secondary" data-price-history="'+esc(d.asin||'')+'">Price history</button>';return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill">'+esc(label)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> '+ref+'</div>'+shipBadge(d)+previousPriceLine(d)+'<div class="scan-meta">Scanned '+esc(date(d.checkedAt))+'</div>'+compactReview(d)+'<div class="scan-actions">'+(kind==='deal'?'<button type="button" class="btn secondary" data-detail="'+i+'">Details</button>':'')+historyButton+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Amazon ↗</a></div>'+copyButtons(d)+'</article>'}
+function compactCard(d,kind,i){const ref=Number(d.referencePrice)>Number(d.price)?'<span class="scan-meta">'+esc(d.discountPercent||Math.round((1-d.price/d.referencePrice)*100))+'% vs reference</span>':'';const img=d.imageUrl?imageMarkup(d).replace('style="width:100%;height:170px;object-fit:contain;background:#fff;border-radius:10px;margin:8px 0"','class="scan-photo"'):'';const fi=freshInfo(d);const label=fi.kind==='drop'?'↓ Dropped this scan':fi.kind==='new'?'★ New this scan':d.newObservedLow?'New recorded low':d.priceEvidence==='observed_reduction'?'Observed drop':kind==='candidate'?'New candidate':Number(d.discountPercent)>=40?'Discount lead':'Scanned product';const historyButton='<button type="button" class="btn secondary" data-price-history="'+esc(d.asin||'')+'">Price history</button>';const wr=watchReason(d);return '<article class="card product scan-card'+(wr?' watched':'')+'"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill'+(fi.kind?' fresh-'+fi.kind:'')+'">'+esc(label)+'</span>'+watchBadge(d)+'<h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> '+ref+'</div>'+shipBadge(d)+previousPriceLine(d)+'<div class="scan-meta">Scanned '+esc(date(d.checkedAt))+' '+watchButton(d)+'</div>'+compactReview(d)+'<div class="scan-actions">'+(kind==='deal'?'<button type="button" class="btn secondary" data-detail="'+i+'">Details</button>':'')+historyButton+'<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Amazon ↗</a></div>'+copyButtons(d)+'</article>'}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-price-history]');if(!b)return;const asin=b.dataset.priceHistory;selectTab('history');$('historyFind').value=asin;loadHistory()});
 let historyRows=[];
 async function loadHistory(){
@@ -471,10 +564,16 @@ function betterOffer(a,b){const x=offerRank(a),y=offerRank(b);for(let i=0;i<x.le
 function dedupeProducts(rows){const byAsin=new Map();for(const d of rows){if(!d)continue;const k=String(d.asin||d.url);const prev=byAsin.get(k);if(!prev||betterOffer(d,prev))byAsin.set(k,d)}let rows2=[...byAsin.values()];for(const keyFn of [d=>/^[A-Z0-9]{10}$/.test(String(d.parentAsin||''))?'p:'+d.parentAsin:null,d=>{const t=String(d.title||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();return t.length>=12?'t:'+t.slice(0,120):null}]){const g=new Map(),rest=[];for(const d of rows2){const k=keyFn(d);if(!k){rest.push(d);continue}const prev=g.get(k);if(!prev||betterOffer(d,prev))g.set(k,d)}rows2=[...g.values(),...rest]}return rows2}
 // Price history facts from the scanner's recorded timeline (one point per price change).
 function historyFacts(asin,price){const h=trackedHistory&&trackedHistory[asin];if(!h||!Array.isArray(h.points))return null;const raw=h.points.filter(p=>Array.isArray(p)&&Number(p[1])>0&&Date.parse(p[0]));const pts=raw.slice().sort((a,b)=>Date.parse(a[0])-Date.parse(b[0])).filter((p,i,arr)=>i===0||Math.abs(Number(p[1])-Number(arr[i-1][1]))>0.004);if(!pts.length)return null;const cur=Number.isFinite(Number(price))&&Number(price)>0?Number(price):Number(pts[pts.length-1][1]);const vals=pts.map(p=>Number(p[1])).concat([cur]);let prev=null;for(let i=pts.length-1;i>=0;i--){if(Math.abs(Number(pts[i][1])-cur)>0.004){prev=pts[i];break}}return {pts,cur,low:Math.min(...vals),high:Math.max(...vals),prev,first:pts[0][0],checks:Number(h.checks)||raw.length,lastChecked:h.lastChecked||h.lastSeen||raw.map(p=>p[0]).sort().pop(),title:h.title}}
-function previousPriceLine(d){const f=historyFacts(d.asin,d.price);if(!f||!f.prev)return '';const was=Number(f.prev[1]),dir=was>f.cur?'↓ was ':'↑ was ';return '<div class="scan-meta prev-price">'+dir+cash(was)+' on '+esc(new Date(f.prev[0]).toLocaleDateString([], {month:'short',day:'numeric'}))+' · tracked low '+cash(f.low)+'</div>'}
+function shortDate(t){const n=Date.parse(t);return n?new Date(n).toLocaleDateString([], {month:'short',day:'numeric'}):''}
+// Card price-history line: only facts from our own tracked history, nothing invented.
+function previousPriceLine(d){const f=historyFacts(d.asin,d.price);if(!f)return '';let main='';
+ if(f.prev){const was=Number(f.prev[1]),diff=Math.abs(was-f.cur),i=f.pts.indexOf(f.prev),at=i>=0&&f.pts[i+1]?f.pts[i+1][0]:'';main='<div class="hist-line '+(was>f.cur?'down':'up')+'">'+(was>f.cur?'↓ Down ':'↑ Up ')+cash(diff)+' from '+cash(was)+(at?' <span>('+esc(shortDate(at))+')</span>':'')+'</div>'}
+ else if(f.checks>1)return '<div class="hist-line same">Same price since '+esc(shortDate(f.first))+' <span>· '+f.checks+' checks</span></div>';
+ const range=f.pts.length>1?'Tracked low '+cash(f.low)+' · high '+cash(f.high)+' · ':'';
+ return main+(f.checks>1||range?'<div class="scan-meta prev-price">'+range+f.checks+' checks since '+esc(shortDate(f.first))+'</div>':'')}
 loadScanDrops();
 const requestedTab=location.hash.slice(1);
-window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'].includes(tab))selectTab(tab)});
+window.addEventListener('hashchange',()=>{const tab=location.hash.slice(1);if(['deals','inbox','candidates','posting','watch','history','walmart','clearance','search','used','leads'].includes(tab))selectTab(tab)});
 $('openInbox').addEventListener('click',()=>selectTab('inbox'));
 $('homeWalmartRadar').addEventListener('click',()=>selectTab('walmart'));
 $('homeAmazonRadar').addEventListener('click',()=>selectTab('deals'));
@@ -513,6 +612,21 @@ const essentialsTerms=/laundry|detergent|paper towel|toilet paper|dish soap|tras
 function evidenceLabel(d){return d.priceEvidence==='observed_reduction'?'Observed price drop':d.priceEvidence==='repeat_observation'?'Repeat observation':'First observed price'}
 // "Newest scanned": latest scan first; inside one scan, products that appeared most recently
 // (first seen in price history / used feed) come first, then sold-by-Amazon, then evidence.
+function shortTime(t){const n=Date.parse(t);return n?new Date(n).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):'latest'}
+function latestScanTime(){return Date.parse(data&&data.updated||'')||0}
+// "Since last scan": first seen in the newest scan, or its price fell vs the previous recorded price in that scan.
+function freshInfo(d){const T=latestScanTime(),none={kind:''};if(!T||!d)return none;const inScan=t=>!!t&&t>=T-120000;
+ if(!inScan(Date.parse(d.checkedAt||'')))return none;const cur=Number(d.price);
+ if(d.conditionLabel){const was=Number(d.previousPrice);if(was>cur&&inScan(Date.parse(d.priceChangedAt||'')))return {kind:'drop',was,pct:(was-cur)/was};return inScan(Date.parse(d.firstSeenAt||''))?{kind:'new'}:none}
+ const f=historyFacts(d.asin,d.price);
+ if(f){const last=f.pts[f.pts.length-1];if(!inScan(Date.parse(last[0])))return none;if(f.pts.length===1)return {kind:'new'};if(f.prev&&Number(f.prev[1])>f.cur){const was=Number(f.prev[1]);return {kind:'drop',was,pct:(was-f.cur)/was}}return none}
+ const was=Number(d.previousDifferentPrice||d.previousObservedPrice);
+ if(d.priceEvidence==='observed_reduction'&&was>cur)return {kind:'drop',was,pct:(was-cur)/was};
+ if(!trackedHistory&&d.priceEvidence==='first_observation')return {kind:'new'};
+ return none}
+function freshRank(f){return f.kind==='drop'?2:f.kind==='new'?1:0}
+function freshCompare(a,b){const fa=freshInfo(a),fb=freshInfo(b);return (freshRank(fb)-freshRank(fa))||((watchReason(b)?1:0)-(watchReason(a)?1:0))||(fa.kind==='drop'?(fb.pct||0)-(fa.pct||0):0)||(shipsFree(b)-shipsFree(a))||(fa.kind?evidenceRank(b)-evidenceRank(a):0)||newestCompare(a,b)}
+function freshSummary(rows){let drop=0,fresh=0;for(const d of rows){const k=freshInfo(d).kind;if(k==='drop')drop++;else if(k==='new')fresh++}return {drop,fresh}}
 function scanTime(d){return Math.floor((Date.parse(d&&d.checkedAt||0)||0)/60000)}
 function firstSeenTime(d){const own=Date.parse(d&&d.firstSeenAt||'');if(own)return own;const h=trackedHistory&&d&&trackedHistory[d.asin];if(h&&Array.isArray(h.points)){const ts=h.points.map(p=>Date.parse(p&&p[0])).filter(Boolean);if(ts.length)return Math.min(...ts)}return Date.parse(d&&d.checkedAt||0)||0}
 function newestCompare(a,b){return (scanTime(b)-scanTime(a))||(firstSeenTime(b)-firstSeenTime(a))||(shipsFree(b)-shipsFree(a))||(evidenceRank(b)-evidenceRank(a))}
@@ -568,6 +682,7 @@ async function loadQuickData(){
  try{const r=await fetch('data/amazon-price-history.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();trackedHistory=j&&typeof j.items==='object'?j.items:{}}}catch{trackedHistory={}}
  try{const r=await fetch('data/amazon-used-offers.json?ts='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();usedOffersUpdated=j.updated||'';usedOffers=(Array.isArray(j.offers)?j.offers:[]).filter(d=>shipVisible(d)&&validUrl(d.url)&&Number(d.price)>0&&['Used','Open Box','Warehouse','Renewed'].includes(d.conditionLabel));{const g=new Map();for(const d of usedOffers){const k=productGroup(d)+'|'+d.conditionLabel;const prev=g.get(k);if(!prev||(Number(d.savingsVsNewPercent)||-1)>(Number(prev.savingsVsNewPercent)||-1)||((Number(d.savingsVsNewPercent)||-1)===(Number(prev.savingsVsNewPercent)||-1)&&Number(d.price)<Number(prev.price)))g.set(k,d)}usedOffers=[...g.values()]}}}catch{usedOffers=[]}
  if(data)render();
+ if(!$('panel-watch').hidden)renderWatch();
 }
 function quickEvidence(d){
  const price=Number(d.price),discount=Number(d.discountPercent)||(Number(d.referencePrice)>price?Math.round((1-price/Number(d.referencePrice))*100):0);
@@ -605,7 +720,8 @@ function copyButtons(d){const asin=String(d.asin||'');if(!/^[A-Z0-9]{10}$/.test(
 function usedCard(d){
  const img=d.imageUrl?'<img class="scan-photo" src="'+esc(d.imageUrl)+'" alt="'+esc(d.title)+'" loading="lazy" referrerpolicy="no-referrer">':'';
  const save=Number(d.savingsVsNewPercent)>0?'<span class="good">Save '+esc(d.savingsVsNewPercent)+'% vs new '+cash(d.newPrice)+'</span>':Number(d.newPrice)>0?'<span class="info">New: '+cash(d.newPrice)+'</span>':'<span class="info">No new price to compare</span>';
- return '<article class="card product scan-card"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill cond-pill">'+esc(d.conditionLabel)+'</span><h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> <span class="scan-meta">'+esc(d.conditionLabel)+' price'+(d.subCondition&&d.subCondition!=='Unknown'?' · '+esc(d.subCondition.replace(/([a-z])([A-Z])/g,'$1 $2')):'')+'</span></div><div class="ev"><span class="cond">'+esc(d.conditionLabel)+'</span>'+save+'</div>'+shipBadge(d)+(d.conditionNote?'<div class="scan-meta">“'+esc(d.conditionNote)+'”</div>':'')+'<div class="scan-meta">'+(d.merchant?'Sold by '+esc(d.merchant)+' · ':'')+'Checked '+esc(date(d.checkedAt))+(d.firstSeenAt?(Date.parse(d.firstSeenAt)>=Date.parse(d.checkedAt)-60000?' · <strong>new this scan</strong>':' · first seen '+esc(date(d.firstSeenAt))):'')+'</div><div class="scan-actions"><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Check '+esc(d.conditionLabel.toLowerCase())+' offer on Amazon ↗</a></div>'+copyButtons(d)+'</article>'
+ const wr=watchReason(d),fi=freshInfo(d),was=Number(d.previousPrice),usedHist=was>0&&was!==Number(d.price)?'<div class="hist-line '+(was>Number(d.price)?'down':'up')+'">'+(was>Number(d.price)?'↓ Down ':'↑ Up ')+cash(Math.abs(was-Number(d.price)))+' from '+cash(was)+(d.priceChangedAt?' <span>('+esc(shortDate(d.priceChangedAt))+')</span>':'')+'</div>':'';
+ return '<article class="card product scan-card'+(wr?' watched':'')+'"><div class="scan-top">'+img+'<div class="scan-heading"><span class="pill cond-pill">'+esc(d.conditionLabel)+'</span>'+(fi.kind==='drop'?' <span class="pill fresh-drop">↓ Dropped this scan</span>':'')+watchBadge(d)+'<h3 title="'+esc(d.title)+'">'+esc(shortName(d))+'</h3></div></div><div><span class="scan-price">'+cash(d.price)+'</span> <span class="scan-meta">'+esc(d.conditionLabel)+' price'+(d.subCondition&&d.subCondition!=='Unknown'?' · '+esc(d.subCondition.replace(/([a-z])([A-Z])/g,'$1 $2')):'')+'</span></div><div class="ev"><span class="cond">'+esc(d.conditionLabel)+'</span>'+save+'</div>'+usedHist+shipBadge(d)+(d.conditionNote?'<div class="scan-meta">“'+esc(d.conditionNote)+'”</div>':'')+'<div class="scan-meta">'+(d.merchant?'Sold by '+esc(d.merchant)+' · ':'')+'Checked '+esc(date(d.checkedAt))+(d.firstSeenAt?(Date.parse(d.firstSeenAt)>=Date.parse(d.checkedAt)-60000?' · <strong>new this scan</strong>':' · first seen '+esc(date(d.firstSeenAt))):'')+' '+watchButton(d)+'</div><div class="scan-actions"><a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer sponsored">Check '+esc(d.conditionLabel.toLowerCase())+' offer on Amazon ↗</a></div>'+copyButtons(d)+'</article>'
 }
 function amazonDealUrl(q,pct=30){const u=new URL('https://www.amazon.com/s');if(q)u.searchParams.set('k',q);u.searchParams.set('rh','p_8:'+pct+'-99');return u.href}
 function amazonUsedUrl(q){const u=new URL('https://www.amazon.com/s');u.searchParams.set('k',q);u.searchParams.set('rh','p_n_condition-type:6461718011');return u.href}
@@ -641,9 +757,9 @@ function render(){
  if(quickMode&&QUICK[quickMode]){$('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);renderQuick(latest,publishedCloud,cloudHidden);return}
  const q=$('find').value.trim().toLowerCase(),cat=$('category').value,deep=$('deep').checked,essentialOnly=$('essentials').checked;
  const filtered=all.filter(d=>(!$('newOnly').checked||candidateAsins.has(String(d.asin)))&&(!q||String(d.title||'').toLowerCase().includes(q))&&(!cat||d.category===cat)&&(!deep||Number(d.discountPercent)>=70)&&(!essentialOnly||essentialsTerms.test(String(d.title||'')+' '+String(d.keyword||''))));
- const sort=$('sort').value;filtered.sort((a,b)=>sort==='newest'?newestCompare(a,b):(shipsFree(b)-shipsFree(a))||(sort==='evidence'?evidenceRank(b)-evidenceRank(a)||Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0):sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='oldest'?Date.parse(a.checkedAt)-Date.parse(b.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0)));
+ const sort=$('sort').value;filtered.sort((a,b)=>sort==='fresh'?freshCompare(a,b):sort==='newest'?newestCompare(a,b):(shipsFree(b)-shipsFree(a))||(sort==='evidence'?evidenceRank(b)-evidenceRank(a)||Date.parse(b.checkedAt||0)-Date.parse(a.checkedAt||0):sort==='practical'?practicalScore(b)-practicalScore(a):sort==='score'?Number(b.dealScore||0)-Number(a.dealScore||0):sort==='low'?Number(a.price)-Number(b.price):sort==='high'?Number(b.price)-Number(a.price):sort==='oldest'?Date.parse(a.checkedAt)-Date.parse(b.checkedAt):Number(b.discountPercent||0)-Number(a.discountPercent||0)));
  $('count').textContent=all.length;$('scanned').textContent=data.scannedProducts??'—';$('updated').textContent=date(data.updated);
- $('status').textContent=filtered.length+($('showAllScanned').checked?' products shown from '+allScannedProducts.length+' full-feed products':$('newOnly').checked?' new finds from latest scan':' saved and recent discoveries')+' · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated)+' · third-party sellers hidden'+(shipHiddenCount?' ('+shipHiddenCount+')':'')+($('showAllScanned').checked?(allScannedFeedError?' · '+allScannedFeedError:' · Full feed: '+date(allScannedFeedUpdated)):'');
+ $('status').textContent=(sort==='fresh'?(fs=>fs.drop+' dropped · '+fs.fresh+' new in the '+shortTime(data.updated)+' scan (shown first) · ')(freshSummary(filtered)):'')+filtered.length+($('showAllScanned').checked?' products shown from '+allScannedProducts.length+' full-feed products':$('newOnly').checked?' new finds from latest scan':' saved and recent discoveries')+' · '+(data.errors?.length?'Some API searches reported errors. ':'')+'Last API scan: '+date(data.updated)+' · third-party sellers hidden'+(shipHiddenCount?' ('+shipHiddenCount+')':'')+($('showAllScanned').checked?(allScannedFeedError?' · '+allScannedFeedError:' · Full feed: '+date(allScannedFeedUpdated)):'');
  detailIndex=filtered;
  const emptyMessage=$('newOnly').checked
   ? 'No newly discovered candidates in this scan. Your existing deal leads are still available.'
@@ -752,9 +868,9 @@ async function loadUsed(){
 function renderUsed(){
   const mode=$('usedSort').value;const usedSeen=new Set();
   const savings=d=>Number(d.savingsVsNewPercent)||-1;
-  const items=usedOffers.filter(d=>!isRejectedDeal(d.asin)&&!usedSeen.has(d.asin)&&usedSeen.add(d.asin)).sort((a,b)=>mode==='savings'?(shipsFree(b)-shipsFree(a))||savings(b)-savings(a)||Number(a.price)-Number(b.price):mode==='low'?Number(a.price)-Number(b.price):(scanTime(b)-scanTime(a))||(firstSeenTime(b)-firstSeenTime(a))||(shipsFree(b)-shipsFree(a))||savings(b)-savings(a));
+  const items=usedOffers.filter(d=>!isRejectedDeal(d.asin)&&!usedSeen.has(d.asin)&&usedSeen.add(d.asin)).sort((a,b)=>mode==='fresh'?(freshRank(freshInfo(b))-freshRank(freshInfo(a)))||((watchReason(b)?1:0)-(watchReason(a)?1:0))||(scanTime(b)-scanTime(a))||(shipsFree(b)-shipsFree(a))||savings(b)-savings(a):mode==='savings'?(shipsFree(b)-shipsFree(a))||savings(b)-savings(a)||Number(a.price)-Number(b.price):mode==='low'?Number(a.price)-Number(b.price):(scanTime(b)-scanTime(a))||(firstSeenTime(b)-firstSeenTime(a))||(shipsFree(b)-shipsFree(a))||savings(b)-savings(a));
   $('usedcount').textContent=items.length;$('usedsavers').textContent=items.filter(d=>Number(d.savingsVsNewPercent)>=30).length;
-  $('usedstatus').textContent=items.length?items.length+' offers · updated '+date(usedOffersUpdated)+' · '+(mode==='savings'?'biggest savings vs. new first':mode==='low'?'lowest price first':'newest scanned first (newly appeared offers on top)'):'No used or Warehouse offers in the latest scans. Check back after the next scan.';
+  $('usedstatus').textContent=items.length?items.length+' offers · updated '+date(usedOffersUpdated)+' · '+(mode==='fresh'?(fs=>fs.drop+' dropped · '+fs.fresh+' new in the latest scan, shown first')(freshSummary(items)):mode==='savings'?'biggest savings vs. new first':mode==='low'?'lowest price first':'newest scanned first (newly appeared offers on top)'):'No used or Warehouse offers in the latest scans. Check back after the next scan.';
   $('usedresults').innerHTML=items.slice(0,120).map(usedCard).join('')||'<div class="empty" style="grid-column:1/-1">No offers right now.</div>';
 }
 $('usedSort').addEventListener('change',renderUsed);
@@ -815,7 +931,7 @@ loadAmazon();
 loadCandidates();
 $('newOnly').addEventListener('change',render);
 $('showAllScanned').addEventListener('change',render);
-if(['deals','inbox','candidates','posting','history','walmart','clearance','search','used','leads'].includes(requestedTab))selectTab(requestedTab);
+if(['deals','inbox','candidates','posting','watch','history','walmart','clearance','search','used','leads'].includes(requestedTab))selectTab(requestedTab);
 lastRenderTimer=setInterval(()=>{if(data)render()},60000);
 setInterval(()=>{if(!document.hidden){loadAmazon();if(!$('panel-inbox').hidden)loadInbox()}},5*60*1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadAmazon()});

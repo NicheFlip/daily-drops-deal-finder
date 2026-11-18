@@ -58,7 +58,7 @@ class FrontendSmoke(unittest.TestCase):
         self.assertIn("selectTab('posting')",html)
         self.assertIn('postingLinkFor',html)
         self.assertIn('./shop.html',html)
-        self.assertIn("'posting','history','walmart'",html)
+        self.assertIn("'posting','watch','history','walmart'",html)
         self.assertIn('data-price-history',html)
         self.assertIn('function compactCard(',html)
         self.assertIn('function compactReview(',html)
