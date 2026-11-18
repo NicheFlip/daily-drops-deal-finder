@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-18T10:11:14.363807+00:00",
-  "changes": [
-    {
-      "asin": "B0H6ZSMYS7",
-      "title": "Food Processor with 2 Bowls (8 Cup+8 Cup), 2-Speed Electric Food Chopper | Small Meat Grinder Vegetable Chopper with MAX 500W Copper Motor, 2 Bi-Level Blades, for Chops, Grinds, Pu",
-      "previousObservedPrice": 49.99,
-      "currentObservedPrice": 29.99,
-      "dropPercent": 40.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-18T10:11:14.363807+00:00",
-      "url": "https://www.amazon.com/dp/B0H6ZSMYS7",
-      "seller": "SavorFuze",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-18T10:41:14.398624+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
