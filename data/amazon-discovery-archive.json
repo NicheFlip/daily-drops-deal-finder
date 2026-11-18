@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T05:41:13.501050+00:00",
+  "updated": "2026-11-18T06:11:13.135341+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B07C8V4FDR",
+      "title": "Cuisinart Compact 2 Lb. Automatic Programmable Bread Maker, CBK-110NAS | Bread maker with 12 programs, 3 loaf sizes, 3 crust shades, 13-hour delay start and paddle-removal alert",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B07C8V4FDR",
+      "imageUrl": "https://m.media-amazon.com/images/I/4136KjltdUL._SL160_.jpg",
+      "price": 85.57,
+      "referencePrice": 169.95,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T06:11:13.135341+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B079FV8QB9",
       "title": "Softsoap Soothing Clean Hand Soap, 7.5 fl oz (6 Pack) | Moisturizing Hand Wash, Paraben-Free, Phthalate-Free, Washes Away Germs, for Bathroom & Kitchen, Gentle on Hands",

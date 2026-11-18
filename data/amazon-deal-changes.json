@@ -1,20 +1,35 @@
 {
-  "updated": "2026-11-18T05:41:13.501050+00:00",
+  "updated": "2026-11-18T06:11:13.135341+00:00",
   "changes": [
     {
-      "asin": "B0H7HYD1XR",
-      "title": "for Magsafe Portable Charger, 5000mAh Magnetic Power Bank with USB-C Charge | for Magsafe Battery Pack, 15W Fast Charging, Lighting Input Wireless Portable Charger for iPhone 18/17",
-      "previousObservedPrice": 47.29,
-      "currentObservedPrice": 16.99,
-      "dropPercent": 64.1,
+      "asin": "B09VK154VZ",
+      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
+      "previousObservedPrice": 13.26,
+      "currentObservedPrice": 6.38,
+      "dropPercent": 51.9,
       "newObservedLow": false,
-      "checkedAt": "2026-11-18T05:41:13.501050+00:00",
-      "url": "https://www.amazon.com/dp/B0H7HYD1XR",
-      "seller": "Woot",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "checkedAt": "2026-11-18T06:11:13.135341+00:00",
+      "url": "https://www.amazon.com/dp/B09VK154VZ",
+      "seller": "Amazon Resale",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
+    {
+      "asin": "B09XBX6JLG",
+      "title": "Under Armour Men's Charged Assert 10 Shoes, (002) Black/Black/Black, 14",
+      "previousObservedPrice": 55.98,
+      "currentObservedPrice": 41.28,
+      "dropPercent": 26.3,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T06:11:13.135341+00:00",
+      "url": "https://www.amazon.com/dp/B09XBX6JLG",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
