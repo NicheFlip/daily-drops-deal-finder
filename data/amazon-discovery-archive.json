@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T09:41:24.333618+00:00",
+  "updated": "2026-11-18T10:11:14.363807+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B01H7R1EJY",
+      "title": "Cuisinart Stand Mixer, 12 Speed, 5.5 Quart Stainless Steel Bowl, Chef\u2019s Whisk, Mixing Paddle, Dough Hook, Splash Guard w/ Pour Spout, White Linen, SM-50NAS, Manual",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B01H7R1EJY",
+      "imageUrl": "https://m.media-amazon.com/images/I/41bfuTs0SXL._SL160_.jpg",
+      "price": 191.99,
+      "referencePrice": 319.95,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T10:11:14.363807+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B00OFQQGN0",
       "title": "Sun Zero Easton Energy Saving Blackout Grommet Curtain Panel, 40\" x 84\", Stone",
