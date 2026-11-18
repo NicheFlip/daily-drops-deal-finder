@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-18T16:41:25.409844+00:00",
+  "updated": "2026-11-18T17:11:16.686596+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B07MXY4ZRB",
+      "title": "PUMA mens 6 Pack Crew Socks, Black/Grey Logo, 13-Oct US | Arch Support and Cushioned Footbed",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B07MXY4ZRB",
+      "imageUrl": "https://m.media-amazon.com/images/I/41wcyV8lywL._SL160_.jpg",
+      "price": 8.31,
+      "referencePrice": 20.0,
+      "discountPercent": 58,
+      "dealScore": 18,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-18T17:11:16.686596+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B07L6WXVJB",
       "title": "JOYIN Kids Craft Kit Build & Paint Your Own Wooden Race Car Art & Craft Kit DIY Toy Make Your Own Car Truck Toy Construct and Paint Kit, Presents for Kids",
