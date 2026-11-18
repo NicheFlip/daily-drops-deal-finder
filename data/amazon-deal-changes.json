@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-18T21:41:14.366497+00:00",
-  "changes": [],
+  "updated": "2026-11-18T22:11:16.030638+00:00",
+  "changes": [
+    {
+      "asin": "B01MG1XFAW",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Basil, 16 fl oz, 3 Pack | Cuts Through Grease, Removes 48-Hour Stuck on Food, Cruelty Free, Made with Essential Oils and Aloe Vera Extract",
+      "previousObservedPrice": 15.87,
+      "currentObservedPrice": 10.98,
+      "dropPercent": 30.8,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-18T22:11:16.030638+00:00",
+      "url": "https://www.amazon.com/dp/B01MG1XFAW",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
