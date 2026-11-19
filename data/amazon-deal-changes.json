@@ -1,5 +1,81 @@
 {
-  "updated": "2026-11-19T16:11:21.514485+00:00",
-  "changes": [],
+  "updated": "2026-11-19T16:41:16.442666+00:00",
+  "changes": [
+    {
+      "asin": "B00007J6CX",
+      "title": "Lysol All Purpose Kitchen Cleaner Spray, For Grease & Grime, Citrus, 22 oz | Multipurpose Cleaner, Degreaser, Sanitizer & Disinfectant Spray, Multi-Surface Cleaner, Oven & Applianc",
+      "previousObservedPrice": 4.0,
+      "currentObservedPrice": 1.07,
+      "dropPercent": 73.2,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-19T16:41:16.442666+00:00",
+      "url": "https://www.amazon.com/dp/B00007J6CX",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B00IB18VPG",
+      "title": "LYSOL Disinfecting Wipes, Multi-Surface Cleaner, Lemon, 80 ct. | All Purpose Cleaner, Sanitizing, Deodorizing, Apartment Essentials, Back To School Cleaning Supplies, Kitchen & Bat",
+      "previousObservedPrice": 4.97,
+      "currentObservedPrice": 1.45,
+      "dropPercent": 70.8,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-19T16:41:16.442666+00:00",
+      "url": "https://www.amazon.com/dp/B00IB18VPG",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B00FLFIGF0",
+      "title": "Lysol Disinfecting Wipes, Multi-Surface Cleaner, Crisp Linen, 80 ct. | All Purpose Cleaner, Sanitizing, Deodorizing, Apartment Essentials, Back To School Cleaning Supplies, Kitchen",
+      "previousObservedPrice": 4.97,
+      "currentObservedPrice": 1.45,
+      "dropPercent": 70.8,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T16:41:16.442666+00:00",
+      "url": "https://www.amazon.com/dp/B00FLFIGF0",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B0BL41SSK3",
+      "title": "Hefty 8 Gallon Medium Trash Bags, White, Fabuloso Lavender Scent, 26ct | Drawstring Closure, 8G Medium White Trash Bags for Bathrooms, Bedrooms, Home Offices, Scented, Continuous O",
+      "previousObservedPrice": 5.75,
+      "currentObservedPrice": 2.5,
+      "dropPercent": 56.5,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T16:41:16.442666+00:00",
+      "url": "https://www.amazon.com/dp/B0BL41SSK3",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B0D5NVGB3V",
+      "title": "Downy Light Laundry Scent Booster Beads, Ocean Mist Scent, 30.1 oz, In-Wash Fabric Beads Designed to Be Gentle with a Light Boost of Scent, No Heavy Perfumes",
+      "previousObservedPrice": 18.97,
+      "currentObservedPrice": 11.46,
+      "dropPercent": 39.6,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T16:41:16.442666+00:00",
+      "url": "https://www.amazon.com/dp/B0D5NVGB3V",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
