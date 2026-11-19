@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-19T06:41:19.374716+00:00",
+  "updated": "2026-11-19T07:11:14.133788+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B089DR29T6",
+      "title": "Amazon Smart Plug, Works with Alexa, Simple Setup, Endless Possibilities",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B089DR29T6",
+      "imageUrl": "https://m.media-amazon.com/images/I/219G0lcz2NL._SL160_.jpg",
+      "price": 14.99,
+      "referencePrice": 24.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T07:11:14.133788+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B003O2RXWE",
       "title": "Five Star Spiral Notebook + Study App, 1 Subject, College Ruled 8.5\" x 11\" Paper, 100 Sheets, Black (72057)",
