@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-19T03:11:18.533170+00:00",
-  "changes": [],
+  "updated": "2026-11-19T03:41:13.651213+00:00",
+  "changes": [
+    {
+      "asin": "B0HMCPZ8WH",
+      "title": "BSRCO Car Vacuum, Handheld Vacuum Cordless, Brushless 15,000Pa | Brushless Motor, Dual Suction Settings, Cordless Handheld Design, Washable Filter, USB-C Charging",
+      "previousObservedPrice": 139.99,
+      "currentObservedPrice": 42.99,
+      "dropPercent": 69.3,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-19T03:41:13.651213+00:00",
+      "url": "https://www.amazon.com/dp/B0HMCPZ8WH",
+      "seller": "QFqingqing",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
