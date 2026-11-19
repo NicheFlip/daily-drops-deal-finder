@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-19T14:41:14.956861+00:00",
-  "changes": [
-    {
-      "asin": "B0BL41SSK3",
-      "title": "Hefty 8 Gallon Medium Trash Bags, White, Fabuloso Lavender Scent, 26ct | Drawstring Closure, 8G Medium White Trash Bags for Bathrooms, Bedrooms, Home Offices, Scented, Continuous O",
-      "previousObservedPrice": 5.75,
-      "currentObservedPrice": 1.95,
-      "dropPercent": 66.1,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-19T14:41:14.956861+00:00",
-      "url": "https://www.amazon.com/dp/B0BL41SSK3",
-      "seller": "Vistora Shop",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-19T15:11:14.666882+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
