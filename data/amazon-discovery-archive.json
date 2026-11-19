@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-19T18:39:26.333964+00:00",
+  "updated": "2026-11-19T19:11:14.197979+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DTJ6WHHH",
+      "title": "Maxx Bubbles Tiki Torch Bubbler - Bubble Machine - for Kids, Teens",
+      "category": "ToysAndGames",
+      "url": "https://www.amazon.com/dp/B0DTJ6WHHH",
+      "imageUrl": "https://m.media-amazon.com/images/I/418RpDytaDL._SL160_.jpg",
+      "price": 7.99,
+      "referencePrice": 14.99,
+      "discountPercent": 47,
+      "dealScore": 7,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T19:11:14.197979+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0DC9KJ4WL",
       "title": "Dokotoo Ladies Winter Coat 2026 Zipper Loose Fit Casual Outifts,Dusk Blue,M | Loose Fit,Zipper,Sherpa,Side Pockets,Cute,Cozy,Fall Coat,Fleece Jackets For Women,Womens Jackets Casua",
