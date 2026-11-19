@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-19T09:32:03.303477+00:00",
-  "lastScanAt": "2026-11-19T09:29:07.332246+00:00",
+  "checkedAt": "2026-11-19T10:14:10.427289+00:00",
+  "lastScanAt": "2026-11-19T10:11:13.882039+00:00",
   "status": "healthy",
-  "scannedProducts": 1578,
-  "requestsCompleted": 160,
+  "scannedProducts": 1562,
+  "requestsCompleted": 159,
   "publishedDeals": 150,
   "issues": []
 }

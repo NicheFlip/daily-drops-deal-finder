@@ -1,51 +1,5 @@
 {
-  "updated": "2026-11-19T09:29:07.332246+00:00",
-  "changes": [
-    {
-      "asin": "B0H1TZN1ZF",
-      "title": "Women's Track Pants Wide Leg High Waist Yoga Pants for Women Black M | Petite Pants for Women, Casual Pants for Women, Athletic Yoga Casual Clothing Workout Tall Sweatpants Joggers",
-      "previousObservedPrice": 24.99,
-      "currentObservedPrice": 18.98,
-      "dropPercent": 24.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-19T09:29:07.332246+00:00",
-      "url": "https://www.amazon.com/dp/B0H1TZN1ZF",
-      "seller": "Alaroo",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B0GTLY9Z1K",
-      "title": "roborock Robot Vacuum Mop with LiDAR, 10000Pa, Anti-Tangle, 7\u20139 Weeks | Auto Self-Empty Dock, Vacuum & Mop Combo for Homes with Pets & Kids, LiDAR Mapping, Dual Anti-Tangle System,",
-      "previousObservedPrice": 249.99,
-      "currentObservedPrice": 199.99,
-      "dropPercent": 20.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-19T09:29:07.332246+00:00",
-      "url": "https://www.amazon.com/dp/B0GTLY9Z1K",
-      "seller": "Roborock Technology Co. Ltd",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B0764HS4SL",
-      "title": "Fullstar Pro Original Vegetable Chopper & Spiralizer, All-in-1 Kitchen Tool | Multi-Blade Veggie Chopper, 5-Cup Container Onion & Food Cutter Dicer Spiralizer Dishwasher Safe Kitch",
-      "previousObservedPrice": 27.99,
-      "currentObservedPrice": 24.96,
-      "dropPercent": 10.8,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-19T09:29:07.332246+00:00",
-      "url": "https://www.amazon.com/dp/B0764HS4SL",
-      "seller": "Fullstar Houseware",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-19T10:11:13.882039+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
