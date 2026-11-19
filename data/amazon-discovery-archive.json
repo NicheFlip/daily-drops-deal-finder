@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-19T04:11:13.257746+00:00",
+  "updated": "2026-11-19T04:41:12.842043+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0FMGP1P6W",
+      "title": "Philips Hue Essential Smart LED A19 Bulb, 4-Pack | White & Color Ambiance, E26, 7.2W, 2200K-6500K, 800 Lumens, Dimmable, Works with Alexa, Google Assistant, Apple Home",
+      "category": "ToolsAndHomeImprovement",
+      "url": "https://www.amazon.com/dp/B0FMGP1P6W",
+      "imageUrl": "https://m.media-amazon.com/images/I/41gTqxD19cL._SL160_.jpg",
+      "price": 41.99,
+      "referencePrice": 69.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T04:41:12.842043+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0GCFTD4DF",
       "title": "Jasion RetroVolt Pro Electric Bike, 2000W Peak Motor & 38MPH Electric Motorcycle, 52V 20Ah Removable Battery & 90 Miles Range E Bike,Dual Suspension",
