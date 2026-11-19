@@ -1,5 +1,36 @@
 {
-  "updated": "2026-11-19T21:41:15.341623+00:00",
-  "changes": [],
+  "updated": "2026-11-19T22:11:13.947448+00:00",
+  "changes": [
+    {
+      "asin": "B000S5VE2K",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap, Lavender Scent, 12.5 Fl Oz | Hand Soaps, Liquid Hand Soaps, for personal care, made without parabens, 12.5 oz capacity, bottle container",
+      "previousObservedPrice": 3.89,
+      "currentObservedPrice": 1.49,
+      "dropPercent": 61.7,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T22:11:13.947448+00:00",
+      "url": "https://www.amazon.com/dp/B000S5VE2K",
+      "seller": "Skyline Merchants LLC",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B0CN86DV9L",
+      "title": "Finish Quantum Dishwasher Pods, Dish Detergent, Fresh Scent, 84ct | Dishwasher Detergent Dish Soap, Dishwasher Tabs, Dish Detergent Pods, Removes 24HR Dried-On Stains & Grease",
+      "previousObservedPrice": 16.98,
+      "currentObservedPrice": 13.71,
+      "dropPercent": 19.3,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-19T22:11:13.947448+00:00",
+      "url": "https://www.amazon.com/dp/B0CN86DV9L",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
