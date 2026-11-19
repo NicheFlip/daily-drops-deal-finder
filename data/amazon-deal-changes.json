@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-19T02:41:21.183014+00:00",
-  "changes": [
-    {
-      "asin": "B00F1U0YB4",
-      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
-      "previousObservedPrice": 6.98,
-      "currentObservedPrice": 3.0,
-      "dropPercent": 57.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-19T02:41:21.183014+00:00",
-      "url": "https://www.amazon.com/dp/B00F1U0YB4",
-      "seller": "BR_Med",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B01LB1J9BW",
-      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
-      "previousObservedPrice": 7.99,
-      "currentObservedPrice": 4.0,
-      "dropPercent": 49.9,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-19T02:41:21.183014+00:00",
-      "url": "https://www.amazon.com/dp/B01LB1J9BW",
-      "seller": "BR_Med",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-19T03:11:18.533170+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
