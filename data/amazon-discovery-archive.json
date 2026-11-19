@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-19T04:41:12.842043+00:00",
+  "updated": "2026-11-19T05:11:15.067432+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0G2BPGFRW",
+      "title": "Pets Alive Mommy Elephant and Baby Surprise by ZURU | Surprise babies to reveal; babies magically follow mommy; interactive robotic pet; unbox & collect; ages 3+; gift for kids",
+      "category": "ToysAndGames",
+      "url": "https://www.amazon.com/dp/B0G2BPGFRW",
+      "imageUrl": "https://m.media-amazon.com/images/I/41fJwc+OFnL._SL160_.jpg",
+      "price": 29.49,
+      "referencePrice": 49.99,
+      "discountPercent": 41,
+      "dealScore": 31,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 31.49,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-19T05:11:15.067432+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0FMGP1P6W",
       "title": "Philips Hue Essential Smart LED A19 Bulb, 4-Pack | White & Color Ambiance, E26, 7.2W, 2200K-6500K, 800 Lumens, Dimmable, Works with Alexa, Google Assistant, Apple Home",
