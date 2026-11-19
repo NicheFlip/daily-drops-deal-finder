@@ -1,5 +1,81 @@
 {
-  "updated": "2026-11-19T19:11:14.197979+00:00",
-  "changes": [],
+  "updated": "2026-11-19T19:41:14.937914+00:00",
+  "changes": [
+    {
+      "asin": "B000S5VE2K",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap, Lavender Scent, 12.5 Fl Oz | Hand Soaps, Liquid Hand Soaps, for personal care, made without parabens, 12.5 oz capacity, bottle container",
+      "previousObservedPrice": 3.89,
+      "currentObservedPrice": 1.49,
+      "dropPercent": 61.7,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T19:41:14.937914+00:00",
+      "url": "https://www.amazon.com/dp/B000S5VE2K",
+      "seller": "Skyline Merchants LLC",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B09VK154VZ",
+      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
+      "previousObservedPrice": 13.26,
+      "currentObservedPrice": 6.73,
+      "dropPercent": 49.2,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T19:41:14.937914+00:00",
+      "url": "https://www.amazon.com/dp/B09VK154VZ",
+      "seller": "Amazon Resale",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
+    {
+      "asin": "B00F1U0YB4",
+      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
+      "previousObservedPrice": 6.98,
+      "currentObservedPrice": 3.94,
+      "dropPercent": 43.6,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T19:41:14.937914+00:00",
+      "url": "https://www.amazon.com/dp/B00F1U0YB4",
+      "seller": "DEPPY SHOP",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B01LB1J9BW",
+      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
+      "previousObservedPrice": 7.99,
+      "currentObservedPrice": 4.9,
+      "dropPercent": 38.7,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-19T19:41:14.937914+00:00",
+      "url": "https://www.amazon.com/dp/B01LB1J9BW",
+      "seller": "DEPPY SHOP",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B077K9YW7D",
+      "title": "Cuisinart 14-Cup Coffee Maker, Programmable PerfecTemp Glass Carafe Coffee Machine with 1-4 Cup Setting, Brew Strength Control and Pause, Stainless Steel, DCC-3200BKSNAS, Black",
+      "previousObservedPrice": 113.15,
+      "currentObservedPrice": 69.95,
+      "dropPercent": 38.2,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-19T19:41:14.937914+00:00",
+      "url": "https://www.amazon.com/dp/B077K9YW7D",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
