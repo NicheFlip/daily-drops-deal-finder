@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-19T07:11:14.133788+00:00",
-  "changes": [],
+  "updated": "2026-11-19T07:41:14.885242+00:00",
+  "changes": [
+    {
+      "asin": "B0DX6KZR9T",
+      "title": "iRobot Roomba 105 Vac Robot Vacuum with Charging Base | 7,000 Pa Power-Lifting Suction, LiDAR Navigation, Multi-Surface Cleaning, Cleans in Neat Rows",
+      "previousObservedPrice": 159.99,
+      "currentObservedPrice": 150.0,
+      "dropPercent": 6.2,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-19T07:41:14.885242+00:00",
+      "url": "https://www.amazon.com/dp/B0DX6KZR9T",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
