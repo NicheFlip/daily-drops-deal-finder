@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T13:41:16.858089+00:00",
+  "updated": "2026-11-20T14:11:15.094098+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B000J09CO6",
+      "title": "Paper Mate Flair Felt Tip Pens, Medium Point (0.7mm), Assorted, 12 Count | Bright Vivid Colors, Water-Based Ink, Won't Bleed Through. Great for Arts & Crafts, Note-Taking, Journali",
+      "category": "OfficeProducts",
+      "url": "https://www.amazon.com/dp/B000J09CO6",
+      "imageUrl": "https://m.media-amazon.com/images/I/51HEJ+fM6UL._SL160_.jpg",
+      "price": 6.09,
+      "referencePrice": 19.99,
+      "discountPercent": 70,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 9.97,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T14:11:15.094098+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "AAA Sports Apparel",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0DK6DFWRQ",
       "title": "ARM & HAMMER Odor Blasters Laundry Scent Booster, Fresh Burst Scent 45 oz | In-Wash Laundry Fragrance, Eliminates Tough Odors in Clothes and Towels, Laundry Additive, laundry scent",
