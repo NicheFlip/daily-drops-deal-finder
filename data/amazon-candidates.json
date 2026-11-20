@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-20T07:41:13.969759+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-20T08:11:14.761626+00:00",
+  "candidates": [
+    {
+      "asin": "B01NB1OB0I",
+      "title": "Sensi Smart Thermostat, Wi-Fi, DIY, Alexa, Energy Star Certified, ST55",
+      "category": "ToolsAndHomeImprovement",
+      "url": "https://www.amazon.com/dp/B01NB1OB0I",
+      "imageUrl": "https://m.media-amazon.com/images/I/31qDUPJwm0L._SL160_.jpg",
+      "price": 75.22,
+      "referencePrice": 129.99,
+      "discountPercent": 42,
+      "dealScore": 2,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T08:11:14.761626+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
