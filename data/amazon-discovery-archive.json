@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T16:41:15.123674+00:00",
+  "updated": "2026-11-20T17:11:15.055244+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0BL439NQ5",
+      "title": "Hefty 8 Gallon Medium Trash Bags, Ocean Water, White, 26 Count | Bathroom And Office Use, Continuous Odor Control, Easy Drawstring Closure",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B0BL439NQ5",
+      "imageUrl": "https://m.media-amazon.com/images/I/412BgECjIPL._SL160_.jpg",
+      "price": 1.95,
+      "referencePrice": 6.99,
+      "discountPercent": 72,
+      "dealScore": 90,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 2.4,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-20T17:11:15.055244+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Vistora Shop",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0CQKK2YCK",
       "title": "Michael Todd Beauty Sonicsmooth Dermaplane Razor for Women Face | Dermaplaning System + Eyebrow Trimmer, Peach Fuzz Remover, 8 Weeks of Dermaplaning Blades, US brand, 3-Year Warran",
