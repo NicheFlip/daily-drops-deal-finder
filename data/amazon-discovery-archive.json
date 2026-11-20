@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T19:41:13.729132+00:00",
+  "updated": "2026-11-20T20:11:14.889496+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0GLND1KTT",
+      "title": "Aecllcea Dog Harness for Small Medium Sized Dog, Puppy Harness and Leash Set Training, Dog Harness and Leash Set, Dog Vest Harness, Dog Harness Small Sized Dog, Small Dog Harness. ",
+      "category": "PetSupplies",
+      "url": "https://www.amazon.com/dp/B0GLND1KTT",
+      "imageUrl": "https://m.media-amazon.com/images/I/51KcZn5+0yL._SL160_.jpg",
+      "price": 4.99,
+      "referencePrice": 9.99,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T20:11:14.889496+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Aecllcea",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0FP4DNTGY",
       "title": "Masters of the Universe Power Sword Slash He-Man Feature Figure | MOTU 5.5-inch Scale 2026 Movie-Accurate Hero Toy with Twist & Release Action Move & Accessory, Gift for MOTU Fans",
