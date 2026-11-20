@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-20T03:41:13.053502+00:00",
-  "changes": [],
+  "updated": "2026-11-20T04:11:15.538857+00:00",
+  "changes": [
+    {
+      "asin": "B0C3WTYZ3G",
+      "title": "Hefty 4 Gallon Small Trash Bags, White, Fabuloso Lavender Scent, 52ct | Drawstring Closure, 4G Small White Trash Bags for Bathrooms, Dorm Rooms, Home Offices, Scented, Continuous O",
+      "previousObservedPrice": 9.79,
+      "currentObservedPrice": 4.55,
+      "dropPercent": 53.5,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T04:11:15.538857+00:00",
+      "url": "https://www.amazon.com/dp/B0C3WTYZ3G",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
