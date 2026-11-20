@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T17:18:43.928671+00:00",
+  "updated": "2026-11-20T17:41:15.067770+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0CJ5Y38C7",
+      "title": "Like-New Ring Battery Doorbell, Home or business security with Head-to-Toe video, Live View with Two-Way Talk, and Motion Detection & Alerts, Satin Nickel",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0CJ5Y38C7",
+      "imageUrl": "https://m.media-amazon.com/images/I/31VifvcyyCL._SL160_.jpg",
+      "price": 49.99,
+      "referencePrice": 89.99,
+      "discountPercent": 44,
+      "dealScore": 4,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T17:41:15.067770+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0CSJQHF6W",
       "title": "Bitzee Disney Interactive Toy & Digital Pet, Ages 5+ | Collect 30 Disney & Pixar Characters, Unlock Unique Magical Moments, Screen-Free Responsive Play, Birthday Gifts for Kids",
