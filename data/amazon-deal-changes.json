@@ -1,35 +1,20 @@
 {
-  "updated": "2026-11-20T17:11:15.055244+00:00",
+  "updated": "2026-11-20T17:18:43.928671+00:00",
   "changes": [
     {
-      "asin": "B0BL439NQ5",
-      "title": "Hefty 8 Gallon Medium Trash Bags, Ocean Water, White, 26 Count | Bathroom And Office Use, Continuous Odor Control, Easy Drawstring Closure",
-      "previousObservedPrice": 5.79,
-      "currentObservedPrice": 1.95,
-      "dropPercent": 66.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-20T17:11:15.055244+00:00",
-      "url": "https://www.amazon.com/dp/B0BL439NQ5",
-      "seller": "Vistora Shop",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B01JLPJM7G",
-      "title": "Hefty Slider Freezer Bags, Gallon Size, 56ct | Gallon Freezer Bags, Freeze Leftovers, Meat, Fruit, Veggies, Desserts, Secure Slider Closure",
-      "previousObservedPrice": 4.9,
-      "currentObservedPrice": 4.47,
-      "dropPercent": 8.8,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-20T17:11:15.055244+00:00",
-      "url": "https://www.amazon.com/dp/B01JLPJM7G",
-      "seller": "Vistora Shop",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "asin": "B07TJG79HP",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Hand Soap, Rain Water, 12.5 fl oz, 3 Pack | Moisturizing Liquid Hand Soap, Softens and Cleans Hands, Cruelty Free, Made with Essential Oils, Olive Oil",
+      "previousObservedPrice": 14.28,
+      "currentObservedPrice": 11.63,
+      "dropPercent": 18.6,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T17:18:43.928671+00:00",
+      "url": "https://www.amazon.com/dp/B07TJG79HP",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
