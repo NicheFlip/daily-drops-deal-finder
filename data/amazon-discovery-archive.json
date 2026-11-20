@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T20:11:14.889496+00:00",
+  "updated": "2026-11-20T20:41:14.979287+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0FFJV4C85",
+      "title": "Amazon Essentials x Sofia Grainge Women's Long Sleeve Henley Pajama Set, Navy, Large",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0FFJV4C85",
+      "imageUrl": "https://m.media-amazon.com/images/I/31OtC1PXlxL._SL160_.jpg",
+      "price": 16.33,
+      "referencePrice": 28.5,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T20:41:14.979287+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0GLND1KTT",
       "title": "Aecllcea Dog Harness for Small Medium Sized Dog, Puppy Harness and Leash Set Training, Dog Harness and Leash Set, Dog Vest Harness, Dog Harness Small Sized Dog, Small Dog Harness. ",
