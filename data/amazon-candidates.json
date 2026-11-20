@@ -1,29 +1,6 @@
 {
-  "updated": "2026-11-20T11:41:13.646941+00:00",
-  "candidates": [
-    {
-      "asin": "B0GF74ZGDZ",
-      "title": "WOLFBOX MF60 Compressed Air Duster, 3-Speed Adjustable, Electric, Cordless | 110,000 RPM, Rechargeable, Air Blower, Fast Charging, PC Keyboard Cleaning, Car, Home, Black, 0.5 lb Li",
-      "category": "Electronics",
-      "url": "https://www.amazon.com/dp/B0GF74ZGDZ",
-      "imageUrl": "https://m.media-amazon.com/images/I/41ilBBHjeeL._SL160_.jpg",
-      "price": 28.99,
-      "referencePrice": 49.99,
-      "discountPercent": 42,
-      "dealScore": 2,
-      "everydayEssential": false,
-      "reason": "Observed price drop",
-      "previousObservedPrice": 29.99,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-20T11:41:13.646941+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
-      "seller": "Tanlink US",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
-  "count": 1,
+  "updated": "2026-11-20T12:11:16.769445+00:00",
+  "candidates": [],
+  "count": 0,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
