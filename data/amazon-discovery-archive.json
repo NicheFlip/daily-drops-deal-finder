@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T04:11:15.538857+00:00",
+  "updated": "2026-11-20T04:41:14.521413+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B083X5R6VR",
+      "title": "VT COSMETICS CICA Daily Soothing Mask, 30 Sheet | For Sensitive Skin, Centella Asiatica & Triple Hyaluronic Acid, Hydrating Korean Sheet Mask",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B083X5R6VR",
+      "imageUrl": "https://m.media-amazon.com/images/I/31GlKE2SM2L._SL160_.jpg",
+      "price": 13.46,
+      "referencePrice": 22.4,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T04:41:14.521413+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "VT Cosmetics US",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0H4W5675D",
       "title": "Emergency Planning with Pets: A Practical Guide to Preparing Pet Food, Carriers, Records, Supplies, and Evacuation Plans for Emergencies (Sub-Series A: Beginner Emergency Preparedn",
