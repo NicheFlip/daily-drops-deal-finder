@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-20T22:11:15.294078+00:00",
+  "updated": "2026-11-20T22:41:14.361313+00:00",
   "changes": [
     {
-      "asin": "B0FJL9K6R5",
-      "title": "EFAN Mens Oversized Hoodies Fleece Lined Sweatshirts Black | Fall Winter Hooded Collar Drawstring Pullover With Pocket for Workout Gym",
-      "previousObservedPrice": 19.99,
-      "currentObservedPrice": 16.99,
-      "dropPercent": 15.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-20T22:11:15.294078+00:00",
-      "url": "https://www.amazon.com/dp/B0FJL9K6R5",
-      "seller": "EFANBoutique",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "asin": "B09VK154VZ",
+      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
+      "previousObservedPrice": 13.26,
+      "currentObservedPrice": 7.01,
+      "dropPercent": 47.1,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T22:41:14.361313+00:00",
+      "url": "https://www.amazon.com/dp/B09VK154VZ",
+      "seller": "Amazon Resale",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
