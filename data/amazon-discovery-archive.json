@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T11:11:14.233158+00:00",
+  "updated": "2026-11-20T11:41:13.646941+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0GF74ZGDZ",
+      "title": "WOLFBOX MF60 Compressed Air Duster, 3-Speed Adjustable, Electric, Cordless | 110,000 RPM, Rechargeable, Air Blower, Fast Charging, PC Keyboard Cleaning, Car, Home, Black, 0.5 lb Li",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0GF74ZGDZ",
+      "imageUrl": "https://m.media-amazon.com/images/I/41ilBBHjeeL._SL160_.jpg",
+      "price": 28.99,
+      "referencePrice": 49.99,
+      "discountPercent": 42,
+      "dealScore": 2,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 29.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T11:41:13.646941+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Tanlink US",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0C3WWC4Q7",
       "title": "Hefty 4 Gallon Small Trash Bags, White, Ocean Water Scent, 52ct | Drawstring Closure, 4G Small White Trash Bags for Bathrooms, Dorm Rooms, Home Offices, Scented, Continuous Odor Co",
