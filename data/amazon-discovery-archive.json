@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T02:41:13.114417+00:00",
+  "updated": "2026-11-20T03:11:13.325994+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DGQH8KTF",
+      "title": "Globlazer Cat Tree Tower for Indoor Cats Large Adult, FC50, Light Grey | 50-inch Adult Cat Tree House with Steps, Scratching Post, 2 Cat Caves, Dangling Toys",
+      "category": "PetSupplies",
+      "url": "https://www.amazon.com/dp/B0DGQH8KTF",
+      "imageUrl": "https://m.media-amazon.com/images/I/41-RncyqXqL._SL160_.jpg",
+      "price": 59.99,
+      "referencePrice": 99.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T03:11:13.325994+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Globlazer",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0HN1G1DN3",
       "title": "TRAUSI 1080P Full HD Webcam with Noise-Canceling Mic, Auto Light Correction, Privacy Cover and Wide Angle Lens, Plug & Play USB Camera for Laptop/Desktop/PC/Mac, Compatible with Zo",
