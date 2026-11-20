@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-20T08:41:14.711275+00:00",
+  "updated": "2026-11-20T09:11:14.775208+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B004XLRTUQ",
+      "title": "Vitafusion Vitamin D3 Gummies | 2000 IU (50 mcg) Per 2 Gummies | 150 Gummy Vitamins | for Adult Women and Men | Yummy Berry & Peach Flavor | Bone and Immune Supplement",
+      "category": "HealthPersonalCare",
+      "url": "https://www.amazon.com/dp/B004XLRTUQ",
+      "imageUrl": "https://m.media-amazon.com/images/I/41XQFmdEmvL._SL160_.jpg",
+      "price": 7.33,
+      "referencePrice": 12.49,
+      "discountPercent": 41,
+      "dealScore": 1,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-20T09:11:14.775208+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0CYJ7Z2Z1",
       "title": "bella SAVOR 6qt Programmable Non-Toxic Slow Cooker, Oatmilk",
