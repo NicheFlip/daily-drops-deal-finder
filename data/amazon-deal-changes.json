@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-20T00:41:14.564916+00:00",
+  "updated": "2026-11-20T00:55:16.039146+00:00",
   "changes": [
     {
-      "asin": "B0D5NVGB3V",
-      "title": "Downy Light Laundry Scent Booster Beads, Ocean Mist Scent, 30.1 oz, In-Wash Fabric Beads Designed to Be Gentle with a Light Boost of Scent, No Heavy Perfumes",
-      "previousObservedPrice": 18.97,
-      "currentObservedPrice": 11.46,
-      "dropPercent": 39.6,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-20T00:41:14.564916+00:00",
-      "url": "https://www.amazon.com/dp/B0D5NVGB3V",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
+      "asin": "B0B7JGC67R",
+      "title": "Lifewit 80L Large Laundry Baskets, Laundry Hampers Bags, 2 Pack, Grey | Freestanding, Waterproof, Collapsible Clothes Hamper with Reinforced Handles for Dorm, Laundry Room, Bedroom",
+      "previousObservedPrice": 14.99,
+      "currentObservedPrice": 11.38,
+      "dropPercent": 24.1,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-20T00:55:16.039146+00:00",
+      "url": "https://www.amazon.com/dp/B0B7JGC67R",
+      "seller": "Lifewit Home US",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
