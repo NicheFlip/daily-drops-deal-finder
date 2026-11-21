@@ -1,5 +1,36 @@
 {
-  "updated": "2026-11-21T17:11:13.909303+00:00",
-  "changes": [],
+  "updated": "2026-11-21T17:41:15.043924+00:00",
+  "changes": [
+    {
+      "asin": "B00F1U0YB4",
+      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
+      "previousObservedPrice": 7.02,
+      "currentObservedPrice": 4.5,
+      "dropPercent": 35.9,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T17:41:15.043924+00:00",
+      "url": "https://www.amazon.com/dp/B00F1U0YB4",
+      "seller": "CheapCorner Store",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B0C3WWC4Q7",
+      "title": "Hefty 4 Gallon Small Trash Bags, White, Ocean Water Scent, 52ct | Drawstring Closure, 4G Small White Trash Bags for Bathrooms, Dorm Rooms, Home Offices, Scented, Continuous Odor Co",
+      "previousObservedPrice": 7.09,
+      "currentObservedPrice": 4.95,
+      "dropPercent": 30.2,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T17:41:15.043924+00:00",
+      "url": "https://www.amazon.com/dp/B0C3WWC4Q7",
+      "seller": "CheapCorner Store",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
