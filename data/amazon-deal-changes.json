@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-21T05:11:12.564252+00:00",
-  "changes": [
-    {
-      "asin": "B09B2SRGXH",
-      "title": "Amazon Echo Show 5 (newest model), Smart display, Designed for Alexa+, 2x the bass and clearer sound, Cloud Blue",
-      "previousObservedPrice": 59.99,
-      "currentObservedPrice": 54.99,
-      "dropPercent": 8.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-21T05:11:12.564252+00:00",
-      "url": "https://www.amazon.com/dp/B09B2SRGXH",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-21T05:41:13.896157+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
