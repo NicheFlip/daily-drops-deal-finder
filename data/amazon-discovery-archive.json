@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-21T21:11:13.547820+00:00",
+  "updated": "2026-11-21T21:41:13.442123+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B01DWP433O",
+      "title": "PUMA Men's Tazon 6 FM Cross Training Shoes, White-Silver-Black, 10.5",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B01DWP433O",
+      "imageUrl": "https://m.media-amazon.com/images/I/319rg1wcdiL._SL160_.jpg",
+      "price": 37.99,
+      "referencePrice": 70.0,
+      "discountPercent": 46,
+      "dealScore": 6,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T21:41:13.442123+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0CP9Z56SW",
       "title": "STANLEY Quencher H2.0 Flow State Tumbler, 40 oz, Rose Quartz 2.0 | Handle and Straw | 3-Position Lid | Cup Holder Compatible for Travel | Insulated Stainless Steel Cup | BPA-Free",
