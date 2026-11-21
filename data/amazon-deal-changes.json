@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-21T23:11:14.012311+00:00",
-  "changes": [],
+  "updated": "2026-11-21T23:41:19.945968+00:00",
+  "changes": [
+    {
+      "asin": "B09XBWNXYH",
+      "title": "Under Armour Men's Charged Assert 10 Shoes, (002) Black/Black/Black, 9.5",
+      "previousObservedPrice": 55.98,
+      "currentObservedPrice": 41.28,
+      "dropPercent": 26.3,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-21T23:41:19.945968+00:00",
+      "url": "https://www.amazon.com/dp/B09XBWNXYH",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
