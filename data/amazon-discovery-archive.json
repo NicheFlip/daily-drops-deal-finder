@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-21T08:41:14.515929+00:00",
+  "updated": "2026-11-21T09:11:16.160206+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B07KSFP9QZ",
+      "title": "Hot Tools Pro Artist Black Gold Ionic 1 Inch Flat Iron | Use as Straightener for Sleek Straight Hair or Use Rounded Edges for Shiny Curls and Waves, Stylist-Preferred Styles",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B07KSFP9QZ",
+      "imageUrl": "https://m.media-amazon.com/images/I/31K1iYbN+0L._SL160_.jpg",
+      "price": 69.44,
+      "referencePrice": 149.99,
+      "discountPercent": 54,
+      "dealScore": 14,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 69.45,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T09:11:16.160206+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B01KQLUU7U",
       "title": "Kicking Horse Coffee, Smart Ass, Medium Roast, Ground,Certified Organic, Fairtrade, Kosher Coffee, 10 Ounce (Pack of 1)",
