@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-21T17:41:15.043924+00:00",
+  "updated": "2026-11-21T18:11:14.315866+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B07DHND43F",
+      "title": "WoodWick Evening Bonfire Scented Candle, Crackling Wick, 16oz | Up to 100 Hour Burn Time, Premium Soy Wax, Home D\u00e9cor & Gift Choice, Crackles as it Burns, Ellipse Candle",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B07DHND43F",
+      "imageUrl": "https://m.media-amazon.com/images/I/31vTNnMZsaL._SL160_.jpg",
+      "price": 19.99,
+      "referencePrice": 33.99,
+      "discountPercent": 41,
+      "dealScore": 1,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T18:11:14.315866+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0CKMCKL3B",
       "title": "adidas Men's Daily 4.0, Black/White/Gum, 10 | Casual Shoes, Skateboarding Shoes, Low-Cut, Regular Fit, Lace-Up, For Skateboarding and Everyday Wear",
