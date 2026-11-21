@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-21T12:41:14.107949+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-21T12:59:32.910797+00:00",
+  "candidates": [
+    {
+      "asin": "B0CQYV1YK5",
+      "title": "ANERZA 16 PCS Framed Vintage Wall Art Decor, Botanical Cottagecore Wall Prints for Bedroom, Gallery Wall Frame Set, Farmhouse Posters for Living Room Aesthetic, Rustic Dorm Home Co",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0CQYV1YK5",
+      "imageUrl": "https://m.media-amazon.com/images/I/51dNYM+aq6L._SL160_.jpg",
+      "price": 59.99,
+      "referencePrice": 99.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T12:59:32.910797+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "ANERZA",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
