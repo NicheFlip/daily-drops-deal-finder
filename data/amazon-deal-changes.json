@@ -1,5 +1,66 @@
 {
-  "updated": "2026-11-21T09:41:13.525415+00:00",
-  "changes": [],
+  "updated": "2026-11-21T10:11:13.430376+00:00",
+  "changes": [
+    {
+      "asin": "B0HKMN3DXF",
+      "title": "Bagotte Robot Vacuum and Mop, 10000Pa Super Suction, 90 Days Hands-Free Robotic Vacuum Cleaner with Smart LiDAR Mapping, Edge-to-Corner Cleaning, APP & Voice Control for Pet Hair H",
+      "previousObservedPrice": 799.99,
+      "currentObservedPrice": 227.99,
+      "dropPercent": 71.5,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-21T10:11:13.430376+00:00",
+      "url": "https://www.amazon.com/dp/B0HKMN3DXF",
+      "seller": "SunJinGuiHuaYao-US",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B01FHUJ1FC",
+      "title": "Seventh Generation Dishwasher Detergent Packs, Free & Clear, 45 Ct, 2 Pack | Power away tough messes with a safer clean; free & clear formula; 0% dyes & fragrances; EPA Safer Choic",
+      "previousObservedPrice": 29.74,
+      "currentObservedPrice": 15.19,
+      "dropPercent": 48.9,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-21T10:11:13.430376+00:00",
+      "url": "https://www.amazon.com/dp/B01FHUJ1FC",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
+    {
+      "asin": "B0D3G86J25",
+      "title": "ANERZA 16 PCS Wall Art Framed Eclectic Wall Art Decor, Modern Maximalist Wall Prints for Bedroom, Vintage Gallery Wall Frame Set, Bauhaus Funky Posters for Home Decor, Retro Abstra",
+      "previousObservedPrice": 79.99,
+      "currentObservedPrice": 59.99,
+      "dropPercent": 25.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-21T10:11:13.430376+00:00",
+      "url": "https://www.amazon.com/dp/B0D3G86J25",
+      "seller": "ANERZA",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B07KSFP9QZ",
+      "title": "Hot Tools Pro Artist Black Gold Ionic 1 Inch Flat Iron | Use as Straightener for Sleek Straight Hair or Use Rounded Edges for Shiny Curls and Waves, Stylist-Preferred Styles",
+      "previousObservedPrice": 69.44,
+      "currentObservedPrice": 69.43,
+      "dropPercent": 0.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-21T10:11:13.430376+00:00",
+      "url": "https://www.amazon.com/dp/B07KSFP9QZ",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
