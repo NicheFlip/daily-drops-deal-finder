@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-21T15:11:14.152398+00:00",
+  "updated": "2026-11-21T15:41:14.896794+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0C3528VHM",
+      "title": "Play Doh Swirlin' Smoothies Toy Blender Playset, Play Kitchen Appliances, Kids Arts and Crafts Toys for 3 Year Old Girls and Boys and Up",
+      "category": "ToysAndGames",
+      "url": "https://www.amazon.com/dp/B0C3528VHM",
+      "imageUrl": "https://m.media-amazon.com/images/I/51pX9X-vb7L._SL160_.jpg",
+      "price": 5.59,
+      "referencePrice": 9.99,
+      "discountPercent": 44,
+      "dealScore": 4,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T15:41:14.896794+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B07JVM5VPR",
       "title": "Life Extension One-Per-Day Multivitamin, 1-Daily, 60 Tablets | Packed with Over 25 Vitamins, Minerals & Plant Extracts Including Quercetin & 5-MTHF Folate; Non-GMO & Gluten-Free",
