@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-21T04:20:06.959206+00:00",
-  "changes": [
-    {
-      "asin": "B07JPFHQKG",
-      "title": "DEWALT 20V MAX XR Jig Saw, 3,200 Blade Speed, Cordless, Brushless Motor, LED Light, Bare Tool Only (DCS334B)",
-      "previousObservedPrice": 118.49,
-      "currentObservedPrice": 118.46,
-      "dropPercent": 0.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-21T04:20:06.959206+00:00",
-      "url": "https://www.amazon.com/dp/B07JPFHQKG",
-      "seller": "Nibras Prime",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-21T04:41:14.402806+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
