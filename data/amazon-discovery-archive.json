@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-21T18:11:14.315866+00:00",
+  "updated": "2026-11-21T18:41:22.368863+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0H8QQYQXG",
+      "title": "EA SPORTS NHL 27 - Physical Disc - Xbox Series X",
+      "category": "VideoGames",
+      "url": "https://www.amazon.com/dp/B0H8QQYQXG",
+      "imageUrl": "https://m.media-amazon.com/images/I/512i3rvzDaL._SL160_.jpg",
+      "price": 29.99,
+      "referencePrice": 69.99,
+      "discountPercent": 57,
+      "dealScore": 17,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-21T18:41:22.368863+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B07DHND43F",
       "title": "WoodWick Evening Bonfire Scented Candle, Crackling Wick, 16oz | Up to 100 Hour Burn Time, Premium Soy Wax, Home D\u00e9cor & Gift Choice, Crackles as it Burns, Ellipse Candle",
