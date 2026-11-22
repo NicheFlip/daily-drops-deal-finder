@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-22T06:11:13.208889+00:00",
+  "updated": "2026-11-22T06:41:13.961574+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0F3KWZQ61",
+      "title": "Yatoshi Professional Kitchen Knife Block Set, 15 Piece | High Carbon Stainless Steel, Pakkawood Handles, Acacia Wood Block, Rust Resistant",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0F3KWZQ61",
+      "imageUrl": "https://m.media-amazon.com/images/I/41iD1xGN56L._SL160_.jpg",
+      "price": 169.99,
+      "referencePrice": 299.99,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 179.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-22T06:41:13.961574+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Northern-Fulfillment",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0HL9B1L79",
       "title": "Cordless Car Vacuum Cleaner: 7-in-1 & 16000Pa Suction - Soot Black | Brushless Motor - LED Battery Display & Type-C Charging - For Car, Home, Pet Hair",
