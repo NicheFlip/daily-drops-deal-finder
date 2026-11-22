@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-22T21:16:17.646398+00:00",
-  "changes": [
-    {
-      "asin": "B000S5VE2K",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap, Lavender Scent, 12.5 Fl Oz | Hand Soaps, Liquid Hand Soaps, for personal care, made without parabens, 12.5 oz capacity, bottle container",
-      "previousObservedPrice": 5.29,
-      "currentObservedPrice": 3.71,
-      "dropPercent": 29.9,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-22T21:16:17.646398+00:00",
-      "url": "https://www.amazon.com/dp/B000S5VE2K",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-22T21:41:15.322009+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
