@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-22T16:11:14.343103+00:00",
-  "changes": [],
+  "updated": "2026-11-22T16:41:19.416117+00:00",
+  "changes": [
+    {
+      "asin": "B000V9YYMK",
+      "title": "Lysol Power Foaming Bathroom Cleaner & Disinfectant Spray, 32 oz | Multipurpose Toilet, Sink, Tub, & Shower Cleaner, Sanitizer, Soap Scum & Mold Cleaner, 0% Bleach, Bathroom Cleani",
+      "previousObservedPrice": 4.0,
+      "currentObservedPrice": 1.09,
+      "dropPercent": 72.8,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-22T16:41:19.416117+00:00",
+      "url": "https://www.amazon.com/dp/B000V9YYMK",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
