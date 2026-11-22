@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-22T01:11:13.368024+00:00",
+  "updated": "2026-11-22T01:41:13.724773+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0F4LXP4RQ",
+      "title": "New Balance Men's 515 V3 Sneaker, Raincloud/Dry Lime, 10",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0F4LXP4RQ",
+      "imageUrl": "https://m.media-amazon.com/images/I/41icxc+2GlL._SL160_.jpg",
+      "price": 28.55,
+      "referencePrice": 57.74,
+      "discountPercent": 51,
+      "dealScore": 11,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-22T01:41:13.724773+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0HJWMGCSC",
       "title": "KZKB 160PSI Tire Inflator Portable Air Compressor for Car, Ball and Bicycle | 160 PSI Portable Air Pump with Tire Gauge Pressure & LED Light & Auto Shut-Off Cordless Bike Pump for ",
