@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-22T08:41:14.805564+00:00",
-  "changes": [],
+  "updated": "2026-11-22T09:11:14.500770+00:00",
+  "changes": [
+    {
+      "asin": "B0FMBGXC2C",
+      "title": "Canon PIXMA TS4320 \u2013 Wireless Color Inkjet Printer with Print, Copy, Scan | Cost Efficient Multi-Function Photo Printer, Copier, Scanner for Home Use, Compact Design, Easy Setup",
+      "previousObservedPrice": 59.0,
+      "currentObservedPrice": 56.05,
+      "dropPercent": 5.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-22T09:11:14.500770+00:00",
+      "url": "https://www.amazon.com/dp/B0FMBGXC2C",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
