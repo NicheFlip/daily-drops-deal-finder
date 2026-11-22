@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-22T01:41:13.724773+00:00",
-  "changes": [],
+  "updated": "2026-11-22T02:11:14.040432+00:00",
+  "changes": [
+    {
+      "asin": "B0CS3V8M9H",
+      "title": "Ninja Air Fryer XL with MaxCrisp, 6.5 Qt, 6-in-1, Grey, AF181 | Max crisp, air fry, roast, bake, reheat, dehydrate, 1750W, 450F max, Fits 9 lbs wings",
+      "previousObservedPrice": 129.99,
+      "currentObservedPrice": 99.99,
+      "dropPercent": 23.1,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-22T02:11:14.040432+00:00",
+      "url": "https://www.amazon.com/dp/B0CS3V8M9H",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
