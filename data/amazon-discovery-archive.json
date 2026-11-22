@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-22T09:11:14.500770+00:00",
+  "updated": "2026-11-22T09:41:13.412131+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0FJMCF2DD",
+      "title": "TACVASEN Puffer Jacket Men Winter Jackets Sherpa Lined Down Coats Black L | Water resistant, windproof, insulated quilted fleece jacket for casual work travel outdoor hiking skiing",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0FJMCF2DD",
+      "imageUrl": "https://m.media-amazon.com/images/I/41kPZa0OWFL._SL160_.jpg",
+      "price": 45.58,
+      "referencePrice": 79.98,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-22T09:41:13.412131+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "TACVASEN",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0HMCLJNPN",
       "title": "YKYI Cordless Pressure Washer, 1200 PSI Portable Handheld Power Washer | 30 Pressure Levels, Brushless Motor, 4000mAh Battery, 24FT Hose & 6-in-1 Nozzle for Car Wash, Driveway, Gar",
