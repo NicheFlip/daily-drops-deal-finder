@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-22T00:11:13.803915+00:00",
-  "changes": [
-    {
-      "asin": "B01MG1XFAW",
-      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Basil, 16 fl oz, 3 Pack | Cuts Through Grease, Removes 48-Hour Stuck on Food, Cruelty Free, Made with Essential Oils and Aloe Vera Extract",
-      "previousObservedPrice": 15.87,
-      "currentObservedPrice": 10.98,
-      "dropPercent": 30.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-22T00:11:13.803915+00:00",
-      "url": "https://www.amazon.com/dp/B01MG1XFAW",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    },
-    {
-      "asin": "B00HSC9F2C",
-      "title": "Clorox Disinfecting Wipes Variety Pack Bleach Free 75 Count 3 Pack | Kills Cold and Flu Viruses, 100 Plus Surface Safe, Germ Hotspot Disinfectant, Bleach Free, 75 Count, 3 Pack",
-      "previousObservedPrice": 11.79,
-      "currentObservedPrice": 8.49,
-      "dropPercent": 28.0,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-22T00:11:13.803915+00:00",
-      "url": "https://www.amazon.com/dp/B00HSC9F2C",
-      "seller": "KRALIX",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-22T00:22:52.059565+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
