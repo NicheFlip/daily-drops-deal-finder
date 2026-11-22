@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-22T03:11:14.337775+00:00",
+  "updated": "2026-11-22T03:41:12.585042+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B08G7GVH57",
+      "title": "Joico K-PAK Color Therapy Color-Protecting Shampoo | 10.1 Fl Oz | For Color-Treated Hair | Boost Shine | Improve Elasticity | Repair Breakage | With Keratin & Argan Oil",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B08G7GVH57",
+      "imageUrl": "https://m.media-amazon.com/images/I/31m422H3EzL._SL160_.jpg",
+      "price": 14.25,
+      "referencePrice": 24.5,
+      "discountPercent": 42,
+      "dealScore": 38,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 15.93,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-22T03:41:12.585042+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0FWB9VWVP",
       "title": "adidas Men's Lite Racer Adapt 8.0, ChalkWhiteGreyGrey, 9.5",
