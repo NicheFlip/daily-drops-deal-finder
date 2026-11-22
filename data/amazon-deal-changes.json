@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-22T19:41:13.552353+00:00",
-  "changes": [
-    {
-      "asin": "B00007J6CX",
-      "title": "Lysol All Purpose Kitchen Cleaner Spray, For Grease & Grime, Citrus, 22 oz | Multipurpose Cleaner, Degreaser, Sanitizer & Disinfectant Spray, Multi-Surface Cleaner, Oven & Applianc",
-      "previousObservedPrice": 4.0,
-      "currentObservedPrice": 1.07,
-      "dropPercent": 73.2,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-22T19:41:13.552353+00:00",
-      "url": "https://www.amazon.com/dp/B00007J6CX",
-      "seller": "ISUPPLY_RT",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B07RHTQP68",
-      "title": "Lysol All Purpose Cleaner Spray, Disinfectant, Mango, 32oz | Multipurpose Cleaner, Sanitizer & Disinfectant Spray, Degreaser, Multi-Surface Kitchen & Bathroom Cleaner, Cleaning Sup",
-      "previousObservedPrice": 3.84,
-      "currentObservedPrice": 1.07,
-      "dropPercent": 72.1,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-22T19:41:13.552353+00:00",
-      "url": "https://www.amazon.com/dp/B07RHTQP68",
-      "seller": "ISUPPLY_RT",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-22T20:11:13.729925+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
