@@ -1,12 +1,12 @@
 {
   "essentialOffset": 7,
   "day": "2026-11-22",
-  "callsToday": 2399,
+  "callsToday": 2559,
   "quickLinkOffset": 1,
   "seasonalOffset": 0,
   "demandOffset": 4,
-  "nextOffset": 86,
-  "watchOffset": 537,
-  "runNumber": 330,
+  "nextOffset": 157,
+  "watchOffset": 278,
+  "runNumber": 331,
   "cycle": 99
 }
