@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-22T03:41:12.585042+00:00",
-  "changes": [
-    {
-      "asin": "B09VK154VZ",
-      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
-      "previousObservedPrice": 13.26,
-      "currentObservedPrice": 7.15,
-      "dropPercent": 46.1,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-22T03:41:12.585042+00:00",
-      "url": "https://www.amazon.com/dp/B09VK154VZ",
-      "seller": "Amazon Resale",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    },
-    {
-      "asin": "B08G7GVH57",
-      "title": "Joico K-PAK Color Therapy Color-Protecting Shampoo | 10.1 Fl Oz | For Color-Treated Hair | Boost Shine | Improve Elasticity | Repair Breakage | With Keratin & Argan Oil",
-      "previousObservedPrice": 15.93,
-      "currentObservedPrice": 14.25,
-      "dropPercent": 10.5,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-22T03:41:12.585042+00:00",
-      "url": "https://www.amazon.com/dp/B08G7GVH57",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-22T04:11:18.949286+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
