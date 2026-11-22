@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-22T07:11:13.445690+00:00",
+  "updated": "2026-11-22T07:25:47.642388+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0CNDFWJQP",
+      "title": "EVEO Electronic Wipes Screen Cleaner - Screen Wipes TV Screen Cleaner Wipes, Computer Screen Wipes, Laptop Screen Cleaner, ipad & Monitor Cleaner, Screen Cleaning Wipes - [90 Wipes",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B0CNDFWJQP",
+      "imageUrl": "https://m.media-amazon.com/images/I/51oNEaK7n7L._SL160_.jpg",
+      "price": 8.06,
+      "referencePrice": 14.97,
+      "discountPercent": 46,
+      "dealScore": 6,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-22T07:25:47.642388+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "EVEO",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0B89P16MC",
       "title": "Shark FlexStyle, Air Multi-Styler & Drying System, Coanda Curlers, HD430 | No Heat Damage, One Twist between Dryer & Styler, 4 Heat/3 Airflow Settings, Cool Shot",
