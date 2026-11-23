@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-23T12:11:15.967183+00:00",
-  "changes": [],
+  "updated": "2026-11-23T12:41:17.259529+00:00",
+  "changes": [
+    {
+      "asin": "B00DFBDALC",
+      "title": "Shark Rocket Corded Stick Vacuum, Carpet & Hard Floors, Gray/Orange, HV301 | Under 9 Lbs., Handheld Conversion, Pet Hair Pickup, Swivel Steering, Low-Profile Reach, Crevice and Uph",
+      "previousObservedPrice": 99.99,
+      "currentObservedPrice": 99.98,
+      "dropPercent": 0.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-23T12:41:17.259529+00:00",
+      "url": "https://www.amazon.com/dp/B00DFBDALC",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
