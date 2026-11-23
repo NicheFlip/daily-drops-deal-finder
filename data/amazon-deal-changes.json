@@ -1,5 +1,66 @@
 {
-  "updated": "2026-11-23T07:11:13.621893+00:00",
-  "changes": [],
+  "updated": "2026-11-23T07:41:14.279583+00:00",
+  "changes": [
+    {
+      "asin": "B0HKNJYRKD",
+      "title": "Robot Vacuum and Mop, 8000Pa Strong Suction, 2in1 Vacuum Robot for Pet Hair | Schedule Cleaning, Obstacle Avoidance, App Control, Self-Charging, for Hard Floor & Low-Pile Carpet",
+      "previousObservedPrice": 472.99,
+      "currentObservedPrice": 125.99,
+      "dropPercent": 73.4,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-23T07:41:14.279583+00:00",
+      "url": "https://www.amazon.com/dp/B0HKNJYRKD",
+      "seller": "Dguangpeng",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B079ZBSH2K",
+      "title": "Don Francisco's Kona Blend Single Serve Coffee Pods, Medium Roast, 100ct | Compatible with Keurig Coffee Pod Brewers, 100% Arabica Coffee, Convenient Single Serve Brewing, Fresh Br",
+      "previousObservedPrice": 46.99,
+      "currentObservedPrice": 27.49,
+      "dropPercent": 41.5,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-23T07:41:14.279583+00:00",
+      "url": "https://www.amazon.com/dp/B079ZBSH2K",
+      "seller": "Amazon Resale",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
+    {
+      "asin": "B00262227E",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",
+      "previousObservedPrice": 6.98,
+      "currentObservedPrice": 4.5,
+      "dropPercent": 35.5,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-23T07:41:14.279583+00:00",
+      "url": "https://www.amazon.com/dp/B00262227E",
+      "seller": "Same-Day Shipping Store",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B072LVG9NM",
+      "title": "Scotch-Brite Scrub Dots Non-Scratch Scrub Sponge, Rinses Clean, for Washing Dishes and Cleaning Kitchen, 3 Scrub Sponges",
+      "previousObservedPrice": 3.86,
+      "currentObservedPrice": 3.59,
+      "dropPercent": 7.0,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-23T07:41:14.279583+00:00",
+      "url": "https://www.amazon.com/dp/B072LVG9NM",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
