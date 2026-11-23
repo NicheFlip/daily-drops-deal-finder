@@ -151,7 +151,7 @@ def parse(item,category,keyword,minimum_discount=40):
           'url':'https://www.amazon.com/dp/'+asin,'imageUrl':((item.get('images') or {}).get('primary') or {}).get('medium',{}).get('url'),'price':price,
           'referencePrice':reference,'referenceType':basis.get('savingBasisTypeLabel') or basis.get('savingBasisType') or 'API savings basis',
           'discountPercent':percent,'category':category,'keyword':keyword,
-          'checkedAt':STAMP,'couponVerified':False,'possibleGlitch':False,
+          'checkedAt':STAMP,'couponVerified':False,'couponCode':'','possibleGlitch':False,
           'verification':'Amazon API offer snapshot; checkout price, coupons and historical pricing not independently verified',
           **({'parentAsin':item['parentASIN']} if re.fullmatch('[A-Z0-9]{10}',str(item.get('parentASIN') or '')) and item.get('parentASIN')!=asin else {}),
           **shipping_info(offer)}

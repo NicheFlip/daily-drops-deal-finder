@@ -182,7 +182,10 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 .pill.fresh-drop{background:#dff8e9;color:#155e46}.pill.fresh-new{background:#e6efff;color:#1e4a9b}
 .hist-line{font-weight:800;font-size:.92rem;margin-top:2px}.hist-line.down{color:#12664a}.hist-line.up{color:#9b3a31}.hist-line.same{color:#555;font-weight:650}.hist-line span{font-weight:600;color:#666}
 .fresh-summary{display:inline-block;background:#eef6ff;border:1px solid #cfe0fb;border-radius:10px;padding:6px 10px;margin:4px 0}
-.post-card{padding:16px!important;grid-column:1/-1}.post-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.post-card{padding:16px!important;grid-column:1/-1;min-width:0;max-width:100%;overflow:hidden;display:block}.post-card *{min-width:0;box-sizing:border-box}#postingResults{grid-template-columns:minmax(0,1fr)}
+.post-head{display:flex!important;gap:12px;align-items:center;margin-bottom:12px}.post-head-text{display:flex;flex-direction:column;gap:4px;flex:1}.post-title{font-size:1rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}.post-thumb{width:76px;height:76px;flex:0 0 76px;object-fit:contain;background:#fff;border:1px solid #e6e8ee;border-radius:10px}.post-head .pill{align-self:flex-start}
+.post-label{display:block;font-size:.85rem;color:#5d6675;margin-top:12px}.post-label input,.post-label textarea,.post-more input{display:block;width:100%;max-width:100%;margin-top:6px}.post-more{margin-top:12px}.post-more summary{cursor:pointer;padding:6px 0}
+.fb-text{overflow-wrap:anywhere}.post-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
 .post-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
 .fb-preview{background:#fff;border:1px solid #dfe3ea;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0000000d}
 .fb-top{display:flex;gap:10px;align-items:center;padding:12px 14px}.fb-top small{display:block;color:#65676b;font-size:.78rem}.fb-avatar{width:40px;height:40px;border-radius:50%;background:#6b203d;color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem;flex:0 0 40px}
@@ -190,12 +193,13 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 .fb-photo{display:block;width:100%;max-height:340px;object-fit:contain;background:#f6f7f9;border-top:1px solid #eee}
 .fb-link{background:#f0f2f5;padding:10px 14px}.fb-link small{color:#65676b;letter-spacing:.04em}.fb-link strong{display:block;font-size:.92rem;line-height:1.3}
 .post-price{font-size:2rem;font-weight:850;letter-spacing:-.03em;color:var(--dd-brand-deep,#6b203d)}.post-facts{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px}.post-fact{font-size:.8rem;font-weight:750;padding:5px 9px;border-radius:999px;background:#f1f3f6;color:#333}.post-fact.good{background:#dff8e9;color:#155e46}.post-fact.cond{background:#fff1d6;color:#7a4b00}
-.post-buttons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.post-buttons .btn{min-height:52px;font-size:1rem;display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
+.post-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.post-buttons .btn{margin:0!important;white-space:normal}.post-buttons .btn{min-height:52px;font-size:1rem;display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
 .post-tools textarea{width:100%;min-height:210px;font-size:.95rem;line-height:1.4;margin-top:6px}
 .post-mini{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.post-mini button{min-height:40px}
 .post-posted{width:100%;min-height:50px;margin-top:8px;font-size:1rem;background:#1f6f50!important}
+.fb-add{margin:12px 0}.fb-add summary{cursor:pointer;padding:4px 0;line-height:1.5}.fb-add input{display:block;width:100%;margin-top:6px}.fb-add .btn{width:100%;margin-top:10px}.fb-add-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 .post-feedback{min-height:1.2em;font-weight:700;color:#12664a;margin:8px 0}
-@media(max-width:760px){.post-layout{grid-template-columns:1fr}.post-tools{order:-1}.post-buttons{grid-template-columns:1fr 1fr}.post-buttons .post-copy{grid-column:1/-1;min-height:58px;font-size:1.08rem}.watch-add{flex-direction:column}.fb-text{max-height:none}}
+@media(max-width:760px){.post-card{padding:12px!important}.post-layout{display:flex;flex-direction:column;gap:14px}.post-price{font-size:1.7rem}.post-buttons{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.post-buttons .post-copy{grid-column:1/-1;min-height:56px;font-size:1.08rem}.post-buttons .btn{min-height:50px;font-size:.98rem;padding:10px 8px}.post-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.post-mini .btn{padding:10px 6px;font-size:.88rem;margin:0}.post-tools textarea{min-height:190px;font-size:16px}.post-label input{font-size:16px}.fb-text{max-height:none;font-size:.92rem}.fb-photo{max-height:220px}.watch-add{flex-direction:column}}
 </style></head>
 <body><header><div class="wrap"><div class="brand">DAILY DROPS <span style="color:#a8c7ff">/ HEATHER</span></div><p class="sub">Amazon + Walmart deal research workspace</p></div></header>
 <main>
@@ -241,7 +245,17 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 <h1>New & improved deal candidates</h1><p class="muted small">First-time API discoveries and observed price drops from the latest scan. Unchanged offers are excluded. Research only—not checkout-verified.</p>
 <div class="actions"><p id="candidateStatus" class="muted small" role="status">Open this tab to load new finds.</p><button type="button" class="btn secondary" id="candidateRefresh">Refresh candidates</button></div>
 <div id="candidateResults" class="grid"></div></section>
-<section id="panel-posting" role="tabpanel" aria-labelledby="tab-posting" hidden><h1>Ready to Post</h1><p class="muted small">Products you marked ✓ Deal, with a ready Facebook post. Check the preview, edit if you like, then tap Copy post.</p><p id="postingStatus" role="status"></p><div id="postingResults" class="grid"></div><details class="card" style="margin:16px 0"><summary><strong>Remove rejected products from follower shop</strong></summary><p class="small muted">New scanner deals appear automatically. Pass and No Deal hide products in this browser immediately. To remove them for every follower, publish the rejection list to GitHub.</p><button type="button" class="btn" id="exportShopApproved">Download Pass / No Deal exclusion list</button><a href="https://github.com/NicheFlip/daily-drops-deal-finder/edit/main/data/shop-excluded.json" target="_blank" rel="noopener noreferrer" style="margin-left:10px">Edit exclusion list on GitHub ↗</a><p class="small muted">Replace the GitHub file with the downloaded JSON and commit. Until then, other followers can still see those products. Do not publish private review notes.</p></details></section>
+<section id="panel-posting" role="tabpanel" aria-labelledby="tab-posting" hidden><h1>Ready to Post</h1><p class="muted small">Products you marked ✓ Deal, with a ready Facebook post. Check the preview, edit if you like, then tap Copy post.</p><details class="card fb-add" id="fbAdd"><summary><strong>➕ Add a deal you found elsewhere</strong> <span class="small muted">(not from the scanner) → shop + Telegram</span></summary>
+<p class="small muted">Paste the product link from any store. Amazon links get your tag automatically; Walmart (Impact) and other store links are used exactly as pasted.</p>
+<label class="post-label">Product link<input id="fbLink" type="url" inputmode="url" autocomplete="off" placeholder="https://www.amazon.com/dp/… or any store link"></label>
+<button type="button" class="btn secondary" id="fbFill">✨ Auto-fill title &amp; photo</button>
+<label class="post-label">Title<input id="fbTitle" maxlength="220" autocomplete="off"></label>
+<div class="fb-add-two"><label class="post-label">Price ($)<input id="fbPrice" type="number" min=".01" step=".01" inputmode="decimal"></label><label class="post-label">Coupon code<input id="fbCoupon" maxlength="30" autocomplete="off" placeholder="optional"></label></div>
+<label class="post-label">Short note (optional)<input id="fbNote" maxlength="200" placeholder="e.g. Clip the 20% coupon on the page"></label>
+<label class="post-label">Photo link (optional)<input id="fbImage" type="url" inputmode="url" placeholder="https://…"></label>
+<img id="fbPhoto" alt="" hidden class="post-thumb" style="margin-top:10px">
+<button type="button" class="btn post-posted" id="fbGo">📣 Continue: add to shop + Telegram</button><p id="fbMsg" class="post-feedback" role="status"></p></details>
+<p id="postingStatus" role="status"></p><div id="postingResults" class="grid"></div><details class="card" style="margin:16px 0"><summary><strong>Remove rejected products from follower shop</strong></summary><p class="small muted">New scanner deals appear automatically. Pass and No Deal hide products in this browser immediately. To remove them for every follower, publish the rejection list to GitHub.</p><button type="button" class="btn" id="exportShopApproved">Download Pass / No Deal exclusion list</button><a href="https://github.com/NicheFlip/daily-drops-deal-finder/edit/main/data/shop-excluded.json" target="_blank" rel="noopener noreferrer" style="margin-left:10px">Edit exclusion list on GitHub ↗</a><p class="small muted">Replace the GitHub file with the downloaded JSON and commit. Until then, other followers can still see those products. Do not publish private review notes.</p></details></section>
 <section id="panel-history" role="tabpanel" aria-labelledby="tab-history" hidden><h1>Observed Price History</h1><p class="muted small">Amazon prices recorded by the scanner.</p><div class="actions"><input id="historyFind" type="search" placeholder="Search tracked products…" aria-label="Search tracked products"><button type="button" class="btn secondary" id="historyRefresh">Refresh history</button></div><p id="historyStatus" role="status" class="muted small">Open this tab to load history.</p><div class="actions"><button type="button" class="btn secondary" id="exportJudgments">Export my Deal / No Deal decisions</button><span class="small muted">Saved on this browser only. Export a backup before clearing browser data.</span></div><div id="historyResults" class="grid"></div></section>
 <section id="panel-walmart" role="tabpanel" aria-labelledby="tab-walmart" hidden>
 <h1>Walmart Radar</h1><p class="muted small">Quick access to Walmart clearance, deals, and category searches. Verify prices and stock on Walmart before sharing.</p>
@@ -367,23 +381,39 @@ function postingLinkFor(d,entry){
 }
 function postingCaption(d,link){
  const price=Number(d.price)>0?'Only $'+Number(d.price).toFixed(2)+'! ':'';
- return [price+'Found one worth a closer look!','',d.title,'','👉 '+link,'','Follow Daily Drops with Heather for more finds.','','#DailyDropsWithHeather #AmazonFinds #SmartShopping #DealFinds','','As an Amazon Associate, I earn from qualifying purchases.'].join(String.fromCharCode(10));
+ return [price+'Found one worth a closer look!','',d.title,'','👉 '+link,'','Follow Daily Drops with Heather for more finds.','',dealHashtags(d).join(' '),'','As an Amazon Associate, I earn from qualifying purchases.'].join(String.fromCharCode(10));
 }
+// Deal hashtags: deterministic, max 5, no duplicates. Same function in index.html, shop.html and the Worker (tested).
+const HASHTAG_TOPICS=[[/\b(ps5|playstation|xbox|nintendo|switch 2|video ?games?|gaming)\b/,'#GamingDeals'],[/\b(lego|toys?|puzzles?|dolls?|plush|toysandgames|board games?)\b/,'#ToyDeals'],[/\b(kitchen|cookware|air fryer|blender|coffee|knife|knives|skillet|pans?|slow cooker|instant pot|homeandkitchen)\b/,'#KitchenDeals'],[/\b(headphones?|earbuds|laptop|tablet|ipad|tv|monitor|charger|camera|speaker|electronics|smart watch|doorbell|router)\b/,'#TechDeals'],[/\b(beauty|makeup|skincare|serum|lip|lipstick|mascara|fragrance|perfume|shampoo|hair)\b/,'#BeautyDeals'],[/\b(shirts?|shoes|sneakers?|jackets?|dress|pants|socks|hoodie|pajamas?|leggings|fashion|boots)\b/,'#FashionDeals'],[/\b(dogs?|cats?|pets?|petsupplies|litter)\b/,'#PetDeals'],[/\b(baby|diapers?|toddler|wipes)\b/,'#BabyDeals'],[/\b(tools?|drill|socket|craftsman|dewalt|milwaukee|toolsandhomeimprovement)\b/,'#ToolDeals'],[/\b(office|pens?|notebooks?|paper|officeproducts|school supplies)\b/,'#OfficeDeals'],[/\b(home|decor|bedding|towels?|sheets|vacuum|storage|trash bags?|blanket)\b/,'#HomeDeals']];
+function dealStore(d){d=d||{};if(d.store)return String(d.store);const u=String(d.url||d.link||'');let host='';try{host=new URL(u).hostname.toLowerCase().replace(/^www\./,'')}catch{}
+ if(/(^|\.)amazon\.com$|^amzn\.to$|^link\.amazon$/.test(host)||(!host&&/^[A-Z0-9]{10}$/.test(String(d.asin||''))))return 'Amazon';
+ if(/walmart|^goto\.walmart\.com$/.test(host))return 'Walmart';if(!host)return '';const base=host.split('.').slice(-2,-1)[0]||host;return base.charAt(0).toUpperCase()+base.slice(1)}
+function dealHashtags(d){d=d||{};const tags=[],add=t=>{if(t&&tags.length<5&&!tags.some(x=>x.toLowerCase()===t.toLowerCase()))tags.push(t)};
+ const store=dealStore(d);add(store==='Amazon'?'#AmazonDeals':store==='Walmart'?'#WalmartDeals':store?'#'+store.replace(/[^A-Za-z0-9]/g,'')+'Deals':'#DealAlert');
+ const text=(String(d.title||'')+' '+String(d.category||'')).toLowerCase();for(const [re,tag] of HASHTAG_TOPICS){if(re.test(text)){add(tag);break}}
+ if(d.couponCode)add('#CouponCode');
+ const p=Number(d.price),prev=Number(d.previousPrice),ref=Number(d.referencePrice);
+ if(d.priceDrop===true||(prev>p&&p>0))add('#PriceDrop');
+ if(d.conditionLabel)add(/open box/i.test(d.conditionLabel)?'#OpenBox':/warehouse|resale/i.test(d.conditionLabel)?'#AmazonResale':/renewed/i.test(d.conditionLabel)?'#Renewed':'#UsedDeals');
+ if((Number(d.discountPercent)||(ref>p&&p>0?Math.round((1-p/ref)*100):0))>=50)add('#Clearance');
+ add('#DealFinds');add('#SaveMoney');return tags}
+function cleanCoupon(v){const c=String(v||'').trim().replace(/\s+/g,'').toUpperCase();return /^[A-Z0-9][A-Z0-9_-]{1,29}$/.test(c)?c:''}
 function postingComment(d,link){return '👉 '+(link||postingLink(d.asin))}
 // One-tap share: ready Facebook caption with the affiliate link and only evidence we actually have.
 const copyLookup=new Map();
 function shareCaption(d,link){
- const nl=String.fromCharCode(10),price=Number(d.price),lines=[];const used=!!d.conditionLabel;
+ const nl=String.fromCharCode(10),price=Number(d.price),lines=[];const used=!!d.conditionLabel;let dropped=used&&Number(d.previousPrice)>price&&price>0;
  let head=price>0?'🔥 $'+price.toFixed(2):'🔥 Deal alert';
  if(used&&Number(d.savingsVsNewPercent)>0&&Number(d.newPrice)>0)head+=' · '+d.conditionLabel+' ('+d.savingsVsNewPercent+'% less than new at $'+Number(d.newPrice).toFixed(2)+')';
  else if(used)head+=' · '+d.conditionLabel+' condition';
  else if(Number(d.referencePrice)>price&&price>0)head+=' (was $'+Number(d.referencePrice).toFixed(2)+' '+(String(d.referenceType||'').toLowerCase().includes('list')?'list price':'reference price')+', '+Math.round((1-price/Number(d.referencePrice))*100)+'% off)';
  const tt=String(d.title||'Amazon find').replace(/\s+/g,' ').trim();lines.push(head,'',tt.length>160?tt.slice(0,160).replace(/[\s,|;:-]+\S*$/,'')+'…':tt,'');
  if(used&&Number(d.previousPrice)>price&&price>0)lines.push('📉 Down from $'+Number(d.previousPrice).toFixed(2)+' (my price tracking)');
- if(!used&&trackedHistory){const e=quickEvidence(d);if(e.lowLabel)lines.push('📉 '+e.lowLabel+' (my price tracking)');else if(e.dropLabel)lines.push('📉 '+e.dropLabel.replace('↓ ','Down ')+' (my price tracking)')}
+ if(!used&&trackedHistory){const e=quickEvidence(d);if(e.lowLabel||e.dropLabel)dropped=true;if(e.lowLabel)lines.push('📉 '+e.lowLabel+' (my price tracking)');else if(e.dropLabel)lines.push('📉 '+e.dropLabel.replace('↓ ','Down ')+' (my price tracking)')}
  if(shipsFree(d))lines.push('✅ Sold by Amazon · free shipping with Prime');
  if(d.conditionNote)lines.push('📝 Condition: '+String(d.conditionNote).slice(0,140));
- lines.push('','👉 '+(link||postingLink(d.asin)),'','Price checked '+date(d.checkedAt)+'. Prices change fast, so check before you buy.','','#DailyDropsWithHeather #AmazonFinds #DealFinds','As an Amazon Associate, I earn from qualifying purchases.');
+ const code=cleanCoupon(d.couponCode);if(code)lines.splice(1,0,'🏷 Use code '+code);
+ lines.push('','👉 '+(link||postingLink(d.asin)),'','Price checked '+date(d.checkedAt)+'. Prices change fast, so check before you buy.','',dealHashtags({...d,couponCode:code,priceDrop:dropped}).join(' '),'As an Amazon Associate, I earn from qualifying purchases.');
  return lines.join(nl).replace(/\n{3,}/g,nl+nl);
 }
 async function copyText(t){try{await navigator.clipboard.writeText(t);return true}catch{const a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch{}a.remove();return ok}}
@@ -436,8 +466,22 @@ function updatePostingCount(){const n=Object.values(readJudgments()).filter(x=>x
 // private publisher page, where Heather is signed in; this dashboard never holds a secret or token.
 const PUBLISHER='https://daily-drops-publisher.alcorn224.workers.dev';let postedCloud=new Map(),postedCloudAt=0;
 async function refreshPostedCloud(force){if(!force&&Date.now()-postedCloudAt<60000)return;postedCloudAt=Date.now();try{const r=await fetch(PUBLISHER+'/api/posted?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});if(!r.ok)return;const j=await r.json();if(j.format!=='daily-drops-posted-v1')return;const m=new Map((j.deals||[]).map(d=>[d.asin,d]));const changed=m.size!==postedCloud.size||[...m].some(([a,d])=>postedCloud.get(a)?.telegramStatus!==d.telegramStatus);postedCloud=m;if(changed&&!$('panel-posting').hidden)renderPostingQueue()}catch{}}
-function postedPageUrl(d,caption,link){const u=new URL(PUBLISHER+'/posted');const set=(k,v)=>{if(v!==undefined&&v!==null&&v!=='')u.searchParams.set(k,String(v))};set('asin',d.asin);set('title',String(d.title||'').slice(0,220));set('price',Number(d.price)>0?Number(d.price).toFixed(2):'');set('imageUrl',d.imageUrl&&/^https:/.test(d.imageUrl)?d.imageUrl:'');set('link',link);set('condition',d.conditionLabel||'');set('prime',shipsFree(d)?'1':'');set('caption',String(caption||'').slice(0,2500));return u.href}
+function postedPageUrl(d,caption,link){const u=new URL(PUBLISHER+'/posted');const set=(k,v)=>{if(v!==undefined&&v!==null&&v!=='')u.searchParams.set(k,String(v))};set('asin',d.asin);set('title',String(d.title||'').slice(0,220));set('price',Number(d.price)>0?Number(d.price).toFixed(2):'');set('imageUrl',d.imageUrl&&/^https:/.test(d.imageUrl)?d.imageUrl:'');set('link',link);set('condition',d.conditionLabel||'');set('prime',shipsFree(d)?'1':'');set('coupon',cleanCoupon(d.couponCode));set('caption',String(caption||'').slice(0,2500));return u.href}
 window.addEventListener('focus',()=>{if(!$('panel-posting').hidden)refreshPostedCloud(true)});
+// "Add a deal you found elsewhere": fills from the scanner feeds (Amazon) or the Worker's og lookup (store pages).
+function fbAsin(v){const m=String(v||'').match(/\/(?:dp|gp\/product|gp\/aw\/d)\/([A-Z0-9]{10})/i);return m?m[1].toUpperCase():''}
+function fbDealLink(v){const a=fbAsin(v);if(a&&/amazon\.com\//i.test(v))return postingLink(a);return String(v||'').trim()}
+function fbCaption(){const price=Number($('fbPrice').value),code=cleanCoupon($('fbCoupon').value),note=$('fbNote').value.trim(),link=fbDealLink($('fbLink').value),nl=String.fromCharCode(10);const d={url:link,title:$('fbTitle').value,price,couponCode:code};const amazon=dealStore(d)==='Amazon';
+ return [(price>0?'🔥 $'+price.toFixed(2):'🔥 Deal alert'),code?'🏷 Use code '+code:'','',String(d.title).trim(),note?'📝 '+note:'','','👉 '+link,'','Prices change fast, so check before you buy.','',dealHashtags(d).join(' '),amazon?'As an Amazon Associate, I earn from qualifying purchases.':'I may earn a commission from links in this post.'].filter((x,i,a)=>x!==''||(a[i-1]!==''&&i>0)).join(nl)}
+function fbPhoto(){const v=$('fbImage').value.trim();$('fbPhoto').hidden=!/^https:/.test(v);if(/^https:/.test(v))$('fbPhoto').src=v}
+$('fbImage').addEventListener('input',fbPhoto);
+$('fbFill').addEventListener('click',async()=>{const v=$('fbLink').value.trim(),msg=$('fbMsg');if(!/^https:\/\//.test(v)){msg.textContent='Paste the product link first (starts with https://).';return}
+ const a=fbAsin(v);if(a){const d=findFullProduct(a);if(d){if(!$('fbTitle').value)$('fbTitle').value=String(d.title||'').slice(0,220);if(!$('fbPrice').value&&Number(d.price)>0)$('fbPrice').value=Number(d.price).toFixed(2);if(!$('fbImage').value&&d.imageUrl)$('fbImage').value=d.imageUrl;fbPhoto();msg.textContent='✓ Filled from your scanner data.';return}}
+ msg.textContent='Looking up the product page…';try{const r=await fetch(PUBLISHER+'/api/og?url='+encodeURIComponent(v),{signal:AbortSignal.timeout(8000)});const j=await r.json().catch(()=>({}));if(j.title&&!$('fbTitle').value)$('fbTitle').value=j.title;if(j.imageUrl&&!$('fbImage').value)$('fbImage').value=j.imageUrl;fbPhoto();msg.textContent=j.title||j.imageUrl?'✓ Filled from the store page. Check the title and add the price.':'That store did not share its details. Type the title (and a photo link if you have one).'}catch{msg.textContent='Auto-fill is not available for this link. Type the title.'}});
+$('fbGo').addEventListener('click',()=>{const v=$('fbLink').value.trim(),msg=$('fbMsg');if(!/^https:\/\//.test(v)||!$('fbTitle').value.trim()){msg.textContent='Add the product link and a title first.';return}
+ const a=fbAsin(v),d={asin:a,title:$('fbTitle').value.trim(),price:Number($('fbPrice').value)||'',imageUrl:$('fbImage').value.trim(),couponCode:$('fbCoupon').value};
+ const u=new URL(postedPageUrl(d,fbCaption(),fbDealLink(v)));if(!a)u.searchParams.delete('asin');if(!shipsFree(d))u.searchParams.delete('prime');if(d.note=$('fbNote').value.trim())u.searchParams.set('note',d.note);
+ window.open(u.href,'_blank','noopener');msg.textContent='Opened your private Posted page: tap “Add to shop” there to confirm.'});
 function postFacts(d){const f=[],price=Number(d.price);
  if(d.conditionLabel)f.push('<span class="post-fact cond">♻ '+esc(d.conditionLabel)+(d.subCondition&&d.subCondition!=='Unknown'?' · '+esc(String(d.subCondition).replace(/([a-z])([A-Z])/g,'$1 $2')):'')+'</span>');
  if(d.conditionLabel&&Number(d.newPrice)>price)f.push('<span class="post-fact">New: '+cash(d.newPrice)+(Number(d.savingsVsNewPercent)>0?' · save '+esc(d.savingsVsNewPercent)+'%':'')+'</span>');
@@ -446,23 +490,29 @@ function postFacts(d){const f=[],price=Number(d.price);
  if(d.conditionLabel&&Number(d.previousPrice)>price)f.push('<span class="post-fact good">↓ Down from '+cash(d.previousPrice)+' (tracked)</span>');
  if(shipsFree(d))f.push('<span class="post-fact good">✓ Prime · free shipping</span>');else if(d.shippingStatus!=='amazon')f.push('<span class="post-fact" title="The scan did not report the seller">Shipping not checked</span>');
  return f.join('')}
+function setCouponLine(text,code){const nl=String.fromCharCode(10);let lines=String(text||'').split(nl).filter(l=>!/^🏷 Use code /.test(l));if(code)lines.splice(1,0,'🏷 Use code '+code);let t=lines.join(nl);t=t.replace(/(#\w+ ?)*#CouponCode ?/g,m=>m.replace(/#CouponCode ?/,''));if(code){t=t.split(nl).map(l=>/^\s*(#\w+\s*)+$/.test(l)&&!/#CouponCode/.test(l)?(l.trim().split(/\s+/).length>=5?l.trim().split(/\s+/).slice(0,4).join(' ')+' #CouponCode':l.trim()+' #CouponCode'):l).join(nl)}return t}
 function previewHtml(text){return esc(text).replace(/https:\/\/[^\s<]+/g,u=>'<a href="'+u+'" target="_blank" rel="sponsored noopener noreferrer">'+u+'</a>')}
 function renderPostingQueue(){
  updatePostingCount();refreshPostedCloud();
  const entries=Object.entries(readJudgments()).filter(([asin,x])=>x?.choice==='deal'&&/^[A-Z0-9]{10}$/.test(asin)).sort((a,b)=>String(b[1].updatedAt||'').localeCompare(String(a[1].updatedAt||'')));
  $('postingStatus').textContent=entries.length?entries.length+(entries.length===1?' post':' posts')+' ready · newest first · saved on this browser':'';
  $('postingResults').innerHTML=entries.map(([asin,x])=>{
-  const live=findDealForQueue(asin),d={...(x.product||{}),...(live||{})};if(!d.title)d.title='Amazon product '+asin;d.asin=asin;
+  const live=findDealForQueue(asin),d={...(x.product||{}),...(live||{})};if(!d.title)d.title='Amazon product '+asin;d.asin=asin;d.couponCode=x.couponCode||'';
   const link=postingLinkFor(d,x),caption=x.customCaption||shareCaption(d,link),img=d.imageUrl&&/^https:/.test(d.imageUrl)?d.imageUrl:'';
-  return '<article class="card product post-card" data-post-asin="'+esc(asin)+'"><div class="post-head"><span class="pill">✓ Ready to post</span><span class="small muted">Price checked '+esc(d.checkedAt?date(d.checkedAt):'—')+'</span></div><div class="post-layout">'+
-  '<div class="fb-preview" aria-label="Facebook post preview"><div class="fb-top"><span class="fb-avatar">DD</span><div><strong>Daily Drops with Heather</strong><small>Post preview · what followers see</small></div></div><div class="fb-text" data-post-preview>'+previewHtml(caption)+'</div>'+(img?'<img class="fb-photo" loading="lazy" referrerpolicy="no-referrer" src="'+esc(img)+'" alt="'+esc(d.title)+'">':'')+'<div class="fb-link"><small>AMAZON.COM</small><strong>'+esc(String(d.title).slice(0,90))+'</strong></div></div>'+
-  '<div class="post-tools"><div class="post-price">'+(Number(d.price)>0?cash(d.price):'Check price')+'</div><div class="post-facts">'+postFacts(d)+'</div>'+
-  '<div class="post-buttons"><button class="btn post-copy" type="button" data-post-action="caption">📋 Copy post</button><button class="btn secondary" type="button" data-post-action="comment">🔗 Copy link</button><a class="btn secondary" href="'+esc(link)+'" target="_blank" rel="sponsored noopener noreferrer">↗ Open product</a></div><button class="btn post-posted" type="button" data-post-action="posted">'+(postedCloud.has(asin)?'✓ In the shop'+(postedCloud.get(asin).telegramStatus==='sent'?' · sent to Telegram':'')+' (tap to update)':'📣 I posted it: add to shop + Telegram')+'</button><p class="post-feedback" data-post-feedback role="status"></p>'+
-  '<label class="small muted">Caption (tap to edit · your changes are saved)<textarea data-post-caption rows="10">'+esc(caption)+'</textarea></label>'+
-  '<div class="post-mini"><button class="btn secondary" type="button" data-post-action="reset">↺ Reset caption</button><button class="btn secondary" type="button" data-post-action="graphic">⬇ Sale graphic</button><button class="btn secondary" type="button" data-post-action="remove">✕ Remove</button></div>'+
-  '<details class="small" style="margin-top:10px"><summary>Use a different affiliate link</summary><input data-post-link type="url" value="'+esc(link)+'" aria-label="Product affiliate link"><span class="muted">Paste a verified Amazon short link (link.amazon/…) if you prefer.</span></details></div></div></article>';
+  const posted=postedCloud.get(asin);
+  return '<article class="card post-card" data-post-asin="'+esc(asin)+'">'+
+  '<div class="post-head">'+(img?'<img class="post-thumb" loading="lazy" referrerpolicy="no-referrer" src="'+esc(img)+'" alt="">':'')+'<div class="post-head-text"><span class="pill">✓ Ready to post</span><strong class="post-title">'+esc(String(d.title))+'</strong><span class="small muted">Price checked '+esc(d.checkedAt?date(d.checkedAt):'—')+'</span></div></div>'+
+  '<div class="post-layout"><div class="post-tools"><div class="post-price">'+(Number(d.price)>0?cash(d.price):'Check price')+'</div><div class="post-facts">'+postFacts(d)+(d.couponCode?'<span class="post-fact good">🏷 Code '+esc(d.couponCode)+'</span>':'')+'</div>'+
+  '<div class="post-buttons"><button class="btn post-copy" type="button" data-post-action="caption">📋 Copy post</button><button class="btn secondary" type="button" data-post-action="comment">🔗 Copy link</button><a class="btn secondary" href="'+esc(link)+'" target="_blank" rel="sponsored noopener noreferrer">↗ Open product</a></div>'+
+  '<button class="btn post-posted" type="button" data-post-action="posted">'+(posted?'✓ In the shop'+(posted.telegramStatus==='sent'?' · sent to Telegram':'')+' (tap to update)':'📣 I posted it: add to shop + Telegram')+'</button><p class="post-feedback" data-post-feedback role="status"></p>'+
+  '<label class="post-label">Coupon code (optional)<input data-post-coupon type="text" maxlength="30" autocomplete="off" placeholder="e.g. SAVE20" value="'+esc(d.couponCode)+'"></label>'+
+  '<label class="post-label">Caption (tap to edit · saved automatically)<textarea data-post-caption rows="9">'+esc(caption)+'</textarea></label>'+
+  '<div class="post-mini"><button class="btn secondary" type="button" data-post-action="reset">↺ Reset</button><button class="btn secondary" type="button" data-post-action="graphic">⬇ Graphic</button><button class="btn secondary" type="button" data-post-action="remove">✕ Remove</button></div>'+
+  '<details class="small post-more"><summary>Use a different affiliate link</summary><input data-post-link type="url" value="'+esc(link)+'" aria-label="Product affiliate link"><span class="muted">Paste a verified Amazon short link (link.amazon/…) if you prefer.</span></details></div>'+
+  '<div class="fb-preview" aria-label="Facebook post preview"><div class="fb-top"><span class="fb-avatar">DD</span><div><strong>Daily Drops with Heather</strong><small>Preview · what followers see</small></div></div><div class="fb-text" data-post-preview>'+previewHtml(caption)+'</div>'+(img?'<img class="fb-photo" loading="lazy" referrerpolicy="no-referrer" src="'+esc(img)+'" alt="'+esc(d.title)+'">':'')+'<div class="fb-link"><small>AMAZON.COM</small><strong>'+esc(String(d.title).slice(0,90))+'</strong></div></div></div></article>';
  }).join('')||'<div class="empty">No posts ready yet. On the Deals tab, tap <strong>✓ Deal</strong> on a product and it appears here with a ready-to-copy Facebook post.</div>';
 }
+$('postingResults').addEventListener('change',e=>{if(!e.target.matches('[data-post-coupon]'))return;const card=e.target.closest('[data-post-asin]'),asin=card.dataset.postAsin,all=readJudgments(),entry=all[asin];if(!entry)return;const code=cleanCoupon(e.target.value);e.target.value=code;entry.couponCode=code;const ta=card.querySelector('[data-post-caption]');ta.value=setCouponLine(ta.value,code);entry.customCaption=ta.value;card.querySelector('[data-post-preview]').innerHTML=previewHtml(ta.value);try{localStorage.setItem(JUDGMENT_KEY,JSON.stringify(all))}catch{}card.querySelector('[data-post-feedback]').textContent=code?'Code '+code+' added to the caption.':'Coupon removed from the caption.'});
 $('postingResults').addEventListener('input',e=>{if(!e.target.matches('[data-post-caption]'))return;const pv=e.target.closest('[data-post-asin]')?.querySelector('[data-post-preview]');if(pv)pv.innerHTML=previewHtml(e.target.value)});
 $('postingResults').addEventListener('change',e=>{
  const card=e.target.closest('[data-post-asin]');if(!card)return;
@@ -508,7 +558,7 @@ async function postingGraphic(d){
 $('postingResults').addEventListener('click',async e=>{
  const btn=e.target.closest('[data-post-action]');if(!btn)return;
  const card=btn.closest('[data-post-asin]'),asin=card.dataset.postAsin,entry=readJudgments()[asin];if(!entry)return;
- const d={...(entry.product||{}),...(findDealForQueue(asin)||{})};d.asin=asin;if(!d.title)d.title='Amazon product '+asin;
+ const d={...(entry.product||{}),...(findDealForQueue(asin)||{})};d.asin=asin;d.couponCode=entry.couponCode||'';if(!d.title)d.title='Amazon product '+asin;
  const feedback=card.querySelector('[data-post-feedback]');
  if(btn.dataset.postAction==='posted'){window.open(postedPageUrl(d,card.querySelector('[data-post-caption]').value,card.querySelector('[data-post-link]').value.trim()),'_blank','noopener');feedback.textContent='Opened your private Posted page: tap “Add to shop” there to confirm.';return}
  try{

@@ -44,7 +44,8 @@ el('logout').onclick=async()=>{await fetch('/api/logout',{method:'POST'});await 
 <\/script></html>`;
 
 // Community lead photo lookup: read only the og:image/twitter:image of allowed deal pages.
-const OG_ALLOWED_HOSTS=['slickdeals.net'];
+const OG_ALLOWED_HOSTS=['slickdeals.net','walmart.com','target.com','bestbuy.com','kohls.com','macys.com','homedepot.com','lowes.com','costco.com','ulta.com','sephora.com','oldnavy.gap.com','gap.com','nike.com','adidas.com','wayfair.com','samsclub.com','etsy.com','ebay.com','jcpenney.com','dickssportinggoods.com','academy.com','michaels.com','hobbylobby.com','bathandbodyworks.com','victoriassecret.com','amazon.com'];
+function ogTitle(html){for(const tag of html.match(/<meta\b[^>]*>/gi)||[]){const key=(tag.match(/\b(?:property|name)\s*=\s*["']([^"']+)["']/i)||[])[1];if(!key||!['og:title','twitter:title'].includes(key.toLowerCase()))continue;const c=(tag.match(/\bcontent\s*=\s*["']([^"']+)["']/i)||[])[1];if(c)return ogDecode(c).replace(/\s+/g,' ').trim().slice(0,220)}const t=(html.match(/<title[^>]*>([^<]{4,300})<\/title>/i)||[])[1];return t?ogDecode(t).replace(/\s+/g,' ').trim().slice(0,220):''}
 const ogHits=new Map();
 function ogAllowed(value){try{const u=new URL(String(value||''));if(u.protocol!=='https:'||u.username||u.password||u.port||u.href.length>1800)return null;const host=u.hostname.toLowerCase();return OG_ALLOWED_HOSTS.some(h=>host===h||host.endsWith('.'+h))?u:null}catch{return null}}
 function ogLimited(request){const ip=request.headers.get('cf-connecting-ip')||'unknown',now=Date.now(),hit=ogHits.get(ip);if(!hit||now-hit.start>60000){if(ogHits.size>5000)ogHits.clear();ogHits.set(ip,{start:now,count:1});return false}hit.count++;return hit.count>60}
@@ -59,17 +60,17 @@ async function ogLookup(request,u,ctx){
  const cache=globalThis.caches?.default;
  if(cache){const hit=await cache.match(cacheKey).catch(()=>null);if(hit)return hit}
  if(ogLimited(request))return json({imageUrl:null,error:'Too many requests'},429,{...cors,'retry-after':'60'});
- let imageUrl='';
+ let imageUrl='',title='';
  try{
   const r=await fetch(target.href,{redirect:'follow',signal:AbortSignal.timeout(5000),headers:{'accept':'text/html','user-agent':'Mozilla/5.0 (compatible; DailyDropsPublisher/1.0)'}});
   if(r.ok&&ogAllowed(r.url||target.href)&&String(r.headers.get('content-type')||'').includes('text/html')&&r.body){
    const reader=r.body.getReader(),decoder=new TextDecoder();let html='';
    while(html.length<400000){const {done,value}=await reader.read();if(done)break;html+=decoder.decode(value,{stream:true});if(/<\/head>/i.test(html))break}
    reader.cancel().catch(()=>{});
-   imageUrl=ogExtract(html,r.url||target.href);
+   imageUrl=ogExtract(html,r.url||target.href);title=ogTitle(html);
   }
  }catch{}
- const res=json({imageUrl:imageUrl||null},200,imageUrl?ogCors:{...cors,'cache-control':'public, max-age=3600'});
+ const res=json({imageUrl:imageUrl||null,title:title||null},200,imageUrl?ogCors:{...cors,'cache-control':'public, max-age=3600'});
  if(cache&&ctx?.waitUntil)ctx.waitUntil(cache.put(cacheKey,res.clone()).catch(()=>{}));
  return res;
 }
@@ -80,47 +81,74 @@ async function dispatchAmazonScan(env){
  const r=await fetch(api+'/workflows/amazon-scan.yml/dispatches',{method:'POST',headers:{...h,'content-type':'application/json'},body:JSON.stringify({ref:'main'}),signal:AbortSignal.timeout(10000)});
  console.log(r.status===204?'Scan timer started amazon-scan.yml':'Scan timer dispatch failed: HTTP '+r.status);
 }
-// ---- Posted deals: follower shop "Posted on Facebook" + Telegram -------------------------
-// Heather marks a deal as posted (private /posted page, same sign-in) -> saved in D1 table
-// posted_deals -> public GET /api/posted feeds the shop -> optional Telegram send (once per ASIN).
-// Optional Facebook sync (cron) reads her Page's own posts only when FB_PAGE_ID and FB_PAGE_TOKEN
-// are set. Every external call is skipped quietly when its secret is missing. Tokens are never
-// returned, logged, or put in URLs that are logged.
+// ---- Posted deals: follower shop "Just posted on Facebook" + Telegram -------------------------
+// Any store: Amazon links keep tag=dealstoday0b3-20, Walmart/Impact and other store links pass through.
+// Saved in D1 table shop_posts (one row per product id = ASIN, Walmart item id, or store URL), listed at
+// GET /api/posted, sent once to Telegram when TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID exist. Optional
+// Facebook Page sync (cron) runs only when FB_PAGE_ID + FB_PAGE_TOKEN exist. Tokens are never returned or logged.
 const AMAZON_DISCLOSURE='As an Amazon Associate, I earn from qualifying purchases.';
 const TELEGRAM_CAPTION_LIMIT=1024,TELEGRAM_TEXT_LIMIT=4096;
 const GRAPH_VERSION='v27.0';
 const CONDITIONS=['Used','Open Box','Warehouse','Renewed'];
+// Deal hashtags: deterministic, max 5, no duplicates. Same function in index.html, shop.html and the Worker (tested).
+const HASHTAG_TOPICS=[[/\b(ps5|playstation|xbox|nintendo|switch 2|video ?games?|gaming)\b/,'#GamingDeals'],[/\b(lego|toys?|puzzles?|dolls?|plush|toysandgames|board games?)\b/,'#ToyDeals'],[/\b(kitchen|cookware|air fryer|blender|coffee|knife|knives|skillet|pans?|slow cooker|instant pot|homeandkitchen)\b/,'#KitchenDeals'],[/\b(headphones?|earbuds|laptop|tablet|ipad|tv|monitor|charger|camera|speaker|electronics|smart watch|doorbell|router)\b/,'#TechDeals'],[/\b(beauty|makeup|skincare|serum|lip|lipstick|mascara|fragrance|perfume|shampoo|hair)\b/,'#BeautyDeals'],[/\b(shirts?|shoes|sneakers?|jackets?|dress|pants|socks|hoodie|pajamas?|leggings|fashion|boots)\b/,'#FashionDeals'],[/\b(dogs?|cats?|pets?|petsupplies|litter)\b/,'#PetDeals'],[/\b(baby|diapers?|toddler|wipes)\b/,'#BabyDeals'],[/\b(tools?|drill|socket|craftsman|dewalt|milwaukee|toolsandhomeimprovement)\b/,'#ToolDeals'],[/\b(office|pens?|notebooks?|paper|officeproducts|school supplies)\b/,'#OfficeDeals'],[/\b(home|decor|bedding|towels?|sheets|vacuum|storage|trash bags?|blanket)\b/,'#HomeDeals']];
+function dealStore(d){d=d||{};if(d.store)return String(d.store);const u=String(d.url||d.link||'');let host='';try{host=new URL(u).hostname.toLowerCase().replace(/^www\./,'')}catch{}
+ if(/(^|\.)amazon\.com$|^amzn\.to$|^link\.amazon$/.test(host)||(!host&&/^[A-Z0-9]{10}$/.test(String(d.asin||''))))return 'Amazon';
+ if(/walmart|^goto\.walmart\.com$/.test(host))return 'Walmart';if(!host)return '';const base=host.split('.').slice(-2,-1)[0]||host;return base.charAt(0).toUpperCase()+base.slice(1)}
+function dealHashtags(d){d=d||{};const tags=[],add=t=>{if(t&&tags.length<5&&!tags.some(x=>x.toLowerCase()===t.toLowerCase()))tags.push(t)};
+ const store=dealStore(d);add(store==='Amazon'?'#AmazonDeals':store==='Walmart'?'#WalmartDeals':store?'#'+store.replace(/[^A-Za-z0-9]/g,'')+'Deals':'#DealAlert');
+ const text=(String(d.title||'')+' '+String(d.category||'')).toLowerCase();for(const [re,tag] of HASHTAG_TOPICS){if(re.test(text)){add(tag);break}}
+ if(d.couponCode)add('#CouponCode');
+ const p=Number(d.price),prev=Number(d.previousPrice),ref=Number(d.referencePrice);
+ if(d.priceDrop===true||(prev>p&&p>0))add('#PriceDrop');
+ if(d.conditionLabel)add(/open box/i.test(d.conditionLabel)?'#OpenBox':/warehouse|resale/i.test(d.conditionLabel)?'#AmazonResale':/renewed/i.test(d.conditionLabel)?'#Renewed':'#UsedDeals');
+ if((Number(d.discountPercent)||(ref>p&&p>0?Math.round((1-p/ref)*100):0))>=50)add('#Clearance');
+ add('#DealFinds');add('#SaveMoney');return tags}
+function cleanCoupon(v){const c=String(v||'').trim().replace(/\s+/g,'').toUpperCase();return /^[A-Z0-9][A-Z0-9_-]{1,29}$/.test(c)?c:''}
+
 const postedReady=new WeakSet();
 async function ensurePostedTables(env){
  if(postedReady.has(env.DB))return;
- await env.DB.prepare("CREATE TABLE IF NOT EXISTS posted_deals (asin TEXT PRIMARY KEY, title TEXT NOT NULL, price REAL, link TEXT NOT NULL, image_url TEXT, condition_label TEXT, prime INTEGER NOT NULL DEFAULT 0, caption TEXT, source TEXT NOT NULL, fb_post_id TEXT, posted_at TEXT NOT NULL, telegram_status TEXT, telegram_message_id TEXT, telegram_sent_at TEXT, updated_at TEXT NOT NULL)").run();
+ await env.DB.prepare("CREATE TABLE IF NOT EXISTS shop_posts (id TEXT PRIMARY KEY, asin TEXT, store TEXT NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL, price REAL, coupon TEXT, note TEXT, image_url TEXT, condition_label TEXT, prime INTEGER NOT NULL DEFAULT 0, caption TEXT, source TEXT NOT NULL, fb_post_id TEXT, posted_at TEXT NOT NULL, telegram_status TEXT, telegram_message_id TEXT, telegram_sent_at TEXT, updated_at TEXT NOT NULL)").run();
  await env.DB.prepare("CREATE TABLE IF NOT EXISTS fb_seen_posts (post_id TEXT PRIMARY KEY, seen_at TEXT NOT NULL)").run();
  postedReady.add(env.DB);
 }
+function asinFromUrl(value){try{const u=new URL(String(value||''));if(!/(^|\.)amazon\.com$/.test(u.hostname))return '';const m=u.pathname.match(/\/(?:dp|gp\/product|gp\/aw\/d)\/([A-Z0-9]{10})(?:[/?]|$)/i);return m?m[1].toUpperCase():''}catch{return ''}}
 function amazonLink(asin,value){
  const canonical='https://www.amazon.com/dp/'+asin+'?tag='+AFFILIATE_TAG;
  try{const u=new URL(String(value||''));if(u.protocol!=='https:'||u.username||u.password||u.port)return canonical;
   if(u.hostname==='link.amazon'||u.hostname==='amzn.to')return u.href.slice(0,300);
-  if(['www.amazon.com','amazon.com'].includes(u.hostname)){u.searchParams.set('tag',AFFILIATE_TAG);return u.href.slice(0,600)}
  }catch{}
  return canonical;
 }
-function asinFromUrl(value){try{const u=new URL(String(value||''));if(!/(^|\.)amazon\.com$/.test(u.hostname))return '';const m=u.pathname.match(/\/(?:dp|gp\/product|gp\/aw\/d)\/([A-Z0-9]{10})(?:[/?]|$)/i);return m?m[1].toUpperCase():''}catch{return ''}}
+function safeHttps(value){try{const u=new URL(String(value||'').trim());if(u.protocol!=='https:'||u.username||u.password||u.port||u.href.length>1500)return null;const h=u.hostname.toLowerCase();if(h==='localhost'||h.endsWith('.local')||h.endsWith('.internal')||/^(?:[0-9.]+|\[.*\])$/.test(h))return null;return u}catch{return null}}
+// Product id + outgoing link for any store link (dedupe key across dashboard and Facebook sync).
+function dealIdentity(rawLink,asinHint){
+ const asin=/^[A-Z0-9]{10}$/.test(String(asinHint||'').toUpperCase())?String(asinHint).toUpperCase():asinFromUrl(rawLink);
+ if(asin)return {id:asin,asin,store:'Amazon',url:amazonLink(asin,rawLink)};
+ const u=safeHttps(rawLink);if(!u)return null;const host=u.hostname.toLowerCase().replace(/^www\./,'');
+ let target=u;const inner=u.searchParams.get('u');if(inner&&safeHttps(inner))target=safeHttps(inner);  // Impact links carry the product URL in u=
+ const th=target.hostname.toLowerCase().replace(/^www\./,'');
+ if(/walmart\.com$/.test(th)){const m=target.pathname.match(/\/ip\/(?:[^/]+\/)?(\d{5,})/);return {id:m?'wm:'+m[1]:'u:'+th+target.pathname.replace(/\/+$/,'').toLowerCase(),asin:null,store:'Walmart',url:u.href}}
+ const store=dealStore({url:target.href})||host;
+ return {id:'u:'+th+target.pathname.replace(/\/+$/,'').toLowerCase().slice(0,200),asin:null,store,url:u.href};
+}
 const htmlEscape=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-// Plain caption (Facebook text) -> Telegram HTML caption within Telegram's limit.
-// Keeps the affiliate link and the Amazon disclosure; shortens the description first.
+const DISCLOSE=d=>dealStore(d)==='Amazon'?AMAZON_DISCLOSURE:'I may earn a commission from links in this post.';
+// Caption (Facebook text or built) -> Telegram HTML caption within the limit. Keeps link, code, disclosure.
 function buildTelegramCaption(d,limit=TELEGRAM_CAPTION_LIMIT){
- const link=d.link||('https://www.amazon.com/dp/'+d.asin+'?tag='+AFFILIATE_TAG);
- let text=String(d.caption||'').replace(/\r/g,'').trim();
- if(!text){const price=Number(d.price)>0?'🔥 $'+Number(d.price).toFixed(2):'🔥 Deal';text=[price+(d.conditionLabel?' · '+d.conditionLabel:''),'',String(d.title||'Amazon find').slice(0,200),d.prime?'✅ Sold by Amazon · free shipping with Prime':'','👉 '+link].filter((x,i)=>x||i===1).join('\n')}
- if(!text.includes(link)&&!/https:\/\/(?:link\.amazon|amzn\.to|(?:www\.)?amazon\.com)\//i.test(text))text+='\n\n👉 '+link;
+ const link=d.url||d.link||('https://www.amazon.com/dp/'+d.asin+'?tag='+AFFILIATE_TAG);
+ let text=String(d.caption||'').replace(/\r/g,'').replace(/#DailyDropsWithHeather\s*/gi,'').trim();
+ if(!text){const price=Number(d.price)>0?'🔥 $'+Number(d.price).toFixed(2):'🔥 Deal';text=[price+(d.conditionLabel?' · '+d.conditionLabel:''),'',String(d.title||'Deal').slice(0,200),d.note?'📝 '+String(d.note).slice(0,200):'',d.prime?'✅ Sold by Amazon · free shipping with Prime':'','👉 '+link,'',dealHashtags(d).join(' ')].filter((x,i)=>x||i===1||i===6).join('\n')}
+ if(d.couponCode&&!text.toUpperCase().includes(d.couponCode))text=text.includes('\n')?text.replace(/\n/,'\n🏷 Use code '+d.couponCode+'\n'):text+'\n🏷 Use code '+d.couponCode;
+ if(!/https:\/\//.test(text))text+='\n\n👉 '+link;
  let lines=text.split('\n');
- if(!lines.some(l=>/as an amazon associate/i.test(l)))lines.push('',AMAZON_DISCLOSURE);
- const keep=l=>/https:\/\//.test(l)||/as an amazon associate/i.test(l);
+ if(!lines.some(l=>/as an amazon associate|earn a commission/i.test(l)))lines.push('',DISCLOSE(d));
+ const keep=l=>/https:\/\//.test(l)||/as an amazon associate|earn a commission|use code/i.test(l);
  const fits=()=>lines.join('\n').length<=limit;
- if(!fits())lines=lines.filter(l=>!/^\s*(#\w+\s*)+$/.test(l));            // hashtags first
+ if(!fits())lines=lines.filter(l=>!/^\s*(#\w+\s*)+$/.test(l));
  if(!fits())lines=lines.filter(l=>!/prices change fast/i.test(l));
- while(!fits()){const i=lines.map((l,i)=>[l,i]).filter(([l])=>!keep(l)&&l.trim()).sort((a,b)=>b[0].length-a[0].length)[0];if(!i)break;const over=lines.join('\n').length-limit;const l=i[0];lines[i[1]]=l.length-over-1>20?l.slice(0,l.length-over-1).trimEnd()+'…':'';lines=lines.filter((x,j)=>x!==''||j===0||lines[j-1]!=='')}
+ while(!fits()){const c=lines.map((l,i)=>[l,i]).filter(([l])=>!keep(l)&&l.trim()).sort((a,b)=>b[0].length-a[0].length)[0];if(!c)break;const over=lines.join('\n').length-limit;lines[c[1]]=c[0].length-over-1>20?c[0].slice(0,c[0].length-over-1).trimEnd()+'…':''}
  return htmlEscape(lines.join('\n').replace(/\n{3,}/g,'\n\n').slice(0,limit));
 }
 async function telegramCall(env,method,body){
@@ -130,55 +158,56 @@ async function telegramCall(env,method,body){
 }
 async function sendTelegramDeal(env,d){
  if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {status:'not_configured'};
- const chat_id=String(env.TELEGRAM_CHAT_ID).trim();
- let res=null;
+ const chat_id=String(env.TELEGRAM_CHAT_ID).trim();let res=null;
  if(d.imageUrl&&/^https:\/\//.test(d.imageUrl))res=await telegramCall(env,'sendPhoto',{chat_id,photo:d.imageUrl,caption:buildTelegramCaption(d),parse_mode:'HTML'});
  if(!res||!res.ok)res=await telegramCall(env,'sendMessage',{chat_id,text:buildTelegramCaption(d,TELEGRAM_TEXT_LIMIT),parse_mode:'HTML'});
  return res.ok?{status:'sent',messageId:String(res.id||'')}:{status:'failed',error:res.error};
 }
 function cleanPosted(d){
- const asin=String(d.asin||'').trim().toUpperCase();
- const title=String(d.title||'').replace(/\s+/g,' ').trim().slice(0,220);
+ const who=dealIdentity(d.link||d.url,d.asin);if(!who)return null;
+ const title=String(d.title||'').replace(/\s+/g,' ').trim().slice(0,220);if(!title)return null;
  const price=Number(d.price);
- if(!/^[A-Z0-9]{10}$/.test(asin)||!title)return null;
- const conditionLabel=CONDITIONS.includes(d.conditionLabel)?d.conditionLabel:null;
- return {asin,title,price:Number.isFinite(price)&&price>0&&price<100000?Math.round(price*100)/100:null,link:amazonLink(asin,d.link),
+ return {...who,title,price:Number.isFinite(price)&&price>0&&price<100000?Math.round(price*100)/100:null,couponCode:cleanCoupon(d.couponCode||d.coupon),note:String(d.note||'').replace(/\s+/g,' ').trim().slice(0,200),
   imageUrl:officialImage(d.imageUrl)||(d.imageConfirmed===true?communityImage(d.imageUrl):'')||communityImage(d.fbImage)||'',
-  conditionLabel,prime:d.prime===true,caption:String(d.caption||'').slice(0,3000),source:d.source==='facebook'?'facebook':'dashboard',fbPostId:d.fbPostId?String(d.fbPostId).slice(0,80):null};
+  conditionLabel:CONDITIONS.includes(d.conditionLabel)?d.conditionLabel:null,prime:who.store==='Amazon'&&d.prime===true,caption:String(d.caption||'').replace(/#DailyDropsWithHeather\s*/gi,'').slice(0,3000),
+  source:d.source==='facebook'?'facebook':'dashboard',fbPostId:d.fbPostId?String(d.fbPostId).slice(0,80):null};
 }
 // Save one posted deal, then send it to Telegram once (claimed atomically so two taps can't double-send).
 async function recordPosted(env,raw,{sendTelegram=true,resend=false}={}){
  await ensurePostedTables(env);
- const d=cleanPosted(raw);if(!d)return {error:'Invalid product'};
- if(!d.imageUrl)d.imageUrl=await findProductImage(d.asin,env).catch(()=>'')||'';
+ const d=cleanPosted(raw);if(!d)return {error:'Add a valid https product link and a title'};
+ if(!d.imageUrl&&d.asin)d.imageUrl=await findProductImage(d.asin,env).catch(()=>'')||'';
  const now=new Date().toISOString();
- await env.DB.prepare("INSERT INTO posted_deals (asin,title,price,link,image_url,condition_label,prime,caption,source,fb_post_id,posted_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(asin) DO UPDATE SET title=excluded.title,price=COALESCE(excluded.price,posted_deals.price),link=excluded.link,image_url=COALESCE(NULLIF(excluded.image_url,''),posted_deals.image_url),condition_label=excluded.condition_label,prime=excluded.prime,caption=excluded.caption,fb_post_id=COALESCE(excluded.fb_post_id,posted_deals.fb_post_id),posted_at=excluded.posted_at,updated_at=excluded.updated_at")
-  .bind(d.asin,d.title,d.price,d.link,d.imageUrl||null,d.conditionLabel,d.prime?1:0,d.caption,d.source,d.fbPostId,now,now).run();
+ await env.DB.prepare("INSERT INTO shop_posts (id,asin,store,url,title,price,coupon,note,image_url,condition_label,prime,caption,source,fb_post_id,posted_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET url=excluded.url,title=excluded.title,price=COALESCE(excluded.price,shop_posts.price),coupon=COALESCE(NULLIF(excluded.coupon,''),shop_posts.coupon),note=COALESCE(NULLIF(excluded.note,''),shop_posts.note),image_url=COALESCE(NULLIF(excluded.image_url,''),shop_posts.image_url),condition_label=excluded.condition_label,prime=excluded.prime,caption=excluded.caption,fb_post_id=COALESCE(excluded.fb_post_id,shop_posts.fb_post_id),posted_at=excluded.posted_at,updated_at=excluded.updated_at")
+  .bind(d.id,d.asin,d.store,d.url,d.title,d.price,d.couponCode,d.note,d.imageUrl||null,d.conditionLabel,d.prime?1:0,d.caption,d.source,d.fbPostId,now,now).run();
  let telegram={status:'skipped'};
  if(sendTelegram){
   if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)telegram={status:'not_configured'};
   else{
-   const claim=await env.DB.prepare("UPDATE posted_deals SET telegram_status='sending' WHERE asin=? AND (telegram_status IS NULL OR telegram_status NOT IN ('sent','sending')"+(resend?" OR 1=1":"")+")").bind(d.asin).run();
+   const claim=await env.DB.prepare("UPDATE shop_posts SET telegram_status='sending' WHERE id=? AND (telegram_status IS NULL OR telegram_status NOT IN ('sent','sending')"+(resend?" OR 1=1":"")+")").bind(d.id).run();
    if(!(claim.meta&&claim.meta.changes===1))telegram={status:'already_sent'};
    else{
     telegram=await sendTelegramDeal(env,d).catch(e=>({status:'failed',error:String(e&&e.name||'error')}));
-    await env.DB.prepare("UPDATE posted_deals SET telegram_status=?,telegram_message_id=?,telegram_sent_at=? WHERE asin=?").bind(telegram.status==='sent'?'sent':'failed',telegram.messageId||null,telegram.status==='sent'?new Date().toISOString():null,d.asin).run();
+    await env.DB.prepare("UPDATE shop_posts SET telegram_status=?,telegram_message_id=?,telegram_sent_at=? WHERE id=?").bind(telegram.status==='sent'?'sent':'failed',telegram.messageId||null,telegram.status==='sent'?new Date().toISOString():null,d.id).run();
    }
   }
  }
- return {ok:true,asin:d.asin,imageFound:!!d.imageUrl,telegram};
+ return {ok:true,id:d.id,asin:d.asin,store:d.store,imageFound:!!d.imageUrl,telegram};
 }
 async function listPosted(env,limit=60){
  await ensurePostedTables(env);
- const {results}=await env.DB.prepare("SELECT asin,title,price,link AS url,image_url AS imageUrl,condition_label AS conditionLabel,prime,source,posted_at AS postedAt,telegram_status AS telegramStatus FROM posted_deals ORDER BY posted_at DESC LIMIT ?").bind(limit).all();
- return results.map(r=>({...r,prime:!!r.prime,retailer:'Amazon'}));
+ const {results}=await env.DB.prepare("SELECT id,asin,store,url,title,price,coupon AS couponCode,note,image_url AS imageUrl,condition_label AS conditionLabel,prime,source,posted_at AS postedAt,telegram_status AS telegramStatus FROM shop_posts ORDER BY posted_at DESC LIMIT ?").bind(limit).all();
+ return results.map(r=>({...r,prime:!!r.prime,retailer:r.store,couponCode:r.couponCode||'',note:r.note||''}));
 }
 // ---- Optional Facebook Page sync (cron). Needs FB_PAGE_ID + FB_PAGE_TOKEN; otherwise does nothing.
-function amazonRefs(text){const refs=new Set();for(const m of String(text||'').matchAll(/https?:\/\/[^\s<>"')]+/g)){const u=m[0].replace(/[.,!?]+$/,'');if(/(^|\/\/)(?:www\.)?amazon\.com\//i.test(u)||/\/\/(?:amzn\.to|link\.amazon)\//i.test(u))refs.add(u)}return [...refs].slice(0,3)}
-async function resolveAsin(url){
- const direct=asinFromUrl(url);if(direct)return direct;
- try{let next=url;for(let hop=0;hop<3;hop++){const r=await fetch(next,{method:'GET',redirect:'manual',signal:AbortSignal.timeout(6000)});const loc=r.headers.get('location');if(!loc)break;next=new URL(loc,next).href;const a=asinFromUrl(next);if(a)return a}}catch{}
- return '';
+function postLinks(text){const refs=[];for(const m of String(text||'').matchAll(/https?:\/\/[^\s<>"')]+/g)){const u=m[0].replace(/[.,!?]+$/,'');if(!/facebook\.com|fb\.me|instagram\.com|t\.me\//i.test(u)&&!refs.includes(u))refs.push(u)}return refs.slice(0,3)}
+function postCoupon(text){const m=String(text||'').match(/\b(?:[Cc]ode|[Cc]oupon|[Pp]romo|CODE|COUPON|PROMO)\b\s*(?:code|CODE)?\s*[:\-]?\s*["“']?([A-Z0-9][A-Z0-9_-]{2,24})\b/);return m?cleanCoupon(m[1]):''}
+function postPrice(text){const m=String(text||'').match(/\$\s?(\d{1,5}(?:\.\d{2})?)/);return m?Number(m[1]):null}
+async function resolveLink(url){
+ // amzn.to / link.amazon / a.co short links: follow redirects (no body read) to find the product.
+ if(!/\/\/(?:amzn\.to|a\.co|link\.amazon)\//i.test(url))return url;
+ try{let next=url;for(let hop=0;hop<3;hop++){const r=await fetch(next,{method:'GET',redirect:'manual',signal:AbortSignal.timeout(6000)});const loc=r.headers.get('location');if(!loc)break;next=new URL(loc,next).href;if(asinFromUrl(next))return next}}catch{}
+ return url;
 }
 async function scannerProduct(asin){
  for(const feed of [...PRODUCT_FEEDS,'https://nicheflip.github.io/daily-drops-deal-finder/data/amazon-used-offers.json']){
@@ -187,14 +216,14 @@ async function scannerProduct(asin){
  }
  return null;
 }
-function postTitle(message){const line=String(message||'').split('\n').map(l=>l.replace(/https?:\/\/\S+/g,'').replace(/[#@]\w+/g,'').trim()).find(l=>l.length>=12&&!/^(?:🔥|👉)?\s*\$?\d/.test(l));return (line||'').replace(/^[^\w$]+/,'').slice(0,200)}
+function postTitle(message){const line=String(message||'').split('\n').map(l=>l.replace(/https?:\/\/\S+/g,'').replace(/#\w+/g,'').trim()).find(l=>l.replace(/[^A-Za-z]/g,'').length>=8&&!/^(?:use )?(?:code|coupon)\b/i.test(l));return (line||'').replace(/^[^\w$]+/,'').replace(/^\$\s?\d+(?:\.\d{2})?\s*[-–:|]?\s*/,'').slice(0,200)}
 async function syncFacebook(env,{fetchPosts}={}){
  if(!env.FB_PAGE_ID||!env.FB_PAGE_TOKEN)return {status:'not_configured'};
  await ensurePostedTables(env);
  let posts=[];
  if(fetchPosts)posts=await fetchPosts();
  else{
-  const u='https://graph.facebook.com/'+GRAPH_VERSION+'/'+encodeURIComponent(String(env.FB_PAGE_ID).trim())+'/posts?fields=id,message,created_time,full_picture,is_published&limit=15';
+  const u='https://graph.facebook.com/'+GRAPH_VERSION+'/'+encodeURIComponent(String(env.FB_PAGE_ID).trim())+'/posts?fields=id,message,created_time,full_picture,permalink_url,is_published&limit=15';
   const r=await fetch(u,{headers:{authorization:'Bearer '+env.FB_PAGE_TOKEN},signal:AbortSignal.timeout(10000)});
   if(!r.ok){let msg='HTTP '+r.status;try{msg=String((await r.json()).error?.message||msg).slice(0,140)}catch{}console.log('Facebook sync skipped: '+msg);return {status:'error',error:msg}}
   posts=((await r.json()).data)||[];
@@ -207,22 +236,24 @@ async function syncFacebook(env,{fetchPosts}={}){
   const fresh=await env.DB.prepare('INSERT OR IGNORE INTO fb_seen_posts (post_id,seen_at) VALUES (?,?)').bind(String(p.id),new Date().toISOString()).run();
   if(!(fresh.meta&&fresh.meta.changes===1))continue;
   if(Date.now()-Date.parse(p.created_time||0)>7*86400000)continue;
-  for(const ref of amazonRefs(p.message)){
-   const asin=await resolveAsin(ref);if(!asin)continue;
-   const known=await env.DB.prepare('SELECT asin FROM posted_deals WHERE asin=?').bind(asin).first();if(known)continue;
-   const s=await scannerProduct(asin)||{};
-   const price=Number(s.price)||Number((String(p.message||'').match(/\$\s?(\d{1,5}(?:\.\d{2})?)/)||[])[1])||null;
-   const res=await recordPosted(env,{asin,title:s.title||postTitle(p.message)||('Amazon find '+asin),price,link:ref.includes('amazon.com/')?'':ref,imageUrl:s.imageUrl,fbImage:p.full_picture,conditionLabel:s.conditionLabel,prime:s.soldByAmazon===true,caption:p.message,source:'facebook',fbPostId:p.id},{sendTelegram:!firstRun});
+  for(const ref of postLinks(p.message)){
+   const resolved=await resolveLink(ref);const who=dealIdentity(resolved);if(!who)continue;
+   const known=await env.DB.prepare('SELECT id FROM shop_posts WHERE id=?').bind(who.id).first();if(known)continue;  // already added from the dashboard
+   const s=who.asin?(await scannerProduct(who.asin)||{}):{};
+   const res=await recordPosted(env,{asin:who.asin,link:who.asin&&/amazon\.com\//.test(resolved)&&!/\/\/(?:amzn\.to|link\.amazon)\//.test(ref)?'':ref,title:s.title||postTitle(p.message)||(who.store+' deal'),price:Number(s.price)||postPrice(p.message),couponCode:postCoupon(p.message),imageUrl:s.imageUrl,fbImage:p.full_picture,conditionLabel:s.conditionLabel,prime:s.soldByAmazon===true,caption:p.message,source:'facebook',fbPostId:p.id},{sendTelegram:!firstRun});
    if(res.ok){added++;if(res.telegram.status==='sent')sent++}
+   break;   // one shop item per Facebook post
   }
  }
  return {status:'ok',added,sent,firstRun};
 }
-const postedPage=`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Posted deals · Daily Drops</title><style>body{font:16px system-ui;background:#faf8f5;color:#24201d;max-width:640px;margin:auto;padding:20px}h1{font-size:24px;margin:8px 0}section{background:#fff;border:1px solid #ddd7cf;border-radius:15px;padding:16px;margin:14px 0}label{display:block;margin:10px 0}input,select,textarea,button{box-sizing:border-box;font:inherit;padding:12px;border-radius:9px;width:100%;border:1px solid #b8afa5}textarea{min-height:170px}button{background:#5b2333;color:#fff;border:0;font-weight:700;margin:6px 0;min-height:50px}button.secondary{background:#f0e9e6;color:#33252b}.muted{color:#625c57;font-size:14px}.row{display:flex;gap:10px;align-items:center}.row img{width:84px;height:84px;object-fit:contain;background:#fff;border-radius:8px;border:1px solid #eee}.ok{color:#12664a;font-weight:700}.warn{color:#9b3a31;font-weight:700}#editor,#list{display:none}.item{display:flex;gap:10px;align-items:center;border-top:1px solid #eee;padding:8px 0}.item img{width:48px;height:48px;object-fit:contain}.item button{width:auto;min-height:38px;padding:6px 12px}.check{display:flex;gap:8px;align-items:center}.check input{width:auto}</style>
-<h1>📣 Posted on Facebook</h1><p class="muted">Tell the follower shop (and your Telegram channel) about a deal you just posted. Private page: your secret stays on this Cloudflare address.</p>
+const postedPage=`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Posted deals · Daily Drops</title><style>body{font:16px system-ui;background:#faf8f5;color:#24201d;max-width:640px;margin:auto;padding:18px}h1{font-size:23px;margin:6px 0}section{background:#fff;border:1px solid #ddd7cf;border-radius:15px;padding:16px;margin:14px 0}label{display:block;margin:10px 0}input,select,textarea,button{box-sizing:border-box;font:inherit;padding:12px;border-radius:9px;width:100%;border:1px solid #b8afa5}textarea{min-height:160px}button{background:#5b2333;color:#fff;border:0;font-weight:700;margin:6px 0;min-height:50px}button.secondary{background:#f0e9e6;color:#33252b}.muted{color:#625c57;font-size:14px}.row{display:flex;gap:10px;align-items:center}.row img{width:84px;height:84px;object-fit:contain;background:#fff;border-radius:8px;border:1px solid #eee;flex:0 0 84px}.ok{color:#12664a;font-weight:700}.warn{color:#9b3a31;font-weight:700}#editor,#list{display:none}.item{display:flex;gap:10px;align-items:center;border-top:1px solid #eee;padding:8px 0}.item img{width:48px;height:48px;object-fit:contain}.item button{width:auto;min-height:38px;padding:6px 12px}.check{display:flex;gap:8px;align-items:center}.check input{width:auto}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.two label{margin:6px 0}</style>
+<h1>📣 Posted on Facebook</h1><p class="muted">Add a deal you posted (from the scanner or anywhere else) to the follower shop, and send it to your Telegram channel. Private page: your secret stays on this Cloudflare address.</p>
 <section id="login"><h2>Sign in</h2><label>Publishing secret<input id="secret" type="password" autocomplete="off"></label><button id="signin">Unlock</button></section>
 <section id="editor"><p id="integrations" class="muted"></p><div class="row"><img id="photo" alt=""><div><strong id="ptitle"></strong><div id="pmeta" class="muted"></div></div></div>
-<label>Amazon link or ASIN<input id="asin" autocomplete="off"></label><label>Title<input id="title" maxlength="220"></label><label>Price ($)<input id="price" type="number" min=".01" step=".01"></label>
+<label>Product link (Amazon, Walmart or any store)<input id="link" type="url" autocomplete="off" placeholder="https://..."></label><label>Title<input id="title" maxlength="220"></label>
+<div class="two"><label>Price ($)<input id="price" type="number" min=".01" step=".01"></label><label>Coupon code<input id="coupon" maxlength="30" autocomplete="off" placeholder="optional"></label></div>
+<label>Photo link (optional)<input id="imageUrl" type="url" placeholder="https://..."></label><label>Short note (optional)<input id="note" maxlength="200" placeholder="e.g. Clip the 20% coupon on the page"></label>
 <label>Condition<select id="condition"><option value="">New</option><option>Used</option><option>Open Box</option><option>Warehouse</option><option>Renewed</option></select></label>
 <label class="check"><input id="prime" type="checkbox"> Sold by Amazon (Prime · free shipping)</label>
 <label>Caption for Telegram (same as your Facebook post)<textarea id="caption"></textarea></label>
@@ -231,19 +262,20 @@ const postedPage=`<!doctype html><html lang="en"><meta charset="utf-8"><meta nam
 <section id="list"><h2>Recently posted</h2><div id="items" class="muted">Loading…</div><button class="secondary" id="test">Send a Telegram test message</button><button class="secondary" id="logout">Sign out</button></section>
 <script>
 const el=id=>document.getElementById(id),params=new URLSearchParams(location.search);
-for(const [k,id] of [['asin','asin'],['title','title'],['price','price'],['caption','caption']])if(params.has(k))el(id).value=params.get(k).slice(0,k==='caption'?3000:300);
+const asinParam=(params.get('asin')||'').toUpperCase();
+el('link').value=params.get('link')||(/^[A-Z0-9]{10}$/.test(asinParam)?'https://www.amazon.com/dp/'+asinParam:'');
+for(const id of ['title','price','coupon','imageUrl','note','caption'])if(params.has(id))el(id).value=params.get(id).slice(0,id==='caption'?3000:id==='imageUrl'?1800:300);
 if(params.get('condition'))el('condition').value=params.get('condition');el('prime').checked=params.get('prime')==='1';
-const imageUrl=params.get('imageUrl')||'',link=params.get('link')||'';
-function preview(){el('ptitle').textContent=el('title').value||'Product';el('pmeta').textContent=(el('price').value?'$'+Number(el('price').value).toFixed(2):'')+(el('condition').value?' · '+el('condition').value:'');if(/^https:/.test(imageUrl))el('photo').src=imageUrl;else el('photo').style.display='none'}
-for(const id of ['title','price','condition'])el(id).addEventListener('input',preview);preview();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function preview(){el('ptitle').textContent=el('title').value||'Product';el('pmeta').textContent=(el('price').value?'$'+Number(el('price').value).toFixed(2):'')+(el('coupon').value?' · code '+el('coupon').value.toUpperCase():'')+(el('condition').value?' · '+el('condition').value:'');const v=el('imageUrl').value.trim();if(/^https:/.test(v)){el('photo').src=v;el('photo').style.display=''}else el('photo').style.display='none'}
+for(const id of ['title','price','coupon','condition','imageUrl'])el(id).addEventListener('input',preview);preview();
 el('sendTg').addEventListener('change',()=>el('tgWord').style.display=el('sendTg').checked?'':'none');
-function asinOf(v){v=String(v||'').trim();if(/^[A-Z0-9]{10}$/i.test(v))return v.toUpperCase();const m=v.match(/\\/(?:dp|gp\\/product|gp\\/aw\\/d)\\/([A-Z0-9]{10})/i);return m?m[1].toUpperCase():''}
 const msg=(t,bad)=>{el('message').textContent=t;el('message').className=bad?'warn':'ok'};
 async function refresh(){const j=await (await fetch('/api/session',{credentials:'same-origin'})).json();el('login').style.display=j.authenticated?'none':'block';for(const id of ['editor','list'])el(id).style.display=j.authenticated?'block':'none';if(j.authenticated){el('integrations').innerHTML='Telegram: '+(j.telegram?'<span class=ok>connected</span>':'<span class=warn>not set up yet (shop still updates)</span>')+' · Facebook auto-sync: '+(j.facebookSync?'<span class=ok>on</span>':'off');loadList()}}
-async function loadList(){const j=await (await fetch('/api/posted',{cache:'no-store'})).json();el('items').innerHTML=(j.deals||[]).slice(0,20).map(d=>'<div class="item">'+(d.imageUrl?'<img src="'+d.imageUrl.replace(/"/g,'')+'" alt="">':'')+'<div style="flex:1"><div>'+String(d.title).replace(/</g,'&lt;').slice(0,70)+'</div><div class="muted">'+(d.price?'$'+Number(d.price).toFixed(2)+' · ':'')+new Date(d.postedAt).toLocaleDateString()+(d.telegramStatus==='sent'?' · sent to Telegram':'')+'</div></div><button class="secondary" data-remove="'+d.asin+'">Remove</button></div>').join('')||'Nothing posted yet.'}
+async function loadList(){const j=await (await fetch('/api/posted',{cache:'no-store'})).json();el('items').innerHTML=(j.deals||[]).slice(0,25).map(d=>'<div class="item">'+(d.imageUrl?'<img src="'+esc(d.imageUrl)+'" alt="">':'')+'<div style="flex:1;min-width:0"><div>'+esc(String(d.title).slice(0,70))+'</div><div class="muted">'+esc(d.store||'')+(d.price?' · $'+Number(d.price).toFixed(2):'')+(d.couponCode?' · code '+esc(d.couponCode):'')+' · '+new Date(d.postedAt).toLocaleDateString()+(d.source==='facebook'?' · from Facebook':'')+(d.telegramStatus==='sent'?' · sent to Telegram':'')+'</div></div><button class="secondary" data-remove="'+esc(d.id)+'">Remove</button></div>').join('')||'Nothing posted yet.'}
 el('signin').onclick=async()=>{const secret=el('secret').value;el('secret').value='';const r=await fetch('/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({secret})});msg(r.ok?'Signed in.':'Sign-in failed.',!r.ok);await refresh()};
-el('save').onclick=async()=>{const asin=asinOf(el('asin').value);if(!asin||!el('title').value.trim()){msg('Add the Amazon link (or ASIN) and a title.',true);return}el('save').disabled=true;try{const r=await fetch('/api/posted',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({asin,title:el('title').value,price:Number(el('price').value)||null,imageUrl,imageConfirmed:!!imageUrl,link,conditionLabel:el('condition').value||null,prime:el('prime').checked,caption:el('caption').value,sendTelegram:el('sendTg').checked})});const j=await r.json();if(!r.ok){msg(j.error||'Could not save.',true);return}const t=j.telegram?.status;msg('✓ Added to the follower shop.'+(t==='sent'?' ✓ Sent to Telegram.':t==='already_sent'?' (Already sent to Telegram before, not sent again.)':t==='not_configured'?' Telegram is not set up yet.':t==='failed'?' Telegram send failed: '+(j.telegram.error||''):''),t==='failed');loadList()}finally{el('save').disabled=false}};
-el('items').onclick=async e=>{const b=e.target.closest('[data-remove]');if(!b)return;await fetch('/api/posted',{method:'DELETE',headers:{'content-type':'application/json'},body:JSON.stringify({asin:b.dataset.remove})});loadList()};
+el('save').onclick=async()=>{if(!/^https:\\/\\//.test(el('link').value.trim())||!el('title').value.trim()){msg('Add the product link (https://…) and a title.',true);return}el('save').disabled=true;try{const img=el('imageUrl').value.trim();const r=await fetch('/api/posted',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({asin:asinParam&&el('link').value.toUpperCase().includes(asinParam)?asinParam:null,link:el('link').value.trim(),title:el('title').value,price:Number(el('price').value)||null,couponCode:el('coupon').value,note:el('note').value,imageUrl:img,imageConfirmed:!!img,conditionLabel:el('condition').value||null,prime:el('prime').checked,caption:el('caption').value,sendTelegram:el('sendTg').checked})});const j=await r.json();if(!r.ok){msg(j.error||'Could not save.',true);return}const t=j.telegram?.status;msg('✓ Added to the follower shop.'+(t==='sent'?' ✓ Sent to Telegram.':t==='already_sent'?' (Already sent to Telegram before, not sent again.)':t==='not_configured'?' Telegram is not set up yet.':t==='failed'?' Telegram send failed: '+(j.telegram.error||''):''),t==='failed');loadList()}finally{el('save').disabled=false}};
+el('items').onclick=async e=>{const b=e.target.closest('[data-remove]');if(!b)return;await fetch('/api/posted',{method:'DELETE',headers:{'content-type':'application/json'},body:JSON.stringify({id:b.dataset.remove})});loadList()};
 el('test').onclick=async()=>{const r=await fetch('/api/telegram/test',{method:'POST'});const j=await r.json();msg(j.ok?'✓ Test message sent to Telegram.':'Telegram test failed: '+(j.error||'not set up'),!j.ok)};
 el('logout').onclick=async()=>{await fetch('/api/logout',{method:'POST'});await refresh()};refresh();
 <\/script></html>`;
@@ -272,7 +304,7 @@ async fetch(request,env,ctx){
   if(path==='/api/posted'&&(request.method==='POST'||request.method==='DELETE')){
    if(!originOK(request)||!(await authorized(request,env)))return json({error:'Sign in on the private Posted page first'},403);
    const d=await request.json().catch(()=>({}));
-   if(request.method==='DELETE'){const asin=String(d.asin||'').toUpperCase();if(!/^[A-Z0-9]{10}$/.test(asin))return json({error:'Invalid ASIN'},400);await ensurePostedTables(env);await env.DB.prepare('DELETE FROM posted_deals WHERE asin=?').bind(asin).run();return json({ok:true,asin,removed:true})}
+   if(request.method==='DELETE'){const id=String(d.id||d.asin||'');if(!/^(?:[A-Z0-9]{10}|wm:\d{5,}|u:[^\s]{3,220})$/.test(id))return json({error:'Invalid id'},400);await ensurePostedTables(env);await env.DB.prepare('DELETE FROM shop_posts WHERE id=?').bind(id).run();return json({ok:true,id,removed:true})}
    const res=await recordPosted(env,{...d,source:'dashboard'},{sendTelegram:d.sendTelegram!==false,resend:d.resend===true});
    return res.error?json({error:res.error},400):json(res);
   }
