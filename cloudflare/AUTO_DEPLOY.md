@@ -29,3 +29,20 @@ The GitHub Pages publishing workflow is separate. This Cloudflare workflow does 
 - If the first automatic deployment changes a configuration unexpectedly, use Cloudflare's deployment rollback and inspect the GitHub Actions logs.
 
 No credentials or database identifiers belong in the repository.
+
+## Posted deals → follower shop + Telegram (optional secrets)
+
+The private page `https://daily-drops-publisher.alcorn224.workers.dev/posted` (same publishing secret) marks a deal as
+posted. It is saved in D1 table `posted_deals` (created automatically), listed publicly at `/api/posted` for the shop's
+"Just posted on Facebook" section, and sent once to Telegram when these repository secrets exist:
+
+- `TELEGRAM_BOT_TOKEN`: token from @BotFather.
+- `TELEGRAM_CHAT_ID`: `@channelusername` or the numeric chat id (e.g. `-100…`). The bot must be an admin of the channel/group.
+
+Optional Facebook auto-sync (reads the Page's own posts every 30 minutes; off unless both are set):
+
+- `FB_PAGE_ID`: numeric Page id.
+- `FB_PAGE_TOKEN`: long-lived Page access token with `pages_read_engagement` and `pages_read_user_content`.
+
+The deploy workflow copies each secret to the Worker without printing it. After adding or changing one, run
+**Deploy Daily Drops Cloudflare Publisher** from the Actions tab.

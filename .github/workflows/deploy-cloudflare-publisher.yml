@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/daily-drops-publisher-worker.js'
+      - 'cloudflare/worker.test.mjs'
       - '.github/workflows/deploy-cloudflare-publisher.yml'
   workflow_dispatch:
 permissions:
@@ -39,6 +40,9 @@ jobs:
       - name: Validate Worker syntax
         if: steps.configured.outputs.ready == 'true'
         run: node --check cloudflare/daily-drops-publisher-worker.js
+      - name: Test Worker (posted deals, Telegram dedupe, Facebook sync) offline
+        if: steps.configured.outputs.ready == 'true'
+        run: node --test cloudflare/worker.test.mjs
       - name: Create deployment config using existing D1 database
         if: steps.configured.outputs.ready == 'true'
         shell: bash
@@ -70,6 +74,21 @@ jobs:
         run: |
           if [[ -z "$GH_DISPATCH_TOKEN" ]]; then echo '::notice::GH_DISPATCH_TOKEN repo secret not set; scan timer stays idle.'; exit 0; fi
           printf '%s' "$GH_DISPATCH_TOKEN" | npx --yes wrangler@4 secret put GH_DISPATCH_TOKEN --config wrangler.json
+      - name: Store optional Telegram / Facebook secrets on Worker
+        if: steps.configured.outputs.ready == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        shell: bash
+        run: |
+          # Each value is piped straight to Cloudflare and never echoed. Missing ones are skipped.
+          for name in TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID FB_PAGE_ID FB_PAGE_TOKEN; do
+            if [[ -z "${!name}" ]]; then echo "::notice::$name repo secret not set; that feature stays off."; continue; fi
+            printf '%s' "${!name}" | npx --yes wrangler@4 secret put "$name" --config wrangler.json >/dev/null
+            echo "$name stored on Worker"
+          done
       - name: Verify deployed Worker and D1 connection
         if: steps.configured.outputs.ready == 'true'
         shell: bash
@@ -77,6 +96,7 @@ jobs:
           for attempt in 1 2 3 4 5; do
             if curl --fail --silent --show-error --max-time 10 'https://daily-drops-publisher.alcorn224.workers.dev/api/health' | grep -q '"ok":true'; then
               echo 'Cloudflare Publisher is healthy.'
+              curl --fail --silent --show-error --max-time 10 'https://daily-drops-publisher.alcorn224.workers.dev/api/posted' | grep -q '"format":"daily-drops-posted-v1"' && echo 'Posted-deals feed is live.'
               exit 0
             fi
             sleep 5

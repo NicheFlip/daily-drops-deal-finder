@@ -193,6 +193,7 @@ nav button#tab-deals{padding-left:18px;padding-right:18px;font-size:.95rem}
 .post-buttons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.post-buttons .btn{min-height:52px;font-size:1rem;display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
 .post-tools textarea{width:100%;min-height:210px;font-size:.95rem;line-height:1.4;margin-top:6px}
 .post-mini{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.post-mini button{min-height:40px}
+.post-posted{width:100%;min-height:50px;margin-top:8px;font-size:1rem;background:#1f6f50!important}
 .post-feedback{min-height:1.2em;font-weight:700;color:#12664a;margin:8px 0}
 @media(max-width:760px){.post-layout{grid-template-columns:1fr}.post-tools{order:-1}.post-buttons{grid-template-columns:1fr 1fr}.post-buttons .post-copy{grid-column:1/-1;min-height:58px;font-size:1.08rem}.watch-add{flex-direction:column}.fb-text{max-height:none}}
 </style></head>
@@ -431,6 +432,12 @@ $('panel-watch').addEventListener('click',e=>{const a=e.target.closest('[data-un
 $('watchResults').addEventListener('click',handleJudgmentClick);
 (async()=>{try{const r=await fetch('data/watchlist.json?ts='+Date.now(),{cache:'no-store'});if(r.ok)repoWatch=await r.json()}catch{}afterWatchChange()})();
 function updatePostingCount(){const n=Object.values(readJudgments()).filter(x=>x?.choice==='deal').length;const node=$('postingCount');if(node)node.textContent=n}
+// Deals already marked as posted (public list from the Cloudflare publisher). The write itself happens on the
+// private publisher page, where Heather is signed in; this dashboard never holds a secret or token.
+const PUBLISHER='https://daily-drops-publisher.alcorn224.workers.dev';let postedCloud=new Map(),postedCloudAt=0;
+async function refreshPostedCloud(force){if(!force&&Date.now()-postedCloudAt<60000)return;postedCloudAt=Date.now();try{const r=await fetch(PUBLISHER+'/api/posted?ts='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(4500)});if(!r.ok)return;const j=await r.json();if(j.format!=='daily-drops-posted-v1')return;const m=new Map((j.deals||[]).map(d=>[d.asin,d]));const changed=m.size!==postedCloud.size||[...m].some(([a,d])=>postedCloud.get(a)?.telegramStatus!==d.telegramStatus);postedCloud=m;if(changed&&!$('panel-posting').hidden)renderPostingQueue()}catch{}}
+function postedPageUrl(d,caption,link){const u=new URL(PUBLISHER+'/posted');const set=(k,v)=>{if(v!==undefined&&v!==null&&v!=='')u.searchParams.set(k,String(v))};set('asin',d.asin);set('title',String(d.title||'').slice(0,220));set('price',Number(d.price)>0?Number(d.price).toFixed(2):'');set('imageUrl',d.imageUrl&&/^https:/.test(d.imageUrl)?d.imageUrl:'');set('link',link);set('condition',d.conditionLabel||'');set('prime',shipsFree(d)?'1':'');set('caption',String(caption||'').slice(0,2500));return u.href}
+window.addEventListener('focus',()=>{if(!$('panel-posting').hidden)refreshPostedCloud(true)});
 function postFacts(d){const f=[],price=Number(d.price);
  if(d.conditionLabel)f.push('<span class="post-fact cond">♻ '+esc(d.conditionLabel)+(d.subCondition&&d.subCondition!=='Unknown'?' · '+esc(String(d.subCondition).replace(/([a-z])([A-Z])/g,'$1 $2')):'')+'</span>');
  if(d.conditionLabel&&Number(d.newPrice)>price)f.push('<span class="post-fact">New: '+cash(d.newPrice)+(Number(d.savingsVsNewPercent)>0?' · save '+esc(d.savingsVsNewPercent)+'%':'')+'</span>');
@@ -441,7 +448,7 @@ function postFacts(d){const f=[],price=Number(d.price);
  return f.join('')}
 function previewHtml(text){return esc(text).replace(/https:\/\/[^\s<]+/g,u=>'<a href="'+u+'" target="_blank" rel="sponsored noopener noreferrer">'+u+'</a>')}
 function renderPostingQueue(){
- updatePostingCount();
+ updatePostingCount();refreshPostedCloud();
  const entries=Object.entries(readJudgments()).filter(([asin,x])=>x?.choice==='deal'&&/^[A-Z0-9]{10}$/.test(asin)).sort((a,b)=>String(b[1].updatedAt||'').localeCompare(String(a[1].updatedAt||'')));
  $('postingStatus').textContent=entries.length?entries.length+(entries.length===1?' post':' posts')+' ready · newest first · saved on this browser':'';
  $('postingResults').innerHTML=entries.map(([asin,x])=>{
@@ -450,7 +457,7 @@ function renderPostingQueue(){
   return '<article class="card product post-card" data-post-asin="'+esc(asin)+'"><div class="post-head"><span class="pill">✓ Ready to post</span><span class="small muted">Price checked '+esc(d.checkedAt?date(d.checkedAt):'—')+'</span></div><div class="post-layout">'+
   '<div class="fb-preview" aria-label="Facebook post preview"><div class="fb-top"><span class="fb-avatar">DD</span><div><strong>Daily Drops with Heather</strong><small>Post preview · what followers see</small></div></div><div class="fb-text" data-post-preview>'+previewHtml(caption)+'</div>'+(img?'<img class="fb-photo" loading="lazy" referrerpolicy="no-referrer" src="'+esc(img)+'" alt="'+esc(d.title)+'">':'')+'<div class="fb-link"><small>AMAZON.COM</small><strong>'+esc(String(d.title).slice(0,90))+'</strong></div></div>'+
   '<div class="post-tools"><div class="post-price">'+(Number(d.price)>0?cash(d.price):'Check price')+'</div><div class="post-facts">'+postFacts(d)+'</div>'+
-  '<div class="post-buttons"><button class="btn post-copy" type="button" data-post-action="caption">📋 Copy post</button><button class="btn secondary" type="button" data-post-action="comment">🔗 Copy link</button><a class="btn secondary" href="'+esc(link)+'" target="_blank" rel="sponsored noopener noreferrer">↗ Open product</a></div><p class="post-feedback" data-post-feedback role="status"></p>'+
+  '<div class="post-buttons"><button class="btn post-copy" type="button" data-post-action="caption">📋 Copy post</button><button class="btn secondary" type="button" data-post-action="comment">🔗 Copy link</button><a class="btn secondary" href="'+esc(link)+'" target="_blank" rel="sponsored noopener noreferrer">↗ Open product</a></div><button class="btn post-posted" type="button" data-post-action="posted">'+(postedCloud.has(asin)?'✓ In the shop'+(postedCloud.get(asin).telegramStatus==='sent'?' · sent to Telegram':'')+' (tap to update)':'📣 I posted it: add to shop + Telegram')+'</button><p class="post-feedback" data-post-feedback role="status"></p>'+
   '<label class="small muted">Caption (tap to edit · your changes are saved)<textarea data-post-caption rows="10">'+esc(caption)+'</textarea></label>'+
   '<div class="post-mini"><button class="btn secondary" type="button" data-post-action="reset">↺ Reset caption</button><button class="btn secondary" type="button" data-post-action="graphic">⬇ Sale graphic</button><button class="btn secondary" type="button" data-post-action="remove">✕ Remove</button></div>'+
   '<details class="small" style="margin-top:10px"><summary>Use a different affiliate link</summary><input data-post-link type="url" value="'+esc(link)+'" aria-label="Product affiliate link"><span class="muted">Paste a verified Amazon short link (link.amazon/…) if you prefer.</span></details></div></div></article>';
@@ -503,6 +510,7 @@ $('postingResults').addEventListener('click',async e=>{
  const card=btn.closest('[data-post-asin]'),asin=card.dataset.postAsin,entry=readJudgments()[asin];if(!entry)return;
  const d={...(entry.product||{}),...(findDealForQueue(asin)||{})};d.asin=asin;if(!d.title)d.title='Amazon product '+asin;
  const feedback=card.querySelector('[data-post-feedback]');
+ if(btn.dataset.postAction==='posted'){window.open(postedPageUrl(d,card.querySelector('[data-post-caption]').value,card.querySelector('[data-post-link]').value.trim()),'_blank','noopener');feedback.textContent='Opened your private Posted page: tap “Add to shop” there to confirm.';return}
  try{
   if(btn.dataset.postAction==='remove'){saveJudgment(asin,'clear');return}
   if(btn.dataset.postAction==='caption'){const t=card.querySelector('[data-post-caption]').value;const ok=await copyText(t);feedback.textContent=ok?'✓ Post copied: open Facebook and paste.'+(/amazon associate/i.test(t)?'':' Tip: keep the “As an Amazon Associate…” line.'):'Copy blocked. Long-press the caption to copy.'}
