@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-23T08:41:19.046821+00:00",
-  "changes": [
-    {
-      "asin": "B0HKMNBLCG",
-      "title": "Bagotte Robot Vacuum Cleaner and Mop Combo with 6000Pa, Robotic Vacuum with Schedule, Quiet Slim,Self-Charging,Wi-Fi/Voice/App,Perfect for Pet/Hard Floors,/Carpet",
-      "previousObservedPrice": 329.0,
-      "currentObservedPrice": 99.99,
-      "dropPercent": 69.6,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-23T08:41:19.046821+00:00",
-      "url": "https://www.amazon.com/dp/B0HKMNBLCG",
-      "seller": "ZhangQiangShuYu-US",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-23T09:11:22.129817+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
