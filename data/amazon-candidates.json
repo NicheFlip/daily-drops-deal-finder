@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-23T22:11:16.630746+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-23T22:19:16.142453+00:00",
+  "candidates": [
+    {
+      "asin": "B0BBH8FRYL",
+      "title": "LAURA GELLER Best of the Best Baked Palette \u2013 Full Face Palette | Award-winning full face palette: baked blush, bronzer, 2 highlighters & 3 eyeshadows in universal shades. With mir",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B0BBH8FRYL",
+      "imageUrl": "https://m.media-amazon.com/images/I/41+OLz39ZSL._SL160_.jpg",
+      "price": 34.5,
+      "referencePrice": 69.0,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 39.32,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-23T22:19:16.142453+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Laura Geller New York",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
