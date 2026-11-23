@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-23T09:41:15.850509+00:00",
-  "changes": [],
+  "updated": "2026-11-23T10:11:14.871774+00:00",
+  "changes": [
+    {
+      "asin": "B0HGR743KW",
+      "title": "High-Speed Hair Dryer, 150000RPM Brushless Motor for Ultra-Fast Drying, 500M Ionic Negative Blow Dryer for Frizz Reduce, Low Noise Hair Blow Dryer with Magnetic Diffuser for Home T",
+      "previousObservedPrice": 239.99,
+      "currentObservedPrice": 59.99,
+      "dropPercent": 75.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-23T10:11:14.871774+00:00",
+      "url": "https://www.amazon.com/dp/B0HGR743KW",
+      "seller": "HKaihuang",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
