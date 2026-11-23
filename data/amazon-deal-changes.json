@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-23T20:11:16.250199+00:00",
-  "changes": [
-    {
-      "asin": "B07MG5YJLT",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap, Rain Water Scent, 12.5 Fl Oz",
-      "previousObservedPrice": 4.25,
-      "currentObservedPrice": 2.11,
-      "dropPercent": 50.4,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-23T20:11:16.250199+00:00",
-      "url": "https://www.amazon.com/dp/B07MG5YJLT",
-      "seller": "SAT KARTAR MART",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B07KSFP9QZ",
-      "title": "Hot Tools Pro Artist Black Gold Ionic 1 Inch Flat Iron | Use as Straightener for Sleek Straight Hair or Use Rounded Edges for Shiny Curls and Waves, Stylist-Preferred Styles",
-      "previousObservedPrice": 69.28,
-      "currentObservedPrice": 69.27,
-      "dropPercent": 0.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-23T20:11:16.250199+00:00",
-      "url": "https://www.amazon.com/dp/B07KSFP9QZ",
-      "seller": "ShackSales",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-23T20:41:15.278127+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
