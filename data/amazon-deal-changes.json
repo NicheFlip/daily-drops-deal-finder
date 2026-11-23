@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-23T06:41:14.489129+00:00",
-  "changes": [
-    {
-      "asin": "B0822LKVN6",
-      "title": "MRS. MEYER'S CLEAN DAY Hand Soap, Peony Scent, 12.5 Fl Oz Bottle - 3 Pack",
-      "previousObservedPrice": 15.24,
-      "currentObservedPrice": 11.63,
-      "dropPercent": 23.7,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-23T06:41:14.489129+00:00",
-      "url": "https://www.amazon.com/dp/B0822LKVN6",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-23T07:11:13.621893+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
