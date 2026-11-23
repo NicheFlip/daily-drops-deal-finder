@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-23T20:41:15.278127+00:00",
+  "updated": "2026-11-23T21:11:22.029499+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B08YH3FW62",
+      "title": "Fruit of the Loom mens Eversoft Fleece & Joggers (Regular Big Man) Sweatpants, Elastic Bottom - Grey Heather, Medium US",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B08YH3FW62",
+      "imageUrl": "https://m.media-amazon.com/images/I/31iMp0UohaL._SL160_.jpg",
+      "price": 10.01,
+      "referencePrice": 18.99,
+      "discountPercent": 47,
+      "dealScore": 7,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-23T21:11:22.029499+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B00FLYWNYQ",
       "title": "Instant Pot Duo 6 Qt 7-in-1 Electric Pressure Cooker, Stainless Steel | Slow cooks, makes rice and yogurt, steams, saut\u00e9s, warms and sterilizes, with an app featuring 800+ recipes.",
