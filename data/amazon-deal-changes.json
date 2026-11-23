@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-23T11:11:15.839350+00:00",
-  "changes": [],
+  "updated": "2026-11-23T11:41:15.038871+00:00",
+  "changes": [
+    {
+      "asin": "B01H3VFA9E",
+      "title": "Hefty Ultra Strong 13 Gal Kitchen Trash Bags, Black, Clean Burst, 40ct | 13G Tall Trash Bags with Drawstrings for Kitchen and Home Use, Continuous Odor Control, Tear-Resistant",
+      "previousObservedPrice": 9.48,
+      "currentObservedPrice": 3.55,
+      "dropPercent": 62.6,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-23T11:41:15.038871+00:00",
+      "url": "https://www.amazon.com/dp/B01H3VFA9E",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
