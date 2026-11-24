@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T02:41:15.116514+00:00",
+  "updated": "2026-11-24T03:11:14.915908+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0CM6VDKSQ",
+      "title": "Shark NeverChange Air Purifier, HP152, Charcoal | For Home, Large Room, HEPA-Exceeding Filter with Odor Neutralizer, Captures Pollutants, Pet Dander, Dust, Smoke, and More",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0CM6VDKSQ",
+      "imageUrl": "https://m.media-amazon.com/images/I/31vSfCMTKcL._SL160_.jpg",
+      "price": 149.0,
+      "referencePrice": 249.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 149.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T03:11:14.915908+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0CWQ8QMKT",
       "title": "SINGARO Car Cup Holder Coaster, Silicone Cup Holder Insert, Universal Non-Slip Cup Holders, Car Accessories Interior for Women and Man Interior Sets 4 Pack Black",
