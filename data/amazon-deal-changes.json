@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-24T13:41:15.816121+00:00",
-  "changes": [
-    {
-      "asin": "B01LB1J9BW",
-      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
-      "previousObservedPrice": 4.99,
-      "currentObservedPrice": 4.98,
-      "dropPercent": 0.2,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-24T13:41:15.816121+00:00",
-      "url": "https://www.amazon.com/dp/B01LB1J9BW",
-      "seller": "Promontory Group INC",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-24T14:11:16.364071+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
