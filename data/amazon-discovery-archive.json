@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T02:11:14.203039+00:00",
+  "updated": "2026-11-24T02:41:15.116514+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0CWQ8QMKT",
+      "title": "SINGARO Car Cup Holder Coaster, Silicone Cup Holder Insert, Universal Non-Slip Cup Holders, Car Accessories Interior for Women and Man Interior Sets 4 Pack Black",
+      "category": "Automotive",
+      "url": "https://www.amazon.com/dp/B0CWQ8QMKT",
+      "imageUrl": "https://m.media-amazon.com/images/I/419JIspy6xL._SL160_.jpg",
+      "price": 5.59,
+      "referencePrice": 9.99,
+      "discountPercent": 44,
+      "dealScore": 4,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T02:41:15.116514+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Golamping",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0DQLLPYGM",
       "title": "BISSELL PowerClean FurGuard Pet Cordless Stick Vacuum, Lightweight, 280W\u200b | Powerful Suction, 2-in-1 Handheld Vacuum, LED Headlights, 50-Minute Run Time, Fur Remover Tool, HEPA, Re",
