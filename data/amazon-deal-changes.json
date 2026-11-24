@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-24T06:41:14.161404+00:00",
+  "updated": "2026-11-24T07:11:15.101780+00:00",
   "changes": [
     {
-      "asin": "B0C7G4NDN9",
-      "title": "imarku Black Knife Set - Knife set for kitchen with wood block | Dishwasher Safe Ultra Sharp Professional Chef Well Balance, Available in Walnut Brown Wood Block",
-      "previousObservedPrice": 169.99,
-      "currentObservedPrice": 94.99,
-      "dropPercent": 44.1,
+      "asin": "B082F1QH7S",
+      "title": "Colgate Optic White Advanced Hydrogen Peroxide Toothpaste, 3 Pack, 3.2 oz | Sparkling White, Teeth Whitening Toothpaste, Removes 5 Years of Deep-Set Coffee, Tea, and Wine Stains, E",
+      "previousObservedPrice": 10.34,
+      "currentObservedPrice": 7.87,
+      "dropPercent": 23.9,
       "newObservedLow": false,
-      "checkedAt": "2026-11-24T06:41:14.161404+00:00",
-      "url": "https://www.amazon.com/dp/B0C7G4NDN9",
-      "seller": "imarku Pro Kitchen",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "checkedAt": "2026-11-24T07:11:15.101780+00:00",
+      "url": "https://www.amazon.com/dp/B082F1QH7S",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
