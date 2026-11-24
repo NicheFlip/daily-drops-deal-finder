@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-24T08:11:12.821146+00:00",
-  "changes": [
-    {
-      "asin": "B072LVG9NM",
-      "title": "Scotch-Brite Scrub Dots Non-Scratch Scrub Sponge, Rinses Clean, for Washing Dishes and Cleaning Kitchen, 3 Scrub Sponges",
-      "previousObservedPrice": 3.86,
-      "currentObservedPrice": 3.59,
-      "dropPercent": 7.0,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-24T08:11:12.821146+00:00",
-      "url": "https://www.amazon.com/dp/B072LVG9NM",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-24T08:41:14.818661+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
