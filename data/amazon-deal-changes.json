@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-24T06:11:14.288755+00:00",
-  "changes": [],
+  "updated": "2026-11-24T06:26:31.798503+00:00",
+  "changes": [
+    {
+      "asin": "B004MDM6RQ",
+      "title": "Inteplast Group IBS PB040208 Get Reddi Food & Utility Poly Bag, 4\" x 2\" x 8\", 1 pt, 0.68mil, Clear, 1000 Bags",
+      "previousObservedPrice": 19.98,
+      "currentObservedPrice": 10.99,
+      "dropPercent": 45.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-24T06:26:31.798503+00:00",
+      "url": "https://www.amazon.com/dp/B004MDM6RQ",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
