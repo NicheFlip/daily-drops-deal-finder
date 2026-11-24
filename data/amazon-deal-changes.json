@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-23T22:41:13.641487+00:00",
+  "updated": "2026-11-24T00:11:14.295736+00:00",
   "changes": [
     {
-      "asin": "B07MG5YJLT",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap, Rain Water Scent, 12.5 Fl Oz",
-      "previousObservedPrice": 4.25,
-      "currentObservedPrice": 2.11,
-      "dropPercent": 50.4,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-23T22:41:13.641487+00:00",
-      "url": "https://www.amazon.com/dp/B07MG5YJLT",
-      "seller": "SR Store deals",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "asin": "B00DFBDALC",
+      "title": "Shark Rocket Corded Stick Vacuum, Carpet & Hard Floors, Gray/Orange, HV301 | Under 9 Lbs., Handheld Conversion, Pet Hair Pickup, Swivel Steering, Low-Profile Reach, Crevice and Uph",
+      "previousObservedPrice": 99.98,
+      "currentObservedPrice": 98.0,
+      "dropPercent": 2.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-24T00:11:14.295736+00:00",
+      "url": "https://www.amazon.com/dp/B00DFBDALC",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
