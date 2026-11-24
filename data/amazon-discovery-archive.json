@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T21:41:13.868415+00:00",
+  "updated": "2026-11-24T22:11:14.643715+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0FWBP76ZJ",
+      "title": "adidas Men's Lite Racer Adapt 8.0, SolidGreyGreyGrey, 11",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0FWBP76ZJ",
+      "imageUrl": "https://m.media-amazon.com/images/I/31SsKUTMcfL._SL160_.jpg",
+      "price": 39.56,
+      "referencePrice": 70.0,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T22:11:14.643715+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B00JUM3LK0",
       "title": "Hanes Men's Pullover EcoSmart Hooded Sweatshirt, Deep Royal, Large",
