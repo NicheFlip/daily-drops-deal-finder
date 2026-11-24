@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-24T07:11:15.101780+00:00",
-  "changes": [
-    {
-      "asin": "B082F1QH7S",
-      "title": "Colgate Optic White Advanced Hydrogen Peroxide Toothpaste, 3 Pack, 3.2 oz | Sparkling White, Teeth Whitening Toothpaste, Removes 5 Years of Deep-Set Coffee, Tea, and Wine Stains, E",
-      "previousObservedPrice": 10.34,
-      "currentObservedPrice": 7.87,
-      "dropPercent": 23.9,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-24T07:11:15.101780+00:00",
-      "url": "https://www.amazon.com/dp/B082F1QH7S",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-24T07:41:14.486316+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }

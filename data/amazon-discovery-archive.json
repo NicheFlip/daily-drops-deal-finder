@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T07:11:15.101780+00:00",
+  "updated": "2026-11-24T07:41:14.486316+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0BHPRSKST",
+      "title": "adidas Womens Swift Run White/White/Gold Metallic 6 | Casual Shoes, Running-Inspired, Knit Upper, Lace Closure, For Everyday Wear, Regular Fit, Runs Large",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0BHPRSKST",
+      "imageUrl": "https://m.media-amazon.com/images/I/31G7IqiPkeL._SL160_.jpg",
+      "price": 50.0,
+      "referencePrice": 90.0,
+      "discountPercent": 44,
+      "dealScore": 4,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T07:41:14.486316+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0787FVB5F",
       "title": "adidas Men's Athletic Cushioned Crew Socks 6 Pairs | 6-Pack, Cushioned Footbed, Arch Support, Breathable Moisture-Wicking, Reinforced Heel & Toe, All-Day Comfort",
