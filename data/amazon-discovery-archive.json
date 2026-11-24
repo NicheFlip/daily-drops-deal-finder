@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T18:18:34.424012+00:00",
+  "updated": "2026-11-24T18:41:15.780670+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B00NGVF4II",
+      "title": "Shark Rocket Pet Plus Corded Stick Vacuum, Lightweight, Bordeaux, HV322 | Carpet, Area Rug & Hard Floor Cleaning, Handheld Vacuum for Pet Hair, XL Dust Cup, LED Headlights, Crevice",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B00NGVF4II",
+      "imageUrl": "https://m.media-amazon.com/images/I/31qXFN-YomL._SL160_.jpg",
+      "price": 119.99,
+      "referencePrice": 199.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T18:41:15.780670+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B072M77MZD",
       "title": "Hanes Men's Full-Zip Eco-Smart Hoodie, ash, Large",
