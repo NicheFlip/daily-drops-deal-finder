@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-24T01:11:23.745515+00:00",
-  "changes": [
-    {
-      "asin": "B00939I7EK",
-      "title": "Ninja Kitchen System Pro, 1500W, 72oz Pitcher, 8-Cup, Black, BL770 | 1500W all-in-one blends smoothies, processes salsa & dough. 72-oz pitcher, 8-cup processor bowl, (2) 16-oz cups",
-      "previousObservedPrice": 129.99,
-      "currentObservedPrice": 128.69,
-      "dropPercent": 1.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-24T01:11:23.745515+00:00",
-      "url": "https://www.amazon.com/dp/B00939I7EK",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-24T01:41:12.979007+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
