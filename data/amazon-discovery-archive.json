@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T16:11:15.589707+00:00",
+  "updated": "2026-11-24T16:41:20.665555+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HMWLDZ87",
+      "title": "Aeitto Ice Maker Countertop 26lbs/24H Ice Makers Ready in 6-Min 8 Ice Cubes | 2 Sizes of Bullet Ice Portable Ice Machine with Basket/Scoop, Auto-Cleaning Energy-Saving for Home/Kit",
+      "category": "Appliances",
+      "url": "https://www.amazon.com/dp/B0HMWLDZ87",
+      "imageUrl": "https://m.media-amazon.com/images/I/414c7XozvJL._SL160_.jpg",
+      "price": 85.99,
+      "referencePrice": 199.99,
+      "discountPercent": 57,
+      "dealScore": 17,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 89.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T16:41:20.665555+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "SeaEasy",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B07R6343PG",
       "title": "Lee Women's Ultra Lux Comfort with Flex Motion Trouser Pant Black 8 Long",
