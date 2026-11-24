@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-24T23:11:14.365147+00:00",
-  "changes": [
-    {
-      "asin": "B007V9VQ06",
-      "title": "Milk-Bone Original Biscuits Medium Dog Treats, 24 Oz.",
-      "previousObservedPrice": 2.85,
-      "currentObservedPrice": 2.84,
-      "dropPercent": 0.4,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-24T23:11:14.365147+00:00",
-      "url": "https://www.amazon.com/dp/B007V9VQ06",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-24T23:41:14.394771+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
