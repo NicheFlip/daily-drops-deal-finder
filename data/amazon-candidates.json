@@ -1,29 +1,6 @@
 {
-  "updated": "2026-11-24T04:41:14.462517+00:00",
-  "candidates": [
-    {
-      "asin": "B0FK15WMGT",
-      "title": "Barbie Careers Baby Doctor Themed Doll and Playset | 2 Baby Dolls with Doctor Fashion Doll, Examination Table & More, Ages 3+, Gift for the Holidays",
-      "category": "ToysAndGames",
-      "url": "https://www.amazon.com/dp/B0FK15WMGT",
-      "imageUrl": "https://m.media-amazon.com/images/I/41R62F0COXL._SL160_.jpg",
-      "price": 10.0,
-      "referencePrice": 19.99,
-      "discountPercent": 50,
-      "dealScore": 10,
-      "everydayEssential": false,
-      "reason": "First observation",
-      "previousObservedPrice": null,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-24T04:41:14.462517+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
-  "count": 1,
+  "updated": "2026-11-24T05:11:21.425401+00:00",
+  "candidates": [],
+  "count": 0,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
