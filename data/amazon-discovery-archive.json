@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T17:11:16.401121+00:00",
+  "updated": "2026-11-24T17:41:16.097591+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DPMXQSP4",
+      "title": "Wiepux Long Womens Winter Coat Sherpa Fleece Lined Puffer Jackets with Hood | Reversible 2-in-1, Water Repellent 100% Polyester Shell, Two-Way Zipper, Warm for Commutes Travel Walk",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0DPMXQSP4",
+      "imageUrl": "https://m.media-amazon.com/images/I/31ArrW+fx0L._SL160_.jpg",
+      "price": 47.5,
+      "referencePrice": 89.99,
+      "discountPercent": 47,
+      "dealScore": 7,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T17:41:16.097591+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "MYCity",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0FWB1KC6K",
       "title": "adidas Men's Lite Racer Adapt 8.0, ChalkWhiteGreyGrey, 8",
