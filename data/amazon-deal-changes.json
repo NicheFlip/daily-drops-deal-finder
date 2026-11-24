@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-24T19:11:21.922149+00:00",
-  "changes": [],
+  "updated": "2026-11-24T19:41:15.145900+00:00",
+  "changes": [
+    {
+      "asin": "B00F1U0YB4",
+      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
+      "previousObservedPrice": 8.69,
+      "currentObservedPrice": 5.97,
+      "dropPercent": 31.3,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T19:41:15.145900+00:00",
+      "url": "https://www.amazon.com/dp/B00F1U0YB4",
+      "seller": "JAMLY HUB",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
