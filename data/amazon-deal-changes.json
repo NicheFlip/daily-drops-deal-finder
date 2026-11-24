@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-24T06:26:31.798503+00:00",
+  "updated": "2026-11-24T06:41:14.161404+00:00",
   "changes": [
     {
-      "asin": "B004MDM6RQ",
-      "title": "Inteplast Group IBS PB040208 Get Reddi Food & Utility Poly Bag, 4\" x 2\" x 8\", 1 pt, 0.68mil, Clear, 1000 Bags",
-      "previousObservedPrice": 19.98,
-      "currentObservedPrice": 10.99,
-      "dropPercent": 45.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-24T06:26:31.798503+00:00",
-      "url": "https://www.amazon.com/dp/B004MDM6RQ",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
+      "asin": "B0C7G4NDN9",
+      "title": "imarku Black Knife Set - Knife set for kitchen with wood block | Dishwasher Safe Ultra Sharp Professional Chef Well Balance, Available in Walnut Brown Wood Block",
+      "previousObservedPrice": 169.99,
+      "currentObservedPrice": 94.99,
+      "dropPercent": 44.1,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T06:41:14.161404+00:00",
+      "url": "https://www.amazon.com/dp/B0C7G4NDN9",
+      "seller": "imarku Pro Kitchen",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
