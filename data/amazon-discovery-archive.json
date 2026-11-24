@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-24T19:41:15.145900+00:00",
+  "updated": "2026-11-24T20:11:18.927060+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0H4WZBN85",
+      "title": "MAC Energy by Conor McGregor Forbidden Green Apple Sugar Free Energy Drink | 12 Pack 12oz Cans, 200mg Caffeine, Clean Energy From Ketones, Green Apple Flavor, Zero Sugar, Only 10 C",
+      "category": "GroceryAndGourmetFood",
+      "url": "https://www.amazon.com/dp/B0H4WZBN85",
+      "imageUrl": "https://m.media-amazon.com/images/I/51K-mHPE-BL._SL160_.jpg",
+      "price": 17.99,
+      "referencePrice": 29.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-24T20:11:18.927060+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "MAC Energy",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B00DYOQJV8",
       "title": "MAM 11oz Natural Flow Active Anti-Colic Baby Bottle, 4+ Mths, 2 Pack | BPA Free, Fast Flow Skin Soft Anti-Colic Silicone Nipple, Anti-Slip Grip, Leak-Proof, Made In Europe, Cotton",
