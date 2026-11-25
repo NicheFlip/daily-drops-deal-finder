@@ -1,29 +1,6 @@
 {
-  "updated": "2026-11-25T22:11:21.932995+00:00",
-  "candidates": [
-    {
-      "asin": "B082PMRSBK",
-      "title": "Sharpie S-Gel Pens, Black Barrel, Medium Point, Black Ink, 4 Count | Sleek Design, Vivid Ink, No Smear, No Bleed, Comfortable Rubber Grip, Medium Point (0.7mm), Gel Pens for Everyd",
-      "category": "OfficeProducts",
-      "url": "https://www.amazon.com/dp/B082PMRSBK",
-      "imageUrl": "https://m.media-amazon.com/images/I/41pa3Wg77VL._SL160_.jpg",
-      "price": 4.87,
-      "referencePrice": 12.57,
-      "discountPercent": 61,
-      "dealScore": 20,
-      "everydayEssential": false,
-      "reason": "Observed price drop",
-      "previousObservedPrice": 4.89,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-25T22:11:21.932995+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
-  "count": 1,
+  "updated": "2026-11-25T22:27:50.870178+00:00",
+  "candidates": [],
+  "count": 0,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
