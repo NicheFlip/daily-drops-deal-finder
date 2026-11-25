@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T01:41:19.964944+00:00",
+  "updated": "2026-11-25T02:11:14.277858+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B01NB1OB0I",
+      "title": "Sensi Smart Thermostat, Wi-Fi, DIY, Alexa, Energy Star Certified, ST55",
+      "category": "ToolsAndHomeImprovement",
+      "url": "https://www.amazon.com/dp/B01NB1OB0I",
+      "imageUrl": "https://m.media-amazon.com/images/I/31qDUPJwm0L._SL160_.jpg",
+      "price": 74.22,
+      "referencePrice": 129.99,
+      "discountPercent": 43,
+      "dealScore": 3,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 75.22,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T02:11:14.277858+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B075TM3GVX",
       "title": "Stasher Reusable Half Gallon Silicone Food Storage Bag, Clear, 64 oz | Food-Safe Silicone, Freezer, Sous Vide, Microwave, Dishwasher, Oven Safe, Meal Prep, Bulk Storage, BPA-Free, ",
