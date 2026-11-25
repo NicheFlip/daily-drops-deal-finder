@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-25T07:11:13.393070+00:00",
-  "changes": [
-    {
-      "asin": "B0D58FN6J9",
-      "title": "LAKULIO Christmas Party Favors for Kids, 36pcs Christmas Finger Lights Toys for Kids Boys Girls Classroom Rewards Xmas Sock Filler Gifts",
-      "previousObservedPrice": 13.99,
-      "currentObservedPrice": 11.19,
-      "dropPercent": 20.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-25T07:11:13.393070+00:00",
-      "url": "https://www.amazon.com/dp/B0D58FN6J9",
-      "seller": "BO5WIN",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-25T07:41:18.272822+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
