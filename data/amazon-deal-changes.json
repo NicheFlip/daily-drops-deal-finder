@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-25T17:41:12.703587+00:00",
-  "changes": [
-    {
-      "asin": "B01H3VFA9E",
-      "title": "Hefty Ultra Strong 13 Gal Kitchen Trash Bags, Black, Clean Burst, 40ct | 13G Tall Trash Bags with Drawstrings for Kitchen and Home Use, Continuous Odor Control, Tear-Resistant",
-      "previousObservedPrice": 9.48,
-      "currentObservedPrice": 3.5,
-      "dropPercent": 63.1,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-25T17:41:12.703587+00:00",
-      "url": "https://www.amazon.com/dp/B01H3VFA9E",
-      "seller": "BR_Med",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B000S5S1AI",
-      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Lemon Verbena, 16 fl. Oz",
-      "previousObservedPrice": 4.0,
-      "currentObservedPrice": 1.85,
-      "dropPercent": 53.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-25T17:41:12.703587+00:00",
-      "url": "https://www.amazon.com/dp/B000S5S1AI",
-      "seller": "BR_Med",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-25T18:11:14.070390+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
