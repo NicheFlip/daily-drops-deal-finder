@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T10:11:15.959660+00:00",
+  "updated": "2026-11-25T10:41:15.523492+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0F3DRYY1N",
+      "title": "Yankee Candle Sparkling Cinnamon Scented Candle, 22oz Large Jar | Up to 150 Hour Burn Time, Room Filling Fragrance, Long-Lasting Scent, Premium Plant Wax Blend, Consistent Burn, Gi",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0F3DRYY1N",
+      "imageUrl": "https://m.media-amazon.com/images/I/41zWD+YbuuL._SL160_.jpg",
+      "price": 14.99,
+      "referencePrice": 24.99,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T10:41:15.523492+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B01M0RJ1UG",
       "title": "Sprayway Foaming Glass Cleaner | Fresh Scent | 19 oz. | Pack of 6 | Ammonia-Free, Streak-Free Shine, Fast-Drying | for Windows, Mirrors & Glass Surfaces",
