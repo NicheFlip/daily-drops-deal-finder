@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T02:48:59.648968+00:00",
+  "updated": "2026-11-25T03:11:14.122760+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B083FR7YSJ",
+      "title": "Clarks Men's Whiddon Cap Oxford, Black Leather, 13 Wide",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B083FR7YSJ",
+      "imageUrl": "https://m.media-amazon.com/images/I/310tGHEdLoL._SL160_.jpg",
+      "price": 51.73,
+      "referencePrice": 105.0,
+      "discountPercent": 51,
+      "dealScore": 11,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 55.99,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T03:11:14.122760+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B01H3VFA9E",
       "title": "Hefty Ultra Strong 13 Gal Kitchen Trash Bags, Black, Clean Burst, 40ct | 13G Tall Trash Bags with Drawstrings for Kitchen and Home Use, Continuous Odor Control, Tear-Resistant",
