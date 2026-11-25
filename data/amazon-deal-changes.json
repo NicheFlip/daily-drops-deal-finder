@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-25T22:41:14.211877+00:00",
-  "changes": [
-    {
-      "asin": "B0D8W1YVBX",
-      "title": "EQQUALBERRY Vitamin Illuminating Serum for Dark Spots & Brightening | Vitamin C Serum for Face, 4% Niacinamide, TXA & Hyaluronic Acid for Hydrated, Even-Looking Skin, Korean Skinca",
-      "previousObservedPrice": 14.99,
-      "currentObservedPrice": 14.5,
-      "dropPercent": 3.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-25T22:41:14.211877+00:00",
-      "url": "https://www.amazon.com/dp/B0D8W1YVBX",
-      "seller": "Top Souls Sports Store",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-25T23:11:13.235536+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
