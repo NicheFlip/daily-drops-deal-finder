@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-25T15:41:14.588834+00:00",
-  "changes": [],
+  "updated": "2026-11-25T16:41:21.812462+00:00",
+  "changes": [
+    {
+      "asin": "B07KSFP9QZ",
+      "title": "Hot Tools Pro Artist Black Gold Ionic 1 Inch Flat Iron | Use as Straightener for Sleek Straight Hair or Use Rounded Edges for Shiny Curls and Waves, Stylist-Preferred Styles",
+      "previousObservedPrice": 69.29,
+      "currentObservedPrice": 69.27,
+      "dropPercent": 0.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-25T16:41:21.812462+00:00",
+      "url": "https://www.amazon.com/dp/B07KSFP9QZ",
+      "seller": "ShackSales",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
