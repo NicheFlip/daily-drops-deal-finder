@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-24T23:41:14.394771+00:00",
-  "changes": [],
+  "updated": "2026-11-25T00:11:13.716273+00:00",
+  "changes": [
+    {
+      "asin": "B0CR9JFD7S",
+      "title": "Taygeer Travel Laptop Backpack for Men, Airplane Approved Travel Backpack | 15.6inch Laptop Backpacks with Water Bottle Pocket, Lightweight College 35l Luggage Bookbag Gifts for Bu",
+      "previousObservedPrice": 23.99,
+      "currentObservedPrice": 22.78,
+      "dropPercent": 5.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-25T00:11:13.716273+00:00",
+      "url": "https://www.amazon.com/dp/B0CR9JFD7S",
+      "seller": "RUNXINKEJI",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
