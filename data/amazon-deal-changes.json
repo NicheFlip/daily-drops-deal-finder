@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-25T15:11:15.370374+00:00",
-  "changes": [
-    {
-      "asin": "B0FRSRFFZR",
-      "title": "Portable Charger Power Bank 60000mAh, 22.5W PD Fast-Charge Battery Pack | Charge 5 Devices, 3-Ports & 3 in 1 Cable, 60% in 30min, 10 times for iPhone, Fit All Cell Phone/Tablets,Ca",
-      "previousObservedPrice": 53.99,
-      "currentObservedPrice": 28.47,
-      "dropPercent": 47.3,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-25T15:11:15.370374+00:00",
-      "url": "https://www.amazon.com/dp/B0FRSRFFZR",
-      "seller": "lerxu US",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B00F1U0YB4",
-      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
-      "previousObservedPrice": 7.61,
-      "currentObservedPrice": 5.09,
-      "dropPercent": 33.1,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-25T15:11:15.370374+00:00",
-      "url": "https://www.amazon.com/dp/B00F1U0YB4",
-      "seller": "Skyline Merchants LLC",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-25T15:41:14.588834+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
