@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T02:41:16.646605+00:00",
+  "updated": "2026-11-25T02:48:59.648968+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B01H3VFA9E",
+      "title": "Hefty Ultra Strong 13 Gal Kitchen Trash Bags, Black, Clean Burst, 40ct | 13G Tall Trash Bags with Drawstrings for Kitchen and Home Use, Continuous Odor Control, Tear-Resistant",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B01H3VFA9E",
+      "imageUrl": "https://m.media-amazon.com/images/I/414Q6NOYRiL._SL160_.jpg",
+      "price": 3.5,
+      "referencePrice": 10.52,
+      "discountPercent": 67,
+      "dealScore": 90,
+      "everydayEssential": true,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 3.55,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-25T02:48:59.648968+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B01NB1OB0I",
       "title": "Sensi Smart Thermostat, Wi-Fi, DIY, Alexa, Energy Star Certified, ST55",
