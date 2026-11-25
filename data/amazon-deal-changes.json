@@ -1,5 +1,36 @@
 {
-  "updated": "2026-11-25T18:11:14.070390+00:00",
-  "changes": [],
+  "updated": "2026-11-25T18:41:13.420135+00:00",
+  "changes": [
+    {
+      "asin": "B00IB18VPG",
+      "title": "LYSOL Disinfecting Wipes, Multi-Surface Cleaner, Lemon, 80 ct. | All Purpose Cleaner, Sanitizing, Deodorizing, Apartment Essentials, Back To School Cleaning Supplies, Kitchen & Bat",
+      "previousObservedPrice": 4.49,
+      "currentObservedPrice": 1.45,
+      "dropPercent": 67.7,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T18:41:13.420135+00:00",
+      "url": "https://www.amazon.com/dp/B00IB18VPG",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B00555EWJU",
+      "title": "Hefty Slider Jumbo Storage Bags, Extra Large 2.5 Gallon Size, 12ct | Oversized 2.5 Gallon Storage Bags, Store Bulk Food, Clothes, Shoes, and More, Writable Label, Secure Slider Clo",
+      "previousObservedPrice": 4.79,
+      "currentObservedPrice": 2.09,
+      "dropPercent": 56.4,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-25T18:41:13.420135+00:00",
+      "url": "https://www.amazon.com/dp/B00555EWJU",
+      "seller": "Skyline Merchants LLC",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
