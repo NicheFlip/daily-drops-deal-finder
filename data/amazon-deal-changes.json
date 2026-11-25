@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-25T12:54:20.299458+00:00",
-  "changes": [],
+  "updated": "2026-11-25T13:11:16.785478+00:00",
+  "changes": [
+    {
+      "asin": "B0BL439NQ5",
+      "title": "Hefty 8 Gallon Medium Trash Bags, Ocean Water, White, 26 Count | Bathroom And Office Use, Continuous Odor Control, Easy Drawstring Closure",
+      "previousObservedPrice": 5.79,
+      "currentObservedPrice": 1.95,
+      "dropPercent": 66.3,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T13:11:16.785478+00:00",
+      "url": "https://www.amazon.com/dp/B0BL439NQ5",
+      "seller": "Vistora Shop",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
