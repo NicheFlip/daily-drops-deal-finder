@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T16:41:21.812462+00:00",
+  "updated": "2026-11-25T17:11:14.130263+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0C683F516",
+      "title": "Arlo Wireless Video Doorbell 2K HDR (2nd Gen) Single-Band WiFi - 1-Cam | 2K HDR Head-to-Toe Video, Front Door Security, Package & Person Detection, Night Vision, 2-Way Audio, 1-Mo ",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0C683F516",
+      "imageUrl": "https://m.media-amazon.com/images/I/21CtQrD1mjL._SL160_.jpg",
+      "price": 28.02,
+      "referencePrice": 79.99,
+      "discountPercent": 65,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T17:11:14.130263+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0HKSM9MG6",
       "title": "Robot Vacuum and Mop, 8000Pa Strong Suction, 2in1 Vacuum Robot for Pet Hair | Schedule Cleaning, Obstacle Avoidance, App Control, Self-Charging, for Hard Floor & Low-Pile Carpet",
