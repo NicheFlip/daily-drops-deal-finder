@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T12:11:15.940159+00:00",
+  "updated": "2026-11-25T12:41:13.701041+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B005PO9T44",
+      "title": "Zojirushi Stainless Steel Mug, 16oz, Smoky Blue",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B005PO9T44",
+      "imageUrl": "https://m.media-amazon.com/images/I/31v8pYlilzL._SL160_.jpg",
+      "price": 23.49,
+      "referencePrice": 39.19,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T12:41:13.701041+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0HQ65BWH7",
       "title": "Fitness Tracker with Heart Rate, Blood Oxygen & Sleep Monitoring, 1.47\" TFT | IP68 Waterproof, Ultra-Thin Lightweight Design, Step & Activity Tracking, Long Battery Life, For Women",
