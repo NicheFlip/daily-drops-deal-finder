@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T14:41:15.328584+00:00",
+  "updated": "2026-11-25T15:11:15.370374+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B094PS5RZQ",
+      "title": "Razer DeathAdder Essential Ergonomic Wired Gaming Mouse, Black | 6400 DPI Optical Sensor, 5 Programmable Buttons, Rubber Side Grips, Mechanical Mouse Switches",
+      "category": "Computers",
+      "url": "https://www.amazon.com/dp/B094PS5RZQ",
+      "imageUrl": "https://m.media-amazon.com/images/I/31dHVsk8vKL._SL160_.jpg",
+      "price": 14.22,
+      "referencePrice": 29.99,
+      "discountPercent": 53,
+      "dealScore": 13,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 14.97,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T15:11:15.370374+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B00BEG9QXG",
       "title": "Armani Beauty Acqua di Gioia Eau de Parfum - Fresh Aquatic Women's Perfume | Long Lasting Perfume for Women with Lemon, Water Jasmine & Cedarwood - Vibrant Scent Best for Everyday ",
