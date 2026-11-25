@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-25T06:11:14.449291+00:00",
+  "updated": "2026-11-25T06:41:14.037488+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HDY7KXG4",
+      "title": "Robot Vacuum and Mop, Strong Suction, App Control, Pet Hair, Self-Charging | For Pet Owners, Apartments and Busy Families, with Slim Under-furniture Cleaning and Scheduled Cleaning",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0HDY7KXG4",
+      "imageUrl": "https://m.media-amazon.com/images/I/41upemh3dbL._SL160_.jpg",
+      "price": 109.99,
+      "referencePrice": 499.99,
+      "discountPercent": 78,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-25T06:41:14.037488+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Woot",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0H6G87YX3",
       "title": "Bissell Pet Hair Eraser DualBrush Upright Vacuum, 42946 | Two Brush Rolls, DualBrush Self-Cleaning Technology, HEPA Sealed Allergen System, Bright FurFinder Headlights, Lift-Off Po",
