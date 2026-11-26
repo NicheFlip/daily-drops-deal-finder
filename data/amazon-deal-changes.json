@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-26T08:41:12.806404+00:00",
-  "changes": [],
+  "updated": "2026-11-26T09:11:15.200454+00:00",
+  "changes": [
+    {
+      "asin": "B0FRSRFFZR",
+      "title": "Portable Charger Power Bank 60000mAh, 22.5W PD Fast-Charge Battery Pack | Charge 5 Devices, 3-Ports & 3 in 1 Cable, 60% in 30min, 10 times for iPhone, Fit All Cell Phone/Tablets,Ca",
+      "previousObservedPrice": 53.99,
+      "currentObservedPrice": 28.47,
+      "dropPercent": 47.3,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T09:11:15.200454+00:00",
+      "url": "https://www.amazon.com/dp/B0FRSRFFZR",
+      "seller": "lerxu US",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
