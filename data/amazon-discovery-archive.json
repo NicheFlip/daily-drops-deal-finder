@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-26T14:41:13.971080+00:00",
+  "updated": "2026-11-26T15:11:13.715311+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0CRMP3RQT",
+      "title": "STANLEY Quencher H2.0 Flow State Tumbler, 40 oz, Peony | Handle and Straw | 3-Position Lid | Cup Holder Compatible for Travel | Insulated Stainless Steel Cup | BPA-Free",
+      "category": "HomeAndKitchen",
+      "url": "https://www.amazon.com/dp/B0CRMP3RQT",
+      "imageUrl": "https://m.media-amazon.com/images/I/21bE+MJ1MJL._SL160_.jpg",
+      "price": 22.5,
+      "referencePrice": 45.0,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T15:11:13.715311+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B097SY23K8",
       "title": "DREAM PAIRS Women's Chelsea Ankle Boots Shoes,Black/Pu,7.5 | Low Heel Fashion Slip On Elastic Fall Booties Classic Minimalist Design Suitable for Casual Outings Daily Work",
