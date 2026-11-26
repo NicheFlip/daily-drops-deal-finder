@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-25T23:41:13.517104+00:00",
-  "changes": [
-    {
-      "asin": "B00555EWJU",
-      "title": "Hefty Slider Jumbo Storage Bags, Extra Large 2.5 Gallon Size, 12ct | Oversized 2.5 Gallon Storage Bags, Store Bulk Food, Clothes, Shoes, and More, Writable Label, Secure Slider Clo",
-      "previousObservedPrice": 4.79,
-      "currentObservedPrice": 2.09,
-      "dropPercent": 56.4,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-25T23:41:13.517104+00:00",
-      "url": "https://www.amazon.com/dp/B00555EWJU",
-      "seller": "Skyline Merchants LLC",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B06XZTZ7GB",
-      "title": "MATEIN Travel Laptop Backpack, 15.6 Inch College School Computer Bag, Grey | Slim Sturdy Business Daypack, Anti Theft Bookbag, Water Resistant, Gift for Men & Women, Personal Item ",
-      "previousObservedPrice": 21.99,
-      "currentObservedPrice": 16.2,
-      "dropPercent": 26.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-25T23:41:13.517104+00:00",
-      "url": "https://www.amazon.com/dp/B06XZTZ7GB",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-26T00:11:14.372425+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
