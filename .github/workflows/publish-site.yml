@@ -6,6 +6,7 @@ on:
       - 'index.html'
       - 'shop.html'
       - 'shop-sw.js'
+      - 'affiliate-links.js'
       - 'manifest.webmanifest'
       - 'app-icon.svg'
       - 'data/**'
@@ -49,7 +50,7 @@ jobs:
               cp "data/$file" "_site/data/$file"
             fi
           done
-          for file in shop.html shop-sw.js manifest.webmanifest app-icon.svg; do
+          for file in shop.html shop-sw.js affiliate-links.js manifest.webmanifest app-icon.svg; do
             if [ -f "$file" ]; then cp "$file" "_site/$file"; fi
           done
           touch _site/.nojekyll
