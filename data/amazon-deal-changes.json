@@ -1,35 +1,20 @@
 {
-  "updated": "2026-11-26T17:41:14.148764+00:00",
+  "updated": "2026-11-26T18:11:15.091469+00:00",
   "changes": [
     {
-      "asin": "B01LB1J9BW",
-      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
-      "previousObservedPrice": 8.97,
-      "currentObservedPrice": 4.98,
-      "dropPercent": 44.5,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-26T17:41:14.148764+00:00",
-      "url": "https://www.amazon.com/dp/B01LB1J9BW",
-      "seller": "ISUPPLY_RT",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B00F1U0YB4",
-      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
-      "previousObservedPrice": 4.89,
-      "currentObservedPrice": 4.49,
-      "dropPercent": 8.2,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-26T17:41:14.148764+00:00",
-      "url": "https://www.amazon.com/dp/B00F1U0YB4",
-      "seller": "SR Store deals",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "asin": "B092VNYHZW",
+      "title": "Amazon Basics Extra Strong & Flex Tall Kitchen Drawstring Trash Bags, 13 Gallon, 50 Count, Packaging May Vary",
+      "previousObservedPrice": 10.89,
+      "currentObservedPrice": 5.99,
+      "dropPercent": 45.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-26T18:11:15.091469+00:00",
+      "url": "https://www.amazon.com/dp/B092VNYHZW",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
