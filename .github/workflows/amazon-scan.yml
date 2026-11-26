@@ -40,7 +40,7 @@ jobs:
         run: python scan_health.py
       - name: Verify deal engine and frontend after scan
         continue-on-error: true
-        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py test_amazon_scan_budget.py test_amazon_used_offers.py test_amazon_shipping.py test_dedupe_history.py test_watchlist.py test_dashboard_logic.py test_posted_deals.py test_coupons_hashtags.py
+        run: python -m unittest -v test_deal_engine.py test_scanner_integration.py test_database.py test_export_history.py test_frontend.py test_amazon_scan_budget.py test_amazon_used_offers.py test_amazon_shipping.py test_dedupe_history.py test_watchlist.py test_dashboard_logic.py test_posted_deals.py test_coupons_hashtags.py test_affiliate_links.py
       - name: Archive observations in PostgreSQL (if configured)
         id: database_archive
         continue-on-error: true

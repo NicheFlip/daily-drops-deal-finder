@@ -37,7 +37,8 @@ class FrontendSmoke(unittest.TestCase):
         self.assertIn('featured-finds.json',html)
     def test_shop_affiliate_and_product_validation(self):
         html,_=parse('shop.html')
-        self.assertIn('dealstoday0b3-20',html)
+        self.assertIn('affiliate-links.js',html)
+        self.assertIn('dealstoday0b3-20',(ROOT/'affiliate-links.js').read_text())
         self.assertIn('validAsin(d.asin)',html)
         self.assertIn("d.retailer==='Amazon'",html)
         self.assertIn('rel="sponsored noopener noreferrer"',html)

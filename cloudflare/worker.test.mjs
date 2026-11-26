@@ -8,7 +8,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 
 const src=readFileSync(new URL('./daily-drops-publisher-worker.js',import.meta.url),'utf8')
- +'\nexport const __t={buildTelegramCaption,recordPosted,listPosted,syncFacebook,postLinks,postCoupon,postTitle,amazonLink,asinFromUrl,dealIdentity,dealHashtags};';
+ +'\nexport const __t={buildTelegramCaption,recordPosted,listPosted,syncFacebook,postLinks,postCoupon,postTitle,amazonLink,amazonAffiliateUrl,walmartAffiliateUrl,affiliateUrl,WALMART_IMPACT,asinFromUrl,dealIdentity,dealHashtags};';
 const file=join(mkdtempSync(join(tmpdir(),'ddw-')),'worker.mjs');writeFileSync(file,src);
 const mod=await import(file);const worker=mod.default,T=mod.__t;
 
@@ -42,6 +42,32 @@ test('affiliate links always carry the tag',()=>{
  assert.equal(T.amazonLink('B0ABCDEF12','javascript:alert(1)'),'https://www.amazon.com/dp/B0ABCDEF12?tag=dealstoday0b3-20');
  assert.equal(T.amazonLink('B0ABCDEF12','https://link.amazon/abc'),'https://link.amazon/abc');
 });
+test('amazonAffiliateUrl tags searches and replaces other tags; Walmart wraps only when IDs are set',()=>{
+ const toys=T.amazonAffiliateUrl('https://www.amazon.com/s?k=toys');
+ assert.match(toys,/tag=dealstoday0b3-20/);
+ const replaced=T.amazonAffiliateUrl('https://www.amazon.com/s?k=toys&tag=someoneelse-20');
+ assert.match(replaced,/tag=dealstoday0b3-20/);
+ assert.doesNotMatch(replaced,/someoneelse-20/);
+ assert.equal((T.amazonAffiliateUrl('https://www.amazon.com/s?k=x&tag=dealstoday0b3-20').match(/[?&]tag=/g)||[]).length,1);
+ assert.match(T.amazonAffiliateUrl('https://www.amazon.com/deals'),/tag=dealstoday0b3-20/);
+ assert.equal(T.amazonAffiliateUrl('https://link.amazon/abc'),'https://link.amazon/abc');
+ assert.equal(T.amazonAffiliateUrl('','B0ABCDEF12'),'https://www.amazon.com/dp/B0ABCDEF12?tag=dealstoday0b3-20');
+ const search=T.dealIdentity('https://www.amazon.com/s?k=kitchen');
+ assert.equal(search.store,'Amazon');assert.match(search.url,/tag=dealstoday0b3-20/);
+ const plain='https://www.walmart.com/search?q=clearance';
+ assert.equal(T.walmartAffiliateUrl(plain),plain);
+ const already='https://goto.walmart.com/c/1/2/3?u='+encodeURIComponent('https://www.walmart.com/ip/55555');
+ assert.equal(T.walmartAffiliateUrl(already),already);
+ const prev={...T.WALMART_IMPACT};
+ T.WALMART_IMPACT.accountId='111';T.WALMART_IMPACT.adId='222';T.WALMART_IMPACT.campaignId='333';
+ try{
+  const wrapped=T.walmartAffiliateUrl(plain);
+  assert.equal(wrapped,'https://goto.walmart.com/c/111/222/333?u='+encodeURIComponent(plain));
+  assert.equal(T.walmartAffiliateUrl(already),already);
+  assert.equal(T.affiliateUrl('https://www.target.com/p/x'),'https://www.target.com/p/x');
+ }finally{Object.assign(T.WALMART_IMPACT,prev)}
+});
+
 test('identity: one id per product across stores, links pass through',()=>{
  assert.deepEqual(T.dealIdentity('https://www.amazon.com/Some/dp/B0ABCDEF12/ref=x?th=1'),{id:'B0ABCDEF12',asin:'B0ABCDEF12',store:'Amazon',url:'https://www.amazon.com/dp/B0ABCDEF12?tag=dealstoday0b3-20'});
  const w1=T.dealIdentity('https://www.walmart.com/ip/Kids-Bike/1234567?athcpid=1'),w2=T.dealIdentity('https://goto.walmart.com/c/1/2/3?u='+encodeURIComponent('https://www.walmart.com/ip/Kids-Bike/1234567'));

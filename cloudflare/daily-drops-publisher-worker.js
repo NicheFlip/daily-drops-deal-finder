@@ -2,6 +2,53 @@
 // Admin UI and write API are same-origin; public API is read-only.
 const SHOP_ORIGIN='https://nicheflip.github.io';
 const AFFILIATE_TAG='dealstoday0b3-20';
+const WALMART_IMPACT={accountId:'',adId:'',campaignId:''};
+
+function amazonAffiliateUrl(value,asinHint){
+ const asin=/^[A-Z0-9]{10}$/i.test(String(asinHint||''))?String(asinHint).toUpperCase():'';
+ const raw=String(value||'').trim();
+ try{
+  const u=new URL(raw);
+  const host=u.hostname.toLowerCase();
+  if(host==='link.amazon'||host==='amzn.to'||host==='a.co')return u.href;
+  if(u.protocol!=='http:'&&u.protocol!=='https:')throw new Error('skip');
+  if(/(^|\.)amazon\.com$/.test(host)){
+   u.protocol='https:';
+   u.searchParams.delete('tag');
+   u.searchParams.set('tag',AFFILIATE_TAG);
+   return u.toString();
+  }
+ }catch{}
+ if(asin)return 'https://www.amazon.com/dp/'+encodeURIComponent(asin)+'?tag='+AFFILIATE_TAG;
+ return raw;
+}
+
+function walmartAffiliateUrl(value){
+ const raw=String(value||'').trim();
+ try{
+  const u=new URL(raw);
+  if(u.protocol!=='http:'&&u.protocol!=='https:')return raw;
+  const host=u.hostname.toLowerCase();
+  if(host==='goto.walmart.com'||host.endsWith('.goto.walmart.com'))return u.href;
+  if(!/(^|\.)walmart\.com$/.test(host))return raw;
+  u.protocol='https:';
+  const {accountId,adId,campaignId}=WALMART_IMPACT;
+  if(!accountId||!adId||!campaignId)return u.href;
+  return 'https://goto.walmart.com/c/'+encodeURIComponent(accountId)+'/'+encodeURIComponent(adId)+'/'+encodeURIComponent(campaignId)+'?u='+encodeURIComponent(u.href);
+ }catch{}
+ return raw;
+}
+
+function affiliateUrl(value,asinHint){
+ const raw=String(value||'').trim();
+ let host='';
+ try{host=new URL(raw).hostname.toLowerCase()}catch{}
+ if(!raw&&asinHint)return amazonAffiliateUrl('',asinHint);
+ if(/(^|\.)amazon\.com$/.test(host)||host==='link.amazon'||host==='amzn.to'||host==='a.co')return amazonAffiliateUrl(raw,asinHint);
+ if(/(^|\.)walmart\.com$/.test(host)||host==='goto.walmart.com')return walmartAffiliateUrl(raw);
+ if(asinHint)return amazonAffiliateUrl(raw,asinHint);
+ return raw;
+}
 const headers={'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'};
 const json=(data,status=200,extra={})=>new Response(JSON.stringify(data),{status,headers:{...headers,...extra}});
 const encoder=new TextEncoder();
@@ -129,7 +176,8 @@ function dealIdentity(rawLink,asinHint){
  const u=safeHttps(rawLink);if(!u)return null;const host=u.hostname.toLowerCase().replace(/^www\./,'');
  let target=u;const inner=u.searchParams.get('u');if(inner&&safeHttps(inner))target=safeHttps(inner);  // Impact links carry the product URL in u=
  const th=target.hostname.toLowerCase().replace(/^www\./,'');
- if(/walmart\.com$/.test(th)){const m=target.pathname.match(/\/ip\/(?:[^/]+\/)?(\d{5,})/);return {id:m?'wm:'+m[1]:'u:'+th+target.pathname.replace(/\/+$/,'').toLowerCase(),asin:null,store:'Walmart',url:u.href}}
+ if(/(^|\.)amazon\.com$/.test(u.hostname.toLowerCase()))return {id:'u:'+th+u.pathname.replace(/\/+$/,'').toLowerCase().slice(0,200),asin:null,store:'Amazon',url:amazonAffiliateUrl(u.href)};
+ if(/walmart\.com$/.test(th)){const m=target.pathname.match(/\/ip\/(?:[^/]+\/)?(\d{5,})/);return {id:m?'wm:'+m[1]:'u:'+th+target.pathname.replace(/\/+$/,'').toLowerCase(),asin:null,store:'Walmart',url:walmartAffiliateUrl(u.href)}}
  const store=dealStore({url:target.href})||host;
  return {id:'u:'+th+target.pathname.replace(/\/+$/,'').toLowerCase().slice(0,200),asin:null,store,url:u.href};
 }
