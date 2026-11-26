@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-26T16:41:16.317893+00:00",
-  "changes": [],
+  "updated": "2026-11-26T17:11:13.724638+00:00",
+  "changes": [
+    {
+      "asin": "B00VKRK7K0",
+      "title": "SNAP CIRCUITS Arcade SCA-200 STEM Electronics Kit for Kids Ages 8+ | Build arcade-style electronic games and activities while learning circuits through hands-on STEM play.",
+      "previousObservedPrice": 31.99,
+      "currentObservedPrice": 27.59,
+      "dropPercent": 13.8,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-26T17:11:13.724638+00:00",
+      "url": "https://www.amazon.com/dp/B00VKRK7K0",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
