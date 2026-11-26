@@ -1,5 +1,36 @@
 {
-  "updated": "2026-11-26T12:11:15.900913+00:00",
-  "changes": [],
+  "updated": "2026-11-26T12:41:28.745760+00:00",
+  "changes": [
+    {
+      "asin": "B01H3VFA9E",
+      "title": "Hefty Ultra Strong 13 Gal Kitchen Trash Bags, Black, Clean Burst, 40ct | 13G Tall Trash Bags with Drawstrings for Kitchen and Home Use, Continuous Odor Control, Tear-Resistant",
+      "previousObservedPrice": 9.48,
+      "currentObservedPrice": 3.5,
+      "dropPercent": 63.1,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T12:41:28.745760+00:00",
+      "url": "https://www.amazon.com/dp/B01H3VFA9E",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B01LB1J9BW",
+      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
+      "previousObservedPrice": 8.97,
+      "currentObservedPrice": 4.05,
+      "dropPercent": 54.8,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T12:41:28.745760+00:00",
+      "url": "https://www.amazon.com/dp/B01LB1J9BW",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
