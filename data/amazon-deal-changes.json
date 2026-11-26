@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-26T04:21:55.463215+00:00",
-  "changes": [],
+  "updated": "2026-11-26T04:41:12.476907+00:00",
+  "changes": [
+    {
+      "asin": "B09VK154VZ",
+      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
+      "previousObservedPrice": 16.58,
+      "currentObservedPrice": 7.55,
+      "dropPercent": 54.5,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T04:41:12.476907+00:00",
+      "url": "https://www.amazon.com/dp/B09VK154VZ",
+      "seller": "Amazon Resale",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
