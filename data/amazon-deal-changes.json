@@ -1,20 +1,35 @@
 {
-  "updated": "2026-11-26T17:11:13.724638+00:00",
+  "updated": "2026-11-26T17:41:14.148764+00:00",
   "changes": [
     {
-      "asin": "B00VKRK7K0",
-      "title": "SNAP CIRCUITS Arcade SCA-200 STEM Electronics Kit for Kids Ages 8+ | Build arcade-style electronic games and activities while learning circuits through hands-on STEM play.",
-      "previousObservedPrice": 31.99,
-      "currentObservedPrice": 27.59,
-      "dropPercent": 13.8,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-26T17:11:13.724638+00:00",
-      "url": "https://www.amazon.com/dp/B00VKRK7K0",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
+      "asin": "B01LB1J9BW",
+      "title": "Folgers Classic Roast Instant Coffee, 8 Oz. Jar",
+      "previousObservedPrice": 8.97,
+      "currentObservedPrice": 4.98,
+      "dropPercent": 44.5,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T17:41:14.148764+00:00",
+      "url": "https://www.amazon.com/dp/B01LB1J9BW",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B00F1U0YB4",
+      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
+      "previousObservedPrice": 4.89,
+      "currentObservedPrice": 4.49,
+      "dropPercent": 8.2,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T17:41:14.148764+00:00",
+      "url": "https://www.amazon.com/dp/B00F1U0YB4",
+      "seller": "SR Store deals",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
