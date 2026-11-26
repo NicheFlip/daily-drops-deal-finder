@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-26T19:41:13.467332+00:00",
-  "changes": [
-    {
-      "asin": "B00QIT9NDW",
-      "title": "Lysol All Purpose Cleaner Spray, Disinfectant, Lemon, 32oz | Multipurpose Cleaner, Sanitizer & Disinfectant Spray, Degreaser, Multi-Surface Kitchen & Bathroom Cleaner, Cleaning Sup",
-      "previousObservedPrice": 3.84,
-      "currentObservedPrice": 1.06,
-      "dropPercent": 72.4,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-26T19:41:13.467332+00:00",
-      "url": "https://www.amazon.com/dp/B00QIT9NDW",
-      "seller": "ISUPPLY_RT",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B0BL439NQ5",
-      "title": "Hefty 8 Gallon Medium Trash Bags, Ocean Water, White, 26 Count | Bathroom And Office Use, Continuous Odor Control, Easy Drawstring Closure",
-      "previousObservedPrice": 5.79,
-      "currentObservedPrice": 2.4,
-      "dropPercent": 58.5,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-26T19:41:13.467332+00:00",
-      "url": "https://www.amazon.com/dp/B0BL439NQ5",
-      "seller": "ISUPPLY_RT",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-26T20:11:15.066236+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
