@@ -1,5 +1,51 @@
 {
-  "updated": "2026-11-26T07:41:12.787353+00:00",
-  "changes": [],
+  "updated": "2026-11-26T08:11:13.818989+00:00",
+  "changes": [
+    {
+      "asin": "B0C7G4NDN9",
+      "title": "imarku Knife Set - Knife set for kitchen with wood block | Dishwasher Safe Ultra Sharp Professional Chef Well Balance Deba Knives, Black",
+      "previousObservedPrice": 169.99,
+      "currentObservedPrice": 94.99,
+      "dropPercent": 44.1,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T08:11:13.818989+00:00",
+      "url": "https://www.amazon.com/dp/B0C7G4NDN9",
+      "seller": "imarku Pro Kitchen",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B00262227E",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",
+      "previousObservedPrice": 8.69,
+      "currentObservedPrice": 7.18,
+      "dropPercent": 17.4,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T08:11:13.818989+00:00",
+      "url": "https://www.amazon.com/dp/B00262227E",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
+    {
+      "asin": "B0DQLLPYGM",
+      "title": "BISSELL PowerClean FurGuard Pet Cordless Stick Vacuum, Lightweight, 280W\u200b | Powerful Suction, 2-in-1 Handheld Vacuum, LED Headlights, 50-Minute Run Time, Fur Remover Tool, HEPA, Re",
+      "previousObservedPrice": 179.99,
+      "currentObservedPrice": 169.99,
+      "dropPercent": 5.6,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-26T08:11:13.818989+00:00",
+      "url": "https://www.amazon.com/dp/B0DQLLPYGM",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
