@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-26T02:41:13.612596+00:00",
+  "updated": "2026-11-26T03:11:12.794067+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0DN6Q32F6",
+      "title": "HEYDUDE Women's Austin Lift Classic Slip On Loafers, Brown Leopard, Size 8 | Leather Or Suede Uppers, Flexible Outsole, 34mm Platform Height, Raised Back Heel, Easy On And Off Desi",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0DN6Q32F6",
+      "imageUrl": "https://m.media-amazon.com/images/I/31x5Zr7jifL._SL160_.jpg",
+      "price": 39.99,
+      "referencePrice": 79.99,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-26T03:11:12.794067+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Hey Dude Official",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0FCK7QZ3W",
       "title": "Michael Kors Zoe Small Convertible Pochette, Gold-Tone Hardware/Cheetah Haircalf/Marigold",
