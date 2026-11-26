@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-26T06:41:13.403955+00:00",
-  "changes": [
-    {
-      "asin": "B0CF3BDBL2",
-      "title": "Windex Glass & Window Cleaner Spray Bottle, Original, 23 oz | Streak-Free Shine, Removes Dirt, Smudges & Fingerprints from Glass Tabletops, Windows, Mirrors, Shower Doors & More",
-      "previousObservedPrice": 3.57,
-      "currentObservedPrice": 2.85,
-      "dropPercent": 20.2,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-26T06:41:13.403955+00:00",
-      "url": "https://www.amazon.com/dp/B0CF3BDBL2",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-26T07:11:13.392049+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
