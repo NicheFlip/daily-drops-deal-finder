@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-26T18:11:15.091469+00:00",
-  "changes": [
-    {
-      "asin": "B092VNYHZW",
-      "title": "Amazon Basics Extra Strong & Flex Tall Kitchen Drawstring Trash Bags, 13 Gallon, 50 Count, Packaging May Vary",
-      "previousObservedPrice": 10.89,
-      "currentObservedPrice": 5.99,
-      "dropPercent": 45.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-26T18:11:15.091469+00:00",
-      "url": "https://www.amazon.com/dp/B092VNYHZW",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-26T18:41:12.660368+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
