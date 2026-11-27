@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-26T23:24:33.903903+00:00",
-  "changes": [
-    {
-      "asin": "B00555EWJU",
-      "title": "Hefty Slider Jumbo Storage Bags, Extra Large 2.5 Gallon Size, 12ct | Oversized 2.5 Gallon Storage Bags, Store Bulk Food, Clothes, Shoes, and More, Writable Label, Secure Slider Clo",
-      "previousObservedPrice": 4.79,
-      "currentObservedPrice": 2.2,
-      "dropPercent": 54.1,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-26T23:24:33.903903+00:00",
-      "url": "https://www.amazon.com/dp/B00555EWJU",
-      "seller": "CheapCorner Store",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T00:11:13.096115+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
