@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-27T04:41:12.743209+00:00",
-  "changes": [
-    {
-      "asin": "B0F94FMBYW",
-      "title": "DEWALT 20V MAX XR\u00ae Brushless Cordless 1/2 in. Drill/Driver (Tool Only) (DCD801B) battery powered, Bright LED Work light",
-      "previousObservedPrice": 108.82,
-      "currentObservedPrice": 108.0,
-      "dropPercent": 0.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T04:41:12.743209+00:00",
-      "url": "https://www.amazon.com/dp/B0F94FMBYW",
-      "seller": "Forged Standard",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T05:11:13.488118+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
