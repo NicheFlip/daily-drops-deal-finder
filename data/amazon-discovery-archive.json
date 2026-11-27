@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-27T05:28:19.659441+00:00",
+  "updated": "2026-11-27T05:41:13.001376+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HMGH9S8Z",
+      "title": "Hopcycle Electric Scooters - Electric Scooter Adults A-Dark Black | 10''/8.5'' Tires, 28/25/23/21Miles, Long Range E Scooter, Double Braking System, App",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B0HMGH9S8Z",
+      "imageUrl": "https://m.media-amazon.com/images/I/41hANgYVfSL._SL160_.jpg",
+      "price": 149.99,
+      "referencePrice": 399.99,
+      "discountPercent": 63,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T05:41:13.001376+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Kiyuen",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B071SF8419",
       "title": "Waring Blade Blender with 48 oz Stainless Steel Jar & Toggle & Pulse | BB300S | 1.5 Horsepower Motor, 2-Speed Toggle Controls with Pulse, for Bars & Restaurants, NSF Certified",
