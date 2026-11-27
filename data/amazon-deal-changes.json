@@ -1,36 +1,5 @@
 {
-  "updated": "2026-11-27T14:41:18.914316+00:00",
-  "changes": [
-    {
-      "asin": "B00FLFIGF0",
-      "title": "Lysol Disinfecting Wipes, Multi-Surface Cleaner, Crisp Linen, 80 ct. | All Purpose Cleaner, Sanitizing, Deodorizing, Apartment Essentials, Back To School Cleaning Supplies, Kitchen",
-      "previousObservedPrice": 4.97,
-      "currentObservedPrice": 1.45,
-      "dropPercent": 70.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T14:41:18.914316+00:00",
-      "url": "https://www.amazon.com/dp/B00FLFIGF0",
-      "seller": "ISUPPLY_RT",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B0BL41SSK3",
-      "title": "Hefty 8 Gallon Medium Trash Bags, White, Fabuloso Lavender Scent, 26ct | Drawstring Closure, 8G Medium White Trash Bags for Bathrooms, Bedrooms, Home Offices, Scented, Continuous O",
-      "previousObservedPrice": 5.75,
-      "currentObservedPrice": 2.5,
-      "dropPercent": 56.5,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T14:41:18.914316+00:00",
-      "url": "https://www.amazon.com/dp/B0BL41SSK3",
-      "seller": "ISUPPLY_RT",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T15:11:15.881282+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
