@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-27T10:11:12.868491+00:00",
+  "updated": "2026-11-27T10:41:14.668523+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B07XXPHQZK",
+      "title": "LANEIGE Lip Sleeping Mask, Overnight Care for Dry, Flaky Lips, 0.7 oz/20 g | Clinically tested Korean Overnight Lip Mask with Berry Fruit Complex, Vitamin C, Shea and Murumuru Seed",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B07XXPHQZK",
+      "imageUrl": "https://m.media-amazon.com/images/I/31zm4e+eURL._SL160_.jpg",
+      "price": 12.0,
+      "referencePrice": 24.0,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T10:41:14.668523+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0HQ72L2XF",
       "title": "2026 New Smart Projector Built-in Apps Android 14 Native 1080P 4K Decoding | WiFi 6 Bluetooth 5.4, 600 ANSI Lumens, Low Fan Noise (<30dB), Projector for Home (2026 CinePro-Black)",
