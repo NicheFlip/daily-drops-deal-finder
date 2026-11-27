@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-27T10:41:14.668523+00:00",
+  "updated": "2026-11-27T11:11:14.698324+00:00",
   "changes": [
     {
-      "asin": "B0F94FMBYW",
-      "title": "DEWALT 20V MAX XR\u00ae Brushless Cordless 1/2 in. Drill/Driver (Tool Only) (DCD801B) battery powered, Bright LED Work light",
-      "previousObservedPrice": 108.84,
-      "currentObservedPrice": 108.0,
-      "dropPercent": 0.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T10:41:14.668523+00:00",
-      "url": "https://www.amazon.com/dp/B0F94FMBYW",
-      "seller": "Nibras Prime",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
+      "asin": "B00AQIULD2",
+      "title": "Glad Large 30 Gallon Trash Bags, Unscented Heavy Duty Garbage Bags, Forceflex with Drawstring, 50 Count (Packaging May Vary)",
+      "previousObservedPrice": 15.24,
+      "currentObservedPrice": 9.98,
+      "dropPercent": 34.5,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-27T11:11:14.698324+00:00",
+      "url": "https://www.amazon.com/dp/B00AQIULD2",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
