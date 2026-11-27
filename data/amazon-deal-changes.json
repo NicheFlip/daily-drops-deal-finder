@@ -1,5 +1,81 @@
 {
-  "updated": "2026-11-27T16:11:23.808427+00:00",
-  "changes": [],
+  "updated": "2026-11-27T16:41:13.609067+00:00",
+  "changes": [
+    {
+      "asin": "B00FLFIGF0",
+      "title": "Lysol Disinfecting Wipes, Multi-Surface Cleaner, Crisp Linen, 80 ct. | All Purpose Cleaner, Sanitizing, Deodorizing, Apartment Essentials, Back To School Cleaning Supplies, Kitchen",
+      "previousObservedPrice": 4.97,
+      "currentObservedPrice": 1.45,
+      "dropPercent": 70.8,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T16:41:13.609067+00:00",
+      "url": "https://www.amazon.com/dp/B00FLFIGF0",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B0CF39CXS2",
+      "title": "ARM & HAMMER Light Laundry Scent Booster, Crisp Clean Scent, 24 Oz | In-Wash Laundry Fragrance, No Heavy Perfumes, No Dyes, No Parabens, Laundry Additive",
+      "previousObservedPrice": 4.97,
+      "currentObservedPrice": 1.85,
+      "dropPercent": 62.8,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T16:41:13.609067+00:00",
+      "url": "https://www.amazon.com/dp/B0CF39CXS2",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B0BL439NQ5",
+      "title": "Hefty 8 Gallon Medium Trash Bags, Ocean Water, White, 26 Count | Bathroom And Office Use, Continuous Odor Control, Easy Drawstring Closure",
+      "previousObservedPrice": 5.79,
+      "currentObservedPrice": 2.4,
+      "dropPercent": 58.5,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T16:41:13.609067+00:00",
+      "url": "https://www.amazon.com/dp/B0BL439NQ5",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B07VH667FV",
+      "title": "ARM & HAMMER Plus OxiClean with Odor Blasters Detergent Paks, 42 Count | 42 pre-measured 5-in-1 Power Paks eliminate tough odors, attack stains, whiten whites and brighten colors, ",
+      "previousObservedPrice": 8.98,
+      "currentObservedPrice": 5.98,
+      "dropPercent": 33.4,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T16:41:13.609067+00:00",
+      "url": "https://www.amazon.com/dp/B07VH667FV",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
+    {
+      "asin": "B00F1U0YB4",
+      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
+      "previousObservedPrice": 7.61,
+      "currentObservedPrice": 5.48,
+      "dropPercent": 28.0,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T16:41:13.609067+00:00",
+      "url": "https://www.amazon.com/dp/B00F1U0YB4",
+      "seller": "ISUPPLY_RT",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
