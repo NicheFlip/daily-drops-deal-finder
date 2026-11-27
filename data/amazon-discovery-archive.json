@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-27T09:41:13.788247+00:00",
+  "updated": "2026-11-27T10:11:12.868491+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HQ72L2XF",
+      "title": "2026 New Smart Projector Built-in Apps Android 14 Native 1080P 4K Decoding | WiFi 6 Bluetooth 5.4, 600 ANSI Lumens, Low Fan Noise (<30dB), Projector for Home (2026 CinePro-Black)",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0HQ72L2XF",
+      "imageUrl": "https://m.media-amazon.com/images/I/41e16O9BHUL._SL160_.jpg",
+      "price": 99.96,
+      "referencePrice": 359.99,
+      "discountPercent": 72,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 99.97,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T10:11:12.868491+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "KaiLingRui US",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B09KT67BL1",
       "title": "HomeHacks 2 Pack Large Laundry Baskets, Laundry Hampers Bags (Grey 75Lx2) | Waterproof, Freestanding, Collapsible Clothes Hamper with Reinforced Handles in Laundry Room, Dorm, Bath",

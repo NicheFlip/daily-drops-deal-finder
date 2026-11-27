@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-27T09:41:13.788247+00:00",
-  "changes": [
-    {
-      "asin": "B08SHSBMRQ",
-      "title": "HappyTrends Kitchen Mats for Floor Cushioned Anti-Fatigue Kitchen Rugs | Thick,Soft and Waterproof Non-Slip Mats and Rugs Heavy Duty Ergonomic Comfort Rug for Floor,Office,Sink,Lau",
-      "previousObservedPrice": 14.99,
-      "currentObservedPrice": 9.0,
-      "dropPercent": 40.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T09:41:13.788247+00:00",
-      "url": "https://www.amazon.com/dp/B08SHSBMRQ",
-      "seller": "Happytrends",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T10:11:12.868491+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
