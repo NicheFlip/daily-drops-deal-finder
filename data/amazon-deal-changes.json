@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-27T01:41:12.420672+00:00",
-  "changes": [],
+  "updated": "2026-11-27T02:11:12.542744+00:00",
+  "changes": [
+    {
+      "asin": "B0HDYR66KM",
+      "title": "Go Brush Pro 2026 Cordless Hair Straightener Brush: Ionic & Anti-Frizz, Ceramic Tourmaline MCH Fast Heating, Anti-Scald, Type-C Fast Charging, Portable for Women",
+      "previousObservedPrice": 119.99,
+      "currentObservedPrice": 39.99,
+      "dropPercent": 66.7,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-27T02:11:12.542744+00:00",
+      "url": "https://www.amazon.com/dp/B0HDYR66KM",
+      "seller": "Hypoet",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
