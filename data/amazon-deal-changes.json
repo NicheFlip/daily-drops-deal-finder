@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-27T03:41:16.693745+00:00",
-  "changes": [
-    {
-      "asin": "B0HKMN3DXF",
-      "title": "Bagotte Robot Vacuum and Mop, 10000Pa Super Suction, 90 Days Hands-Free Robotic Vacuum Cleaner with Smart LiDAR Mapping, Edge-to-Corner Cleaning, APP & Voice Control for Pet Hair H",
-      "previousObservedPrice": 799.99,
-      "currentObservedPrice": 249.99,
-      "dropPercent": 68.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T03:41:16.693745+00:00",
-      "url": "https://www.amazon.com/dp/B0HKMN3DXF",
-      "seller": "SunJinGuiHuaYao-US",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T04:11:13.412924+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
