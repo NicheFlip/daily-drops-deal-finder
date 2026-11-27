@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-27T06:11:12.570890+00:00",
+  "updated": "2026-11-27T06:41:13.170851+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0GC7KSBNX",
+      "title": "HEYDUDE Men's Wally Funk Craft Mesh Slip On Loafer, White/Black Size 13 | Breathable Cotton Upper, Elastic Laces, Rounded Toe, Flex And Fold Outsole, Memory Foam Insole, Odor Guard",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0GC7KSBNX",
+      "imageUrl": "https://m.media-amazon.com/images/I/41mZtDWuXtL._SL160_.jpg",
+      "price": 36.99,
+      "referencePrice": 69.95,
+      "discountPercent": 47,
+      "dealScore": 35,
+      "everydayEssential": false,
+      "reason": "Observed price drop",
+      "previousObservedPrice": 38.99,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-27T06:41:13.170851+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Hey Dude Official",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B01N0Y1CQH",
       "title": "Kendra Scott Elisa Short Pendant Necklace for Women, Dainty Fashion Jewelry, 14K Gold-Plated Brass, Berry Clear Glass",
