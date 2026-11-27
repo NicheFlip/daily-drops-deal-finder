@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-27T15:34:07.456697+00:00",
-  "changes": [
-    {
-      "asin": "B00262227E",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",
-      "previousObservedPrice": 7.18,
-      "currentObservedPrice": 3.98,
-      "dropPercent": 44.6,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T15:34:07.456697+00:00",
-      "url": "https://www.amazon.com/dp/B00262227E",
-      "seller": "Promontory Group INC",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T16:11:23.808427+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
