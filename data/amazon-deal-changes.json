@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-27T08:11:14.072207+00:00",
-  "changes": [],
+  "updated": "2026-11-27T08:41:19.435169+00:00",
+  "changes": [
+    {
+      "asin": "B0CWS44STK",
+      "title": "Five Star Spiral Notebook, 2 Subject, College Ruled Paper, 6\" x 9.5\", 80 Sheets, Blue (840029CG1)",
+      "previousObservedPrice": 2.79,
+      "currentObservedPrice": 2.69,
+      "dropPercent": 3.6,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-27T08:41:19.435169+00:00",
+      "url": "https://www.amazon.com/dp/B0CWS44STK",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
