@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-27T08:41:19.435169+00:00",
+  "updated": "2026-11-27T09:11:13.334659+00:00",
   "changes": [
     {
-      "asin": "B0CWS44STK",
-      "title": "Five Star Spiral Notebook, 2 Subject, College Ruled Paper, 6\" x 9.5\", 80 Sheets, Blue (840029CG1)",
-      "previousObservedPrice": 2.79,
-      "currentObservedPrice": 2.69,
-      "dropPercent": 3.6,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T08:41:19.435169+00:00",
-      "url": "https://www.amazon.com/dp/B0CWS44STK",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
+      "asin": "B0FRSRFFZR",
+      "title": "Portable Charger Power Bank 60000mAh, 22.5W PD Fast-Charge Battery Pack | Charge 5 Devices, 3-Ports & 3 in 1 Cable, 60% in 30min, 10 times for iPhone, Fit All Cell Phone/Tablets,Ca",
+      "previousObservedPrice": 53.99,
+      "currentObservedPrice": 28.47,
+      "dropPercent": 47.3,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T09:11:13.334659+00:00",
+      "url": "https://www.amazon.com/dp/B0FRSRFFZR",
+      "seller": "Lumoom Tech",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
