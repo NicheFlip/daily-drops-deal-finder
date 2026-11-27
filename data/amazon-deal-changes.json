@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-27T06:41:13.170851+00:00",
-  "changes": [
-    {
-      "asin": "B0GC7KSBNX",
-      "title": "HEYDUDE Men's Wally Funk Craft Mesh Slip On Loafer, White/Black Size 13 | Breathable Cotton Upper, Elastic Laces, Rounded Toe, Flex And Fold Outsole, Memory Foam Insole, Odor Guard",
-      "previousObservedPrice": 38.99,
-      "currentObservedPrice": 36.99,
-      "dropPercent": 5.1,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T06:41:13.170851+00:00",
-      "url": "https://www.amazon.com/dp/B0GC7KSBNX",
-      "seller": "Hey Dude Official",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T07:11:14.580583+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
