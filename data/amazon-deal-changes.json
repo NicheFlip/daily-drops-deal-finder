@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-27T22:11:13.956996+00:00",
-  "changes": [
-    {
-      "asin": "B0HHH896TZ",
-      "title": "Bagotte Robot Vacuum and Mop Combo, 10000Pa Suction, LiDAR Navigation, Self-Emptying Robotic Vacuum Cleaner with 90 Days Capacity, Smart Mapping, WiFi/APP/Voice Control, for Pet Ha",
-      "previousObservedPrice": 799.0,
-      "currentObservedPrice": 239.99,
-      "dropPercent": 70.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T22:11:13.956996+00:00",
-      "url": "https://www.amazon.com/dp/B0HHH896TZ",
-      "seller": "LiuGuangChuanF447-US",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T22:41:13.730790+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
