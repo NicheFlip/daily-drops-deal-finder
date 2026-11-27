@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-27T07:11:14.580583+00:00",
+  "updated": "2026-11-27T07:41:20.743039+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0F8YX6R23",
+      "title": "adidas Men's X_plrpath, Black, 11 | Running-Inspired Shoes, Light-Weight, Cloudfoam Midsole, Lace Closure, For Everyday Wear",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0F8YX6R23",
+      "imageUrl": "https://m.media-amazon.com/images/I/31LpkduuUtL._SL160_.jpg",
+      "price": 30.0,
+      "referencePrice": 65.0,
+      "discountPercent": 54,
+      "dealScore": 14,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T07:41:20.743039+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0HJPWNLCC",
       "title": "AUKACI Steam Mop,12-in-1 Steam Mops for Floor Cleaning,15s Fast Heat Up,15.6FT Cord,360ML Water Tank,F2 Steam Cleaner for Home, Hardwood Floors,Tile,Clothes,Carpet,Hair,White",
