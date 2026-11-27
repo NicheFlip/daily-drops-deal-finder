@@ -1,51 +1,5 @@
 {
-  "updated": "2026-11-27T18:41:14.013499+00:00",
-  "changes": [
-    {
-      "asin": "B0HFZZFQYS",
-      "title": "Cordless Vacuum Cleaner, 300AW/65Min Vacuum Cleaners for Home Stick Vacuum | 20-inch Hose, Auto Mode Wall and Mount Charging, LED Touchscreen, Self-Standing Vacumm Cleaner for Pet ",
-      "previousObservedPrice": 229.99,
-      "currentObservedPrice": 89.99,
-      "dropPercent": 60.9,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T18:41:14.013499+00:00",
-      "url": "https://www.amazon.com/dp/B0HFZZFQYS",
-      "seller": "Softya",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B07RTJWCMS",
-      "title": "Fruit Flavored Snacks Variety Pack, Gluten Free, 16 ct, 10.2 oz | Fruit Roll-Ups, Fruit by the Foot, and Gushers, Individually Wrapped, Good Source of Vitamin C",
-      "previousObservedPrice": 4.97,
-      "currentObservedPrice": 2.25,
-      "dropPercent": 54.7,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T18:41:14.013499+00:00",
-      "url": "https://www.amazon.com/dp/B07RTJWCMS",
-      "seller": "StayGold Enterprise\u2728",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B0BJCC7Y4L",
-      "title": "MRS. MEYER'S CLEAN DAY Hand Soap, Fall Leaves Scent, 12.5 Fl Oz Bottle",
-      "previousObservedPrice": 5.28,
-      "currentObservedPrice": 2.85,
-      "dropPercent": 46.0,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T18:41:14.013499+00:00",
-      "url": "https://www.amazon.com/dp/B0BJCC7Y4L",
-      "seller": "DEPPY SHOP",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T19:11:13.943827+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
