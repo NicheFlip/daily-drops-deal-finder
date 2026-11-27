@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-27T12:11:13.604934+00:00",
+  "updated": "2026-11-27T12:41:15.105562+00:00",
   "changes": [
     {
-      "asin": "B00VKRK7K0",
-      "title": "SNAP CIRCUITS Arcade SCA-200 STEM Electronics Kit for Kids Ages 8+ | Build arcade-style electronic games and activities while learning circuits through hands-on STEM play.",
-      "previousObservedPrice": 31.99,
-      "currentObservedPrice": 27.59,
-      "dropPercent": 13.8,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T12:11:13.604934+00:00",
-      "url": "https://www.amazon.com/dp/B00VKRK7K0",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
+      "asin": "B000S5S1AI",
+      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Lemon Verbena, 16 fl. Oz",
+      "previousObservedPrice": 4.0,
+      "currentObservedPrice": 1.8,
+      "dropPercent": 55.0,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T12:41:15.105562+00:00",
+      "url": "https://www.amazon.com/dp/B000S5S1AI",
+      "seller": "BR_Med",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
