@@ -1,51 +1,5 @@
 {
-  "updated": "2026-11-27T02:41:13.314238+00:00",
-  "changes": [
-    {
-      "asin": "B0FDKRSV72",
-      "title": "GAYHAY Black Long Sleeve Shirts for Women School Outfit Fall Casual Tshirts | Crewneck Basic Tees, Loose Fit, Daily Wear T Shirts, Comfy Soft Plain Layer, Fashion Clothing, Busines",
-      "previousObservedPrice": 8.99,
-      "currentObservedPrice": 6.63,
-      "dropPercent": 26.3,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T02:41:13.314238+00:00",
-      "url": "https://www.amazon.com/dp/B0FDKRSV72",
-      "seller": "Gayhay",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B00262227E",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",
-      "previousObservedPrice": 8.69,
-      "currentObservedPrice": 7.18,
-      "dropPercent": 17.4,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T02:41:13.314238+00:00",
-      "url": "https://www.amazon.com/dp/B00262227E",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    },
-    {
-      "asin": "B0F94FMBYW",
-      "title": "DEWALT 20V MAX XR\u00ae Brushless Cordless 1/2 in. Drill/Driver (Tool Only) (DCD801B) battery powered, Bright LED Work light",
-      "previousObservedPrice": 108.83,
-      "currentObservedPrice": 108.0,
-      "dropPercent": 0.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-27T02:41:13.314238+00:00",
-      "url": "https://www.amazon.com/dp/B0F94FMBYW",
-      "seller": "Verified Apparel",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-27T03:11:13.142830+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
