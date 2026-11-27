@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-27T16:41:13.609067+00:00",
+  "updated": "2026-11-27T17:11:18.863535+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0GZ4YMG1S",
+      "title": "Secret Antiperspirant Deodorant for Women, Berry Bright Scent, 2.6 oz | 72HR Holiday Sweat & Odor Protection | Limited Edition | Gentle Invisible Solid | pH Balancing Minerals & Pr",
+      "category": "HealthPersonalCare",
+      "url": "https://www.amazon.com/dp/B0GZ4YMG1S",
+      "imageUrl": "https://m.media-amazon.com/images/I/41u1R8UzXbL._SL160_.jpg",
+      "price": 4.72,
+      "referencePrice": 7.95,
+      "discountPercent": 41,
+      "dealScore": 1,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T17:11:18.863535+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B0HMG9MZRB",
       "title": "Robot Vacuum and Mop for Pet Hair, 11500Pa Suction, 90-Day Self-Emptying | 90-Day Hands-Free Cleaning,3-in-1 Vacuum Mop,LiDAR Navigation,160-Minute Runtime,Ideal for Pet Owners Ale",
