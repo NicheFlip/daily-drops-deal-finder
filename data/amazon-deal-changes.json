@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-27T11:11:14.698324+00:00",
-  "changes": [
-    {
-      "asin": "B00AQIULD2",
-      "title": "Glad Large 30 Gallon Trash Bags, Unscented Heavy Duty Garbage Bags, Forceflex with Drawstring, 50 Count (Packaging May Vary)",
-      "previousObservedPrice": 15.24,
-      "currentObservedPrice": 9.98,
-      "dropPercent": 34.5,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-27T11:11:14.698324+00:00",
-      "url": "https://www.amazon.com/dp/B00AQIULD2",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
-    }
-  ],
+  "updated": "2026-11-27T11:41:13.808803+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
