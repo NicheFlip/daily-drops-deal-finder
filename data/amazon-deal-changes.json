@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-27T20:11:13.833530+00:00",
-  "changes": [],
+  "updated": "2026-11-27T20:41:20.078943+00:00",
+  "changes": [
+    {
+      "asin": "B07MG5YJLT",
+      "title": "Mrs. Meyer's Clean Day, Hand Soap, Rain Water Scent, 12.5 Fl Oz",
+      "previousObservedPrice": 4.25,
+      "currentObservedPrice": 2.11,
+      "dropPercent": 50.4,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-27T20:41:20.078943+00:00",
+      "url": "https://www.amazon.com/dp/B07MG5YJLT",
+      "seller": "SR Store deals",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
