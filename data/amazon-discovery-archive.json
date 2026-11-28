@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-28T14:41:12.891020+00:00",
+  "updated": "2026-11-28T15:11:19.639053+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B01JLPJM8U",
+      "title": "Hefty Slider Storage Bags, Gallon Size, 66ct | Bulk Pack, Gallon Storage Bags for Food, Snacks, Toiletries, and More, Writable Label, Stand and Fill, Secure Slider Closure",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B01JLPJM8U",
+      "imageUrl": "https://m.media-amazon.com/images/I/41lDM8ShmoL._SL160_.jpg",
+      "price": 4.98,
+      "referencePrice": 9.11,
+      "discountPercent": 45,
+      "dealScore": 5,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T15:11:19.639053+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Texas 53 Logistics",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B0000AFX6K",
       "title": "Merrell Men's Jungle Moc Slip-On Shoe,Midnight,10.5 M US",
