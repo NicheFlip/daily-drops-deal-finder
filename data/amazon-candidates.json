@@ -1,29 +1,6 @@
 {
-  "updated": "2026-11-28T19:41:21.541827+00:00",
-  "candidates": [
-    {
-      "asin": "B0B4HKNDLQ",
-      "title": "Sol de Janeiro Bum Bum Jet Set | Travel-Size Essentials, TSA-Friendly Set, Nourishing Body Wash, Firming Bum Bum Cream & Gourmand Perfume Mist",
-      "category": "Beauty",
-      "url": "https://www.amazon.com/dp/B0B4HKNDLQ",
-      "imageUrl": "https://m.media-amazon.com/images/I/41lKvFmNkaL._SL160_.jpg",
-      "price": 20.4,
-      "referencePrice": 34.0,
-      "discountPercent": 40,
-      "dealScore": 0,
-      "everydayEssential": true,
-      "reason": "First observation",
-      "previousObservedPrice": null,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-28T19:41:21.541827+00:00",
-      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
-      "seller": "Sol de Janeiro, USA Inc.",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
-  "count": 1,
+  "updated": "2026-11-28T20:11:13.549300+00:00",
+  "candidates": [],
+  "count": 0,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
