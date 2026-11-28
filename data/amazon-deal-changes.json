@@ -1,35 +1,20 @@
 {
-  "updated": "2026-11-28T04:41:20.272086+00:00",
+  "updated": "2026-11-28T05:11:13.686625+00:00",
   "changes": [
     {
-      "asin": "B09VK154VZ",
-      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
-      "previousObservedPrice": 16.58,
-      "currentObservedPrice": 7.62,
-      "dropPercent": 54.0,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-28T04:41:20.272086+00:00",
-      "url": "https://www.amazon.com/dp/B09VK154VZ",
-      "seller": "Amazon Resale",
+      "asin": "B0BXGFFSL1",
+      "title": "Logitech Brio 101 Full HD 1080p Webcam for PC, Built-in Mic, Black | Full HD 1080p resolution, auto-light balance, privacy shutter, USB plug-and-play setup for Zoom, Teams, Google ",
+      "previousObservedPrice": 24.99,
+      "currentObservedPrice": 23.72,
+      "dropPercent": 5.1,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-28T05:11:13.686625+00:00",
+      "url": "https://www.amazon.com/dp/B0BXGFFSL1",
+      "seller": "Amazon.com",
       "soldByAmazon": true,
       "isPrime": true,
       "freeShipping": true,
       "shippingStatus": "amazon"
-    },
-    {
-      "asin": "B0HJWMGCSC",
-      "title": "KZKB 160PSI Tire Inflator Portable Air Compressor for Car, Ball and Bicycle | 160 PSI Portable Air Pump with Tire Gauge Pressure & LED Light & Auto Shut-Off Cordless Bike Pump for ",
-      "previousObservedPrice": 139.99,
-      "currentObservedPrice": 69.99,
-      "dropPercent": 50.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-28T04:41:20.272086+00:00",
-      "url": "https://www.amazon.com/dp/B0HJWMGCSC",
-      "seller": "Xliqiong1",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
