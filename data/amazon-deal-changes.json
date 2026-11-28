@@ -1,20 +1,35 @@
 {
-  "updated": "2026-11-28T04:11:12.778740+00:00",
+  "updated": "2026-11-28T04:41:20.272086+00:00",
   "changes": [
     {
-      "asin": "B0CF3BDBL2",
-      "title": "Windex Glass & Window Cleaner Spray Bottle, Original, 23 oz | Streak-Free Shine, Removes Dirt, Smudges & Fingerprints from Glass Tabletops, Windows, Mirrors, Shower Doors & More",
-      "previousObservedPrice": 3.57,
-      "currentObservedPrice": 2.85,
-      "dropPercent": 20.2,
+      "asin": "B09VK154VZ",
+      "title": "ARM & Hammer Peroxicare Toothpaste, Clean Mint, 6.0 oz, 4-Pack | For Gum Health, Baking Soda Toothpaste, Removes Plaque Bacteria, Cavity Prevention",
+      "previousObservedPrice": 16.58,
+      "currentObservedPrice": 7.62,
+      "dropPercent": 54.0,
       "newObservedLow": false,
-      "checkedAt": "2026-11-28T04:11:12.778740+00:00",
-      "url": "https://www.amazon.com/dp/B0CF3BDBL2",
-      "seller": "Amazon.com",
+      "checkedAt": "2026-11-28T04:41:20.272086+00:00",
+      "url": "https://www.amazon.com/dp/B09VK154VZ",
+      "seller": "Amazon Resale",
       "soldByAmazon": true,
       "isPrime": true,
       "freeShipping": true,
       "shippingStatus": "amazon"
+    },
+    {
+      "asin": "B0HJWMGCSC",
+      "title": "KZKB 160PSI Tire Inflator Portable Air Compressor for Car, Ball and Bicycle | 160 PSI Portable Air Pump with Tire Gauge Pressure & LED Light & Auto Shut-Off Cordless Bike Pump for ",
+      "previousObservedPrice": 139.99,
+      "currentObservedPrice": 69.99,
+      "dropPercent": 50.0,
+      "newObservedLow": true,
+      "checkedAt": "2026-11-28T04:41:20.272086+00:00",
+      "url": "https://www.amazon.com/dp/B0HJWMGCSC",
+      "seller": "Xliqiong1",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
