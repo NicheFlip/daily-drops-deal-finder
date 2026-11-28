@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-28T08:41:12.987844+00:00",
-  "changes": [
-    {
-      "asin": "B0HHDQYCRQ",
-      "title": "Android 16 Kids Tablet HD 10 Inch with Stylus & Case, 24GB RAM 64GB ROM 1TB | Electronics Tablets for Kids Toddler, Parental Control & Kids Space, 6000mAh, WiFi 6, BT 5.4, 2*Camera",
-      "previousObservedPrice": 91.99,
-      "currentObservedPrice": 86.44,
-      "dropPercent": 6.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-28T08:41:12.987844+00:00",
-      "url": "https://www.amazon.com/dp/B0HHDQYCRQ",
-      "seller": "Evermyth Tech",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-28T09:11:12.951525+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
