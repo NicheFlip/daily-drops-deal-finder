@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-28T14:11:12.338548+00:00",
+  "updated": "2026-11-28T14:41:12.891020+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0000AFX6K",
+      "title": "Merrell Men's Jungle Moc Slip-On Shoe,Midnight,10.5 M US",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0000AFX6K",
+      "imageUrl": "https://m.media-amazon.com/images/I/41UirjggBQL._SL160_.jpg",
+      "price": 49.99,
+      "referencePrice": 110.0,
+      "discountPercent": 55,
+      "dealScore": 15,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T14:41:12.891020+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B07WHZN2H3",
       "title": "Fossil Men's Copeland Quartz Three-Hand Watch for Men",
