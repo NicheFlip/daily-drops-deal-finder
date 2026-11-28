@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-28T06:41:14.101154+00:00",
+  "updated": "2026-11-28T07:11:14.110039+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B00Z0UWWYC",
+      "title": "Logitech G29 Driving Force Racing Wheel and Floor pedals for PC/Mac - Black | Gaming equipment with real force feedback, stainless steel paddle shifters, leather wheel cover, Steer",
+      "category": "VideoGames",
+      "url": "https://www.amazon.com/dp/B00Z0UWWYC",
+      "imageUrl": "https://m.media-amazon.com/images/I/41ACma-e9oL._SL160_.jpg",
+      "price": 161.41,
+      "referencePrice": 299.99,
+      "discountPercent": 46,
+      "dealScore": 6,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T07:11:14.110039+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B00DU5SRIY",
       "title": "Stardrops The Pink Stuff Cleaning Paste 500g, Multi Purpose Cleaner for Kitchen, Bathroom, Tiles, Glass, Shower, Oven, Sink, Stainless Steel, Removes Grease, Grime & Stains",
