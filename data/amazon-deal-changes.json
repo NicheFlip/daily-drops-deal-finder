@@ -1,21 +1,5 @@
 {
-  "updated": "2026-11-28T01:41:13.079998+00:00",
-  "changes": [
-    {
-      "asin": "B000S5S1AI",
-      "title": "MRS. MEYER'S CLEAN DAY Liquid Dish Soap, Lemon Verbena, 16 fl. Oz",
-      "previousObservedPrice": 4.0,
-      "currentObservedPrice": 1.85,
-      "dropPercent": 53.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-28T01:41:13.079998+00:00",
-      "url": "https://www.amazon.com/dp/B000S5S1AI",
-      "seller": "BR_Med",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-28T02:11:13.197784+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
