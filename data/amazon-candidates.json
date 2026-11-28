@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-28T00:41:13.541262+00:00",
-  "candidates": [],
-  "count": 0,
+  "updated": "2026-11-28T01:11:13.260980+00:00",
+  "candidates": [
+    {
+      "asin": "B0CKM96FZ3",
+      "title": "Adidas Men's Lite Racer Adapt 7.0 Wide, White/Black/White, 8 | Running-inspired Shoes, Casual Shoes, Slip-On, Elastic Closure with Adjustable Laces, For Everyday Wear",
+      "category": "Fashion",
+      "url": "https://www.amazon.com/dp/B0CKM96FZ3",
+      "imageUrl": "https://m.media-amazon.com/images/I/31VehEriRLL._SL160_.jpg",
+      "price": 28.0,
+      "referencePrice": 70.0,
+      "discountPercent": 60,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T01:11:13.260980+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    }
+  ],
+  "count": 1,
   "note": "Research queue only; not verified at checkout. Unchanged offers suppressed."
 }
