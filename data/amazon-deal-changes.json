@@ -1,20 +1,20 @@
 {
-  "updated": "2026-11-28T05:11:13.686625+00:00",
+  "updated": "2026-11-28T05:41:12.967466+00:00",
   "changes": [
     {
-      "asin": "B0BXGFFSL1",
-      "title": "Logitech Brio 101 Full HD 1080p Webcam for PC, Built-in Mic, Black | Full HD 1080p resolution, auto-light balance, privacy shutter, USB plug-and-play setup for Zoom, Teams, Google ",
-      "previousObservedPrice": 24.99,
-      "currentObservedPrice": 23.72,
-      "dropPercent": 5.1,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-28T05:11:13.686625+00:00",
-      "url": "https://www.amazon.com/dp/B0BXGFFSL1",
-      "seller": "Amazon.com",
-      "soldByAmazon": true,
-      "isPrime": true,
-      "freeShipping": true,
-      "shippingStatus": "amazon"
+      "asin": "B0F94FMBYW",
+      "title": "DEWALT 20V MAX XR\u00ae Brushless Cordless 1/2 in. Drill/Driver (Tool Only) (DCD801B) battery powered, Bright LED Work light",
+      "previousObservedPrice": 108.8,
+      "currentObservedPrice": 108.0,
+      "dropPercent": 0.7,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T05:41:12.967466+00:00",
+      "url": "https://www.amazon.com/dp/B0F94FMBYW",
+      "seller": "Forged Standard",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
     }
   ],
   "note": "API-observed price drops only; checkout not verified."
