@@ -1,5 +1,21 @@
 {
-  "updated": "2026-11-28T09:41:12.932204+00:00",
-  "changes": [],
+  "updated": "2026-11-28T10:11:13.311719+00:00",
+  "changes": [
+    {
+      "asin": "B0HNMM62Q4",
+      "title": "Cordless Vacuum Cleaners for Home, 55Kpa Suction, Max 70Min Runtime | 600W Bushless Motor, Self-Standing, LED Display, Anti-tangle, Lightweight Vacuum Cleaners for Pet Hair, Carpet",
+      "previousObservedPrice": 219.99,
+      "currentObservedPrice": 89.99,
+      "dropPercent": 59.1,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T10:11:13.311719+00:00",
+      "url": "https://www.amazon.com/dp/B0HNMM62Q4",
+      "seller": "NeaTec",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    }
+  ],
   "note": "API-observed price drops only; checkout not verified."
 }
