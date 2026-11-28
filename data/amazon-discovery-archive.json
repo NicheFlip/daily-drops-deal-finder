@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-28T06:11:12.698410+00:00",
+  "updated": "2026-11-28T06:41:14.101154+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B00DU5SRIY",
+      "title": "Stardrops The Pink Stuff Cleaning Paste 500g, Multi Purpose Cleaner for Kitchen, Bathroom, Tiles, Glass, Shower, Oven, Sink, Stainless Steel, Removes Grease, Grime & Stains",
+      "category": "All",
+      "url": "https://www.amazon.com/dp/B00DU5SRIY",
+      "imageUrl": "https://m.media-amazon.com/images/I/41DPiQ77+9L._SL160_.jpg",
+      "price": 2.99,
+      "referencePrice": 5.97,
+      "discountPercent": 50,
+      "dealScore": 10,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T06:41:14.101154+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Amazon.com",
+      "soldByAmazon": true,
+      "isPrime": true,
+      "freeShipping": true,
+      "shippingStatus": "amazon"
+    },
     {
       "asin": "B075JBYGXG",
       "title": "Waterdrop Black Water Filter, Replacement for Berkey\u00ae BB9-2\u00ae, Purewell\u00ae | Compatible with Berkey\u00ae, Purewell\u00ae, BB9-2\u00ae Carbon Filters, Waterdrop Gravity Water Filter System, NSF/ANSI",
