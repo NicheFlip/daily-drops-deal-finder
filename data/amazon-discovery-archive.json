@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-28T19:11:18.701672+00:00",
+  "updated": "2026-11-28T19:41:21.541827+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0B4HKNDLQ",
+      "title": "Sol de Janeiro Bum Bum Jet Set | Travel-Size Essentials, TSA-Friendly Set, Nourishing Body Wash, Firming Bum Bum Cream & Gourmand Perfume Mist",
+      "category": "Beauty",
+      "url": "https://www.amazon.com/dp/B0B4HKNDLQ",
+      "imageUrl": "https://m.media-amazon.com/images/I/41lKvFmNkaL._SL160_.jpg",
+      "price": 20.4,
+      "referencePrice": 34.0,
+      "discountPercent": 40,
+      "dealScore": 0,
+      "everydayEssential": true,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T19:41:21.541827+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Sol de Janeiro, USA Inc.",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B07K32ZCHG",
       "title": "Fireside by Dearfoams Women\u2019s Sydney Shearling Slippers, Chestnut, 8 | Naturally Water Resistant, Memory Foam, Suede, Indoor Outdoor, Slip-On, Durable Outsoles, Oprah's 2024 Gift L",

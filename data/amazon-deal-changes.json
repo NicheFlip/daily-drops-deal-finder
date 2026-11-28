@@ -1,51 +1,5 @@
 {
-  "updated": "2026-11-28T19:11:18.701672+00:00",
-  "changes": [
-    {
-      "asin": "B07RTJWCMS",
-      "title": "Fruit Flavored Snacks Variety Pack, Gluten Free, 16 ct, 10.2 oz | Fruit Roll-Ups, Fruit by the Foot, and Gushers, Individually Wrapped, Good Source of Vitamin C",
-      "previousObservedPrice": 4.97,
-      "currentObservedPrice": 1.99,
-      "dropPercent": 60.0,
-      "newObservedLow": true,
-      "checkedAt": "2026-11-28T19:11:18.701672+00:00",
-      "url": "https://www.amazon.com/dp/B07RTJWCMS",
-      "seller": "DEPPY SHOP",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B00F1U0YB4",
-      "title": "MRS. MEYER'S CLEAN DAY Hand Soap Refill, Lemon Verbena Scent, 33 Fl Oz Bottle",
-      "previousObservedPrice": 4.98,
-      "currentObservedPrice": 3.93,
-      "dropPercent": 21.1,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-28T19:11:18.701672+00:00",
-      "url": "https://www.amazon.com/dp/B00F1U0YB4",
-      "seller": "DEPPY SHOP",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    },
-    {
-      "asin": "B00262227E",
-      "title": "Mrs. Meyer's Clean Day, Hand Soap Refill, Lavender Scent, 33 Fl Oz",
-      "previousObservedPrice": 3.98,
-      "currentObservedPrice": 3.19,
-      "dropPercent": 19.8,
-      "newObservedLow": false,
-      "checkedAt": "2026-11-28T19:11:18.701672+00:00",
-      "url": "https://www.amazon.com/dp/B00262227E",
-      "seller": "DEPPY SHOP",
-      "soldByAmazon": false,
-      "isPrime": null,
-      "freeShipping": null,
-      "shippingStatus": "third_party"
-    }
-  ],
+  "updated": "2026-11-28T19:41:21.541827+00:00",
+  "changes": [],
   "note": "API-observed price drops only; checkout not verified."
 }
