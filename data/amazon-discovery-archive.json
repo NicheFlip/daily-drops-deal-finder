@@ -1,7 +1,29 @@
 {
-  "updated": "2026-11-28T11:11:12.744272+00:00",
+  "updated": "2026-11-28T11:41:14.192614+00:00",
   "retentionDays": null,
   "events": [
+    {
+      "asin": "B0HMCY8SLW",
+      "title": "Smart Watch for Men Women with Flashlight/2 Straps/Heart Rate/Sleep Monitor | 100+ Sports Modes Smartwatch with 1.91\" HD Display,IP68 Waterproof ,Bluetooth Call & Music Control for",
+      "category": "Electronics",
+      "url": "https://www.amazon.com/dp/B0HMCY8SLW",
+      "imageUrl": "https://m.media-amazon.com/images/I/41nhIfDWfAL._SL160_.jpg",
+      "price": 29.99,
+      "referencePrice": 149.95,
+      "discountPercent": 80,
+      "dealScore": 20,
+      "everydayEssential": false,
+      "reason": "First observation",
+      "previousObservedPrice": null,
+      "newObservedLow": false,
+      "checkedAt": "2026-11-28T11:41:14.192614+00:00",
+      "verification": "Amazon API snapshot; checkout and coupon stacking not verified",
+      "seller": "Huiyi Intelligent",
+      "soldByAmazon": false,
+      "isPrime": null,
+      "freeShipping": null,
+      "shippingStatus": "third_party"
+    },
     {
       "asin": "B008RJV0L4",
       "title": "Depend Real Fit Incontinence Underwear for Men, L/XL, 52 Count | Grey, Disposable, Adult Diapers for Men, Invisible Protection",
